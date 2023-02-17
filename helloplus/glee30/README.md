@@ -1,0 +1,1 @@
+For my hello plus assignment, I created a HTML page that is a basic, bare-bones layout of how our Code Dojo page will look. I also used some CSS to stylize it and it can be viewed [here.](https://glee30.w3spaces.com/basiclayout.html) This technology will be used to fill out the website and create our front-end.
