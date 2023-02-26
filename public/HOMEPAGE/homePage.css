@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+  }
+  
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("dojo.png"); /* Replace with your own image */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .content-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  button {
+    background-color: #23a6d5;
+    border: none;
+    border-radius: 30px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 24px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  button::before {
+    background-color: #ffffff;
+    border-radius: 30px;
+    content: '';
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: all 0.3s ease;
+    width: 100%;
+    z-index: -1;
+  }
+  
+  button:hover {
+    color: #23a6d5;
+  }
+  
+  button:hover::before {
+    opacity: 0.2;
+  }
+  
+  .message-box {
+    display: flex;
+    align-items: center;
+    margin: 20em auto 0;
+    max-width: 400px;
+    background-color:   #ffffff00;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+  
+  .message-box input[type="text"] {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    font-size: 16px;
+  }
+  
+  .message-box button[type="submit"] {
+    background-color: #23a6d5;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .message-box button[type="submit"]:hover {
+    background-color: #187fa5;
+  }
