@@ -1,39 +1,47 @@
-const path = require('path');
-const http = require('http');
-const url = require('url');
-const fs = require('fs');
+const express = require('express');
+const bodyParser = require('body-parser');
 
-const hostname = '127.0.0.1';
 const port = 3000;
+const app = express();
 
-const indexHtml = fs.readFileSync('public/index.html');
-const err404Html = fs.readFileSync('public/404.html');
+// Use body-parser middleware to parse form data
+app.use(bodyParser.urlencoded({ extended: false }));
 
-
-const server = http.createServer(function (req, res) {
-    var pathname = url.parse(req.url).pathname;
-    switch (pathname) {
-        case '/':
-            // Redirect to /index.html
-            res.writeHead(301, { 'Location': '/index.html' });
-            res.end();
-            break;
-        default:
-            // Check if the request is for index.html
-            if (path.basename(pathname) === 'index.html') {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.write(indexHtml);
-                res.end();
-            } else {
-                // Send a 404 Not Found response for all other URLs
-                res.writeHead(404, { 'Content-Type': 'text/html' });
-                res.write(err404Html);
-                res.end();
-            }
-            break;
-    }
+// Serve HTML page with form
+app.get('/', (req, res) => {
+    res.send(`
+    <html>
+      <head>
+        <title>Input Form</title>
+      </head>
+      <body>
+        <h1>Enter some text:</h1>
+        <form method="POST" action="/">
+          <input type="text" name="userInput" />
+          <button type="submit">Submit</button>
+        </form>
+      </body>
+    </html>
+  `);
 });
 
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+// Handle form submission
+app.post('/', (req, res) => {
+    const userInput = req.body.userInput;
+    res.send(`
+    <html>
+      <head>
+        <title>Input Result</title>
+      </head>
+      <body>
+        <h1>You entered:</h1>
+        <p>${userInput}</p>
+      </body>
+    </html>
+  `);
+});
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
 });
