@@ -1,47 +1,32 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const { Console } = require('console');
+const path = require('path')
 
 const port = 3000;
-const app = express();
 
-// Use body-parser middleware to parse form data
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// Serve HTML page with form
 app.get('/', (req, res) => {
-    res.send(`
-    <html>
-      <head>
-        <title>Input Form</title>
-      </head>
-      <body>
-        <h1>Enter some text:</h1>
-        <form method="POST" action="/">
-          <input type="text" name="userInput" />
-          <button type="submit">Submit</button>
-        </form>
-      </body>
-    </html>
-  `);
+    res.sendFile(path.resolve('./public/quiz.html'));
 });
 
-// Handle form submission
-app.post('/', (req, res) => {
-    const userInput = req.body.userInput;
-    res.send(`
-    <html>
-      <head>
-        <title>Input Result</title>
-      </head>
-      <body>
-        <h1>You entered:</h1>
-        <p>${userInput}</p>
-      </body>
-    </html>
-  `);
+app.get('/quiz.js', (req, res) => {
+    res.sendFile(path.resolve('./public/quiz.js'));
 });
 
-// Start the server
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+io.on('connection', (socket) => {
+    var socketID = socket.id;
+    var clientIP = socket.request.connection.remoteAddress;
+    var nickname = socketID;
+
+    console.log(nickname + " (" + clientIP + ")");
+    io.emit('connect message', socketID);
+
+    socket.on('submit answer', function (answer) {
+        console.log(socketID + " submitted answer " + answer);
+    });
+});
+
+http.listen(port, () => {
+    console.log(`Socket.IO server running at http://localhost:${port}/`);
 });

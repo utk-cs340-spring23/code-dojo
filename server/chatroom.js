@@ -13,13 +13,13 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    num_connections++;
+    ++num_connections;
     var socketID = socket.id;
     var clientIP = socket.request.connection.remoteAddress;
     var nickname = socketID;
 
     console.log(nickname + " (" + clientIP + ") connected (total connections: " + num_connections + ")");
-    io.emit('connect message', socketID)
+    io.emit('connect message', socketID);
 
     socket.on('new nickname', function (provided_nickname) {
         nickname = provided_nickname;
@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('disconnect', function () {
-        num_connections--;
+        --num_connections;
         console.log(socketID + " (" + clientIP + ") disconnected (total connections: " + num_connections + ")");
         io.emit('disconnect message', nickname);
     });
