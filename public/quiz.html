@@ -6,14 +6,15 @@
 </head>
 
 <body>
-    <!--Very barebones website: only an input form and submit button -->
-    <p id="question">What is 2+2?</p>
+    <!--Here, the quiz-taker gets questions from the host and can submit their answers.-->
+    <p id="question">Waiting for host...</p>
     <form id="form" action="">
-        <input id="input" autocomplete="off" /><button>Send Answer</button>
+        <input id="input" autocomplete="off" placeholder="answer"><button>Submit Answer</button>
     </form>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="quiz.js"></script>
+
 </body>
 
 </html>

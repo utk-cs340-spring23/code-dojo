@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Host Page</title>
+</head>
+
+<body>
+    <!--Here, the host can set the current question and answer-->
+    <form id="form" action="">
+        <input id="question" placeholder="question" autocomplete="off">
+        <input id="answer" placeholder="answer" autocomplete="off">
+        <button>Send Answer</button>
+    </form>
+
+    <ul id="player-list"></ul>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="host.js"></script>
+
+</body>
+
+</html>
