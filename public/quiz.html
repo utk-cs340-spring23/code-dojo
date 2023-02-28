@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+    <title>Quiz Page</title>
+</head>
+
 <body>
+    <!--Very barebones website: only an input form and submit button -->
+    <p id="question">What is 2+2?</p>
     <form id="form" action="">
-        <input id="input" autocomplete="off" /><button>Send</button>
+        <input id="input" autocomplete="off" /><button>Send Answer</button>
     </form>
 
     <script src="/socket.io/socket.io.js"></script>
-
     <script src="quiz.js"></script>
 </body>
 

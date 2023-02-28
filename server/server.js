@@ -1,20 +1,25 @@
+// Required modules
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const { Console } = require('console');
 const path = require('path')
+// const { Console } = require('console');
 
+// Server port
 const port = 3000;
 
-app.get('/', (req, res) => {
+// When you go to localhost:3000, you get quiz.html
+app.get('/', function (req, res) {
     res.sendFile(path.resolve('./public/quiz.html'));
 });
 
-app.get('/quiz.js', (req, res) => {
+// When you go to localhost:3000/quiz.js, you get quiz.js
+app.get('/quiz.js', function (req, res) {
     res.sendFile(path.resolve('./public/quiz.js'));
 });
 
-io.on('connection', (socket) => {
+// Whenever we get a connection from a new client:
+io.on('connection', function (socket) {
     var socketID = socket.id;
     var clientIP = socket.request.connection.remoteAddress;
     var nickname = socketID;
@@ -22,11 +27,22 @@ io.on('connection', (socket) => {
     console.log(nickname + " (" + clientIP + ")");
     io.emit('connect message', socketID);
 
+    // Whenever someone submits an answer:
     socket.on('submit answer', function (answer) {
-        console.log(socketID + " submitted answer " + answer);
+        // console.log without trailing newline
+        process.stdout.write(socketID + " submitted answer " + answer);
+
+        if (answer == "4") {
+            console.log("Correct answer");
+            io.to(socketID).emit('answer correct');
+        } else {
+            console.log("Incorrect answer");
+            io.to(socketID).emit('answer incorrect');
+        }
     });
 });
 
-http.listen(port, () => {
+// Start server
+http.listen(port, function () {
     console.log(`Socket.IO server running at http://localhost:${port}/`);
 });
