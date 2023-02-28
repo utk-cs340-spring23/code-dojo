@@ -1,8 +1,45 @@
 <!DOCTYPE html>
+<html>
+
 <head>
-    <link rel="stylesheet" href="mainPage.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link rel="stylesheet" href="mainPage.css" />
+    <div class="background-container">
+        <div class="background-image"></div>
+    </div>
 </head>
 
 <body>
-    
+    <main>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"
+            id="hamburger">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+        <div id="overlay">
+
+        </div>
+        <div id="sidebar">
+            <a href="" class="sidebar-item">
+                <div>Home</div>
+            </a>
+            <a href="" class="sidebar-item">
+                <div>Notes</div>
+            </a>
+            <a href="" class="sidebar-item">
+                <div>History</div>
+            </a>
+            <a href="" class="sidebar-item">
+                <div>FAQ</div>
+            </a>
+            <a href="" class="sidebar-item">
+                <div>Profile</div>
+            </a>
+        </div>
+    </main>
+    <script src="mainPage.js"></script>
 </body>
+
+</html>

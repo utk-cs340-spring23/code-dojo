@@ -1,5 +1,74 @@
-body{
-    background: #2f2f2f;
-    background-size: 400% 400%;
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+
+html {
+    font-family: 'Tilt Warp', cursive;
 }
 
+main {}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("dojo2.png");
+    background-size: cover;
+    background-position: center;
+}
+
+#hamburger {
+    fill: white;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+}
+
+#sidebar {
+    width: 0px;
+    height: 100vh;
+    /* height of screen */
+    background-color: rgb(225, 213, 201);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    overflow: hidden;
+
+    transition: width .35s ease;
+    white-space: nowrap;
+}
+
+.sidebar-item {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    padding: 1em;
+    display: flex;
+    position: center;
+}
+
+.sidebar-item:hover {
+    background-color: rgb(193, 13, 10);
+}
+
+#overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 1;
+}
