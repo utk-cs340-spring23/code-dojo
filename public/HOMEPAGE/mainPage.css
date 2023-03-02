@@ -87,4 +87,15 @@ main {}
     padding: 1em;
     border-radius: 20px;
     border: 2px solid transparent;
+    padding-right: 40px;
+}
+
+#submit{
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    fill: white;
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
 }
