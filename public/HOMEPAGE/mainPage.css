@@ -80,6 +80,7 @@ main {}
     border-radius: 20px;
     border: 2px solid transparent;
     padding-right: 40px;
+    resize: none;
 }
 
 #submit{
