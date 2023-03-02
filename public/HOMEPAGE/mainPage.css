@@ -6,8 +6,6 @@ html {
 
 main {}
 
-
-
 #hamburger {
     fill: white;
     height: 45px;
@@ -58,7 +56,7 @@ main {}
     background-color: #21416800;
     color: black;
     padding: 0px 0px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Tilt Warp', cursive;
     font-size: 18px;
     font-weight: bold;
     transition: background-color 0.3s ease;
