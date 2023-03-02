@@ -72,3 +72,19 @@ main {}
     display: none;
     z-index: 1;
 }
+
+.textbox{
+    font-family: 'Tilt Warp', cursive;
+    font-size: medium;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    max-width: 1440px;
+    background-color:rgb(214, 214, 214);
+    padding: 1em;
+    border-radius: 20px;
+    border: 2px solid transparent;
+}
