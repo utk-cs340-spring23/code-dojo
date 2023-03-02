@@ -6,11 +6,18 @@
 </head>
 
 <body>
+    <!-- <textarea id="code" rows="4" cols="50">Enter code here</textarea> -->
+
+    <!--Here, the host can create a room-->
+    <form id="room-form" action="">
+        <input id="room-input" autocomplete="off" placeholder="room id"><button>Create Room</button>
+    </form>
+
     <!--Here, the host can set the current question and answer-->
-    <form id="form" action="">
-        <input id="question" placeholder="question" autocomplete="off">
-        <input id="answer" placeholder="answer" autocomplete="off">
-        <button>Send Answer</button>
+    <form id="question-form" action="">
+        <input id="question-input" placeholder="question" autocomplete="off">
+        <input id="answer-input" placeholder="answer" autocomplete="off">
+        <button>Push Question</button>
     </form>
 
     <ul id="player-list"></ul>

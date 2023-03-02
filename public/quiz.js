@@ -1,20 +1,38 @@
 var socket = io();
-var input = document.getElementById("input");
+var room_input = document.getElementById("room-input");
+var answer_input = document.getElementById("answer-input");
 var question_tag = document.getElementById("question");
 
-// Whenever we submit an answer, send the answer to the server
-form.addEventListener("submit", function (e) {
+// Handle room joining
+document.getElementById("room-form").addEventListener("submit", function (e) {
     e.preventDefault();
-    if (input.value != null) {
-        console.log("submit answer " + input.value);
-        socket.emit("submit answer", input.value);
+    if (room_input.value != null) {
+        console.log("join room as player" + answer_input.value);
+        socket.emit("join room as player", room_input.value);
+    }
+});
+
+socket.on("join room fail", function (room_id) {
+    alert("Error: no room with id " + room_id);
+});
+
+socket.on("join room success", function (room_id) {
+    alert("Joined " + room_id);
+});
+
+// Handle answer submissions
+document.getElementById("answer-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (answer_input.value != null) {
+        console.log("submit answer " + answer_input.value);
+        socket.emit("submit answer", answer_input.value);
     }
 });
 
 // Get new question from host
 socket.on("push question", function (question) {
     console.log("push question " + question);
-    question_tag.innerText = question;
+    question_tag.innerText = "Question: " + question;
 });
 
 
