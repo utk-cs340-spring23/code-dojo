@@ -10,7 +10,7 @@
         <div class="background-image"></div>
     </div>
     <style>
-        body{
+        body {
             background-color: rgb(55, 54, 54);
         }
     </style>
@@ -20,16 +20,22 @@
     <main>
         <div class="question">
             <textarea class="textbox" placeholder="Question here"></textarea>
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" id="submit">
-                <path
-                    d="m381 814 453-453-43-43-410 410-211-211-43 43 254 254Zm0 85L42 560l128-128 211 211 410-410 128 128-538 538Z" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="submit">
+                <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
             </svg>
-
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" height="48" width="48" id="compile">
+                <path
+                    d="M705 928 447 668q-23 8-46 13t-47 5q-97.083 0-165.042-67.667Q121 550.667 121 454q0-31 8.158-60.388Q137.316 364.223 152 338l145 145 92-86-149-149q25.915-15.158 54.957-23.579Q324 216 354 216q99.167 0 168.583 69.417Q592 354.833 592 454q0 24-5 47t-13 46l259 258q11 10.957 11 26.478Q844 847 833 858l-76 70q-10.696 11-25.848 11T705 928Zm28-57 40-40-273-273q16-21 24-49.5t8-54.5q0-75-55.5-127T350 274l101 103q9 9 9 22t-9 22L319 545q-9 9-22 9t-22-9l-97-96q3 77 54.668 127T354 626q25 0 53-8t49-24l277 277ZM476 572Z" />
+            </svg>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"
             id="hamburger">
             <path d="M0 0h24v24H0z" fill="none" />
             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" id="makeNote">
+            <path
+                d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" />
         </svg>
         <div class="submitButton">
         </div>
@@ -38,7 +44,7 @@
         </div>
         <div id="sidebar">
             <a href="homePage.html" class="sidebar-item">
-                    <button class="btn">Home</button>
+                <button class="btn">Home</button>
             </a>
             <a href="/public/NOTES_PAGE/notesPage.html" class="sidebar-item">
                 <button class="btn">Notes</button>
@@ -49,7 +55,7 @@
             <a href="/public/PROFILE/profilePage.html" class="sidebar-item">
                 <button class="btn">Profile</button>
             </a>
-            <!-- I think we should keep this only on the home page???? --> 
+            <!-- I think we should keep this only on the home page???? -->
             <a href="/public/FAQ_PAGE/faqPage.html" class="sidebar-item">
                 <button class="btn">FAQ</button>
             </a>
