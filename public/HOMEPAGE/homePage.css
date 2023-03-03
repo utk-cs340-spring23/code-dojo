@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -89,6 +91,7 @@ button {
   border: none;
   color: #ffffff;
   cursor: pointer;
+  font-family: 'Tilt Warp', cursive;
   font-size: 18px;
   font-weight: bold;
   padding: 13.874px 20px;
@@ -130,6 +133,7 @@ button:hover::before {
 }
 
 .message-box input[type="text"] {
+  font-family: 'Tilt Warp', cursive;
   flex: 1;
   padding: 15px;
   border: none;

@@ -13,6 +13,10 @@ main {}
     cursor: pointer;
 }
 
+#hamburger:active{
+    transform: scale(0.9);
+}
+
 #sidebar {
     width: 0px;
     height: 100vh;
@@ -111,6 +115,10 @@ main {}
     right: 10px;
 }
 
+#submit:active{
+    transform: scale(0.9);
+}
+
 #compile{
     cursor: pointer;
     width: 50px;
@@ -121,6 +129,10 @@ main {}
     right: 75px;
 }
 
+#compile:active{
+    transform: scale(0.9);
+}
+
 #makeNote{
     cursor: pointer;
     width: 40px;
@@ -129,4 +141,8 @@ main {}
     position: absolute;
     top: 1%;
     right: 1%;
+}
+
+#makeNote:active{
+    transform: scale(0.9);
 }
