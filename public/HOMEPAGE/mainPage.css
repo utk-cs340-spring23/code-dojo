@@ -65,15 +65,33 @@ main {}
     text-align: left;
   }
 
-.textbox{
+.questionbox{
     font-family: 'Tilt Warp', cursive;
     font-size: medium;
     position: fixed;
-    top: 50%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 75%;
-    height: 75%;
+    height: 20%;
+    max-width: 1440px;
+    background-color:rgb(241, 241, 241);
+    padding: 1em;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    padding-right: 40px;
+    resize: none;
+}
+
+.answerbox{
+    font-family: 'Tilt Warp', cursive;
+    font-size: medium;
+    position: fixed;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 35%;
     max-width: 1440px;
     background-color:rgb(241, 241, 241);
     padding: 1em;
