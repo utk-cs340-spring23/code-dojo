@@ -18,17 +18,35 @@
 
 <body>
     <main>
+        <p>YOU ARE IN THE TEACHER PAGE NOW</p>
         <div>
-            <a href="/public/HOMEPAGE/teacherPage.html">
-                <button>Teacher Page</button>
+            <a href="/public/HOMEPAGE/mainPage.html">
+                <button>HOME</button>
             </a>
         </div>
+        <style>
+            div {
+                display: flex;
+                flex-wrap:nowrap;
+            }
+            form {
+                flex-basis: 25%;
+            }
+        </style>
+        
         <div>
-            <form id= "room-form">
-            <input id="room-input" placeholder="Session ID">
-            <button>JOIN</button>
+            <form id="room-form">
+                <input id="room-input" placeholder="Room ID">
+                <button>Create Room</button>
             </form>
-          </div> 
+            <form id="question-form">
+                <input id="question-input" placeholder="Question">
+            </form>
+            <form id="answer-form">
+                <input id="answer-input" placeholder="Answer">
+                <button>Push Question</button>
+            </form>
+        </div>
           
         <div class="question">
             <p class="questionbox" placeholder="Waiting for host"></p>
