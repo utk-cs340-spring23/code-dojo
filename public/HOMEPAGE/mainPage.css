@@ -6,8 +6,6 @@ html {
 
 main {}
 
-
-
 #hamburger {
     fill: white;
     height: 45px;
@@ -58,7 +56,7 @@ main {}
     background-color: #21416800;
     color: black;
     padding: 0px 0px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Tilt Warp', cursive;
     font-size: 18px;
     font-weight: bold;
     transition: background-color 0.3s ease;
@@ -70,15 +68,47 @@ main {}
 .textbox{
     font-family: 'Tilt Warp', cursive;
     font-size: medium;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
+    width: 75%;
+    height: 75%;
     max-width: 1440px;
     background-color:rgb(241, 241, 241);
     padding: 1em;
     border-radius: 20px;
     border: 2px solid transparent;
+    padding-right: 40px;
+    resize: none;
+}
+
+#submit{
+    cursor: pointer;
+    width: 55px;
+    height: 55px;
+    fill: white;
+    position: absolute;
+    bottom: 1%;
+    right: 10px;
+}
+
+#compile{
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    fill: white;
+    position: absolute;
+    bottom: 1%;
+    right: 75px;
+}
+
+#makeNote{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    fill: white;
+    position: absolute;
+    top: 1%;
+    right: 1%;
 }

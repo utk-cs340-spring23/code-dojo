@@ -7,9 +7,13 @@
 
 <body>
     <!--Here, the quiz-taker gets questions from the host and can submit their answers.-->
+    <form id="room-form" action="">
+        <input id="room-input" autocomplete="off" placeholder="room id"><button>Join Room</button>
+    </form>
+
     <p id="question">Waiting for host...</p>
-    <form id="form" action="">
-        <input id="input" autocomplete="off" placeholder="answer"><button>Submit Answer</button>
+    <form id="answer-form" action="">
+        <input id="answer-input" autocomplete="off" placeholder="answer"><button>Submit Answer</button>
     </form>
 
     <script src="/socket.io/socket.io.js"></script>
