@@ -1,15 +1,25 @@
 var socket = io();
 var room_input = document.getElementById("room-input");
+var nickname_input = document.getElementById("nickname-input");
 var answer_input = document.getElementById("answer-input");
 var question_tag = document.getElementById("question");
 
 // Handle room joining
 document.getElementById("room-form").addEventListener("submit", function (e) {
     e.preventDefault();
-    if (room_input.value != null) {
-        console.log("join room as player" + answer_input.value);
-        socket.emit("join room as player", room_input.value);
+    if (room_input.value == null || room_input.value == "") {
+        alert("Enter a room id");
+        return;
     }
+
+    if (nickname_input.value == null || nickname_input.value == "") {
+        alert("Enter a nickname");
+        return;
+    }
+
+    console.log("join room as player" + answer_input.value);
+    socket.emit("join room as player", room_input.value, nickname_input.value);
+
 });
 
 socket.on("join room fail", function (room_id) {

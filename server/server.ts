@@ -32,9 +32,9 @@ let quizrooms: QuizRoom[] = [];
 io.on("connection", function (socket) {
     let curr_quizroom: QuizRoom | null = null;
     let curr_room_id: string = "";
+    let curr_nickname: string = "";
 
     console.log("connection " + socket.id);
-
 
     socket.on("join room as host", function (room_id: string) {
         if (room_id == curr_room_id) {
@@ -42,9 +42,9 @@ io.on("connection", function (socket) {
         }
 
         console.log("join room as host");
-
         socket.join(room_id);
         curr_room_id = room_id;
+        curr_nickname = "Host";
 
         // Create a new room if the provided room id does not exist
         if (curr_room_id != null && quizrooms[curr_room_id] == null) {
@@ -54,10 +54,10 @@ io.on("connection", function (socket) {
 
         curr_quizroom = quizrooms[curr_room_id];
 
-        io.to(curr_room_id).emit("player join", socket.id);
+        // io.to(curr_room_id).emit("player join", socket.id);
     });
 
-    socket.on("join room as player", function (room_id: string) {
+    socket.on("join room as player", function (room_id: string, nickname: string) {
         if (room_id == curr_room_id) {
             return;
         }
@@ -71,9 +71,10 @@ io.on("connection", function (socket) {
             socket.join(room_id);
             curr_room_id = room_id;
             curr_quizroom = quizrooms[curr_room_id];
+            curr_nickname = nickname;
 
             io.to(socket.id).emit("join room success", room_id);
-            io.to(curr_room_id).emit("player join", socket.id);
+            io.to(curr_room_id).emit("player join", socket.id, nickname);
         }
     });
 
@@ -106,15 +107,17 @@ io.on("connection", function (socket) {
         if (provided_answer == curr_quizroom.answer) {
             console.log(" (correct answer)");
             io.to(socket.id).emit("answer correct");
+            io.to(curr_quizroom.host.socket.id).emit("player answer correct", socket.id);
         } else {
             console.log(" (incorrect answer)");
             io.to(socket.id).emit("answer incorrect");
+            io.to(curr_quizroom.host.socket.id).emit("player answer incorrect", socket.id);
         }
     });
 
     socket.on("disconnect", function () {
         // If the host leaves, delete the room
-        if (curr_quizroom != null && curr_quizroom.host.socket.id == socket.id) {
+        if (curr_quizroom != null && curr_quizroom.host.socket == socket) {
             quizrooms[curr_room_id] = null;
         }
 
