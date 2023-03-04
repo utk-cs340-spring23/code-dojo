@@ -1,33 +1,43 @@
-var socket = io();
-var room_input = document.getElementById("room-input");
-var nickname_input = document.getElementById("nickname-input");
-var answer_input = document.getElementById("answer-input");
-var question_tag = document.getElementById("question");
+const socket = io();
+const room_input = document.getElementById("room-input");
+const nickname_input = document.getElementById("nickname-input");
+const answer_input = document.getElementById("answer-input");
+const submit_answer_button = document.getElementById("submit-answer-button");
+const question_tag = document.getElementById("question");
+
+function update_question(question) {
+    question_tag.innerText = "Question: " + question;
+    answer_input.disabled = false;
+    submit_answer_button.disabled = false;
+}
 
 // Handle room joining
 document.getElementById("room-form").addEventListener("submit", function (e) {
     e.preventDefault();
     if (room_input.value == null || room_input.value == "") {
-        alert("Enter a room id");
+        error_message("Enter a room id");
         return;
     }
 
     if (nickname_input.value == null || nickname_input.value == "") {
-        alert("Enter a nickname");
+        error_message("Enter a nickname");
         return;
     }
 
-    console.log("join room as player" + answer_input.value);
-    socket.emit("join room as player", room_input.value, nickname_input.value);
-
+    console.log("join room" + answer_input.value);
+    socket.emit("join room", room_input.value, nickname_input.value);
 });
 
-socket.on("join room fail", function (room_id) {
-    alert("Error: no room with id " + room_id);
+socket.on("join room fail", function (msg) {
+    error_message(msg);
 });
 
-socket.on("join room success", function (room_id) {
-    alert("Joined " + room_id);
+socket.on("join room success", function (room_id, question) {
+    if (question != null && question != "") {
+        update_question(question);
+    } else {
+        question_tag.innerText = "Waiting for host...";
+    }
 });
 
 // Handle answer submissions
@@ -42,7 +52,7 @@ document.getElementById("answer-form").addEventListener("submit", function (e) {
 // Get new question from host
 socket.on("push question", function (question) {
     console.log("push question " + question);
-    question_tag.innerText = "Question: " + question;
+    update_question(question);
 });
 
 

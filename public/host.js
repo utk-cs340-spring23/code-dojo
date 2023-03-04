@@ -1,40 +1,53 @@
-var socket = io();
-var room_input = document.getElementById("room-input");
-var question_input = document.getElementById("question-input");
-var answer_input = document.getElementById("answer-input");
-var player_table = document.getElementById("player-table");
+const socket = io();
+const room_input = document.getElementById("room-input");
+const question_input = document.getElementById("question-input");
+const answer_input = document.getElementById("answer-input");
+const player_table = document.getElementById("player-table");
 
 // Create room
 document.getElementById("room-form").addEventListener("submit", function (e) {
     e.preventDefault();
-    if (room_input.value != null) {
-        console.log("join room as host " + room_input.value);
-        socket.emit("join room as host", room_input.value);
+    if (room_input.value == null || room_input.value == "") {
+        error_message("room id cannot be empty");
+        return;
     }
+
+    console.log("create room " + room_input.value);
+    socket.emit("create room", room_input.value);
+
 });
 
 // Push new question to room
 document.getElementById("question-form").addEventListener("submit", function (e) {
     e.preventDefault();
-    if (question_input.value != "" && answer_input.value != "") {
-        console.log("new question " + question_input.value + " " + answer_input.value);
-        socket.emit("new question", question_input.value, answer_input.value);
+    if (question_input.value == "") {
+        error_message("Question cannot be empty");
+        return;
     }
+
+    if (answer_input.value == "") {
+        error_message("Answer cannot be empty");
+        return;
+    }
+
+    console.log("new question " + question_input.value + " " + answer_input.value);
+    socket.emit("new question", question_input.value, answer_input.value);
+
 });
 
-// Change player list when a new player joins
+// These store how many correct/incorrect answers each player submits
+// Both arrays are keyed by the socket id string
 let player_correct_total = [];
 let player_incorrect_total = [];
-
 
 socket.on("player join", function (socket_id, nickname) {
     console.log("player join " + socket_id);
 
-    var table_row = document.createElement("tr");
+    let table_row = document.createElement("tr");
     table_row.setAttribute("id", socket_id);
     player_table.appendChild(table_row);
 
-    var table_entry = document.createElement("td");
+    let table_entry = document.createElement("td");
     table_entry.setAttribute("class", "socket-id");
     table_entry.textContent = socket_id;
     table_row.appendChild(table_entry);
@@ -61,23 +74,35 @@ socket.on("player join", function (socket_id, nickname) {
     // window.scrollTo(0, document.body.scrollHeight);
 });
 
+socket.on("create room success", function (msg) {
+    alert("Successfully created room");
+    room_input.disabled = true;
+    document.getElementById("create-room-button").disabled = true;
+});
+
+socket.on("create room fail", function (msg) {
+    error_message(msg);
+});
+
+socket.on("new question fail", function (msg) {
+    error_message(msg);
+});
+
 socket.on("player answer correct", function (socket_id) {
     ++player_correct_total[socket_id];
-    var table_entry = document.getElementById(socket_id).getElementsByClassName("num-right")[0];
+    let table_entry = document.getElementById(socket_id).getElementsByClassName("num-right")[0];
     table_entry.textContent = player_correct_total[socket_id];
 });
 
 socket.on("player answer incorrect", function (socket_id) {
     ++player_incorrect_total[socket_id];
-    var table_entry = document.getElementById(socket_id).getElementsByClassName("num-wrong")[0];
+    let table_entry = document.getElementById(socket_id).getElementsByClassName("num-wrong")[0];
     table_entry.textContent = player_incorrect_total[socket_id];
 
 });
 
-
 // Change player list when a player leaves
 socket.on("player leave", function (socket_id) {
     console.log("player leave " + socket_id);
-    var item = document.getElementById(socket_id);
-    item.remove();
+    document.getElementById(socket_id).remove();
 });

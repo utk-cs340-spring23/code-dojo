@@ -13,13 +13,14 @@
     </form>
 
     <!--Here, the quiz-taker gets questions from the host and can submit their answers.-->
-    <p id="question">Waiting for host...</p>
+    <p id="question"></p>
     <form id="answer-form">
-        <input id="answer-input" autocomplete="off" placeholder="answer">
-        <button>Submit Answer</button>
+        <input id="answer-input" autocomplete="off" placeholder="answer" disabled>
+        <button id="submit-answer-button" disabled>Submit Answer</button>
     </form>
 
     <script src="/socket.io/socket.io.js"></script>
+    <script src="util.js"></script>
     <script src="quiz.js"></script>
 
 </body>

@@ -3,7 +3,7 @@
 /*----------------------------------------------------------------------------*/
 import * as express from "express";
 import * as http from "http";
-import { Server as SocketIOServer } from "socket.io";
+import { Server as SocketIOServer, Socket } from "socket.io";
 import * as path from "path";
 import { Player } from "./player";
 import { QuizRoom } from "./quizroom";
@@ -26,61 +26,68 @@ server.listen(port, function () {
 /* Sockets                                                                    */
 /*----------------------------------------------------------------------------*/
 
-const io: SocketIOServer = new SocketIOServer(server);
+let num_connections: number = 0;
 let quizrooms: QuizRoom[] = [];
 
-io.on("connection", function (socket) {
+const io: SocketIOServer = new SocketIOServer(server);
+
+io.on("connection", function (socket: Socket) {
+    ++num_connections;
     let curr_quizroom: QuizRoom | null = null;
     let curr_room_id: string = "";
     let curr_nickname: string = "";
 
-    console.log("connection " + socket.id);
+    console.log("connection " + socket.id + " (total connections " + num_connections + ")");
 
-    socket.on("join room as host", function (room_id: string) {
-        if (room_id == curr_room_id) {
+    socket.on("create room", function (room_id: string) {
+        if (curr_quizroom != null || room_id == curr_room_id) {
+            io.to(socket.id).emit("create room fail", "already in room " + curr_room_id);
             return;
         }
 
-        console.log("join room as host");
+        if (quizrooms[room_id] != null) {
+            io.to(socket.id).emit("create room fail", "room already exists");
+            return;
+        }
+
         socket.join(room_id);
+
+        quizrooms[room_id] = new QuizRoom(room_id, new Player("Host", socket));
+
+        curr_quizroom = quizrooms[room_id];
         curr_room_id = room_id;
         curr_nickname = "Host";
 
-        // Create a new room if the provided room id does not exist
-        if (curr_room_id != null && quizrooms[curr_room_id] == null) {
-            console.log("created new room");
-            quizrooms[curr_room_id] = new QuizRoom(curr_room_id, new Player("Host", socket));
-        }
-
-        curr_quizroom = quizrooms[curr_room_id];
-
-        // io.to(curr_room_id).emit("player join", socket.id);
+        io.to(socket.id).emit("create room success", room_id);
     });
 
-    socket.on("join room as player", function (room_id: string, nickname: string) {
+    socket.on("join room", function (room_id: string, nickname: string) {
         if (room_id == curr_room_id) {
             return;
         }
 
-        console.log("join room as player " + room_id);
         if (quizrooms[room_id] == null) {
-            io.to(socket.id).emit("join room fail", room_id);
+            io.to(socket.id).emit("join room fail", "room " + room_id + " does not exist");
             console.log("no room exist");
-        } else {
-            console.log("joined room");
-            socket.join(room_id);
-            curr_room_id = room_id;
-            curr_quizroom = quizrooms[curr_room_id];
-            curr_nickname = nickname;
-
-            io.to(socket.id).emit("join room success", room_id);
-            io.to(curr_room_id).emit("player join", socket.id, nickname);
+            return;
         }
+
+        console.log("joined room");
+        socket.join(room_id);
+
+        curr_quizroom = quizrooms[room_id];
+        curr_room_id = room_id;
+        curr_nickname = nickname;
+
+        io.to(socket.id).emit("join room success", room_id, curr_quizroom?.question);
+        io.to(curr_room_id).emit("player join", socket.id, nickname);
+
     });
 
     // When the host creates a new question, push that question to every player
     socket.on("new question", function (question: string, answer: string) {
         if (curr_quizroom == null) {
+            io.to(socket.id).emit("new question fail", "room " + curr_room_id + " does not exist");
             return;
         }
 
@@ -116,8 +123,13 @@ io.on("connection", function (socket) {
     });
 
     socket.on("disconnect", function () {
+        --num_connections;
+        console.log("disconnect " + socket.id + " (total connections " + num_connections + ")");
+        console.log(curr_quizroom?.id + " " + curr_quizroom?.host.socket.id + " " + socket.id);
+
         // If the host leaves, delete the room
-        if (curr_quizroom != null && curr_quizroom.host.socket == socket) {
+        if (curr_quizroom != null && curr_quizroom.host.socket.id == socket.id) {
+            console.log("Should be deleting room " + curr_room_id);
             quizrooms[curr_room_id] = null;
         }
 
