@@ -1,0 +1,486 @@
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  1) <!DOCTYPE html>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  2) <html>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  3) 
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  4) <head>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  5)     <title>Host Page</title>
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  6)     <style>
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  7)         table,
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  8)         th,
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  9)         td {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 10)             text-align: left;
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 11)             border: 1px solid black;
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 12)             border-collapse: collapse;
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 13)         }
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 14) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 15)     </style>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 16) </head>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 17) 
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 18) <body>
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 19)     <!-- <textarea id="code" rows="4" cols="50">Enter code here</textarea> -->
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 20) 
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 21)     <!--Here, the host can create a room-->
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 22)     <form id="room-form" action="">
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 23)         <input id="room-input" autocomplete="off" placeholder="room id">
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 24)         <button id="create-room-button">Create Room</button>
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 25)     </form>
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 26) 
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 27)     <!--Here, the host can set the current question and answer-->
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 28)     <form id="question-form" action="">
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 29)         <input id="question-input" placeholder="question" autocomplete="off" disabled>
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 30)         <input id="answer-input" placeholder="answer" autocomplete="off" disabled>
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 31)         <!-- <input type="number" id="timer-input" placeholder="seconds"> -->
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 32)         <button id="push-question-button" disabled>Push Question</button>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 33)     </form>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 34) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 35) 
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 36)     <table id="player-table">
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 37)         <tr>
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 38)             <th>Socket ID</th>
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 39)             <th>Name</th>
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 40)             <th># right</th>
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 41)             <th># wrong</th>
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 42)         </tr>
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 43)     </table>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 44) 
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 45)     <script src="/socket.io/socket.io.js"></script>
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 46)     <script src="util.js"></script>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 47)     <script src="host.js"></script>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 48) 
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 49) </body>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 50) 
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 51) </html>
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500   1) /*----------------------------------------------------------------------------*/
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500   2) /* Constants                                                                  */
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500   3) /*----------------------------------------------------------------------------*/
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500   4) const socket = io();
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500   5) const room_input = document.getElementById("room-input");
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500   6) const create_room_button = document.getElementById("create-room-button");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500   7) const question_input = document.getElementById("question-input");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500   8) const answer_input = document.getElementById("answer-input");
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500   9) const push_question_button = document.getElementById("push-question-button");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  10) const player_table = document.getElementById("player-table");
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  11) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  12) // Ensure that the question and answer input is disabled to start
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  13) question_input.disabled = true;
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  14) answer_input.disabled = true;
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  15) push_question_button.disabled = true;
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  16) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  17) /*----------------------------------------------------------------------------*/
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  18) /* Create Room                                                                */
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  19) /*----------------------------------------------------------------------------*/
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  20) 
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500  21) document.getElementById("room-form").addEventListener("submit", function (e) {
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  22)     e.preventDefault();
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  23)     if (room_input.value == null || room_input.value == "") {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  24)         error_message("room id cannot be empty");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  25)         return;
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  26)     }
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  27) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  28)     console.log("create room " + room_input.value);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  29)     socket.emit("create room", room_input.value);
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  30) });
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  31) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  32) socket.on("create room success", function (msg) {
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  33)     alert(msg);
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  34)     room_input.disabled = true;
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  35)     create_room_button.disabled = true;
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  36) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  37)     question_input.disabled = false;
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  38)     answer_input.disabled = false;
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  39)     push_question_button.disabled = false;
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  40) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  41) });
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  42) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  43) socket.on("create room fail", function (msg) {
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  44)     error_message(msg);
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  45) });
+806ffc22 (Alex Zhang 2023-02-28 13:18:29 -0500  46) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  47) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  48) /*----------------------------------------------------------------------------*/
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  49) /* Push Questions                                                             */
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  50) /*----------------------------------------------------------------------------*/
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500  51) document.getElementById("question-form").addEventListener("submit", function (e) {
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500  52)     e.preventDefault();
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  53)     if (question_input.value == "") {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  54)         error_message("Question cannot be empty");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  55)         return;
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  56)     }
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  57) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  58)     if (answer_input.value == "") {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  59)         error_message("Answer cannot be empty");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  60)         return;
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500  61)     }
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  62) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  63)     console.log("new question " + question_input.value + " " + answer_input.value);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  64)     socket.emit("new question", question_input.value, answer_input.value);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  65) 
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500  66) });
+806ffc22 (Alex Zhang 2023-02-28 13:18:29 -0500  67) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  68) // These store how many correct/incorrect answers each player submits
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  69) // Both arrays are keyed by the socket id string
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  70) let player_correct_total = [];
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  71) let player_incorrect_total = [];
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  72) 
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  73) socket.on("player join", function (socket_id, nickname) {
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  74)     console.log("player join " + socket_id);
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  75) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  76)     // Add to player table
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  77)     let table_row = document.createElement("tr");
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  78)     table_row.setAttribute("id", socket_id);
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  79)     player_table.appendChild(table_row);
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  80) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  81)     let table_entry = document.createElement("td");
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  82)     table_entry.setAttribute("class", "socket-id");
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  83)     table_entry.textContent = socket_id;
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  84)     table_row.appendChild(table_entry);
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  85) 
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  86)     table_entry = document.createElement("td");
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  87)     table_entry.setAttribute("class", "nickname");
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  88)     table_entry.textContent = nickname;
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  89)     table_row.appendChild(table_entry);
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  90) 
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  91)     table_entry = document.createElement("td");
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  92)     table_entry.setAttribute("class", "num-right");
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  93)     table_entry.textContent = "0";
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  94)     table_row.appendChild(table_entry);
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  95) 
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  96)     table_entry = document.createElement("td");
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  97)     table_entry.setAttribute("class", "num-wrong");
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  98)     table_entry.textContent = "0";
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  99)     table_row.appendChild(table_entry);
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 100) 
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 101)     player_correct_total[socket_id] = 0;
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 102)     player_incorrect_total[socket_id] = 0;
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 103) 
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 104) 
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 105)     // window.scrollTo(0, document.body.scrollHeight);
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 106) });
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 107) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 108) socket.on("new question success", function (msg) {
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 109)     alert(msg);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 110) });
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 111) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 112) socket.on("new question fail", function (msg) {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 113)     error_message(msg);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 114) });
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 115) 
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 116) socket.on("player answer correct", function (socket_id) {
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 117)     ++player_correct_total[socket_id];
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 118)     let table_entry = document.getElementById(socket_id).getElementsByClassName("num-right")[0];
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 119)     table_entry.textContent = player_correct_total[socket_id];
+806ffc22 (Alex Zhang 2023-02-28 13:18:29 -0500 120) });
+806ffc22 (Alex Zhang 2023-02-28 13:18:29 -0500 121) 
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 122) socket.on("player answer incorrect", function (socket_id) {
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 123)     ++player_incorrect_total[socket_id];
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 124)     let table_entry = document.getElementById(socket_id).getElementsByClassName("num-wrong")[0];
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 125)     table_entry.textContent = player_incorrect_total[socket_id];
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 126) 
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 127) });
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 128) 
+806ffc22 (Alex Zhang 2023-02-28 13:18:29 -0500 129) // Change player list when a player leaves
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 130) socket.on("player leave", function (socket_id) {
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 131)     console.log("player leave " + socket_id);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 132)     document.getElementById(socket_id).remove();
+806ffc22 (Alex Zhang 2023-02-28 13:18:29 -0500 133) });
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  1) <!DOCTYPE html>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  2) <html>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  3) 
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  4) <head>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  5)     <title>Code Dojo</title>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  6) </head>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  7) 
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  8) <body>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500  9)     <a href="quiz.html">Go to quiz</a>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 10)     <a href="host.html">Go to host panel</a>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 11) </body>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 12) 
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 13) </html>
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500  1) <!DOCTYPE html>
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500  2) <html>
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500  3) 
+d9a0ebb6 (Alex Zhang 2023-02-28 10:06:30 -0500  4) <head>
+d9a0ebb6 (Alex Zhang 2023-02-28 10:06:30 -0500  5)     <title>Quiz Page</title>
+d9a0ebb6 (Alex Zhang 2023-02-28 10:06:30 -0500  6) </head>
+d9a0ebb6 (Alex Zhang 2023-02-28 10:06:30 -0500  7) 
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500  8) <body>
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  9)     <form id="room-form">
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 10)         <input id="room-input" autocomplete="off" placeholder="room id">
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 11)         <input id="nickname-input" autocomplete="off" placeholder="enter a nickname">
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 12)         <button>Join Room</button>
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 13)     </form>
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 14) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 15)     <!--Here, the quiz-taker gets questions from the host and can submit their answers.-->
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 16)     <p id="question">Please join a room to answer questions</p>
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 17)     <form id="answer-form">
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 18)         <input id="answer-input" autocomplete="off" placeholder="answer" disabled>
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 19)         <button id="submit-answer-button" type="submit" disabled>Submit Answer</button>
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500 20)     </form>
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500 21) 
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500 22)     <script src="/socket.io/socket.io.js"></script>
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 23)     <script src="util.js"></script>
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500 24)     <script src="quiz.js"></script>
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 25) 
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500 26) </body>
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500 27) 
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500 28) </html>
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  1) /*----------------------------------------------------------------------------*/
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  2) /* Constants                                                                  */
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  3) /*----------------------------------------------------------------------------*/
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  4) const socket = io();
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  5) const room_input = document.getElementById("room-input");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  6) const nickname_input = document.getElementById("nickname-input");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  7) const answer_input = document.getElementById("answer-input");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  8) const submit_answer_button = document.getElementById("submit-answer-button");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  9) const question_tag = document.getElementById("question");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 10) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 11) // Ensure that the answer input is disabled to start
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 12) answer_input.disabled = true;
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 13) submit_answer_button.disabled = true;
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 14) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 15) // Update the displayed question; also enable answer input
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 16) function update_question(question) {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 17)     question_tag.innerText = "Question: " + question;
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 18)     answer_input.disabled = false;
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 19)     submit_answer_button.disabled = false;
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 20) }
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500 21) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 22) /*----------------------------------------------------------------------------*/
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 23) /* Room Joining                                                               */
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 24) /*----------------------------------------------------------------------------*/
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 25) document.getElementById("room-form").addEventListener("submit", function (e) {
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500 26)     e.preventDefault();
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 27)     if (room_input.value == null || room_input.value == "") {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 28)         error_message("Enter a room id");
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 29)         return;
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 30)     }
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 31) 
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 32)     if (nickname_input.value == null || nickname_input.value == "") {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 33)         error_message("Enter a nickname");
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 34)         return;
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 35)     }
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 36) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 37)     console.log("join room" + answer_input.value);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 38)     socket.emit("join room", room_input.value, nickname_input.value);
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 39) });
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 40) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 41) socket.on("join room fail", function (msg) {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 42)     error_message(msg);
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 43) });
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 44) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 45) socket.on("join room success", function (room_id, question) {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 46)     if (question != null && question != "") {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 47)         update_question(question);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 48)     } else {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 49)         question_tag.innerText = "Waiting for host...";
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 50)     }
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 51) });
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 52) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 53) /*----------------------------------------------------------------------------*/
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 54) /* Update Question                                                            */
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 55) /*----------------------------------------------------------------------------*/
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 56) socket.on("push question", function (question) {
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 57)     update_question(question);
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 58) });
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 59) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 60) /*----------------------------------------------------------------------------*/
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 61) /* Answer Submissions                                                         */
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 62) /*----------------------------------------------------------------------------*/
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 63) document.getElementById("answer-form").addEventListener("submit", function (e) {
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 64)     e.preventDefault();
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 65)     if (answer_input.value != null) {
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 66)         console.log("submit answer " + answer_input.value);
+93d22259 (Alex Zhang 2023-03-02 18:13:47 -0500 67)         socket.emit("submit answer", answer_input.value);
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500 68)     }
+0af2af04 (Alex Zhang 2023-02-28 08:20:38 -0500 69) });
+d9a0ebb6 (Alex Zhang 2023-02-28 10:06:30 -0500 70) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 71) socket.on("submit answer fail", function (msg) {
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 72)     error_message(msg);
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 73) });
+51e43741 (Alex Zhang 2023-02-28 12:52:46 -0500 74) 
+806ffc22 (Alex Zhang 2023-02-28 13:18:29 -0500 75) socket.on("answer correct", function () {
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 76)     alert("Correct!");
+d9a0ebb6 (Alex Zhang 2023-02-28 10:06:30 -0500 77) });
+d9a0ebb6 (Alex Zhang 2023-02-28 10:06:30 -0500 78) 
+806ffc22 (Alex Zhang 2023-02-28 13:18:29 -0500 79) socket.on("answer incorrect", function () {
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 80)     alert("Incorrect!");
+d9a0ebb6 (Alex Zhang 2023-02-28 10:06:30 -0500 81) });
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 1) function error_message(msg) {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 2)     alert("Error: " + msg);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 3) }
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  1) import { Socket } from "socket.io";
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  2) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  3) class Player {
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  4)     nickname: string;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  5)     socket: Socket;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  6)     num_right: number;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  7)     num_wrong: number;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  8) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  9)     constructor(nickname: string, socket: Socket) {
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 10)         this.nickname = nickname;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 11)         this.socket = socket;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 12)     }
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 13) }
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 14) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 15) export { Player };
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  1) import { Player } from "./player";
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  2) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  3) class QuizRoom {
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  4)     id: string;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  5)     host: Player;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  6)     players: Player[];
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  7)     question: string;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  8)     answer: string;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  9) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 10)     constructor(id: string, host: Player) {
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 11)         this.id = id;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 12)         this.host = host;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 13)         this.players = [];
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 14)         this.question = "";
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 15)         this.answer = "";
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 16) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 17)         console.log("Created new room with id " + id + " and host socket id " + host.socket.id);
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 18)     }
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 19) }
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 20) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 21) export { QuizRoom };
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500   1) /*----------------------------------------------------------------------------*/
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500   2) /* Imports                                                                    */
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500   3) /*----------------------------------------------------------------------------*/
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500   4) import * as express from "express";
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500   5) import * as http from "http";
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500   6) import { Server as SocketIOServer, Socket } from "socket.io";
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500   7) import * as path from "path";
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500   8) import { Player } from "./player";
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500   9) import { QuizRoom } from "./quizroom";
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  10) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  11) /*----------------------------------------------------------------------------*/
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  12) /* Server                                                                     */
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  13) /*----------------------------------------------------------------------------*/
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  14) const app: express.Application = express();
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  15) const server: http.Server = http.createServer(app);
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  16) const port: number = 3000;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  17) const publicPath: string = path.join(__dirname, "../public");
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  18) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  19) app.use(express.static(publicPath));
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  20) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  21) server.listen(port, function () {
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  22)     console.log(`Socket.IO server running at http://localhost:${port}/`);
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  23) });
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  24) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  25) /*----------------------------------------------------------------------------*/
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  26) /* Sockets                                                                    */
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  27) /*----------------------------------------------------------------------------*/
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  28) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  29) let num_connections: number = 0;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  30) let quizrooms: QuizRoom[] = [];
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  31) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  32) const io: SocketIOServer = new SocketIOServer(server);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  33) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  34) io.on("connection", function (socket: Socket) {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  35)     ++num_connections;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  36)     let curr_quizroom: QuizRoom | null = null;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  37)     let curr_room_id: string = "";
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500  38)     let curr_nickname: string = "";
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  39) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  40)     console.log("connection " + socket.id + " (total connections " + num_connections + ")");
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  41) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  42)     socket.on("create room", function (room_id: string) {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  43)         if (curr_quizroom != null || room_id == curr_room_id) {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  44)             io.to(socket.id).emit("create room fail", "already in room " + curr_room_id);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  45)             return;
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  46)         }
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  47) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  48)         if (quizrooms[room_id] != null) {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  49)             io.to(socket.id).emit("create room fail", "room already exists");
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  50)             return;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  51)         }
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  52) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  53)         socket.join(room_id);
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  54) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  55)         quizrooms[room_id] = new QuizRoom(room_id, new Player("Host", socket));
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  56) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  57)         curr_quizroom = quizrooms[room_id];
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  58)         curr_room_id = room_id;
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  59)         curr_nickname = "Host";
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  60) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  61)         io.to(socket.id).emit("create room success", "Successfully created room " + room_id);
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  62)     });
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  63) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  64)     socket.on("join room", function (room_id: string, nickname: string) {
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  65)         if (room_id == curr_room_id) {
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  66)             return;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  67)         }
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  68) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  69)         if (quizrooms[room_id] == null) {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  70)             io.to(socket.id).emit("join room fail", "room " + room_id + " does not exist");
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  71)             console.log("no room exist");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  72)             return;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  73)         }
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  74) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  75)         console.log("joined room");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  76)         socket.join(room_id);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  77) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  78)         curr_quizroom = quizrooms[room_id];
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  79)         curr_room_id = room_id;
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  80)         curr_nickname = nickname;
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  81) 
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  82)         io.to(socket.id).emit("join room success", room_id, curr_quizroom?.question);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  83)         io.to(curr_room_id).emit("player join", socket.id, nickname);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  84) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  85)     });
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  86) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  87)     // When the host creates a new question, push that question to every player
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  88)     socket.on("new question", function (question: string, answer: string) {
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  89)         if (curr_quizroom == null) {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500  90)             io.to(socket.id).emit("new question fail", "room " + curr_room_id + " does not exist");
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  91)             return;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  92)         }
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  93) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  94)         console.log(socket.id + " : " + curr_quizroom.host.socket.id);
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  95)         if (socket != curr_quizroom.host.socket) {
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500  96)             io.to(socket.id).emit("new question fail", "you are not the host!");
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  97)             return;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  98)         }
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500  99) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 100)         console.log("new question " + question);
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 101)         curr_quizroom.question = question;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 102)         curr_quizroom.answer = answer;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 103) 
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 104)         io.to(socket.id).emit("new question success", "successfully pushed question");
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 105)         io.to(curr_room_id).emit("push question", question);
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 106)     });
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 107) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 108)     // When a player submits an answer, tell them if they are right or wrong
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 109)     socket.on("submit answer", function (provided_answer) {
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 110)         if (curr_quizroom == null) {
+29408dab (Alex Zhang 2023-03-05 12:45:57 -0500 111)             io.to(socket.id).emit("submit answer fail", "room " + curr_room_id + " does not exist");
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 112)             return;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 113)         }
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 114) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 115)         process.stdout.write(socket.id + " submitted answer " + provided_answer);
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 116) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 117)         if (provided_answer == curr_quizroom.answer) {
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 118)             console.log(" (correct answer)");
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 119)             io.to(socket.id).emit("answer correct");
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 120)             io.to(curr_quizroom.host.socket.id).emit("player answer correct", socket.id);
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 121)         } else {
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 122)             console.log(" (incorrect answer)");
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 123)             io.to(socket.id).emit("answer incorrect");
+7dfa0c6e (Alex Zhang 2023-03-03 19:38:18 -0500 124)             io.to(curr_quizroom.host.socket.id).emit("player answer incorrect", socket.id);
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 125)         }
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 126)     });
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 127) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 128)     socket.on("disconnect", function () {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 129)         --num_connections;
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 130)         console.log("disconnect " + socket.id + " (total connections " + num_connections + ")");
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 131)         console.log(curr_quizroom?.id + " " + curr_quizroom?.host.socket.id + " " + socket.id);
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 132) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 133)         // If the host leaves, delete the room
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 134)         if (curr_quizroom != null && curr_quizroom.host.socket.id == socket.id) {
+593ad9c2 (Alex Zhang 2023-03-03 21:02:26 -0500 135)             console.log("Should be deleting room " + curr_room_id);
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 136)             quizrooms[curr_room_id] = null;
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 137)         }
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 138) 
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 139)         io.to(curr_room_id).emit("player leave", socket.id);
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 140)     });
+673ec747 (Alex Zhang 2023-03-03 16:01:15 -0500 141) });
