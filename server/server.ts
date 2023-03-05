@@ -58,7 +58,7 @@ io.on("connection", function (socket: Socket) {
         curr_room_id = room_id;
         curr_nickname = "Host";
 
-        io.to(socket.id).emit("create room success", room_id);
+        io.to(socket.id).emit("create room success", "Successfully created room " + room_id);
     });
 
     socket.on("join room", function (room_id: string, nickname: string) {
@@ -93,6 +93,7 @@ io.on("connection", function (socket: Socket) {
 
         console.log(socket.id + " : " + curr_quizroom.host.socket.id);
         if (socket != curr_quizroom.host.socket) {
+            io.to(socket.id).emit("new question fail", "you are not the host!");
             return;
         }
 
@@ -100,12 +101,14 @@ io.on("connection", function (socket: Socket) {
         curr_quizroom.question = question;
         curr_quizroom.answer = answer;
 
+        io.to(socket.id).emit("new question success", "successfully pushed question");
         io.to(curr_room_id).emit("push question", question);
     });
 
     // When a player submits an answer, tell them if they are right or wrong
     socket.on("submit answer", function (provided_answer) {
         if (curr_quizroom == null) {
+            io.to(socket.id).emit("submit answer fail", "room " + curr_room_id + " does not exist");
             return;
         }
 

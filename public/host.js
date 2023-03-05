@@ -1,10 +1,23 @@
+/*----------------------------------------------------------------------------*/
+/* Constants                                                                  */
+/*----------------------------------------------------------------------------*/
 const socket = io();
 const room_input = document.getElementById("room-input");
+const create_room_button = document.getElementById("create-room-button");
 const question_input = document.getElementById("question-input");
 const answer_input = document.getElementById("answer-input");
+const push_question_button = document.getElementById("push-question-button");
 const player_table = document.getElementById("player-table");
 
-// Create room
+// Ensure that the question and answer input is disabled to start
+question_input.disabled = true;
+answer_input.disabled = true;
+push_question_button.disabled = true;
+
+/*----------------------------------------------------------------------------*/
+/* Create Room                                                                */
+/*----------------------------------------------------------------------------*/
+
 document.getElementById("room-form").addEventListener("submit", function (e) {
     e.preventDefault();
     if (room_input.value == null || room_input.value == "") {
@@ -14,10 +27,27 @@ document.getElementById("room-form").addEventListener("submit", function (e) {
 
     console.log("create room " + room_input.value);
     socket.emit("create room", room_input.value);
+});
+
+socket.on("create room success", function (msg) {
+    alert(msg);
+    room_input.disabled = true;
+    create_room_button.disabled = true;
+
+    question_input.disabled = false;
+    answer_input.disabled = false;
+    push_question_button.disabled = false;
 
 });
 
-// Push new question to room
+socket.on("create room fail", function (msg) {
+    error_message(msg);
+});
+
+
+/*----------------------------------------------------------------------------*/
+/* Push Questions                                                             */
+/*----------------------------------------------------------------------------*/
 document.getElementById("question-form").addEventListener("submit", function (e) {
     e.preventDefault();
     if (question_input.value == "") {
@@ -43,6 +73,7 @@ let player_incorrect_total = [];
 socket.on("player join", function (socket_id, nickname) {
     console.log("player join " + socket_id);
 
+    // Add to player table
     let table_row = document.createElement("tr");
     table_row.setAttribute("id", socket_id);
     player_table.appendChild(table_row);
@@ -74,14 +105,8 @@ socket.on("player join", function (socket_id, nickname) {
     // window.scrollTo(0, document.body.scrollHeight);
 });
 
-socket.on("create room success", function (msg) {
-    alert("Successfully created room");
-    room_input.disabled = true;
-    document.getElementById("create-room-button").disabled = true;
-});
-
-socket.on("create room fail", function (msg) {
-    error_message(msg);
+socket.on("new question success", function (msg) {
+    alert(msg);
 });
 
 socket.on("new question fail", function (msg) {

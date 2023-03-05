@@ -13,10 +13,10 @@
     </form>
 
     <!--Here, the quiz-taker gets questions from the host and can submit their answers.-->
-    <p id="question"></p>
+    <p id="question">Please join a room to answer questions</p>
     <form id="answer-form">
         <input id="answer-input" autocomplete="off" placeholder="answer" disabled>
-        <button id="submit-answer-button" disabled>Submit Answer</button>
+        <button id="submit-answer-button" type="submit" disabled>Submit Answer</button>
     </form>
 
     <script src="/socket.io/socket.io.js"></script>

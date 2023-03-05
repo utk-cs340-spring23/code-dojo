@@ -1,3 +1,6 @@
+/*----------------------------------------------------------------------------*/
+/* Constants                                                                  */
+/*----------------------------------------------------------------------------*/
 const socket = io();
 const room_input = document.getElementById("room-input");
 const nickname_input = document.getElementById("nickname-input");
@@ -5,13 +8,20 @@ const answer_input = document.getElementById("answer-input");
 const submit_answer_button = document.getElementById("submit-answer-button");
 const question_tag = document.getElementById("question");
 
+// Ensure that the answer input is disabled to start
+answer_input.disabled = true;
+submit_answer_button.disabled = true;
+
+// Update the displayed question; also enable answer input
 function update_question(question) {
     question_tag.innerText = "Question: " + question;
     answer_input.disabled = false;
     submit_answer_button.disabled = false;
 }
 
-// Handle room joining
+/*----------------------------------------------------------------------------*/
+/* Room Joining                                                               */
+/*----------------------------------------------------------------------------*/
 document.getElementById("room-form").addEventListener("submit", function (e) {
     e.preventDefault();
     if (room_input.value == null || room_input.value == "") {
@@ -40,7 +50,16 @@ socket.on("join room success", function (room_id, question) {
     }
 });
 
-// Handle answer submissions
+/*----------------------------------------------------------------------------*/
+/* Update Question                                                            */
+/*----------------------------------------------------------------------------*/
+socket.on("push question", function (question) {
+    update_question(question);
+});
+
+/*----------------------------------------------------------------------------*/
+/* Answer Submissions                                                         */
+/*----------------------------------------------------------------------------*/
 document.getElementById("answer-form").addEventListener("submit", function (e) {
     e.preventDefault();
     if (answer_input.value != null) {
@@ -49,21 +68,14 @@ document.getElementById("answer-form").addEventListener("submit", function (e) {
     }
 });
 
-// Get new question from host
-socket.on("push question", function (question) {
-    console.log("push question " + question);
-    update_question(question);
+socket.on("submit answer fail", function (msg) {
+    error_message(msg);
 });
 
-
-// If the server tells us our answer was correct
 socket.on("answer correct", function () {
-    console.log("answer correct");
-    alert("CORRECT!!!");
+    alert("Correct!");
 });
 
-// If the server tells us our answer was wrong
 socket.on("answer incorrect", function () {
-    console.log("answer incorrect");
-    alert("INOCRRECT!!!");
+    alert("Incorrect!");
 });
