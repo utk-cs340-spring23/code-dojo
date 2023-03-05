@@ -77,7 +77,7 @@ main {}
     left: 50%;
     transform: translate(-50%, -50%);
     width: 75%;
-    height: 10%;
+    height: 20%;
     max-width: 1440px;
     background-color:rgb(241, 241, 241);
     padding: 1em;

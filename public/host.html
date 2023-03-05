@@ -3,6 +3,16 @@
 
 <head>
     <title>Host Page</title>
+    <style>
+        table,
+        th,
+        td {
+            text-align: left;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -10,20 +20,30 @@
 
     <!--Here, the host can create a room-->
     <form id="room-form" action="">
-        <input id="room-input" autocomplete="off" placeholder="room id"><button>Create Room</button>
+        <input id="room-input" autocomplete="off" placeholder="room id">
+        <button id="create-room-button">Create Room</button>
     </form>
 
     <!--Here, the host can set the current question and answer-->
     <form id="question-form" action="">
-        <input id="question-input" placeholder="question" autocomplete="off">
-        <input id="answer-input" placeholder="answer" autocomplete="off">
-        <button>Push Question</button>
+        <input id="question-input" placeholder="question" autocomplete="off" disabled>
+        <input id="answer-input" placeholder="answer" autocomplete="off" disabled>
+        <!-- <input type="number" id="timer-input" placeholder="seconds"> -->
+        <button id="push-question-button" disabled>Push Question</button>
     </form>
 
-    <ul id="player-list"></ul>
 
+    <table id="player-table">
+        <tr>
+            <th>Socket ID</th>
+            <th>Name</th>
+            <th># right</th>
+            <th># wrong</th>
+        </tr>
+    </table>
 
     <script src="/socket.io/socket.io.js"></script>
+    <script src="util.js"></script>
     <script src="host.js"></script>
 
 </body>
