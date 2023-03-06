@@ -7,6 +7,7 @@ html {
 main {}
 
 #hamburger {
+    /* attributes for hamburger icon */
     fill: white;
     height: 45px;
     width: 45px;
@@ -14,20 +15,25 @@ main {}
 }
 
 #hamburger:active{
+    /* makes button slightly smaller when being clicked */
     transform: scale(0.9);
 }
 
 #sidebar {
     width: 0px;
     height: 100vh;
-    /* height of screen */
+    /* 100vh: height of screen */
     background-color: rgb(214, 214, 214);
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 2;
-    overflow: hidden;
 
+    /* set z-index to 2, so it's on top of everything */
+    z-index: 2;
+
+    /* make sure text doesn't still show when sidebar is closed */
+    overflow: hidden;
+ 
     transition: width .25s ease;
     white-space: nowrap;
 }
@@ -46,6 +52,9 @@ main {}
 }
 
 #overlay {
+    /* overlay is clicked to close sidebar
+       also used to make background slightly
+       darker when sidebar is open */
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.3);
@@ -57,6 +66,7 @@ main {}
 }
 
 .btn {
+    /* sidebar button attributes */
     background-color: #21416800;
     color: black;
     padding: 0px 0px;
@@ -70,11 +80,13 @@ main {}
   }
 
 .questionbox{
+    /* format the question textbox */
     font-family: 'Tilt Warp', cursive;
     font-size: medium;
     position: fixed;
     top: 25%;
     left: 50%;
+    /* scale the textbox based on window size */
     transform: translate(-50%, -50%);
     width: 75%;
     height: 20%;
@@ -88,11 +100,13 @@ main {}
 }
 
 .answerbox{
+    /* format the answer textbox */
     font-family: 'Tilt Warp', cursive;
     font-size: medium;
     position: fixed;
     top: 70%;
     left: 50%;
+    /* scale the textbox based on window size */
     transform: translate(-50%, -50%);
     width: 75%;
     height: 35%;
@@ -106,6 +120,7 @@ main {}
 }
 
 #submit{
+    /* attributes for submit button */
     cursor: pointer;
     width: 55px;
     height: 55px;
@@ -116,10 +131,12 @@ main {}
 }
 
 #submit:active{
+    /* make slightly smaller on click */
     transform: scale(0.9);
 }
 
 #compile{
+    /* attributes for compile button */
     cursor: pointer;
     width: 50px;
     height: 50px;
@@ -130,10 +147,12 @@ main {}
 }
 
 #compile:active{
+    /* make slightly smaller on click */
     transform: scale(0.9);
 }
 
 #makeNote{
+    /* attributes for makeNote button */
     cursor: pointer;
     width: 40px;
     height: 40px;
@@ -144,5 +163,6 @@ main {}
 }
 
 #makeNote:active{
+    /* make slightly smaller on click */
     transform: scale(0.9);
 }
