@@ -1,0 +1,260 @@
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 1) <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M705 928 447 668q-23 8-46 13t-47 5q-97.083 0-165.042-67.667Q121 550.667 121 454q0-31 8.158-60.388Q137.316 364.223 152 338l145 145 92-86-149-149q25.915-15.158 54.957-23.579Q324 216 354 216q99.167 0 168.583 69.417Q592 354.833 592 454q0 24-5 47t-13 46l259 258q11 10.957 11 26.478Q844 847 833 858l-76 70q-10.696 11-25.848 11T705 928Zm28-57 40-40-273-273q16-21 24-49.5t8-54.5q0-75-55.5-127T350 274l101 103q9 9 9 22t-9 22L319 545q-9 9-22 9t-22-9l-97-96q3 77 54.668 127T354 626q25 0 53-8t49-24l277 277ZM476 572Z"/></svg>
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 1) <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m381 814 453-453-43-43-410 410-211-211-43 43 254 254Zm0 85L42 560l128-128 211 211 410-410 128 128-538 538Z"/></svg>
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 1) <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z"/></svg>
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500   1) @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500   2) 
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500  97)   font-family: 'Tilt Warp', cursive;
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500 140)   font-family: 'Tilt Warp', cursive;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500   1) @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500   2) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500   3) html {
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500   4)     font-family: 'Tilt Warp', cursive;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500   5) }
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500   6) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500   7) main {}
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500   8) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500   9) #hamburger {
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  10)     /* attributes for hamburger icon */
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  11)     fill: white;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  12)     height: 45px;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  13)     width: 45px;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  14)     cursor: pointer;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  15) }
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  16) 
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500  17) #hamburger:active{
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  18)     /* makes button slightly smaller when being clicked */
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500  19)     transform: scale(0.9);
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500  20) }
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500  21) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  22) #sidebar {
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  23)     width: 0px;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  24)     height: 100vh;
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  25)     /* 100vh: height of screen */
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  27)     position: fixed;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  28)     top: 0;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  29)     left: 0;
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  30) 
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  31)     /* set z-index to 2, so it's on top of everything */
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  32)     z-index: 2;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  33) 
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  34)     /* make sure text doesn't still show when sidebar is closed */
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  35)     overflow: hidden;
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  36)  
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  38)     white-space: nowrap;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  39) }
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  40) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  41) .sidebar-item {
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  42)     text-decoration: none;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  43)     color: black;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  44)     cursor: pointer;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  45)     padding: 1em;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  46)     display: flex;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  47)     position: center;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  48) }
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  49) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  50) .sidebar-item:hover {
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  54) #overlay {
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  55)     /* overlay is clicked to close sidebar
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  56)        also used to make background slightly
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  57)        darker when sidebar is open */
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  58)     width: 100vw;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  59)     height: 100vh;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  60)     background-color: rgba(0, 0, 0, 0.3);
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  61)     position: fixed;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  62)     top: 0;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  63)     left: 0;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  64)     display: none;
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  65)     z-index: 1;
+227d8ed2 (Griff2325 2023-03-01 20:47:18 -0500  66) }
+227d8ed2 (Griff2325 2023-03-01 20:47:18 -0500  67) 
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  69)     /* sidebar button attributes */
+cb856074 (Griff2325 2023-03-02 17:16:55 -0500  73)     font-family: 'Tilt Warp', cursive;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500  82) .questionbox{
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  83)     /* format the question textbox */
+227d8ed2 (Griff2325 2023-03-01 20:47:18 -0500  84)     font-family: 'Tilt Warp', cursive;
+227d8ed2 (Griff2325 2023-03-01 20:47:18 -0500  85)     font-size: medium;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500  86)     position: fixed;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500  87)     top: 25%;
+227d8ed2 (Griff2325 2023-03-01 20:47:18 -0500  88)     left: 50%;
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  89)     /* scale the textbox based on window size */
+227d8ed2 (Griff2325 2023-03-01 20:47:18 -0500  90)     transform: translate(-50%, -50%);
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500  91)     width: 75%;
+8c792c8d (Griff2325 2023-03-05 15:09:18 -0500  92)     height: 20%;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500  93)     max-width: 1440px;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500  94)     background-color:rgb(241, 241, 241);
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500  95)     padding: 1em;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500  96)     border-radius: 20px;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500  97)     border: 2px solid transparent;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500  98)     padding-right: 40px;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500  99)     resize: none;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500 100) }
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500 101) 
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500 102) .answerbox{
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 103)     /* format the answer textbox */
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500 104)     font-family: 'Tilt Warp', cursive;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500 105)     font-size: medium;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500 106)     position: fixed;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500 107)     top: 70%;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500 108)     left: 50%;
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 109)     /* scale the textbox based on window size */
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500 110)     transform: translate(-50%, -50%);
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500 111)     width: 75%;
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500 112)     height: 35%;
+227d8ed2 (Griff2325 2023-03-01 20:47:18 -0500 113)     max-width: 1440px;
+227d8ed2 (Griff2325 2023-03-01 20:47:18 -0500 115)     padding: 1em;
+227d8ed2 (Griff2325 2023-03-01 20:47:18 -0500 116)     border-radius: 20px;
+227d8ed2 (Griff2325 2023-03-01 20:47:18 -0500 117)     border: 2px solid transparent;
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 118)     padding-right: 40px;
+d53956db (Griff2325 2023-03-02 18:51:41 -0500 119)     resize: none;
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 120) }
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 121) 
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 122) #submit{
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 123)     /* attributes for submit button */
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 124)     cursor: pointer;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 125)     width: 55px;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 126)     height: 55px;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 127)     fill: white;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 128)     position: absolute;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 129)     bottom: 1%;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 130)     right: 10px;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 131) }
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 132) 
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500 133) #submit:active{
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 134)     /* make slightly smaller on click */
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500 135)     transform: scale(0.9);
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500 136) }
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500 137) 
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 138) #compile{
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 139)     /* attributes for compile button */
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 140)     cursor: pointer;
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 141)     width: 50px;
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 142)     height: 50px;
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 143)     fill: white;
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 144)     position: absolute;
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 145)     bottom: 1%;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 146)     right: 75px;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 147) }
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 148) 
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500 149) #compile:active{
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 150)     /* make slightly smaller on click */
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500 151)     transform: scale(0.9);
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500 152) }
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500 153) 
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 154) #makeNote{
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 155)     /* attributes for makeNote button */
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 156)     cursor: pointer;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 157)     width: 40px;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 158)     height: 40px;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 159)     fill: white;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 160)     position: absolute;
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 161)     top: 1%;
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 162)     right: 1%;
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500 163) }
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500 164) 
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500 165) #makeNote:active{
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 166)     /* make slightly smaller on click */
+a0a7feba (Griff2325 2023-03-03 15:53:31 -0500 167)     transform: scale(0.9);
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 168) }
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  2) <html>
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  3) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  5)     <meta charset="UTF-8" />
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  6)     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  7)     <title>Menu</title>
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  8) 
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  9)     <!-- reference the css styling page -->
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 10)     <link rel="stylesheet" href="mainPage.css" />
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 11)     
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 12)     <div class="background-container">
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 13)         <div class="background-image"></div>
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 14)     </div>
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 16)         body {
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 23)     <main>
+8c792c8d (Griff2325 2023-03-05 15:09:18 -0500 24)         <!-- TESTING FOR ROOM JOIN CODE -->
+8c792c8d (Griff2325 2023-03-05 15:09:18 -0500 25)         <!-- <div>
+8c792c8d (Griff2325 2023-03-05 15:09:18 -0500 29)         </div> -->
+8c792c8d (Griff2325 2023-03-05 15:09:18 -0500 30)         <!-- <div>
+8c792c8d (Griff2325 2023-03-05 15:09:18 -0500 36)            -->
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 37)         <div class="question">
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 38)             <!-- text boxes for question and icons -->
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500 39)             <p class="questionbox" placeholder="Waiting for host"></p>
+85bf231f (Griff2325 2023-03-03 15:24:14 -0500 40)             <textarea class="answerbox" placeholder="Answer here"></textarea>
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 41) 
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 42)             <!-- vectors for submit and compile icons -->
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 43)             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="submit">
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 44)                 <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 45)             </svg>
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 46)             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" height="48" width="48" id="compile">
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 47)                 <path
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 48)                     d="M705 928 447 668q-23 8-46 13t-47 5q-97.083 0-165.042-67.667Q121 550.667 121 454q0-31 8.158-60.388Q137.316 364.223 152 338l145 145 92-86-149-149q25.915-15.158 54.957-23.579Q324 216 354 216q99.167 0 168.583 69.417Q592 354.833 592 454q0 24-5 47t-13 46l259 258q11 10.957 11 26.478Q844 847 833 858l-76 70q-10.696 11-25.848 11T705 928Zm28-57 40-40-273-273q16-21 24-49.5t8-54.5q0-75-55.5-127T350 274l101 103q9 9 9 22t-9 22L319 545q-9 9-22 9t-22-9l-97-96q3 77 54.668 127T354 626q25 0 53-8t49-24l277 277ZM476 572Z" />
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 49)             </svg>
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 50)         </div>
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 51) 
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 52)         <!-- vectors for hamburger and makeNote icons -->
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 53)         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 54)             id="hamburger">
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 55)             <path d="M0 0h24v24H0z" fill="none" />
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 56)             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 57)         </svg>
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 58)         <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" id="makeNote">
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 59)             <path
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 60)                 d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" />
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 61)         </svg>
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 62) 
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 63)         <div class="submitButton">
+a39bd30c (Griff2325 2023-03-01 21:20:46 -0500 64)         </div>
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 65)         <div id="overlay">
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 66)         </div>
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 67) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 68)         <div id="sidebar">
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 69)             <!-- sidebar with references to important pages -->
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 71)                 <button class="btn">Home</button>
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 72)             </a>
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 75)             </a>
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 78)             </a>
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 81)             </a>
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 84)             </a>
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 85)         </div>
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 86)     </main>
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 87)     <!-- add the js for sidebar pull-out animation -->
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 88)     <script src="mainPage.js"></script>
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 89) </body>
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 90) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 91) </html>
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  1) // find the variables by using getElementById
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  2) const hamburger = document.getElementById('hamburger')
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  3) const sidebar = document.getElementById('sidebar')
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  4) const overlay = document.getElementById('overlay')
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  5) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  6) let menuOpen = false // menu starts closed
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  7) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500  8) function openMenu() {
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500  9)     // change width to 'open' sidebar
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 10)     menuOpen = true
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 11)     overlay.style.display = 'block'
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 12)     sidebar.style.width = '250px'
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 13) }
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 14) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 15) function closeMenu() {
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 16)     // change width to 'close' sidebar
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 17)     menuOpen = false
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 18)     overlay.style.display = 'none'
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 19)     sidebar.style.width = '0px'
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 20) }
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 21) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 22) hamburger.addEventListener('click', function () {
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 23)     // open the sidebar when hamburger is clicked
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 24)     if (!menuOpen) {
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 25)         openMenu()
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 26)     }
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 27) })
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 28) 
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 29) overlay.addEventListener('click', function () {
+3d143ae4 (Griff2325 2023-03-06 16:59:26 -0500 30)     // close the sidebar when overlay is clicked
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 31)     if (menuOpen) {
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 32)         closeMenu()
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 33)     }
+064988e6 (Griff2325 2023-02-27 19:53:19 -0500 34) })
+f15e6c4d (Griff2325 2023-03-02 18:48:47 -0500 1) <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg>
+8c792c8d (Griff2325 2023-03-05 15:09:18 -0500 21)         <!-- <p>YOU ARE IN THE TEACHER PAGE NOW</p>
+87ff73b8 (Griff2325 2023-03-03 16:29:36 -0500 23)             <a href="/public/HOMEPAGE/mainPage.html">
+8c792c8d (Griff2325 2023-03-05 15:09:18 -0500 39)         </div> -->
