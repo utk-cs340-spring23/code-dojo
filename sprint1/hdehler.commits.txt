@@ -1,0 +1,527 @@
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  1) <!DOCTYPE html>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  2) <html>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  3)     <head>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  4)         <style>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  5)             body{
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  6)                 background-color: rgb(55, 54, 54);
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  7)             }
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  8)         </style>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  9)     </head>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500 10) </html>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  1) <!DOCTYPE html>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  2) <html>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  3)     <head>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  4)         <style>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  5)             body{
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  6)                 background-color: rgb(55, 54, 54);
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  7)             }
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  8)         </style>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  9)     </head>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500 10) </html>
+ba1128ca (hdehler   2023-02-26 17:48:29 -0500   3) body {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500   4)   margin: 0;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500   5)   padding: 0;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500   6) }
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500   7) 
+54e006ff (hdehler   2023-03-06 19:55:13 -0500   8) /* background picture. Added to full screen with blue*/
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500   9) .background-container {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  10)   position: fixed;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  11)   top: 0;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  12)   left: 0;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  13)   width: 100%;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  14)   height: 100%;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  15)   z-index: -1;
+c544ae8e (hdehler   2023-03-03 15:16:43 -0500  16)   filter: blur(4px);
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  17) }
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  18) 
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  19) .background-image {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  20)   position: absolute;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  21)   width: 100%;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  22)   height: 100%;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  23)   background-image: url("dojo2.png");
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  24)   background-size: cover;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  25)   background-position: center;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  26) }
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  27) 
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  28) .content-container {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  29)   position: relative;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  30)   z-index: 1;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  31)   width: 100%;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  32)   height: 100%;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  33)   display: flex;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  34)   flex-direction: column;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  35)   justify-content: center;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  36)   align-items: center;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  37) }
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  38) 
+54e006ff (hdehler   2023-03-06 19:55:13 -0500  39) /* create the stylign for the nav bar and placed at the top of the screen*/
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  40) .top-nav {
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  41)   background-color: rgba(0, 0, 0, 0.986);
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  42)   color: #fff;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  43)   height: 40px;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  44)   display: flex;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  45)   justify-content: space-between;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  46)   align-items: center;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  47)   padding: 0 20px;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  48) }
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  49) 
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  50) .top-nav ul {
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  51)   list-style: none;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  52)   margin: 0;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  53)   padding: 0;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  54)   display: flex;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  55)   align-items: center;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  56) }
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  57) 
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  58) .top-nav ul li {
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  59)   margin: 0 10px;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  60) }
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  61) 
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  62) .top-nav ul li a {
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  63)   color: #fff;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  64)   font-size: 18px;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  65)   font-weight: bold;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  66)   padding: 10px;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  67)   transition: background-color 0.3s ease;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  68) }
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  69) 
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  70) .top-nav ul li a:hover {
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  71)   background-color: #555;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  72) }
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  73) 
+54e006ff (hdehler   2023-03-06 19:55:13 -0500  74) /* buttons for the nav bar */
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  75) .btn {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  76)   background-color: #000000;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  77)   color: #ffffff;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  78)   padding: 10px 5px;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  79)   font-style: oblique;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  80)   font-size: 18px;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  81)   font-weight: bold;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  82)   transition: background-color 0.3s ease;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  83) }
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  84) 
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  85) .btn:hover {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  86)   background-color: #555555;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  87)   color: #ffffff;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  88) }
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  89) 
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  90) 
+54e006ff (hdehler   2023-03-06 19:55:13 -0500  91) /* button to join the session ID */
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  92) button {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  93)   background-color: #23a6d5;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  94)   border: none;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  95)   color: #ffffff;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  96)   cursor: pointer;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  98)   font-size: 18px;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500  99)   font-weight: bold;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 100)   padding: 13.874px 20px;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 101)   position: relative;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 102)   transition: all 0.3s ease;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 103) }
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 104) 
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 105) button::before {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 106)   background-color: #ffffff;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 107)   border-radius: 30px;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 108)   content: '';
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 109)   height: 100%;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 110)   left: 0;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 111)   opacity: 0;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 112)   position: absolute;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 113)   top: 0;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 114)   transition: all 0.3s ease;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 115)   width: 100%;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 116)   z-index: -1;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 117) }
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 118) 
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 119) button:hover {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 120)   color: #1b7494;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 121) }
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 122) 
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 123) button:hover::before {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 124)   opacity: 0.2;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 125) }
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 126) 
+54e006ff (hdehler   2023-03-06 19:55:13 -0500 127) /* message box for the session ID */
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 128) .message-box {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 129)   display: flex;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 130)   align-items: center;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 131)   margin: -8em auto 0;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 132)   max-width: 400px;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 133)   background-color: #ffffff00;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 134)   border-radius: 10px;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 135)   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 136)   overflow: hidden;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 137) }
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 138) 
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 139) .message-box input[type="text"] {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 141)   flex: 1;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 142)   padding: 15px;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 143)   border: none;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 144)   font-size: 16px;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 145) }
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 146) 
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 147) .message-box button[type="submit"] {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 148)   background-color: #23a6d5;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 149)   color: #ffffff;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 150)   font-size: 16px;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 151)   font-weight: bold;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 152)   text-transform: uppercase;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 153)   padding: 13.874px 20px;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 154)   border: none;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 155)   cursor: pointer;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 156)   transition: all 0.3s ease;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 157) }
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 158) 
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 159) .message-box button[type="submit"]:hover {
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 160)   background-color: #187fa5;
+edf9c66e (hdehler   2023-02-27 22:41:02 -0500 161) }
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500  1) <!DOCTYPE html>
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500  2) <html>
+54e006ff (hdehler 2023-03-06 19:55:13 -0500  3)   <!-- refference the css for styling-->
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500  4)   <head>
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500  5)     <link rel="stylesheet" href="homePage.css">
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500  6)   </head>
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500  7)   <body>
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500  8)     <div class="background-container">
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500  9)       <div class="background-image"></div>
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500 10)     </div>
+5d71370f (hdehler 2023-02-26 19:53:10 -0500 11) 
+54e006ff (hdehler 2023-03-06 19:55:13 -0500 12)     <!-- creating/adding the nav bar to the top of the page-->
+5d71370f (hdehler 2023-02-26 19:53:10 -0500 13)     <nav class = "top-nav">
+d3151410 (hdehler 2023-02-26 20:26:34 -0500 14)       <left><img src="SmallDojoLogo.png" alt = "CD Logo" style="width:125px;height:100px"></left>
+5d71370f (hdehler 2023-02-26 19:53:10 -0500 15)       <ul>
+edf9c66e (hdehler 2023-02-27 22:41:02 -0500 16)         <li><a href = "homePage.html"><button class="btn">HOME</button></a></li>
+edf9c66e (hdehler 2023-02-27 22:41:02 -0500 17)         <li><a href = "aboutPage.html"><button class="btn">ABOUT</button></a></li>
+edf9c66e (hdehler 2023-02-27 22:41:02 -0500 18)         <li><a href = "faqPage.html"><button class="btn">FAQ</button></a></li>
+5d71370f (hdehler 2023-02-26 19:53:10 -0500 19)       </ul>
+5d71370f (hdehler 2023-02-26 19:53:10 -0500 20)     </nav>
+5d71370f (hdehler 2023-02-26 19:53:10 -0500 21) 
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500 22)     <div class="content-container">
+54e006ff (hdehler 2023-03-06 19:55:13 -0500 23)  
+54e006ff (hdehler 2023-03-06 19:55:13 -0500 24)       <!-- add code dojo logo-->
+0cdc62bd (hdehler 2023-02-26 18:57:49 -0500 25)         <div>
+0cdc62bd (hdehler 2023-02-26 18:57:49 -0500 26)             <br>
+0cdc62bd (hdehler 2023-02-26 18:57:49 -0500 27)             <br>
+0cdc62bd (hdehler 2023-02-26 18:57:49 -0500 28)             <br>
+0cdc62bd (hdehler 2023-02-26 18:57:49 -0500 29)             <br>
+0cdc62bd (hdehler 2023-02-26 18:57:49 -0500 30)             <center><img src="CodeLogo.png" alt="CodeDojo LOGO" style="width:500px;height:400px"></center>
+0cdc62bd (hdehler 2023-02-26 18:57:49 -0500 31)         </div>
+54e006ff (hdehler 2023-03-06 19:55:13 -0500 32)         <!-- adding the message box for session ID as well as the connected button-->
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500 33)       <div class="message-box">
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500 34)         <input type="text" placeholder="Session ID">
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 35)         <button onclick = "window.location.href = 'mainPage.html';">JOIN</button>
+edf9c66e (hdehler 2023-02-27 22:41:02 -0500 36)       </div>  
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500 37)     </div>
+0cdc62bd (hdehler 2023-02-26 18:57:49 -0500 38) 
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500 39)   </body>
+ba1128ca (hdehler 2023-02-26 17:48:29 -0500 40) </html>
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  26)     background-color: rgb(214, 214, 214);
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  37)     transition: width .25s ease;
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  51)     background-color: #23a6d5;
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  52) }
+5d71370f (hdehler   2023-02-26 19:53:10 -0500  53) 
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  68) .btn {
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  70)     background-color: #21416800;
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  71)     color: black;
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  72)     padding: 0px 0px;
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  74)     font-size: 18px;
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  75)     font-weight: bold;
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  76)     transition: background-color 0.3s ease;
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  77)     width: 100%;
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  78)     border: none;
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  79)     text-align: left;
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  80)   }
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500  81) 
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 114)     background-color:rgb(241, 241, 241);
+0cdc62bd (hdehler   2023-02-26 18:57:49 -0500  1) <!DOCTYPE html>
+0cdc62bd (hdehler   2023-02-26 18:57:49 -0500  4) <head>
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 15)     <style>
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 17)             background-color: rgb(55, 54, 54);
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 18)         }
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 19)     </style>
+0cdc62bd (hdehler   2023-02-26 18:57:49 -0500 20) </head>
+0cdc62bd (hdehler   2023-02-26 18:57:49 -0500 21) 
+0cdc62bd (hdehler   2023-02-26 18:57:49 -0500 22) <body>
+91986963 (hdehler   2023-03-03 16:30:52 -0500 26)             <a href="/public/HOMEPAGE/teacherPage.html">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 27)                 <button>Teacher Page</button>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 28)             </a>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 31)             <form id= "room-form">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 32)             <input id="room-input" placeholder="Session ID">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 33)             <button>JOIN</button>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 34)             </form>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 35)           </div> 
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 70)             <a href="homePage.html" class="sidebar-item">
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 73)             <a href="/public/NOTES_PAGE/notesPage.html" class="sidebar-item">
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 74)                 <button class="btn">Notes</button>
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 76)             <a href="/public/HISTORY_PAGE/historyPage.html" class="sidebar-item">
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 77)                 <button class="btn">History</button>
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 79)             <a href="/public/PROFILE/profilePage.html" class="sidebar-item">
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 80)                 <button class="btn">Profile</button>
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 82)             <a href="/public/FAQ_PAGE/faqPage.html" class="sidebar-item">
+156d7f92 (hdehler   2023-03-02 00:04:02 -0500 83)                 <button class="btn">FAQ</button>
+8c81998d (hdehler 2023-03-03 16:03:44 -0500   1) @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+8c81998d (hdehler 2023-03-03 16:03:44 -0500   2) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500   3) html {
+8c81998d (hdehler 2023-03-03 16:03:44 -0500   4)     font-family: 'Tilt Warp', cursive;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500   5) }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500   6) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500   7) main {}
+8c81998d (hdehler 2023-03-03 16:03:44 -0500   8) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500   9) #hamburger {
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  10)     fill: white;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  11)     height: 45px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  12)     width: 45px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  13)     cursor: pointer;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  14) }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  15) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  16) #sidebar {
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  17)     width: 0px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  18)     height: 100vh;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  19)     /* height of screen */
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  20)     background-color: rgb(214, 214, 214);
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  21)     position: fixed;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  22)     top: 0;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  23)     left: 0;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  24)     z-index: 2;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  25)     overflow: hidden;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  26) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  27)     transition: width .25s ease;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  28)     white-space: nowrap;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  29) }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  30) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  31) .sidebar-item {
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  32)     text-decoration: none;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  33)     color: black;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  34)     cursor: pointer;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  35)     padding: 1em;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  36)     display: flex;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  37)     position: center;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  38) }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  39) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  40) .sidebar-item:hover {
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  41)     background-color: #23a6d5;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  42) }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  43) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  44) #overlay {
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  45)     width: 100vw;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  46)     height: 100vh;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  47)     background-color: rgba(0, 0, 0, 0.3);
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  48)     position: fixed;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  49)     top: 0;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  50)     left: 0;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  51)     display: none;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  52)     z-index: 1;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  53) }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  54) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  55) .btn {
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  56)     background-color: #21416800;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  57)     color: black;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  58)     padding: 0px 0px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  59)     font-family: 'Tilt Warp', cursive;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  60)     font-size: 18px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  61)     font-weight: bold;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  62)     transition: background-color 0.3s ease;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  63)     width: 100%;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  64)     border: none;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  65)     text-align: left;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  66)   }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  67) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  68) .questionbox{
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  69)     font-family: 'Tilt Warp', cursive;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  70)     font-size: medium;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  71)     position: fixed;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  72)     top: 25%;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  73)     left: 50%;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  74)     transform: translate(-50%, -50%);
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  75)     width: 75%;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  76)     height: 20%;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  77)     max-width: 1440px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  78)     background-color:rgb(241, 241, 241);
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  79)     padding: 1em;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  80)     border-radius: 20px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  81)     border: 2px solid transparent;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  82)     padding-right: 40px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  83)     resize: none;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  84) }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  85) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  86) .answerbox{
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  87)     font-family: 'Tilt Warp', cursive;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  88)     font-size: medium;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  89)     position: fixed;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  90)     top: 70%;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  91)     left: 50%;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  92)     transform: translate(-50%, -50%);
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  93)     width: 75%;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  94)     height: 35%;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  95)     max-width: 1440px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  96)     background-color:rgb(241, 241, 241);
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  97)     padding: 1em;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  98)     border-radius: 20px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  99)     border: 2px solid transparent;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 100)     padding-right: 40px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 101)     resize: none;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 102) }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 103) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 104) #submit{
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 105)     cursor: pointer;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 106)     width: 55px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 107)     height: 55px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 108)     fill: white;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 109)     position: absolute;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 110)     bottom: 1%;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 111)     right: 10px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 112) }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 113) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 114) #compile{
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 115)     cursor: pointer;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 116)     width: 50px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 117)     height: 50px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 118)     fill: white;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 119)     position: absolute;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 120)     bottom: 1%;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 121)     right: 75px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 122) }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 123) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 124) #makeNote{
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 125)     cursor: pointer;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 126)     width: 40px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 127)     height: 40px;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 128)     fill: white;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 129)     position: absolute;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 130)     top: 1%;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 131)     right: 1%;
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 132) }
+8c81998d (hdehler   2023-03-03 16:03:44 -0500  1) <!DOCTYPE html>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500  2) <html>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500  3) 
+8c81998d (hdehler   2023-03-03 16:03:44 -0500  4) <head>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500  5)     <meta charset="UTF-8" />
+8c81998d (hdehler   2023-03-03 16:03:44 -0500  6)     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+8c81998d (hdehler   2023-03-03 16:03:44 -0500  7)     <title>Menu</title>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500  8)     <link rel="stylesheet" href="mainPage.css" />
+8c81998d (hdehler   2023-03-03 16:03:44 -0500  9)     <div class="background-container">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 10)         <div class="background-image"></div>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 11)     </div>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 12)     <style>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 13)         body {
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 14)             background-color: rgb(55, 54, 54);
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 15)         }
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 16)     </style>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 17) </head>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 18) 
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 19) <body>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 20)     <main>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 22)         <div>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 24)                 <button>HOME</button>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 25)             </a>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 26)         </div>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 27)         <div>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 28)             <form id="room-form">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 29)                 <input id="room-input" placeholder="Room ID">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 30)                 <button>Create Room</button>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 31)             </form>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 32)             <form id="question-form">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 33)                 <input id="question-input" placeholder="Question">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 34)             </form>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 35)             <form id="answer-form">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 36)                 <input id="answer-input" placeholder="Answer">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 37)                 <button>Push Question</button>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 38)             </form>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 40)           
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 41)         <div class="question">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 42)             <p class="questionbox" placeholder="Waiting for host"></p>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 43)             <textarea class="answerbox" placeholder="Answer here"></textarea>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 44)             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="submit">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 45)                 <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 46)             </svg>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 47)             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" height="48" width="48" id="compile">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 48)                 <path
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 49)                     d="M705 928 447 668q-23 8-46 13t-47 5q-97.083 0-165.042-67.667Q121 550.667 121 454q0-31 8.158-60.388Q137.316 364.223 152 338l145 145 92-86-149-149q25.915-15.158 54.957-23.579Q324 216 354 216q99.167 0 168.583 69.417Q592 354.833 592 454q0 24-5 47t-13 46l259 258q11 10.957 11 26.478Q844 847 833 858l-76 70q-10.696 11-25.848 11T705 928Zm28-57 40-40-273-273q16-21 24-49.5t8-54.5q0-75-55.5-127T350 274l101 103q9 9 9 22t-9 22L319 545q-9 9-22 9t-22-9l-97-96q3 77 54.668 127T354 626q25 0 53-8t49-24l277 277ZM476 572Z" />
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 50)             </svg>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 51)         </div>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 52)         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 53)             id="hamburger">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 54)             <path d="M0 0h24v24H0z" fill="none" />
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 55)             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 56)         </svg>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 57)         <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" id="makeNote">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 58)             <path
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 59)                 d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" />
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 60)         </svg>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 61)         <div class="submitButton">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 62)         </div>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 63)         <div id="overlay">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 64) 
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 65)         </div>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 66)         <div id="sidebar">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 67)             <a href="homePage.html" class="sidebar-item">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 68)                 <button class="btn">Home</button>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 69)             </a>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 70)             <a href="/public/NOTES_PAGE/notesPage.html" class="sidebar-item">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 71)                 <button class="btn">Notes</button>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 72)             </a>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 73)             <a href="/public/HISTORY_PAGE/historyPage.html" class="sidebar-item">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 74)                 <button class="btn">History</button>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 75)             </a>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 76)             <a href="/public/PROFILE/profilePage.html" class="sidebar-item">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 77)                 <button class="btn">Profile</button>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 78)             </a>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 79)             <!-- I think we should keep this only on the home page???? -->
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 80)             <a href="/public/FAQ_PAGE/faqPage.html" class="sidebar-item">
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 81)                 <button class="btn">FAQ</button>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 82)             </a>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 83)         </div>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 84)     </main>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 85)     <script src="mainPage.js"></script>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 86) </body>
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 87) 
+8c81998d (hdehler   2023-03-03 16:03:44 -0500 88) </html>
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  1) const hamburger = document.getElementById('hamburger')
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  2) const sidebar = document.getElementById('sidebar')
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  3) const overlay = document.getElementById('overlay')
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  4) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  5) let menuOpen = false // menu starts closed
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  6) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  7) function openMenu() {
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  8)     menuOpen = true
+8c81998d (hdehler 2023-03-03 16:03:44 -0500  9)     overlay.style.display = 'block'
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 10)     sidebar.style.width = '250px'
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 11) }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 12) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 13) function closeMenu() {
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 14)     menuOpen = false
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 15)     overlay.style.display = 'none'
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 16)     sidebar.style.width = '0px'
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 17) }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 18) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 19) hamburger.addEventListener('click', function () {
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 20)     if (!menuOpen) {
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 21)         openMenu()
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 22)     }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 23) })
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 24) 
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 25) overlay.addEventListener('click', function () {
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 26)     if (menuOpen) {
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 27)         closeMenu()
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 28)     }
+8c81998d (hdehler 2023-03-03 16:03:44 -0500 29) })
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  1) <!DOCTYPE html>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  2) <html>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  3)     <head>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  4)         <style>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  5)             body{
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  6)                 background-color: rgb(55, 54, 54);
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  7)             }
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  8)         </style>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  9)     </head>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500 10) </html>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  1) <!DOCTYPE html>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  2) <html>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  3)     <head>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  4)         <style>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  5)             body{
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  6)                 background-color: rgb(55, 54, 54);
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  7)             }
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  8)         </style>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500  9)     </head>
+156d7f92 (hdehler 2023-03-02 00:04:02 -0500 10) </html>
