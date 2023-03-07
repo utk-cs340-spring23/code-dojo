@@ -1,0 +1,21 @@
+{
+
+"students": {
+    "studentID": "studentID",
+    "firstName": "firstName",
+    "lastName": "lastName"
+},
+
+"instructor": {
+    "instructorID": "instructorID",
+    "firstName": "firstName",
+    "lastName": "lastName"
+},
+
+"questions": {
+    "question": "question", 
+    "answers": [ "answer1", "answer2", "answer3", "answer4" ],
+    "correctAnswer": "answerX"
+}
+
+}
