@@ -5,6 +5,7 @@ body {
   padding: 0;
 }
 
+/* background picture. Added to full screen with blue*/
 .background-container {
   position: fixed;
   top: 0;
@@ -35,6 +36,7 @@ body {
   align-items: center;
 }
 
+/* create the stylign for the nav bar and placed at the top of the screen*/
 .top-nav {
   background-color: rgba(0, 0, 0, 0.986);
   color: #fff;
@@ -69,6 +71,7 @@ body {
   background-color: #555;
 }
 
+/* buttons for the nav bar */
 .btn {
   background-color: #000000;
   color: #ffffff;
@@ -85,7 +88,7 @@ body {
 }
 
 
-
+/* button to join the session ID */
 button {
   background-color: #23a6d5;
   border: none;
@@ -121,6 +124,7 @@ button:hover::before {
   opacity: 0.2;
 }
 
+/* message box for the session ID */
 .message-box {
   display: flex;
   align-items: center;
