@@ -1,0 +1,384 @@
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500   1) * {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500   2)     box-sizing: border-box;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500   3)     margin: 0;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500   4)     padding: 0;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500   5)     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500   6)     background: #d0cecc; /*#fdcc04*/
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500   7) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500   8) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500   9) body {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  10)     --color-primary: gray;/*#009579*/
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  11)     --color-primary-dark: #d0cecc;/*#007f67*/
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  12)     --color-secondary: #252c6a;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  13)     --color-error: #cc3333;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  14)     --color-success: #4bb544;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  15)     --border-radius: 4px;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  16) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  17)     margin: 0;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  18)     height: 100vh;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  19)     display: flex;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  20)     align-items: center;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  21)     justify-content: center;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  22)     font-size: 18px;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  23)     background: url(./background.jpg);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  24)     background-size: cover;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  25) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  26) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  27) .container {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  28)     width: 400px;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  29)     max-width: 400px;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  30)     margin: 1rem;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  31)     padding: 2rem;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  32)     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  33)     border-radius: var(--border-radius);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  34)     background: #323810;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  35) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  36) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  37) .container,
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  38) .form__input,
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  39) .form__button {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  40)     font-size: 1 rem;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  41) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  42) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  43) .form--hidden {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  44)     display: none;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  45) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  46) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  47) .form > *:first-child {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  48)     margin-top: 0;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  49) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  50) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  51) .form > *:last-child {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  52)     margin-bottom: 0;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  53) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  54) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  55) .form__title {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  56)     margin-bottom: 2rem;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  57)     text-align: center;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  58) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  59) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  60) .form__message {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  61)     text-align: center;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  62)     margin-bottom: 1rem;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  63) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  64) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  65) .form__message--success {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  66)     color: var(--color-success);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  67) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  68) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  69) .form__message--error {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  70)     color: var(--color-error);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  71) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  72) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  73) .form__input-group {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  74)     margin-bottom: 1rem;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  75) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  76) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  77) .form__input {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  78)     display: block;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  79)     width: 100%;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  80)     padding: 0.75rem;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  81)     box-sizing: border-box;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  82)     border-radius: var(--border-radius);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  83)     border: 1px solid #dddddd;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  84)     outline: none;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  85)     background: #eeeeee;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  86)     transition: background 0.2s, border-color 0.2s;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  87) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  88) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  89) .form__input:focus {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  90)     border-color: var(--color-primary);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  91)     background: #ffffff;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  92) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  93) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  94) .form__input--error {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  95)     color: var(--color-error);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  96)     border-color: var(--color-error);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  97) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  98) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  99) .form__input-error-message {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 100)     margin-top: 0.5rem;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 101)     font-size: 0.85rem;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 102)     color: var(--color-error);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 103) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 104) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 105) .form__button {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 106)     width: 100%;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 107)     padding: 1rem 2rem;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 108)     font-weight: bold;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 109)     font-size: 1.1rem;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 110)     color: #000;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 111)     border: none;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 112)     border-radius: var(--border-radius);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 113)     outline: none;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 114)     cursor: pointer;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 115)     background: var(--color-primary);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 116)     display: flex;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 117)     justify-content: center;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 118)     align-items: center;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 119)     text-align: center;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 120) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 121) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 122) .form__button span {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 123)     display: block;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 124) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 125) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 126) .form__button:hover {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 127)     background: var(--color-primary-dark);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 128) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 129) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 130) .form__button:active {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 131)     transform: scale(0.98);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 132) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 133) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 134) .form__text {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 135)     text-align: center;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 136) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 137) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 138) .form__link {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 139)     color: var(--color-secondary);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 140)     text-decoration: none;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 141)     cursor: pointer;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 142) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 143) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 144) .form__link:hover {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 145)     text-decoration: underline;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 146) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  1) <!DOCTYPE html>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  2) <head>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  3)     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  4)     <meta charset="utf-8">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  5)     <title>Login/Sign Up</title>
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  6)     <link rel="stylesheet" href="./login.css">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  7) </head>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  8) <body>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  9)     <div class="container">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 10)         <form class="form" id="login">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 11)             <h1 class="form__title">Login</h1>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 12)             <div class="form__message form__message--error"></div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 13)             <div class="form__input-group">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 14)                 <input type="text" class="form__input" autofocus placeholder="Username or email">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 15)                 <div class="form__input-error-message"></div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 16)             </div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 17)             <div class="form__input-group">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 18)                 <input type="password" class="form__input" autofocus placeholder="Password">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 19)                 <div class="form__input-error-message"></div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 20)             </div>
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 21)             <button class="form__button" type="submit"><span>Continue</span></button>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 22)             <p class="form__text">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 23)                 <a href="#" class="form__link">Forgot your password?</a>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 24)             </p>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 25)             <p class="form__text">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 26)                 <a class="form__link" href="./" id="linkCreateAccount">Don't have an account? Create account</a>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 27)             </p>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 28)         </form>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 29)         <form class="form form--hidden" id="createAccount">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 30)             <h1 class="form__title">Create Account</h1>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 31)             <div class="form__message form__message--error"></div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 32)             <div class="form__input-group">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 33)                 <input type="text" id="signupUsername" class="form__input" autofocus placeholder="Username">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 34)                 <div class="form__input-error-message"></div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 35)             </div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 36)             <div class="form__input-group">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 37)                 <input type="text" class="form__input" autofocus placeholder="Email Address">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 38)                 <div class="form__input-error-message"></div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 39)             </div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 40)             <div class="form__input-group">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 41)                 <input type="password" class="form__input" autofocus placeholder="Password">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 42)                 <div class="form__input-error-message"></div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 43)             </div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 44)             <div class="form__input-group">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 45)                 <input type="password" class="form__input" autofocus placeholder="Confirm password">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 46)                 <div class="form__input-error-message"></div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 47)             </div>
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 48)             <button class="form__button" type="submit"><span>Continue</span></button>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 49)             <p class="form__text">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 50)                 <a class="form__link" href="./" id="linkLogin">Already have an account? Sign in</a>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 51)             </p>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 52)         </form>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 53)     </div>
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 54)     <script src="./login.js"></script>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 55) </body>
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  1) function setFormMessage(formElement, type, message) {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  2)     const messageElement = formElement.querySelector(".form__message");
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  3) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  4)     messageElement.textContent = message;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  5)     messageElement.classList.remove("form__message--success", "form__message--error");
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  6)     messageElement.classList.add(`form__message--${type}`);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  7) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  8) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500  9) function setInputError(inputElement, message) {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 10)     inputElement.classList.add("form__input--error");
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 11)     inputElement.parentElement.querySelector(".form__input-error-message").textContent = message;
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 12) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 13) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 14) function clearInputError(inputElement) {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 15)     inputElement.classList.remove("form__input--error");
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 16)     inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 17) }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 18) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 19) document.addEventListener("DOMContentLoaded", () => {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 20)     const loginForm = document.querySelector("#login");
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 21)     const createAccountForm = document.querySelector("#createAccount");
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 22) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 23)     document.querySelector("#linkCreateAccount").addEventListener("click", e => {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 24)         e.preventDefault();
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 25)         loginForm.classList.add("form--hidden");
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 26)         createAccountForm.classList.remove("form--hidden");
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 27)     });
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 28) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 29)     document.querySelector("#linkLogin").addEventListener("click", e => {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 30)         e.preventDefault();
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 31)         loginForm.classList.remove("form--hidden");
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 32)         createAccountForm.classList.add("form--hidden");
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 33)     });
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 34) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 35)     loginForm.addEventListener("submit", e => {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 36)         e.preventDefault();
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 37)         // Perform your AJAX/Fetch login
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 38)         setFormMessage(loginForm, "error", "Invalid username/password combination");
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 39)     });
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 40) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 41)     document.querySelectorAll(".form__input").forEach(inputElement => {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 42)         inputElement.addEventListener("blur", e => {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 43)             if (e.target.id === "signupUsername" && e.target.value.length > 0 && e.target.value.length < 10) {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 44)                 setInputError(inputElement, "Username must be at least 10 characters in length");
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 45)             }
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 46)         });
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 47) 
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 48)         inputElement.addEventListener("input", e => {
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 49)             clearInputError(inputElement);
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 50)         });
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 51)     });
+d0c7b75f (nupadhy3 2023-03-05 19:42:39 -0500 52) });
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  1) * {
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  2)     box-sizing: border-box;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  3)     margin: 0;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  4)     padding: 0;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  5)     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  6)     background: #d0cecc;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  7) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  8) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  9) nav {
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 10)     height: 80px;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 11)     background: #d0cecc;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 12)     display: flex;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 13)     justify-content: space-between;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 14)     align-items: center;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 15)     padding: 0rem calc((100vw - 1300px)/2);
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 16) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 17) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 18) .logo{
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 19)     color: #000;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 20)     font-size: 1.5rem;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 21)     font-weight: bold;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 22)     font-style: italic;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 23)     padding: 0 2rem;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 24) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 25) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 26) nav a {
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 27)     text-decoration: none;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 28)     color: #000;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 29)     padding: 0 1.5rem;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 30) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 31) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 32) nav a:hover{
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 33)     color: #fff;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 34) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 35) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 36) .hero{
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 37)     background: #fdcc04;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 38) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 39) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 40) .hero-container{
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 41)     display: grid;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 42)     grid-template-columns: 1fr 1fr;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 43)     height: 95hv;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 44)     padding: 3rem calc((100vw - 1300px)/2);
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 45) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 46) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 47) .column-left{
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 48)     display: flex;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 49)     flex-direction: column;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 50)     justify-content: center;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 51)     align-items: flex-start;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 52)     color: #000;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 53)     padding: 0rem 2rem;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 54) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 55) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 56) .column-left h1 {
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 57)     margin-bottom: 1rem;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 58)     font-size: 3rem;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 59) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 60) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 61) .column-left p {
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 62)     margin-bottom: 2rem;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 63)     font-size: 5rem;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 64)     line-height: 1.5; 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 65) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 66) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 67) button {
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 68)     padding: 1rem 3rem;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 69)     font-size: 1rem;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 70)     border: none;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 71)     color: #d0cecc;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 72)     background: #000;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 73)     cursor: pointer;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 74)     border-radius: 50px;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 75) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 76) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 77) button:hover {
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 78)     background: #fff;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 79)     color: #000;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 80) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 81) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 82) .column-right{
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 83)     display: flex;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 84)     justify-content: center;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 85)     align-items: center;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 86)     padding: 0rem 2rem;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 87) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 88) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 89) .hero-image {
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 90)     width: 50rem;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 91)     height: 100%;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 92) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 93) 
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 94) @media screen and (max-width: 760px){
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 95)     .hero-container{
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 96)         grid-template-columns: 1fr;
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 97)     }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 98) }
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  1) <!DOCTYPE html>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  2) <html lang="en">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  3) <head>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  4)     <meta charset="UTF-8">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  5)     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  6)     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  7)     <title>QuickLearn</title>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  8)     <link rel="stylesheet" href="styles.css" />
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500  9) </head>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 10) <body>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 11)     <nav>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 12)         <div class="logo">QuickLearn</div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 13)         <div class="nav-items">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 14)             <a href="login.html">Login</a>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 15)             <a href="/">Join Room</a>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 16)             <a href="/">Contact Us</a>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 17)         </div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 18)     </nav>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 19)     <section class="hero">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 20)         <div class="hero-container">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 21)             <div class="colimn-left">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 22)                 <h1>A new WAY to LEARN</h1>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 23)                 <p>For students by students. Learn with your peers.</p>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 24)                 <button>Enter Room ID</button>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 25)             </div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 26)             <div class="column-right">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 27)                 <img src = "./img1.png" alt="illustration
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 28)                 "class = "hero-image">
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 29)             </div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 30)         </div>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 31)     </section>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 32) </body>
+fa7445c1 (nupadhy3 2023-03-05 15:56:45 -0500 33) </html>
