@@ -1,0 +1,139 @@
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  1) {
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  2) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  3) "students": {
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  4)     "studentID": "studentID",
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  5)     "firstName": "firstName",
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  6)     "lastName": "lastName"
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  7) },
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  8) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  9) "instructor": {
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 10)     "instructorID": "instructorID",
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 11)     "firstName": "firstName",
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 12)     "lastName": "lastName"
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 13) },
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 14) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 15) "questions": {
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 16)     "question": "question", 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 17)     "answers": [ "answer1", "answer2", "answer3", "answer4" ],
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 18)     "correctAnswer": "answerX"
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 19) }
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 20) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 21) }
+
+
+
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  1) version: "3.8"
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  2) services:
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  3)   mongodb:
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  4)     image: mongo
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  5)     container_name: mongodb
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  6)     ports:
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  7)       - 27017:27017
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  8)     volumes:
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  9)       - data:/data
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 10)     environment:
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 11)       - MONGO_INITDB_ROOT_USERNAME=rootuser
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 12)       - MONGO_INITDB_ROOT_PASSWORD=rootpass
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 13)   mongo-express:
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 14)     image: mongo-express
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 15)     container_name: mongo-express
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 16)     restart: always
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 17)     ports:
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 18)       - 8081:8081
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 19)     environment:
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 20)       - ME_CONFIG_MONGODB_ADMINUSERNAME=rootuser
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 21)       - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 22)       - ME_CONFIG_MONGODB_SERVER=mongodb
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 23) volumes:
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 24)   data: {}
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 25) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 26) networks:
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 27)   default:
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 28)     name: mongodb_network
+
+
+
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  1) // Input from stdin
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  2) const readline = require('readline');
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  3) const rl = readline.createInterface({
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  4)   input: process.stdin,
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  5)   output: process.stdout,
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  6)   terminal: false
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  7) });
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  8) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500  9) const { MongoClient } = require("mongodb");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 10) // Connection URI
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 11) const uri = "mongodb://rootuser:rootpass@localhost:27017/";
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 12) // Create a new MongoClient
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 13) const client = new MongoClient(uri);
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 14) // Access database from mongodb
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 15) const theDB = client.db("room");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 16) // Access a Collection in theDB
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 17) let theCollection;
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 18) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 19) let splitInput;
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 20) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 21) let theDoc;
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 22) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 23) async function run() {
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 24)   try{
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 25) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 26)     // Connect the client to the server
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 27)     await client.connect();
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 28)     // Establish and verify connection
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 29)     await client.db("admin").command({ ping: 1 });
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 30)     console.log("Connected successfully to server...");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 31)     
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 32)     rl.on('line', (line) => {
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 33)         if(line === "exit"){
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 34)             console.log("Exiting...");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 35)             process.exit(0);
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 36)         }
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 37) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 38)         splitInput = line.split(" ");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 39)         
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 40)         // adding new student
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 41)         if(splitInput[0] === "newStudent"){
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 42)             console.log("Creating new student...");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 43)             theCollection = theDB.collection("students");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 44)             theDoc = {"firstName": splitInput[1], "lastName": splitInput[2]}
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 45)             theCollection.insertOne(theDoc);
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 46)         }
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 47)         // removing student
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 48)         if(splitInput[0] === "rmStudent"){
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 49)             console.log("Removing student...");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 50)             theCollection = theDB.collection("students");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 51)             theDoc = {"firstName": splitInput[1], "lastName": splitInput[2]}
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 52)             theCollection.deleteOne(theDoc);
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 53)         }
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 54)         // adding new instructor
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 55)         else if(splitInput[0] === "newInstructor"){
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 56)             console.log("Creating new instructor...");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 57)             theCollection = theDB.collection("instructor");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 58)             theDoc = {"firstName": splitInput[1], "lastName": splitInput[2]}
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 59)             theCollection.insertOne(theDoc);
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 60)         }
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 61)         // removing instructor
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 62)         else if(splitInput[0] === "rmInstructor"){
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 63)             console.log("Removing instructor...");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 64)             theCollection = theDB.collection("instructor");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 65)             theDoc = {"firstName": splitInput[1], "lastName": splitInput[2]}
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 66)             theCollection.deleteOne(theDoc);
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 67)         }
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 68)         // error, unrecognized add
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 69)         else{
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 70)             console.log("Unrecognized add, exiting...");
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 71)             process.exit(0);
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 72)         }
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 73) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 74)     });
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 75)     rl.once('close', () => {});
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 76) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 77)   }
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 78)   finally {
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 79)     // Ensures that the client will close when you finish/error
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 80)     // await client.close();
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 81)   }
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 82) }
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 83) 
+768427e8 (rivetingpeach 2023-03-07 04:25:22 -0500 84) run().catch(console.dir);
