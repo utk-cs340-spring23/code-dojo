@@ -4,11 +4,10 @@ A gamified social learning platform for computer science—like a mix of Kahoot 
 ## Usage
 To use, first make sure you have [node.js](https://nodejs.org/en/) installed on your system.
 Then clone this repository and open a terminal.
-`cd` to the code-dojo, directory, then run the following commands.
+`cd` to the code-dojo directory, then run the following commands.
 
     npm install
-    npx tsc server/server.ts
-    node server/server.js
+    ./start.sh
 
 Then head to localhost:3000 to view the website.
 
