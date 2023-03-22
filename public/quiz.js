@@ -59,6 +59,11 @@ socket.on("push question", function (question) {
     update_question(question);
 });
 
+socket.on("close question success", function () {
+    answer_input.disabled = true;
+    submit_answer_button.disabled = true;
+});
+
 /*----------------------------------------------------------------------------*/
 /* Answer Submissions                                                         */
 /*----------------------------------------------------------------------------*/

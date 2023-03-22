@@ -154,7 +154,7 @@ io.on("connection", function (socket: Socket) {
             }
         }
 
-        io.to(socket.id).emit("close question success", "Successfully closed and graded questions");
+        io.to(this_quizroom.id).emit("close question success", "Successfully closed and graded questions");
     });
 
     /* We store every player's answer in the Player's "answers" table. The index is the number of the current question. */
@@ -166,6 +166,11 @@ io.on("connection", function (socket: Socket) {
 
         if (this_quizroom == null) {
             io.to(socket.id).emit("submit answer fail", "room does not exist");
+            return;
+        }
+
+        if (!this_quizroom.is_question_active) {
+            io.to(socket.id).emit("submit answer fail", "there is no question to answer");
             return;
         }
 
@@ -194,7 +199,6 @@ io.on("connection", function (socket: Socket) {
             console.log(`Should be deleting player ${this_player.nickname} (socket ID ${socket.id})`);
             assert(this_player.socket.id == socket.id, `${socket.id} is disconnecting, but this_player.socket.id = ${this_player.socket.id}`)
             this_quizroom.delete_player(this_player);
-            // delete this_quizroom.players[socket.id];
             io.to(this_quizroom.id).emit("player leave", socket.id);
         }
 

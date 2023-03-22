@@ -64,7 +64,7 @@ document.getElementById("question-form").addEventListener("submit", function (e)
         return;
     }
 
-    console.log("new question " + question_input.value + " " + answer_input.value);
+    console.log(`new question ${question_input.value} ${answer_input.value}`);
     socket.emit("new question", question_input.value, answer_input.value);
 
 });
