@@ -71,6 +71,7 @@ document.getElementById("question-form").addEventListener("submit", function (e)
 
 socket.on("new question success", function (msg) {
     alert(msg); // successfully pushed question
+    push_question_button.disabled = true;
     close_question_button.disabled = false;
 });
 
@@ -84,8 +85,18 @@ socket.on("new question fail", function (msg) {
 close_question_button.addEventListener("click", function (e) {
     e.preventDefault();
     socket.emit("close question");
-    alert("yup");
 })
+
+socket.on("close question success", function (msg) {
+    alert(msg);
+    push_question_button.disabled = false;
+    close_question_button.disabled = true;
+});
+
+socket.on("close question fail", function (msg) {
+    error_message(msg);
+});
+
 
 /*----------------------------------------------------------------------------*/
 /* Sockets                                                                    */

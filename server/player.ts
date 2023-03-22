@@ -6,6 +6,7 @@ class Player {
     num_right: number;
     num_wrong: number;
     answers: string[];
+    is_correct: boolean[];
 
     constructor(nickname: string, socket: Socket) {
         this.nickname = nickname;
