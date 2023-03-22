@@ -21,6 +21,7 @@
     <!--Here, the host can create a room-->
     <form id="room-form" action="">
         <input id="room-input" autocomplete="off" placeholder="room id">
+        <input type="number" id="num-max-players-input" min="1" placeholder="max number of players">
         <button id="create-room-button">Create Room</button>
     </form>
 
@@ -32,8 +33,6 @@
         <button id="push-question-button" disabled>Push Question</button>
     </form>
     <button id="close-question-button" disabled>Close Question</button>
-
-
 
     <table id="player-table">
         <tr>
