@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "es2022",
+        "module": "es2022",
+        "moduleResolution": "node",
+        "esModuleInterop": true
+    },
+    "files": [
+        "server/util.ts",
+        "server/host.ts",
+        "server/player.ts",
+        "server/question.ts",
+        "server/quizroom.ts",
+        "server/server.ts"
+    ],
+}

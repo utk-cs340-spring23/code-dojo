@@ -1,15 +1,15 @@
 /*----------------------------------------------------------------------------*/
 /* Imports                                                                    */
 /*----------------------------------------------------------------------------*/
-// Note: importing everything using "*" may be a problem?
 import { strict as assert } from 'node:assert';
-import * as express from "express";
-import * as http from "http";
+import express from "express";
+import http from "http";
 import { Server as SocketIOServer, Socket } from "socket.io";
-import * as path from "path";
-import { Player } from "./player";
-import { Host } from "./host";
-import { QuizRoom } from "./quizroom";
+
+import { Host } from "./host.js";
+import { Player } from "./player.js";
+import { QuestionType, Question } from "./question.js";
+import { QuizRoom } from "./quizroom.js";
 
 /*----------------------------------------------------------------------------*/
 /* Server                                                                     */
@@ -17,9 +17,9 @@ import { QuizRoom } from "./quizroom";
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
 const port: number = 3000;
-const publicPath: string = path.join(__dirname, "../public");
+const public_path = new URL("../public", import.meta.url).pathname;
 
-app.use(express.static(publicPath));
+app.use(express.static(public_path));
 
 server.listen(port, function () {
     console.log(`Socket.IO server running at http://localhost:${port}/`);
@@ -100,7 +100,7 @@ io.on("connection", function (socket: Socket) {
     });
 
     /* When the host creates a new question, push that question to every player */
-    socket.on("new question", function (question: string, answer: string) {
+    socket.on("new question", function (prompt: string, answer: string) {
         if (this_quizroom == null) {
             io.to(socket.id).emit("new question fail", "room does not exist");
             return;
@@ -117,10 +117,12 @@ io.on("connection", function (socket: Socket) {
             return;
         }
 
-        this_quizroom.push_question(question, answer);
+        let question: Question = new Question(QuestionType.free_response, prompt, answer);
+
+        this_quizroom.push_question(question);
 
         io.to(socket.id).emit("new question success", "successfully pushed question");
-        io.to(this_quizroom.id).emit("push question", question);
+        io.to(this_quizroom.id).emit("push question", question.prompt);
     });
 
     /* When the host closes the question, we grade every player's response and tell them if they are right or wrong */
