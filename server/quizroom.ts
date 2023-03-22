@@ -9,7 +9,7 @@ class QuizRoom {
     #num_players: number;           // How many players currently in QuizRoom
     #players: Player[];             // Keyed by Socket ID
     #questions: Question[];         // Array of all questions
-    #is_question_active: boolean;   // Is there currently an open question?
+    #is_question_active: boolean;   // Is there currently a question active?
 
     constructor(id: string, host: Host) {
         this.#id = id;
@@ -54,21 +54,32 @@ class QuizRoom {
         return this.#questions.length;
     }
 
-    add_player(player: Player): void {
-        assert(this.players[player.socket.id] == null, `Trying to add player ${player.nickname} (${player.socket.id}) but that socket id already exists in the QuizRoom's players table`);
+    add_player(player: Player): boolean {
+        // assert(this.players[player.socket.id] == null, `Trying to add player ${player.nickname} (${player.socket.id}) but that socket id already exists in the QuizRoom's players table`);
+
+        if (this.#players[player.socket.id] != undefined) {
+            return false;
+        }
 
         this.players[player.socket.id] = player;
         ++this.#num_players;
+
+        return true;
     }
 
-    delete_player(player: Player): void {
-        delete this.players[player.socket.id];
-        --this.#num_players;
+    delete_player(player: Player): boolean {
+        return this.delete_player_by_socket_id(player.socket.id);
     }
 
-    delete_player_by_socket_id(socket_id: string): void {
+    delete_player_by_socket_id(socket_id: string): boolean {
+        if (this.#players[socket_id] == undefined) {
+            return false;
+        }
+
         delete this.players[socket_id];
         --this.#num_players;
+
+        return true;
     }
 
     push_question(question: Question): boolean {
@@ -92,8 +103,10 @@ class QuizRoom {
             if (player.answers.at(-1) == this.#questions.at(-1)?.answer) {
                 assert(player.answers.at(-1) == player.answers[this.num_questions - 1], "Player's answers array is malformed!");
                 player.is_correct.push(true);
+                this.curr_question.increment_num_right();
             } else {
                 player.is_correct.push(false);
+                this.curr_question.increment_num_wrong();
             }
         }
         this.#is_question_active = false;

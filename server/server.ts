@@ -29,7 +29,29 @@ let num_connections: number = 0;
 let quizrooms: QuizRoom[] = [];
 
 /*----------------------------------------------------------------------------*/
-/* Sockets                                                                    */
+/* Functions                                                                  */
+/*----------------------------------------------------------------------------*/
+function close_question(this_quizroom: QuizRoom, io: SocketIOServer) {
+    this_quizroom.close_question();
+
+    for (const [key, player] of Object.entries(this_quizroom.players)) {
+        assert(key == player.socket.id, "A player's socket id and their key don't match!");
+
+        if (player.is_curr_correct) {
+            io.to(player.socket.id).emit("answer correct");
+            io.to(this_quizroom.host.socket.id).emit("player answer correct", player.socket.id);
+        } else {
+            io.to(player.socket.id).emit("answer incorrect");
+            io.to(this_quizroom.host.socket.id).emit("player answer incorrect", player.socket.id);
+        }
+    }
+
+    io.to(this_quizroom.id).emit("close question success", "Successfully closed and graded questions");
+}
+
+/*----------------------------------------------------------------------------*/
+/* Socket IO                                                                  */
+/* Handles all user connections                                               */
 /*----------------------------------------------------------------------------*/
 const io: SocketIOServer = new SocketIOServer(server);
 
@@ -88,10 +110,16 @@ io.on("connection", function (socket: Socket) {
         this_player = this_quizroom.players[socket.id];
 
         /* If there's currently a question active in the QuizRoom, give that to the user */
+        // if (this_quizroom.is_question_active) {
+        //     io.to(socket.id).emit("join room success", room_id, true, this_quizroom.curr_question.prompt);
+        // } else {
+        //     io.to(socket.id).emit("join room success", room_id, false, "");
+        // }
+
+        io.to(socket.id).emit("join room success", room_id);
+
         if (this_quizroom.is_question_active) {
-            io.to(socket.id).emit("join room success", room_id, true, this_quizroom.curr_question);
-        } else {
-            io.to(socket.id).emit("join room success", room_id, false, this_quizroom.curr_question);
+            io.to(socket.id).emit("push question", this_quizroom.curr_question.prompt, this_quizroom.curr_question.end_time);
         }
 
         /* Inform the room that a new player joined; used by host to maintain the player list */
@@ -100,13 +128,12 @@ io.on("connection", function (socket: Socket) {
     });
 
     /* When the host creates a new question, push that question to every player */
-    socket.on("new question", function (prompt: string, answer: string) {
+    socket.on("new question", function (prompt: string, answer: string, time_limit_s: number) {
         if (this_quizroom == null) {
             io.to(socket.id).emit("new question fail", "room does not exist");
             return;
         }
 
-        console.log(`${socket.id} : ${this_quizroom.host.socket.id}`);
         if (socket != this_quizroom.host.socket) {
             io.to(socket.id).emit("new question fail", "you are not the host!");
             return;
@@ -119,10 +146,21 @@ io.on("connection", function (socket: Socket) {
 
         let question: Question = new Question(QuestionType.free_response, prompt, answer);
 
+        /* For some reason, whenever a socket emits NaN, it gets sent as null...? */
+        if (!Number.isNaN(time_limit_s) && time_limit_s != null) {
+            question.set_time_limit(time_limit_s * 1000);
+            setTimeout(function () {
+                close_question(this_quizroom, io);
+            }, time_limit_s * 1000);
+
+        }
+
         this_quizroom.push_question(question);
 
         io.to(socket.id).emit("new question success", "successfully pushed question");
-        io.to(this_quizroom.id).emit("push question", question.prompt);
+
+        /* If no time limit was specified, the question's end_time is set to NaN. But socket.io sends NaN as null, so in quiz.js, we check if end_time == null to tell if the question is timed. */
+        io.to(this_quizroom.id).emit("push question", question.prompt, question.end_time);
     });
 
     /* When the host closes the question, we grade every player's response and tell them if they are right or wrong */
@@ -142,21 +180,7 @@ io.on("connection", function (socket: Socket) {
             return;
         }
 
-        this_quizroom.close_question();
-
-        for (const [key, player] of Object.entries(this_quizroom.players)) {
-            assert(key == player.socket.id, "A player's socket id and their key don't match!");
-
-            if (player.is_curr_correct) {
-                io.to(player.socket.id).emit("answer correct");
-                io.to(this_quizroom.host.socket.id).emit("player answer correct", player.socket.id);
-            } else {
-                io.to(player.socket.id).emit("answer incorrect");
-                io.to(this_quizroom.host.socket.id).emit("player answer incorrect", player.socket.id);
-            }
-        }
-
-        io.to(this_quizroom.id).emit("close question success", "Successfully closed and graded questions");
+        close_question(this_quizroom, io);
     });
 
     /* We store every player's answer in the Player's "answers" table. The index is the number of the current question. */

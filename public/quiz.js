@@ -9,16 +9,26 @@ const nickname_input = document.getElementById("nickname-input");
 const answer_input = document.getElementById("answer-input");
 const submit_answer_button = document.getElementById("submit-answer-button");
 const question_tag = document.getElementById("question");
+const question_timer_tag = document.getElementById("question-timer");
+const question_feedback_tag = document.getElementById("question-feedback");
 
 // Ensure that the answer input is disabled to start
 answer_input.disabled = true;
 submit_answer_button.disabled = true;
 
-// Update the displayed question; also enable answer input
-function update_question(question) {
-    question_tag.innerText = "Question: " + question;
-    answer_input.disabled = false;
-    submit_answer_button.disabled = false;
+/*----------------------------------------------------------------------------*/
+/* Functions                                                                  */
+/*----------------------------------------------------------------------------*/
+function update_timer(end_time) {
+    time_remaining = end_time - Date.now();
+
+    if (time_remaining <= 0) {
+        question_timer_tag.innerText = "Time's up!";
+        return;
+    }
+
+    question_timer_tag.innerText = ms_to_formatted_string(time_remaining);
+    setTimeout(function () { update_timer(end_time); }, 50);
 }
 
 /*----------------------------------------------------------------------------*/
@@ -44,19 +54,24 @@ socket.on("join room fail", function (msg) {
     error_message(msg);
 });
 
-socket.on("join room success", function (room_id, is_question_active, question) {
-    if (is_question_active) {
-        update_question(question);
-    } else {
-        question_tag.innerText = "Waiting for host...";
-    }
+socket.on("join room success", function (room_id) {
+    question_tag.innerText = "Waiting for host...";
 });
 
 /*----------------------------------------------------------------------------*/
 /* Update Question                                                            */
 /*----------------------------------------------------------------------------*/
-socket.on("push question", function (question) {
-    update_question(question);
+socket.on("push question", function (prompt, end_time) {
+    question_tag.innerText = "Question: " + prompt;
+    answer_input.disabled = false;
+    submit_answer_button.disabled = false;
+
+    if (!Number.isNaN(end_time) && end_time != null) {
+        update_timer(end_time);
+    } else {
+        question_timer_tag.innerText = "";
+    }
+
 });
 
 socket.on("close question success", function () {
@@ -84,9 +99,9 @@ socket.on("submit answer fail", function (msg) {
 });
 
 socket.on("answer correct", function () {
-    alert("Correct!");
+    question_feedback_tag.innerText = "Correct!";
 });
 
 socket.on("answer incorrect", function () {
-    alert("Incorrect!");
+    question_feedback_tag.innerText = "Incorrect!";
 });

@@ -8,13 +8,23 @@ const room_input = document.getElementById("room-input");
 const create_room_button = document.getElementById("create-room-button");
 const question_input = document.getElementById("question-input");
 const answer_input = document.getElementById("answer-input");
+const timer_input = document.getElementById("timer-input");
 const push_question_button = document.getElementById("push-question-button");
 const close_question_button = document.getElementById("close-question-button");
 const player_table = document.getElementById("player-table");
 
-// Ensure that the question and answer input is disabled to start
-question_input.disabled = true;
-answer_input.disabled = true;
+/*----------------------------------------------------------------------------*/
+/* Functions                                                                  */
+/*----------------------------------------------------------------------------*/
+function enable_input_fields(bool) {
+    question_input.disabled = !bool;
+    answer_input.disabled = !bool;
+    timer_input.disabled = !bool;
+
+}
+
+/* Ensure that the question and answer input is disabled to start */
+enable_input_fields(false);
 push_question_button.disabled = true;
 close_question_button.disabled = true;
 
@@ -38,10 +48,8 @@ socket.on("create room success", function (msg) {
     room_input.disabled = true;
     create_room_button.disabled = true;
 
-    question_input.disabled = false;
-    answer_input.disabled = false;
+    enable_input_fields(true);
     push_question_button.disabled = false;
-
 });
 
 socket.on("create room fail", function (msg) {
@@ -64,13 +72,12 @@ document.getElementById("question-form").addEventListener("submit", function (e)
         return;
     }
 
-    console.log(`new question ${question_input.value} ${answer_input.value}`);
-    socket.emit("new question", question_input.value, answer_input.value);
-
+    socket.emit("new question", question_input.value, answer_input.value, parseInt(timer_input.value));
 });
 
 socket.on("new question success", function (msg) {
     alert(msg); // successfully pushed question
+    enable_input_fields(false);
     push_question_button.disabled = true;
     close_question_button.disabled = false;
 });
@@ -89,6 +96,7 @@ close_question_button.addEventListener("click", function (e) {
 
 socket.on("close question success", function (msg) {
     alert(msg);
+    enable_input_fields(true);
     push_question_button.disabled = false;
     close_question_button.disabled = true;
 });
@@ -97,13 +105,11 @@ socket.on("close question fail", function (msg) {
     error_message(msg);
 });
 
-
 /*----------------------------------------------------------------------------*/
-/* Sockets                                                                    */
+/* Socket IO                                                                  */
 /*----------------------------------------------------------------------------*/
 
-// The following two arrays record how many correct/incorrect answers each player submits
-// Both arrays are keyed by the socket id string
+/* The following two arrays record how many correct/incorrect answers each player submits. Both arrays are keyed by the socket id string */
 let player_correct_total = [];
 let player_incorrect_total = [];
 
