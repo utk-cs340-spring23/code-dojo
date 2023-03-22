@@ -44,8 +44,8 @@ socket.on("join room fail", function (msg) {
     error_message(msg);
 });
 
-socket.on("join room success", function (room_id, question) {
-    if (question != null && question != "") {
+socket.on("join room success", function (room_id, is_question_active, question) {
+    if (is_question_active) {
         update_question(question);
     } else {
         question_tag.innerText = "Waiting for host...";

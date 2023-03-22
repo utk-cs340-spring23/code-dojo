@@ -35,15 +35,17 @@ const io: SocketIOServer = new SocketIOServer(server);
 
 io.on("connection", function (socket: Socket) {
     ++num_connections;
-    let self_quizroom: QuizRoom | null = null;
-    let self_player: Player | null = null;
+
+    /* The following two variables are specific to each "socket" */
+    let this_quizroom: QuizRoom | null = null;
+    let this_player: Player | null = null;
 
     console.log(`connection ${socket.id} (total connections ${num_connections})`);
 
-    /* When a new room is created, we instantiate a new QuizRoom and store it in the array quizrooms, keyed by room id */
+    /* When a host creates a new room, we instantiate a new QuizRoom and store it in the array quizrooms, keyed by room id */
     socket.on("create room", function (room_id: string) {
-        if (self_quizroom != null) {
-            io.to(socket.id).emit("create room fail", `already in room  ${self_quizroom.id}`);
+        if (this_quizroom != null) {
+            io.to(socket.id).emit("create room fail", `already in room  ${this_quizroom.id}`);
             return;
         }
 
@@ -55,125 +57,122 @@ io.on("connection", function (socket: Socket) {
         socket.join(room_id);
 
         quizrooms[room_id] = new QuizRoom(room_id, new Host("Host", socket));
-        self_quizroom = quizrooms[room_id];
+        this_quizroom = quizrooms[room_id];
 
         io.to(socket.id).emit("create room success", `Successfully created room ${room_id}`);
     });
 
-    /* Join room only applies to players. This sets the socket's room and sets the self_quizroom and self_player variables. */
+    /* Join room only applies to players. This sets the socket's room and sets the this_quizroom and this_player variables. */
     socket.on("join room", function (room_id: string, nickname: string) {
-        /* If the user tries to join the room they are already in, do nothing. */
-        if (room_id == self_quizroom?.id) {
+        /* If the user tries to join the room they are already in */
+        if (room_id == this_quizroom?.id) {
+            io.to(socket.id).emit("join room fail", `you are already in room ${room_id}`);
             return;
         }
 
+        /* If the user tries to join a non-existant room */
         if (quizrooms[room_id] == null) {
             io.to(socket.id).emit("join room fail", `room ${room_id} does not exist`);
             console.log("no room exist");
             return;
         }
 
-        console.log("joined room");
+        /* Join the socket room */
         socket.join(room_id);
+        this_quizroom = quizrooms[room_id];
 
-        self_quizroom = quizrooms[room_id];
+        assert(this_quizroom != null, `Player ${nickname} (id ${socket.id}) just joined room ${room_id} but the room does not exist on the server!`);
 
-        assert(self_quizroom != null, `Player ${nickname} (id ${socket.id}) just joined room ${room_id} but the room does not exist on the server!`);
+        /* Add player to the QuizRoom "players" table */
+        this_quizroom.add_player(new Player(nickname, socket));
+        this_player = this_quizroom.players[socket.id];
 
-        self_quizroom.players[socket.id] = new Player(nickname, socket);
-        self_player = self_quizroom.players[socket.id];
-
-        if (self_quizroom.is_question_active) {
-            io.to(socket.id).emit("join room success", room_id, self_quizroom?.questions.at(-1));
+        /* If there's currently a question active in the QuizRoom, give that to the user */
+        if (this_quizroom.is_question_active) {
+            io.to(socket.id).emit("join room success", room_id, true, this_quizroom.curr_question);
         } else {
-            io.to(socket.id).emit("join room success", room_id, "Waiting for next question...");
+            io.to(socket.id).emit("join room success", room_id, false, this_quizroom.curr_question);
         }
 
-
-        io.to(self_quizroom.id).emit("player join", socket.id, nickname);
+        /* Inform the room that a new player joined; used by host to maintain the player list */
+        io.to(this_quizroom.id).emit("player join", socket.id, nickname);
 
     });
 
     /* When the host creates a new question, push that question to every player */
     socket.on("new question", function (question: string, answer: string) {
-        if (self_quizroom == null) {
+        if (this_quizroom == null) {
             io.to(socket.id).emit("new question fail", "room does not exist");
             return;
         }
 
-        console.log(`${socket.id} : ${self_quizroom.host.socket.id}`);
-        if (socket != self_quizroom.host.socket) {
+        console.log(`${socket.id} : ${this_quizroom.host.socket.id}`);
+        if (socket != this_quizroom.host.socket) {
             io.to(socket.id).emit("new question fail", "you are not the host!");
             return;
         }
 
-        if (self_quizroom.is_question_active) {
+        if (this_quizroom.is_question_active) {
             io.to(socket.id).emit("new question fail", "there is already a question active!");
             return;
         }
 
-        console.log(`new question ${question} (answer: ${answer})`);
-        self_quizroom.questions.push(question);
-        self_quizroom.answers.push(answer);
-        self_quizroom.is_question_active = true;
+        this_quizroom.push_question(question, answer);
 
         io.to(socket.id).emit("new question success", "successfully pushed question");
-        io.to(self_quizroom.id).emit("push question", question);
-
+        io.to(this_quizroom.id).emit("push question", question);
     });
 
-    /* When the host closes the question, we need to grade every player's response and tell them if they are right or wrong */
+    /* When the host closes the question, we grade every player's response and tell them if they are right or wrong */
     socket.on("close question", function () {
-        if (self_quizroom == null) {
+        if (this_quizroom == null) {
             io.to(socket.id).emit("close question fail", "you aren't the host of any room!");
             return;
         }
 
-        if (socket != self_quizroom.host.socket) {
+        if (socket != this_quizroom.host.socket) {
             io.to(socket.id).emit("close question fail", "you are not the host!");
             return;
         }
 
-        if (!self_quizroom.is_question_active) {
+        if (!this_quizroom.is_question_active) {
             io.to(socket.id).emit("close question fail", "There is no question active!");
             return;
         }
 
-        for (const [key, player] of Object.entries(self_quizroom.players)) {
+        this_quizroom.close_question();
+
+        for (const [key, player] of Object.entries(this_quizroom.players)) {
             assert(key == player.socket.id, "A player's socket id and their key don't match!");
 
-            if (player.answers.at(-1) == self_quizroom.answers.at(-1)) {
-                assert(player.answers.at(-1) == player.answers[self_quizroom.answers.length - 1], "Player's answers array is malformed!");
+            if (player.is_curr_correct) {
                 io.to(player.socket.id).emit("answer correct");
-                io.to(self_quizroom.host.socket.id).emit("player answer correct", player.socket.id);
-                self_player?.is_correct.push(true);
+                io.to(this_quizroom.host.socket.id).emit("player answer correct", player.socket.id);
             } else {
                 io.to(player.socket.id).emit("answer incorrect");
-                io.to(self_quizroom.host.socket.id).emit("player answer incorrect", player.socket.id);
-                self_player?.is_correct.push(false);
+                io.to(this_quizroom.host.socket.id).emit("player answer incorrect", player.socket.id);
             }
         }
 
-        self_quizroom.is_question_active = false;
         io.to(socket.id).emit("close question success", "Successfully closed and graded questions");
     });
 
     /* We store every player's answer in the Player's "answers" table. The index is the number of the current question. */
     socket.on("submit answer", function (provided_answer) {
-        if (self_player == null) {
+        if (this_player == null) {
             io.to(socket.id).emit("submit answer fail", "you don't exist on the server! something is terribly wrong");
             return;
         }
 
-        if (self_quizroom == null) {
+        if (this_quizroom == null) {
             io.to(socket.id).emit("submit answer fail", "room does not exist");
             return;
         }
 
         console.log(`${socket.id} submitted answer ${provided_answer}`);
 
-        /* We do not use push here. If player submits more than one answer or if player joined midway through quiz, it still goes to the same index in their answers array. */
-        self_player.answers[self_quizroom.questions.length - 1] = provided_answer;
+        /* We do not use push here. If player submits more than one answer or if player joined midway through quiz, it still goes to the same index in their array of answers. */
+        this_player.answers[this_quizroom.num_questions - 1] = provided_answer;
 
         io.to(socket.id).emit("submit answer success", "successfully submitted answer");
     });
@@ -182,17 +181,22 @@ io.on("connection", function (socket: Socket) {
     socket.on("disconnect", function () {
         --num_connections;
         console.log(`disconnect ${socket.id} (total connections ${num_connections})`);
-        console.log(`${self_quizroom?.id} ${self_quizroom?.host.socket.id} ${socket.id}`);
+        console.log(`${this_quizroom?.id} ${this_quizroom?.host.socket.id} ${socket.id}`);
 
-        if (self_quizroom != null) {
-            if (self_quizroom.host.socket.id == socket.id) {
-                console.log(`Should be deleting room  ${self_quizroom.id}`);
-                delete quizrooms[self_quizroom.id];
-            } else if (self_player != null) {
-                console.log(`Should be deleting player ${self_player.nickname} (socket ID ${socket.id})`);
-                delete self_quizroom.players[socket.id];
-                io.to(self_quizroom.id).emit("player leave", socket.id);
-            }
+        if (this_quizroom == null) {
+            return;
         }
+
+        if (this_quizroom.host.socket.id == socket.id) {
+            console.log(`Should be deleting room  ${this_quizroom.id}`);
+            delete quizrooms[this_quizroom.id];
+        } else if (this_player != null) {
+            console.log(`Should be deleting player ${this_player.nickname} (socket ID ${socket.id})`);
+            assert(this_player.socket.id == socket.id, `${socket.id} is disconnecting, but this_player.socket.id = ${this_player.socket.id}`)
+            this_quizroom.delete_player(this_player);
+            // delete this_quizroom.players[socket.id];
+            io.to(this_quizroom.id).emit("player leave", socket.id);
+        }
+
     });
 });
