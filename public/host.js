@@ -1,3 +1,5 @@
+// NOTE: util.js is loaded before this file. This file uses functions defiend in util.js
+
 /*----------------------------------------------------------------------------*/
 /* Constants                                                                  */
 /*----------------------------------------------------------------------------*/
@@ -7,12 +9,14 @@ const create_room_button = document.getElementById("create-room-button");
 const question_input = document.getElementById("question-input");
 const answer_input = document.getElementById("answer-input");
 const push_question_button = document.getElementById("push-question-button");
+const close_question_button = document.getElementById("close-question-button");
 const player_table = document.getElementById("player-table");
 
 // Ensure that the question and answer input is disabled to start
 question_input.disabled = true;
 answer_input.disabled = true;
 push_question_button.disabled = true;
+close_question_button.disabled = true;
 
 /*----------------------------------------------------------------------------*/
 /* Create Room                                                                */
@@ -30,7 +34,7 @@ document.getElementById("room-form").addEventListener("submit", function (e) {
 });
 
 socket.on("create room success", function (msg) {
-    alert(msg);
+    alert(msg); // Successfully created room <roomid>
     room_input.disabled = true;
     create_room_button.disabled = true;
 
@@ -46,7 +50,7 @@ socket.on("create room fail", function (msg) {
 
 
 /*----------------------------------------------------------------------------*/
-/* Push Questions                                                             */
+/* Push New Questions                                                         */
 /*----------------------------------------------------------------------------*/
 document.getElementById("question-form").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -65,7 +69,29 @@ document.getElementById("question-form").addEventListener("submit", function (e)
 
 });
 
-// These store how many correct/incorrect answers each player submits
+socket.on("new question success", function (msg) {
+    alert(msg); // successfully pushed question
+    close_question_button.disabled = false;
+});
+
+socket.on("new question fail", function (msg) {
+    error_message(msg);
+});
+
+/*----------------------------------------------------------------------------*/
+/* Close Current Question                                                     */
+/*----------------------------------------------------------------------------*/
+close_question_button.addEventListener("click", function (e) {
+    e.preventDefault();
+    socket.emit("close question");
+    alert("yup");
+})
+
+/*----------------------------------------------------------------------------*/
+/* Sockets                                                                    */
+/*----------------------------------------------------------------------------*/
+
+// The following two arrays record how many correct/incorrect answers each player submits
 // Both arrays are keyed by the socket id string
 let player_correct_total = [];
 let player_incorrect_total = [];
@@ -103,14 +129,6 @@ socket.on("player join", function (socket_id, nickname) {
 
 
     // window.scrollTo(0, document.body.scrollHeight);
-});
-
-socket.on("new question success", function (msg) {
-    alert(msg);
-});
-
-socket.on("new question fail", function (msg) {
-    error_message(msg);
 });
 
 socket.on("player answer correct", function (socket_id) {
