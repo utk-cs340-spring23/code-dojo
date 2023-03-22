@@ -1,6 +1,8 @@
 /*----------------------------------------------------------------------------*/
 /* Imports                                                                    */
 /*----------------------------------------------------------------------------*/
+// Note: importing everything using "*" may be a problem?
+import { strict as assert } from 'node:assert';
 import * as express from "express";
 import * as http from "http";
 import { Server as SocketIOServer, Socket } from "socket.io";
@@ -21,11 +23,6 @@ app.use(express.static(publicPath));
 server.listen(port, function () {
     console.log(`Socket.IO server running at http://localhost:${port}/`);
 });
-
-/*----------------------------------------------------------------------------*/
-/* Functions                                                                  */
-/*----------------------------------------------------------------------------*/
-
 
 /*----------------------------------------------------------------------------*/
 /* Sockets                                                                    */
@@ -81,10 +78,7 @@ io.on("connection", function (socket: Socket) {
 
         self_quizroom = quizrooms[room_id];
 
-        if (self_quizroom == null) {
-            console.log("Something is very very wrong!!!");
-            return;
-        }
+        assert(self_quizroom != null, `Player ${nickname} (id ${socket.id}) just joined room ${room_id} but the room does not exist on the server!`);
 
         self_quizroom.players[socket.id] = new Player(nickname, socket);
         self_player = self_quizroom.players[socket.id];
@@ -94,7 +88,7 @@ io.on("connection", function (socket: Socket) {
 
     });
 
-    // When the host creates a new question, push that question to every player
+    /* When the host creates a new question, push that question to every player */
     socket.on("new question", function (question: string, answer: string) {
         if (self_quizroom == null) {
             io.to(socket.id).emit("new question fail", "room does not exist");
@@ -117,24 +111,49 @@ io.on("connection", function (socket: Socket) {
         ++self_quizroom.num_questions;
     });
 
+    /* When the host closes the function, we need to grade every player's response and tell them if they are right or wrong */
+    socket.on("close question", function () {
+        if (self_quizroom == null) {
+            io.to(socket.id).emit("close question fail", "you aren't the host of any room!");
+            return;
+        }
+
+        if (socket != self_quizroom.host.socket) {
+            io.to(socket.id).emit("close question fail", "you are not the host!");
+            return;
+        }
+
+        for (const [key, player] of Object.entries(self_quizroom.players)) {
+            assert(key == player.socket.id, "A player's socket id and their key don't match!");
+
+            if (player.answers[self_quizroom.num_questions] == self_quizroom.answer) {
+                io.to(player.socket.id).emit("answer correct");
+                io.to(self_quizroom.host.socket.id).emit("player answer correct", player.socket.id);
+            } else {
+                io.to(player.socket.id).emit("answer incorrect");
+                io.to(self_quizroom.host.socket.id).emit("player answer incorrect", player.socket.id);
+            }
+        }
+    });
+
     // When a player submits an answer, tell them if they are right or wrong
     socket.on("submit answer", function (provided_answer) {
+        if (self_player == null) {
+            io.to(socket.id).emit("submit answer fail", "you don't exist on the server! something is terribly wrong");
+            return;
+        }
+
         if (self_quizroom == null) {
             io.to(socket.id).emit("submit answer fail", "room does not exist");
             return;
         }
 
-        process.stdout.write(socket.id + " submitted answer " + provided_answer);
+        console.log(socket.id + " submitted answer " + provided_answer);
 
-        if (provided_answer == self_quizroom.answer) {
-            console.log(" (correct answer)");
-            io.to(socket.id).emit("answer correct");
-            io.to(self_quizroom.host.socket.id).emit("player answer correct", socket.id);
-        } else {
-            console.log(" (incorrect answer)");
-            io.to(socket.id).emit("answer incorrect");
-            io.to(self_quizroom.host.socket.id).emit("player answer incorrect", socket.id);
-        }
+        /* We store the provided answer in the Player's "answers" table. The index is the number of the current question. */
+        self_player.answers[self_quizroom.num_questions] = provided_answer;
+
+        io.to(socket.id).emit("submit answer success", "successfully submitted answer");
     });
 
     socket.on("disconnect", function () {

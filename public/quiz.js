@@ -70,6 +70,10 @@ document.getElementById("answer-form").addEventListener("submit", function (e) {
     }
 });
 
+socket.on("submit answer success", function (msg) {
+    alert(msg);
+});
+
 socket.on("submit answer fail", function (msg) {
     error_message(msg);
 });
