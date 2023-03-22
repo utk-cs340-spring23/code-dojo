@@ -31,6 +31,12 @@ let quizrooms: QuizRoom[] = [];
 /*----------------------------------------------------------------------------*/
 /* Functions                                                                  */
 /*----------------------------------------------------------------------------*/
+
+/**
+ * Calls close_question() method on the specified QuizRoom, and communicates question feedback to all players and host
+ * @param this_quizroom The quizroom to call close_question() on
+ * @param io The current SocketIO Server
+ */
 function close_question(this_quizroom: QuizRoom, io: SocketIOServer) {
     this_quizroom.close_question();
 
@@ -84,7 +90,7 @@ io.on("connection", function (socket: Socket) {
         io.to(socket.id).emit("create room success", `Successfully created room ${room_id}`);
     });
 
-    /* Join room only applies to players. This sets the socket's room and sets the this_quizroom and this_player variables. */
+    /* Join room only applies to players. This sets the player socket's room and sets the "this_quizroom" and "this_player" variables. */
     socket.on("join room", function (room_id: string, nickname: string) {
         /* If the user tries to join the room they are already in */
         if (room_id == this_quizroom?.id) {
@@ -92,7 +98,7 @@ io.on("connection", function (socket: Socket) {
             return;
         }
 
-        /* If the user tries to join a non-existant room */
+        /* If the user tries to join a non-existent room */
         if (quizrooms[room_id] == null) {
             io.to(socket.id).emit("join room fail", `room ${room_id} does not exist`);
             console.log("no room exist");
@@ -103,28 +109,21 @@ io.on("connection", function (socket: Socket) {
         socket.join(room_id);
         this_quizroom = quizrooms[room_id];
 
-        assert(this_quizroom != null, `Player ${nickname} (id ${socket.id}) just joined room ${room_id} but the room does not exist on the server!`);
+        assert(this_quizroom != null && this_quizroom != undefined, `Player ${nickname} (id ${socket.id}) just joined room ${room_id} but the room does not exist on the server!`);
 
         /* Add player to the QuizRoom "players" table */
         this_quizroom.add_player(new Player(nickname, socket));
         this_player = this_quizroom.players[socket.id];
 
-        /* If there's currently a question active in the QuizRoom, give that to the user */
-        // if (this_quizroom.is_question_active) {
-        //     io.to(socket.id).emit("join room success", room_id, true, this_quizroom.curr_question.prompt);
-        // } else {
-        //     io.to(socket.id).emit("join room success", room_id, false, "");
-        // }
-
         io.to(socket.id).emit("join room success", room_id);
 
+        /* If there's a question active when the user joined, push it to the user */
         if (this_quizroom.is_question_active) {
             io.to(socket.id).emit("push question", this_quizroom.curr_question.prompt, this_quizroom.curr_question.end_time);
         }
 
         /* Inform the room that a new player joined; used by host to maintain the player list */
         io.to(this_quizroom.id).emit("player join", socket.id, nickname);
-
     });
 
     /* When the host creates a new question, push that question to every player */
@@ -159,7 +158,7 @@ io.on("connection", function (socket: Socket) {
 
         io.to(socket.id).emit("new question success", "successfully pushed question");
 
-        /* If no time limit was specified, the question's end_time is set to NaN. But socket.io sends NaN as null, so in quiz.js, we check if end_time == null to tell if the question is timed. */
+        /* If no time limit was specified, the question's end_time is set to NaN. But socket.io sends NaN as null, so on the client-side, we check if end_time == null to tell if the question is timed. */
         io.to(this_quizroom.id).emit("push question", question.prompt, question.end_time);
     });
 
@@ -183,7 +182,7 @@ io.on("connection", function (socket: Socket) {
         close_question(this_quizroom, io);
     });
 
-    /* We store every player's answer in the Player's "answers" table. The index is the number of the current question. */
+    /* When a player submits an answer, we store that answer in the player's "answers" table. The answer to the current question will be the answer indexed at num_questions - 1 */
     socket.on("submit answer", function (provided_answer) {
         if (this_player == null) {
             io.to(socket.id).emit("submit answer fail", "you don't exist on the server! something is terribly wrong");
@@ -227,6 +226,5 @@ io.on("connection", function (socket: Socket) {
             this_quizroom.delete_player(this_player);
             io.to(this_quizroom.id).emit("player leave", socket.id);
         }
-
     });
 });

@@ -13,6 +13,12 @@ class Question {
     #num_right: number;         // How many players got the question right
     #num_wrong: number;         // How many players got the question wrong
 
+    /**
+     * Instantiates a new Question object; untimed by default
+     * @param type QuestionType
+     * @param prompt String of the actual question
+     * @param answer String of the answer
+     */
     constructor(type: QuestionType, prompt: string, answer: string) {
         this.#type = type;
         this.#prompt = prompt;
@@ -25,6 +31,10 @@ class Question {
         this.#end_time = NaN;
     }
 
+    /**
+     * Sets the time limit info for the question
+     * @param ms Amount of time (in milliseconds) to complete the question
+     */
     set_time_limit(ms: number): void {
         this.#is_timed = true;
         this.#time_limit = ms;
@@ -67,10 +77,16 @@ class Question {
         return this.#num_wrong;
     }
 
+    /**
+     * Increases #num_right by 1
+     */
     increment_num_right(): void {
         ++this.#num_right;
     }
 
+    /**
+     * Increases #num_wrong by 1
+     */
     increment_num_wrong(): void {
         ++this.#num_wrong;
     }

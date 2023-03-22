@@ -7,10 +7,15 @@ class QuizRoom {
     #id: string;                    // Room id; also used for socket.io rooms
     #host: Host;                    // Person that controls the room
     #num_players: number;           // How many players currently in QuizRoom
-    #players: Player[];             // Keyed by Socket ID
+    #players: Player[];             // Keyed by socket ID
     #questions: Question[];         // Array of all questions
     #is_question_active: boolean;   // Is there currently a question active?
 
+    /**
+     * Instantiates a new QuizRoom object
+     * @param id Used for keying in the "QuizRooms" table in server.ts, and used as the room ID in Socket.IO
+     * @param host Controls question pushing and closing
+     */
     constructor(id: string, host: Host) {
         this.#id = id;
         this.#host = host;
@@ -54,10 +59,15 @@ class QuizRoom {
         return this.#questions.length;
     }
 
+    /**
+     * Adds specified Player object to the "players" table, keyed by their socket ID
+     * @param player Player to add
+     * @returns True if successful, false otherwise
+     */
     add_player(player: Player): boolean {
         // assert(this.players[player.socket.id] == null, `Trying to add player ${player.nickname} (${player.socket.id}) but that socket id already exists in the QuizRoom's players table`);
 
-        if (this.#players[player.socket.id] != undefined) {
+        if (this.#players[player.socket.id] != null) {
             return false;
         }
 
@@ -67,10 +77,20 @@ class QuizRoom {
         return true;
     }
 
+    /**
+     * Deletes specified Player object from the "players" table
+     * @param player Player to delete
+     * @returns True if successful, false otherwise
+     */
     delete_player(player: Player): boolean {
         return this.delete_player_by_socket_id(player.socket.id);
     }
 
+    /**
+     * Deletes specified socket ID from the "players" table
+     * @param socket_id Deletes specified socket ID from the "players" table
+     * @returns True if successful, false otherwise
+     */
     delete_player_by_socket_id(socket_id: string): boolean {
         if (this.#players[socket_id] == undefined) {
             return false;
@@ -82,6 +102,11 @@ class QuizRoom {
         return true;
     }
 
+    /**
+     * Pushes specified Question object to the "questions" table, and sets is_question_active to true
+     * @param question Question to push
+     * @returns True if successful, false otherwise
+     */
     push_question(question: Question): boolean {
         if (this.#is_question_active) {
             return false;
@@ -92,6 +117,10 @@ class QuizRoom {
         return true;
     }
 
+    /**
+     * Closes the current question, grading every players' answer and setting is_question_active to false
+     * @returns True if successful, false otherwise
+     */
     close_question(): boolean {
         if (!this.#is_question_active) {
             return false;

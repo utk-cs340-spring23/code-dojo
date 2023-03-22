@@ -12,6 +12,8 @@ const question_tag = document.getElementById("question");
 const question_timer_tag = document.getElementById("question-timer");
 const question_feedback_tag = document.getElementById("question-feedback");
 
+const timer_update_frequency = 25;  // in milliseconds
+
 // Ensure that the answer input is disabled to start
 answer_input.disabled = true;
 submit_answer_button.disabled = true;
@@ -28,7 +30,7 @@ function update_timer(end_time) {
     }
 
     question_timer_tag.innerText = ms_to_formatted_string(time_remaining);
-    setTimeout(function () { update_timer(end_time); }, 50);
+    setTimeout(function () { update_timer(end_time); }, timer_update_frequency);
 }
 
 /*----------------------------------------------------------------------------*/
