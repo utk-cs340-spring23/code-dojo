@@ -2,15 +2,13 @@ import { Player } from "./player";
 
 class QuizRoom {
     id: string;
-    host: Player;
     players: Player[];  // Keyed by Socket ID
     question: string;
     answer: string;
     num_questions: number;
 
-    constructor(id: string, host: Player) {
+    constructor(id: string) {
         this.id = id;
-        this.host = host;
         this.players = [];
         this.question = "";
         this.answer = "";

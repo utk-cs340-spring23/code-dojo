@@ -38,11 +38,12 @@ io.on("connection", function (socket: Socket) {
     let self_quizroom: QuizRoom | null = null;
     let self_player: Player | null = null;
 
-    console.log("connection " + socket.id + " (total connections " + num_connections + ")");
+    console.log(`connection ${socket.id} (total connections ${num_connections})`);
 
+    /* When a new room is created, we instantiate a new QuizRoom and store it in the array quizrooms, keyed by room id */
     socket.on("create room", function (room_id: string) {
         if (self_quizroom != null) {
-            io.to(socket.id).emit("create room fail", "already in room " + self_quizroom.id);
+            io.to(socket.id).emit("create room fail", `already in room  ${self_quizroom.id}`);
             return;
         }
 
@@ -53,11 +54,11 @@ io.on("connection", function (socket: Socket) {
 
         socket.join(room_id);
 
-        quizrooms[room_id] = new QuizRoom(room_id, new Player("Host", socket));
+        quizrooms[room_id] = new QuizRoom(room_id);
 
         self_quizroom = quizrooms[room_id];
 
-        io.to(socket.id).emit("create room success", "Successfully created room " + room_id);
+        io.to(socket.id).emit("create room success", `Successfully created room ${room_id}`);
     });
 
     /* Join room only applies to players. This sets the socket's room and sets the self_quizroom and self_player variables. */
@@ -68,7 +69,7 @@ io.on("connection", function (socket: Socket) {
         }
 
         if (quizrooms[room_id] == null) {
-            io.to(socket.id).emit("join room fail", "room " + room_id + " does not exist");
+            io.to(socket.id).emit("join room fail", `room ${room_id} does not exist`);
             console.log("no room exist");
             return;
         }
@@ -95,13 +96,13 @@ io.on("connection", function (socket: Socket) {
             return;
         }
 
-        console.log(socket.id + " : " + self_quizroom.host.socket.id);
+        console.log(`${socket.id} : ${self_quizroom.host.socket.id}`);
         if (socket != self_quizroom.host.socket) {
             io.to(socket.id).emit("new question fail", "you are not the host!");
             return;
         }
 
-        console.log("new question " + question);
+        console.log(`new question ${question}`);
         self_quizroom.question = question;
         self_quizroom.answer = answer;
 
@@ -136,7 +137,7 @@ io.on("connection", function (socket: Socket) {
         }
     });
 
-    // When a player submits an answer, tell them if they are right or wrong
+    /* We store every player's answer in the Player's "answers" table. The index is the number of the current question. */
     socket.on("submit answer", function (provided_answer) {
         if (self_player == null) {
             io.to(socket.id).emit("submit answer fail", "you don't exist on the server! something is terribly wrong");
@@ -148,26 +149,25 @@ io.on("connection", function (socket: Socket) {
             return;
         }
 
-        console.log(socket.id + " submitted answer " + provided_answer);
+        console.log(`${socket.id} submitted answer ${provided_answer}`);
 
-        /* We store the provided answer in the Player's "answers" table. The index is the number of the current question. */
         self_player.answers[self_quizroom.num_questions] = provided_answer;
 
         io.to(socket.id).emit("submit answer success", "successfully submitted answer");
     });
 
+    /* If the host leaves, delete the entire QuizRoom. If a player leaves, only delete that player's entry the QuizRoom's "Players" table. */
     socket.on("disconnect", function () {
         --num_connections;
-        console.log("disconnect " + socket.id + " (total connections " + num_connections + ")");
-        console.log(self_quizroom?.id + " " + self_quizroom?.host.socket.id + " " + socket.id);
+        console.log(`disconnect ${socket.id} (total connections ${num_connections})`);
+        console.log(`${self_quizroom?.id} ${self_quizroom?.host.socket.id} ${socket.id}`);
 
-        /* If the host leaves, delete the entire QuizRoom. If a player leaves, only delete that player's entry the QuizRoom's "Players" table. */
         if (self_quizroom != null) {
             if (self_quizroom.host.socket.id == socket.id) {
-                console.log("Should be deleting room " + self_quizroom.id);
+                console.log(`Should be deleting room  ${self_quizroom.id}`);
                 quizrooms[self_quizroom.id] = null;
             } else if (self_player != null) {
-                console.log("Should be deleting player " + self_player.nickname + " (socket ID " + socket.id + ")");
+                console.log(`Should be deleting player ${self_player.nickname} (socket ID ${socket.id})`);
                 self_quizroom.players[socket.id] = null;
                 io.to(self_quizroom.id).emit("player leave", socket.id);
             }
