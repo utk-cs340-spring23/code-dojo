@@ -44,10 +44,10 @@ function close_question(this_quizroom: QuizRoom, io: SocketIOServer) {
         assert(key == player.socket.id, "A player's socket id and their key don't match!");
 
         if (player.is_curr_correct) {
-            io.to(player.socket.id).emit("answer correct");
+            io.to(player.socket.id).emit("answer correct", player.curr_answer, this_quizroom.curr_question.answer);
             io.to(this_quizroom.host.socket.id).emit("player answer correct", player.socket.id);
         } else {
-            io.to(player.socket.id).emit("answer incorrect");
+            io.to(player.socket.id).emit("answer incorrect", player.curr_answer, this_quizroom.curr_question.answer);
             io.to(this_quizroom.host.socket.id).emit("player answer incorrect", player.socket.id);
         }
     }
@@ -65,8 +65,9 @@ io.on("connection", function (socket: Socket) {
     ++num_connections;
 
     /* The following two variables are specific to each "socket" */
-    let this_quizroom: QuizRoom | null = null;
-    let this_player: Player | null = null;
+    let this_quizroom: QuizRoom = null;
+    let this_player: Player = null;
+    let question_timeout_id: ReturnType<typeof setTimeout> = null;
 
     console.log(`connection ${socket.id} (total connections ${num_connections})`);
 
@@ -118,7 +119,7 @@ io.on("connection", function (socket: Socket) {
         io.to(socket.id).emit("join room success", room_id);
 
         /* If there's a question active when the user joined, push it to the user */
-        if (this_quizroom.is_question_active) {
+        if (this_quizroom.curr_question?.is_active) {
             io.to(socket.id).emit("push question", this_quizroom.curr_question.prompt, this_quizroom.curr_question.end_time);
         }
 
@@ -138,28 +139,25 @@ io.on("connection", function (socket: Socket) {
             return;
         }
 
-        if (this_quizroom.is_question_active) {
+        if (this_quizroom.curr_question?.is_active) {
             io.to(socket.id).emit("new question fail", "there is already a question active!");
             return;
         }
 
-        let question: Question = new Question(QuestionType.free_response, prompt, answer);
+        let is_timed: boolean = !Number.isNaN(time_limit_s) && time_limit_s != null;
 
-        /* For some reason, whenever a socket emits NaN, it gets sent as null...? */
-        if (!Number.isNaN(time_limit_s) && time_limit_s != null) {
-            question.set_time_limit(time_limit_s * 1000);
-            setTimeout(function () {
-                close_question(this_quizroom, io);
-            }, time_limit_s * 1000);
-
-        }
-
+        let question: Question = new Question(QuestionType.free_response, prompt, answer, is_timed, time_limit_s * 1000);
         this_quizroom.push_question(question);
 
         io.to(socket.id).emit("new question success", "successfully pushed question");
-
-        /* If no time limit was specified, the question's end_time is set to NaN. But socket.io sends NaN as null, so on the client-side, we check if end_time == null to tell if the question is timed. */
         io.to(this_quizroom.id).emit("push question", question.prompt, question.end_time);
+
+        /* Close question when time expires */
+        if (is_timed) {
+            question_timeout_id = setTimeout(function () {
+                close_question(this_quizroom, io);
+            }, time_limit_s * 1000);
+        }
     });
 
     /* When the host closes the question, we grade every player's response and tell them if they are right or wrong */
@@ -174,12 +172,13 @@ io.on("connection", function (socket: Socket) {
             return;
         }
 
-        if (!this_quizroom.is_question_active) {
+        if (!this_quizroom.curr_question?.is_active) {
             io.to(socket.id).emit("close question fail", "There is no question active!");
             return;
         }
 
         close_question(this_quizroom, io);
+        clearTimeout(question_timeout_id);
     });
 
     /* When a player submits an answer, we store that answer in the player's "answers" table. The answer to the current question will be the answer indexed at num_questions - 1 */
@@ -194,7 +193,7 @@ io.on("connection", function (socket: Socket) {
             return;
         }
 
-        if (!this_quizroom.is_question_active) {
+        if (!this_quizroom.curr_question?.is_active) {
             io.to(socket.id).emit("submit answer fail", "there is no question to answer");
             return;
         }
@@ -204,7 +203,7 @@ io.on("connection", function (socket: Socket) {
         /* We do not use push here. If player submits more than one answer or if player joined midway through quiz, it still goes to the same index in their array of answers. */
         this_player.answers[this_quizroom.num_questions - 1] = provided_answer;
 
-        io.to(socket.id).emit("submit answer success", "successfully submitted answer");
+        io.to(socket.id).emit("submit answer success", `successfully submitted answer "${provided_answer}"`);
     });
 
     /* If the host leaves, delete the entire QuizRoom. If a player leaves, only delete that player's entry the QuizRoom's "Players" table. */

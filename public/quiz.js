@@ -19,18 +19,15 @@ answer_input.disabled = true;
 submit_answer_button.disabled = true;
 
 /*----------------------------------------------------------------------------*/
+/* "Global Variables                                                          */
+/*----------------------------------------------------------------------------*/
+let timer_interval_id = 0;
+
+/*----------------------------------------------------------------------------*/
 /* Functions                                                                  */
 /*----------------------------------------------------------------------------*/
 function update_timer(end_time) {
-    time_remaining = end_time - Date.now();
-
-    if (time_remaining <= 0) {
-        question_timer_tag.innerText = "Time's up!";
-        return;
-    }
-
-    question_timer_tag.innerText = ms_to_formatted_string(time_remaining);
-    setTimeout(function () { update_timer(end_time); }, timer_update_frequency);
+    question_timer_tag.innerText = ms_to_formatted_string(end_time - Date.now());
 }
 
 /*----------------------------------------------------------------------------*/
@@ -69,7 +66,7 @@ socket.on("push question", function (prompt, end_time) {
     submit_answer_button.disabled = false;
 
     if (!Number.isNaN(end_time) && end_time != null) {
-        update_timer(end_time);
+        timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
     } else {
         question_timer_tag.innerText = "";
     }
@@ -79,6 +76,7 @@ socket.on("push question", function (prompt, end_time) {
 socket.on("close question success", function () {
     answer_input.disabled = true;
     submit_answer_button.disabled = true;
+    clearInterval(timer_interval_id);
 });
 
 /*----------------------------------------------------------------------------*/
@@ -93,17 +91,18 @@ document.getElementById("answer-form").addEventListener("submit", function (e) {
 });
 
 socket.on("submit answer success", function (msg) {
-    alert(msg);
+    question_feedback_tag.innerText = msg;
 });
 
 socket.on("submit answer fail", function (msg) {
-    error_message(msg);
+    question_feedback_tag.innerText = msg;
 });
 
-socket.on("answer correct", function () {
-    question_feedback_tag.innerText = "Correct!";
+socket.on("answer correct", function (player_answer, correct_answer) {
+    question_feedback_tag.innerText = `Correct! You answered "${player_answer}". Correct answer is "${correct_answer}"`;
 });
 
-socket.on("answer incorrect", function () {
-    question_feedback_tag.innerText = "Incorrect!";
+socket.on("answer incorrect", function (player_answer, correct_answer) {
+    question_feedback_tag.innerText = `Incorrect. You answered "${player_answer}". Correct answer is "${correct_answer}"`;
+
 });

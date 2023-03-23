@@ -4,12 +4,11 @@ import { QuestionType, Question } from "./question";
 import { strict as assert } from 'node:assert';
 
 class QuizRoom {
-    #id: string;                    // Room id; also used for socket.io rooms
-    #host: Host;                    // Person that controls the room
-    #num_players: number;           // How many players currently in QuizRoom
-    #players: Player[];             // Keyed by socket ID
-    #questions: Question[];         // Array of all questions
-    #is_question_active: boolean;   // Is there currently a question active?
+    #id: string;                        // Room id; also used for socket.io rooms
+    #host: Host;                        // Person that controls the room
+    #num_players: number;               // How many players currently in QuizRoom
+    #players: Player[];                 // Table of players, keyed by socket ID
+    #questions: Question[];             // Array of all questions
 
     /**
      * Instantiates a new QuizRoom object
@@ -22,7 +21,6 @@ class QuizRoom {
         this.#num_players = 0;
         this.#players = [];
         this.#questions = [];
-        this.#is_question_active = false;
 
         console.log(`Created new room with id ${id} and host socket id ${host.socket.id}`);
     }
@@ -45,10 +43,6 @@ class QuizRoom {
 
     get questions(): Question[] {
         return this.#questions;
-    }
-
-    get is_question_active(): boolean {
-        return this.#is_question_active;
     }
 
     get curr_question(): Question | undefined {
@@ -103,26 +97,25 @@ class QuizRoom {
     }
 
     /**
-     * Pushes specified Question object to the "questions" table, and sets is_question_active to true
+     * Pushes specified Question object to the "questions" table
      * @param question Question to push
      * @returns True if successful, false otherwise
      */
     push_question(question: Question): boolean {
-        if (this.#is_question_active) {
+        if (this.curr_question?.is_active) {
             return false;
         }
 
         this.questions.push(question);
-        this.#is_question_active = true;
         return true;
     }
 
     /**
-     * Closes the current question, grading every players' answer and setting is_question_active to false
+     * Closes the current question, grading every players' answer
      * @returns True if successful, false otherwise
      */
     close_question(): boolean {
-        if (!this.#is_question_active) {
+        if (!this.curr_question?.is_active) {
             return false;
         }
 
@@ -138,7 +131,8 @@ class QuizRoom {
                 this.curr_question.increment_num_wrong();
             }
         }
-        this.#is_question_active = false;
+
+        this.curr_question.close();
         return true;
     }
 }

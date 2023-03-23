@@ -4,14 +4,16 @@ enum QuestionType {
 
 class Question {
     #type: QuestionType;
-    #prompt: string;
-    #answer: string;
+    #prompt: string;            // The actual text of the question
+    #answer_choices: string[];  // Answer choices for multiple choice questions
+    #answer: string;            // The correct answer
     #start_time: number;        // Unix time (ms) when question was created
     #is_timed: boolean;         // Is the question timed?
     #time_limit: number;        // Amount of time (ms) to complete the question
-    #end_time: number;          // Unix time (ms) when question ends
+    #end_time: number;          // Unix time (ms) when question closes
     #num_right: number;         // How many players got the question right
     #num_wrong: number;         // How many players got the question wrong
+    #is_active: boolean;        // Is the question currently active in the QuizRoom?
 
     /**
      * Instantiates a new Question object; untimed by default
@@ -19,26 +21,17 @@ class Question {
      * @param prompt String of the actual question
      * @param answer String of the answer
      */
-    constructor(type: QuestionType, prompt: string, answer: string) {
+    constructor(type: QuestionType, prompt: string, answer: string, is_timed: boolean, time_limit: number) {
         this.#type = type;
         this.#prompt = prompt;
         this.#answer = answer;
         this.#num_right = 0;
         this.#num_wrong = 0;
         this.#start_time = Date.now();
-        this.#is_timed = false;
-        this.#time_limit = NaN;
-        this.#end_time = NaN;
-    }
-
-    /**
-     * Sets the time limit info for the question
-     * @param ms Amount of time (in milliseconds) to complete the question
-     */
-    set_time_limit(ms: number): void {
-        this.#is_timed = true;
-        this.#time_limit = ms;
-        this.#end_time = this.#start_time + this.#time_limit;
+        this.#is_timed = is_timed;
+        this.#time_limit = time_limit;
+        this.#end_time = this.#start_time + time_limit;
+        this.#is_active = true;
     }
 
     get type(): QuestionType {
@@ -77,6 +70,10 @@ class Question {
         return this.#num_wrong;
     }
 
+    get is_active(): boolean {
+        return this.#is_active;
+    }
+
     /**
      * Increases #num_right by 1
      */
@@ -89,6 +86,10 @@ class Question {
      */
     increment_num_wrong(): void {
         ++this.#num_wrong;
+    }
+
+    close(): void {
+        this.#is_active = false;
     }
 
 }
