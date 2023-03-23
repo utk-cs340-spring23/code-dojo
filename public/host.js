@@ -44,7 +44,7 @@ document.getElementById("room-form").addEventListener("submit", function (e) {
 });
 
 socket.on("create room success", function (msg) {
-    alert(msg); // Successfully created room <roomid>
+    console.log(msg);
     room_input.disabled = true;
     create_room_button.disabled = true;
 
@@ -76,7 +76,7 @@ document.getElementById("question-form").addEventListener("submit", function (e)
 });
 
 socket.on("new question success", function (msg) {
-    alert(msg); // successfully pushed question
+    console.log(msg);
     enable_input_fields(false);
     push_question_button.disabled = true;
     close_question_button.disabled = false;
@@ -95,7 +95,7 @@ close_question_button.addEventListener("click", function (e) {
 })
 
 socket.on("close question success", function (msg) {
-    alert(msg);
+    console.log(msg);
     enable_input_fields(true);
     push_question_button.disabled = false;
     close_question_button.disabled = true;
@@ -141,27 +141,35 @@ socket.on("player join", function (socket_id, nickname) {
     table_entry.textContent = "0";
     table_row.appendChild(table_entry);
 
+    table_entry = document.createElement("td");
+    table_entry.setAttribute("class", "current-answer");
+    table_entry.textContent = "";
+    table_row.appendChild(table_entry);
+
     player_correct_total[socket_id] = 0;
     player_incorrect_total[socket_id] = 0;
+});
 
-
-    // window.scrollTo(0, document.body.scrollHeight);
+socket.on("player submit answer", function (socket_id, player_answer) {
+    let table_entry = document.getElementById(socket_id).getElementsByClassName("current-answer")[0];
+    table_entry.textContent = player_answer;
 });
 
 socket.on("player answer correct", function (socket_id) {
     ++player_correct_total[socket_id];
+
     let table_entry = document.getElementById(socket_id).getElementsByClassName("num-right")[0];
     table_entry.textContent = player_correct_total[socket_id];
 });
 
 socket.on("player answer incorrect", function (socket_id) {
     ++player_incorrect_total[socket_id];
+
     let table_entry = document.getElementById(socket_id).getElementsByClassName("num-wrong")[0];
     table_entry.textContent = player_incorrect_total[socket_id];
-
 });
 
-// Change player list when a player leaves
+/* When a player leaves, remove them from the player list */
 socket.on("player leave", function (socket_id) {
     console.log("player leave " + socket_id);
     document.getElementById(socket_id).remove();

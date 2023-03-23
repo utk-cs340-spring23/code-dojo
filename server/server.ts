@@ -36,9 +36,12 @@ let quizrooms: QuizRoom[] = [];
  * Calls close_question() method on the specified QuizRoom, and communicates question feedback to all players and host
  * @param this_quizroom The quizroom to call close_question() on
  * @param io The current SocketIO Server
+ * @return True if successful, false otherwise
  */
-function close_question(this_quizroom: QuizRoom, io: SocketIOServer) {
-    this_quizroom.close_question();
+function close_question(this_quizroom: QuizRoom, io: SocketIOServer): boolean {
+    if (!this_quizroom.close_question()) {
+        return false;
+    }
 
     for (const [key, player] of Object.entries(this_quizroom.players)) {
         assert(key == player.socket.id, "A player's socket id and their key don't match!");
@@ -53,6 +56,7 @@ function close_question(this_quizroom: QuizRoom, io: SocketIOServer) {
     }
 
     io.to(this_quizroom.id).emit("close question success", "Successfully closed and graded questions");
+    return true
 }
 
 /*----------------------------------------------------------------------------*/
@@ -64,10 +68,9 @@ const io: SocketIOServer = new SocketIOServer(server);
 io.on("connection", function (socket: Socket) {
     ++num_connections;
 
-    /* The following two variables are specific to each "socket" */
+    /* The following variables are specific to each "socket" */
     let this_quizroom: QuizRoom = null;
     let this_player: Player = null;
-    let question_timeout_id: ReturnType<typeof setTimeout> = null;
 
     console.log(`connection ${socket.id} (total connections ${num_connections})`);
 
@@ -146,15 +149,15 @@ io.on("connection", function (socket: Socket) {
 
         let is_timed: boolean = !Number.isNaN(time_limit_s) && time_limit_s != null;
 
-        let question: Question = new Question(QuestionType.free_response, prompt, answer, is_timed, time_limit_s * 1000);
+        let question: Question = new Question(prompt, answer, is_timed, time_limit_s * 1000);
         this_quizroom.push_question(question);
 
         io.to(socket.id).emit("new question success", "successfully pushed question");
-        io.to(this_quizroom.id).emit("push question", question.prompt, question.end_time);
+        io.to(this_quizroom.id).emit("push question", question.prompt, is_timed ? question.end_time : null);
 
         /* Close question when time expires */
         if (is_timed) {
-            question_timeout_id = setTimeout(function () {
+            this_quizroom.timeout_id = setTimeout(function () {
                 close_question(this_quizroom, io);
             }, time_limit_s * 1000);
         }
@@ -178,7 +181,7 @@ io.on("connection", function (socket: Socket) {
         }
 
         close_question(this_quizroom, io);
-        clearTimeout(question_timeout_id);
+        clearTimeout(this_quizroom.timeout_id);
     });
 
     /* When a player submits an answer, we store that answer in the player's "answers" table. The answer to the current question will be the answer indexed at num_questions - 1 */
@@ -204,6 +207,7 @@ io.on("connection", function (socket: Socket) {
         this_player.answers[this_quizroom.num_questions - 1] = provided_answer;
 
         io.to(socket.id).emit("submit answer success", `successfully submitted answer "${provided_answer}"`);
+        io.to(this_quizroom.host.socket.id).emit("player submit answer", socket.id, provided_answer);
     });
 
     /* If the host leaves, delete the entire QuizRoom. If a player leaves, only delete that player's entry the QuizRoom's "Players" table. */

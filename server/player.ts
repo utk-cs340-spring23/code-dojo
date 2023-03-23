@@ -1,28 +1,62 @@
 import { Socket } from "socket.io";
 
 class Player {
-    nickname: string;
-    socket: Socket;
-    num_right: number;
-    num_wrong: number;
-    answers: string[];
-    is_correct: boolean[];
+    private _nickname: string;
+    private _socket: Socket;
+    private _num_right: number;
+    private _num_wrong: number;
+    private _answers: string[];
+    private _is_correct: boolean[];
 
     constructor(nickname: string, socket: Socket) {
-        this.nickname = nickname;
-        this.socket = socket;
-        this.num_right = 0;
-        this.num_wrong = 0;
-        this.answers = [];
-        this.is_correct = [];
+        this._nickname = nickname;
+        this._socket = socket;
+        this._num_right = 0;
+        this._num_wrong = 0;
+        this._answers = [];
+        this._is_correct = [];
     }
 
-    get curr_answer(): string | undefined {
-        return this.answers.at(-1);
+    public get nickname(): string {
+        return this._nickname;
     }
 
-    get is_curr_correct(): boolean | undefined {
-        return this.is_correct.at(-1);
+    public get socket(): Socket {
+        return this._socket;
+    }
+
+    public get num_right(): number {
+        return this._num_right;
+    }
+
+    public get num_wrong(): number {
+        return this._num_wrong;
+    }
+
+    public get answers(): string[] {
+        return this._answers;
+    }
+
+    public get is_correct(): boolean[] {
+        return this._is_correct;
+    }
+
+    public get curr_answer(): string | undefined {
+        return this._answers.at(-1);
+    }
+
+    public get is_curr_correct(): boolean | undefined {
+        return this._is_correct.at(-1);
+    }
+
+    public push_correct(): void {
+        this._is_correct.push(true);
+        ++this._num_right;
+    }
+
+    public push_incorrect(): void {
+        this._is_correct.push(false);
+        ++this._num_right;
     }
 }
 

@@ -4,11 +4,12 @@ import { QuestionType, Question } from "./question";
 import { strict as assert } from 'node:assert';
 
 class QuizRoom {
-    #id: string;                        // Room id; also used for socket.io rooms
-    #host: Host;                        // Person that controls the room
-    #num_players: number;               // How many players currently in QuizRoom
-    #players: Player[];                 // Table of players, keyed by socket ID
-    #questions: Question[];             // Array of all questions
+    #id: string;                                // Room id; also used for socket.io rooms
+    #host: Host;                                // Person that controls the room
+    #num_players: number;                       // How many players currently in QuizRoom
+    #players: Player[];                         // Table of players, keyed by socket ID
+    #questions: Question[];                     // Array of all questions
+    timeout_id: ReturnType<typeof setTimeout>   // Timeout ID for timed questions
 
     /**
      * Instantiates a new QuizRoom object
@@ -21,6 +22,7 @@ class QuizRoom {
         this.#num_players = 0;
         this.#players = [];
         this.#questions = [];
+        this.timeout_id = null;
 
         console.log(`Created new room with id ${id} and host socket id ${host.socket.id}`);
     }
@@ -122,12 +124,12 @@ class QuizRoom {
         for (const [key, player] of Object.entries(this.players)) {
             assert(key == player.socket.id, "A player's socket id and their key don't match!");
 
-            if (player.answers.at(-1) == this.#questions.at(-1)?.answer) {
-                assert(player.answers.at(-1) == player.answers[this.num_questions - 1], "Player's answers array is malformed!");
-                player.is_correct.push(true);
+            /* We specifically check player.answers[this.num_questions - 1] instead of player.curr_answer, in the case that the player does not submit an answer for the current question, but their curr_answer happens to be the current answer */
+            if (this.curr_question.check_answer(player.answers[this.num_questions - 1])) {
+                player.push_correct();
                 this.curr_question.increment_num_right();
             } else {
-                player.is_correct.push(false);
+                player.push_incorrect();
                 this.curr_question.increment_num_wrong();
             }
         }
