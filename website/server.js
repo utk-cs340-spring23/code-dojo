@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(express.static(intialPath));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(intialPath, "index.html"));
+    res.sendFile("index.htmls");
 })
 
 app.get('/login', (req, res) => {
