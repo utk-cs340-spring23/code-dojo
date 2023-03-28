@@ -16,6 +16,14 @@ body{
     text-align: center;
 }
 
+.about h1{
+    font-size: 40px;
+}
+
+.about p{
+    font-size: 20px;
+}
+
 .about-text{
     min-width: 550px;
     max-width: 750px;
@@ -27,6 +35,19 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     align-items: center;
+}
+
+.contact-button{
+    background-color: #0061e1;
+	border-radius: 60px;
+	position: absolute;
+	transition: all 0.3s ease;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
 }
 
 #hamburger {
