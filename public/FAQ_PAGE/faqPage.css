@@ -10,6 +10,8 @@ body{
     color: #fff;
 }
 
+/* Use css flexbox to style positions of faq objects */
+
 section{
     min-height: 100vh;
     width: 80%;
@@ -50,16 +52,17 @@ section{
 }
 
 .answer p{
-    /* padding-top: 1rem; */
     line-height: 1;
     font-size: 1.2rem;
 }
 
 .faq.active .answer{
+    /* expand faq to show answer when active */
     max-height: 300px;
 }
 
 .faq.active svg{
+    /* flip pulldown arrow when answer shown */
     transform: rotate(180deg);
 }
 
