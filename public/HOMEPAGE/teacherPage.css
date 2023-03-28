@@ -83,3 +83,17 @@ input[type="text"] {
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
+.buttons-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+  }
+  
+  .buttons-container button {
+	display: inline-block;
+	margin: 0 10px;
+  }
+  
+  .red-btn {
+	background-color: red;
+  }
