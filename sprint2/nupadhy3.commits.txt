@@ -1,0 +1,392 @@
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  1) const express = require('express');
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  2) const path = require('path');
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  3) const bodyParser = require('body-parser');
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  4) const knex = require('knex');
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  5) 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  6) const db = knex({
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  7)     client: 'pg',
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  8)     connection: {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  9)         host: '127.0.0.1', 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 10)         user: 'postgres', 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 11)         password: 'test',
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 12)         database: 'loginformytvideo'
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 13)     }
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 14) })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 15) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 16) const app = express();
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 17) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 18) let intialPath = path.join(__dirname, "public");
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 19) app.use(bodyParser.json());
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 20) app.use(express.static(intialPath));
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 21) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 22) app.get('/', (req, res) => {
+38a82760 (nupadhy3 2023-03-28 09:56:23 -0400 23)     res.sendFile("index.htmls");
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 24) })
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 25) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 26) app.get('/login', (req, res) => {
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 27)     res.sendFile(path.join(intialPath, "login.html"));
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 28) })
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 29) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 30) app.get('/register', (req, res) => {
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 31)     res.sendFile(path.join(intialPath, "register.html"));
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 32) })
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 33) 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 34) app.post('/register-user', (req, res) => {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 35)     const { name, email, password } = req.body;
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 36)     if(!name.length || !email.length || !password.length){
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 37)         res.json('fill all the fields');
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 38)     } else{
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 39)         db("users").insert({
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 40)             name: name,
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 41)             email: email,
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 42)             password: password
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 43)         })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 44)         .returning(["name", "email"])
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 45)         .then(data => {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 46)             res.json(data[0])
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 47)         })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 48)         .catch(err => {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 49)             if(err.detail.includes('already exists')){
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 50)                 res.json('email already exists');
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 51)             }
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 52)         })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 53)     }
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 54) })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 55) 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 56) app.post('/login-user', (req, res) => {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 57)     const {email, password } = req.body;
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 58) 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 59)     db.select('name', 'email')
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 60)     .from('users')
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 61)     .where({
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 62)         email: email,
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 63)         password: password
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 64)     })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 65)     .then(data => {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 66)         if(data.length){
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 67)             res.json(data[0]);
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 68)         }else{
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 69)             res.json('email or password is incorrect');
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 70)         }
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 71)     })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 72) })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 73) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 74) app.listen(3000, (req, res) => {
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 75)     console.log('listening on port 3000.....')
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 76) })
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400   1) *{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400   2)     margin: 0;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400   3)     padding: 0;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400   4)     box-sizing: border-box;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400   5) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400   6) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400   7) *:focus{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400   8)     outline: none;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400   9) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  10) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  11) body{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  12)     position: relative;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  13)     width: 100%;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  14)     min-height: 100vh;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  15)     height: auto;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  16)     display: flex;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  17)     justify-content: center;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  18)     align-items: center;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  19)     background: url('../img/dojo2.png');
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  20)     background-size: cover;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  21)     background-position: center;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  22)     font-family: 'roboto', sans-serif;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  23) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  24) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  25) .form{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  26)     width: 400px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  27)     height: auto;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  28)     color: #fff;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  29)     font-family: 'roboto', sans-serif;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  30) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  31) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  32) .heading{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  33)     /*opacity: 0;*/
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  34)     text-transform: capitalize;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  35)     text-align: center;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  36)     font-size: 80px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  37)     font-weight: 300;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  38)     margin-bottom: 50px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  39) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  40) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  41) input,
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  42) .submit-btn{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  43)     /*opacity: 0;*/
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  44)     width: 80%;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  45)     height: 35px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  46)     display: block;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  47)     margin: 20px auto;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  48)     border-radius: 5px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  49)     background: rgba(255, 255, 255, 0.3);
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  50)     border: none;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  51)     color: #fff;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  52)     padding: 15px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  53)     transform: .5s;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  54)     text-transform: capitalize;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  55) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  56) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  57) input::placeholder{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  58)     color: #fff;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  59) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  60) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  61) input:focus,
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  62) .submit-btn:hover{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  63)     background: white;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  64)     color: black;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  65) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  66) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  67) input:focus::placeholder{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  68)     color: black;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  69) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  70) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  71) .submit-btn{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  72)     width: auto;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  73)     padding: 0 20px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  74)     cursor: pointer;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  75)     margin: 50px auto 0;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  76)     /*opacity: 0;*/
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  77) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  78) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  79) .link{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  80)     /*opacity: 0;*/
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  81)     text-align: center;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  82)     text-transform: capitalize;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  83)     color: rgba(255, 255, 255, 0.5);
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  84)     display: block;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  85)     margin: 30px auto;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  86) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  87) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  88) .link:hover{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  89)     color: #fff;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  90) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  91) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  92) .alert-box{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  93)     position: absolute;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  94)     top: -100%;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  95)     left: 50%;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  96)     transform: translateX(-50%);
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  97)     min-width: 150px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  98)     max-width: 90%;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  99)     width: auto;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 100)     height: auto;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 101)     padding: 10px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 102)     text-transform: capitalize;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 103)     background: rgb(255, 119, 119);
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 104)     border-top: 10px solid rgb(255, 37, 37);
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 105)     border-bottom-left-radius: 10px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 106)     border-bottom-right-radius: 10px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 107)     color: #fff;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 108)     font-family: 'roboto', sans-serif;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 109)     text-align: center;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 110)     transition: 1s;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 111) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  1) *{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  2)     margin: 0;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  3)     padding: 0;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  4)     box-sizing: border-box;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  5) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  6) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  7) body{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  8)     position: relative;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  9)     width: 100%;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 10)     min-height: 100vh;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 11)     height: auto;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 12)     display: flex;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 13)     justify-content: center;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 14)     align-items: center;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 15)     background: url('../img/dojo2.png');
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 16)     background-size: cover;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 17)     background-position: center;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 18)     font-family: 'roboto', sans-serif;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 19) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 20) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 21) .container{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 22)     position: relative;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 23)     width: 90%;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 24)     height: 87vh;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 25)     border: 5px solid #fff;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 26)     display: flex;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 27)     justify-content: center;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 28)     align-items: center;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 29) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 30) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 31) .logout{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 32)     position: absolute;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 33)     top: 10px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 34)     right: 0;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 35)     padding: 10px 20px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 36)     text-transform: capitalize;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 37)     font-size: 16px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 38)     color: #fff;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 39)     background: none;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 40)     text-decoration: underline;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 41)     cursor: pointer;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 42)     outline: none;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 43)     border: none;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 44) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 45) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 46) .greeting{
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 47)     font-family: 'dosis';
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 48)     font-size: 100px;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 49)     color: #fff;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 50)     font-weight: 800;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 51)     text-transform: capitalize;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 52) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  1) const form = [...document.querySelector('.form').children];
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  2) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  3) form.forEach((item, i) => {
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  4)     setTimeout(() => {
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  5)         item.style.opacity = 1;
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  6)     
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  7) }, i*100);
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  8) })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  9) 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 10) //form validation
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 11) 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 12) const name = document.querySelector('.name') || null;
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 13) const email = document.querySelector('.email');
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 14) const password = document.querySelector('.password');
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 15) const submitBtn = document.querySelector('.submit-btn');
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 16) 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 17) if(name == null){
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 18)     //login page is open
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 19)     submitBtn.addEventListener('click', () => {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 20)         fetch('/login-user',{
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 21)             method: 'post',
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 22)             headers: new Headers({'Content-Type': 'application/json'}),
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 23)             body: JSON.stringify({
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 24)                 email: email.value,
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 25)                 password: password.value
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 26)             })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 27)         })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 28)         .then(res => res.json())
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 29)         .then(data => {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 30)             validateData(data);
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 31)         })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 32)     })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 33) }else{
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 34)     //register page is open
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 35)     submitBtn.addEventListener('click', () => {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 36)         fetch('/register-user', {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 37)             method: 'post',
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 38)             headers: new Headers({'Content-Type': 'application/json'}),
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 39)             body: JSON.stringify({
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 40)                 name: name.value,
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 41)                 email: email.value,
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 42)                 password: password.value
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 43)             })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 44)         })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 45)         .then(res => res.json())
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 46)         .then(data => {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 47)             validateData(data);
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 48)         })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 49)     })
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 50) }
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 51) 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 52) const validateData = (data) =>{
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 53)     if(!data.name){
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 54)         alertBox(data);
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 55)     }else{
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 56)         sessionStorage.name = data.name;
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 57)         sessionStorage.email = data.email;
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 58)         location.href = '/';
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 59)     }
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 60) }
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 61) 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 62) const alertBox = (data) => {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 63)     const alertContainer = document.querySelector('.alert-box');
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 64)     const alertMsg = document.querySelector('.alert');
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 65)     alertMsg.innerHTML = data;
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 66) 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 67)     alertContainer.style.top = '5%';
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 68)     setTimeout(()=>{
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 69)         alertContainer.style.top = null;
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 70)     },5000);
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 71) }
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  1) const greeting = document.querySelector('.greeting');
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  2) 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  3) window.onload = () => {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  4)     if(!sessionStorage.name){
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  5)         location.href = '/login';
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  6)     } else{
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  7)         greeting.innerHTML = `hello ${sessionStorage.name}`;
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  8)     }
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400  9) }
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 10) 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 11) const logOut = document.querySelector('.logout');
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 12) 
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 13) logOut.onclick = () => {
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 14)     sessionStorage.clear();
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 15)     location.reload();
+b39ad053 (nupadhy3 2023-03-28 05:13:32 -0400 16) }
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  1) <!DOCTYPE html>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  2) <html lang="en">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  3) <head>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  4)     <meta charset="UTF-8">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  5)     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  6)     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  7)     <title>Document</title>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  8)     <link rel="stylesheet" href="/website/public/css/home.css">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  9) </head>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 10) <body>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 11)     <div class = "container">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 12)         <button class = "logout">Log Out</button>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 13)         <h1 class = "greeting">Hello John</h1>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 14)     </div>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 15) </body>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 16) </html>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  1) <!DOCTYPE html>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  2) <html lang="en">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  3) <head>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  4)     <meta charset="UTF-8">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  5)     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  6)     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  7)     <title>Login Page</title>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  8)     <link rel="stylesheet" href="/website/public/css/form.css">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  9) </head>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 10) <body>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 11)     <div class="alert-box">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 12)         <p class="alert">msg</p>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 13)     </div>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 14)     
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 15)     <div class = "form">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 16)         <h1 class="heading">login</h1>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 17)         <input type="email" placeholder="email" autocapitalize="off" class="email" required>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 18)         <input type="password" placeholder="password" autocapitalize="off" class="password" required>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 19)         <button class="submit-btn">Log In</button>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 20)         <a href="/website/public/js/register.html" class="link">Don't have an account? Register Now</a>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 21)     </div>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 22)      <script src="/website/public/js/form.js"></script>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 23) </body>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 24) </html>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  1) <!DOCTYPE html>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  2) <html lang="en">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  3) <head>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  4)     <meta charset="UTF-8">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  5)     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  6)     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  7)     <title>Register Page</title>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  8)     <link rel="stylesheet" href="/website/public/css/form.css">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400  9) </head>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 10) <body>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 11)     <div class="alert-box">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 12)         <p class="alert">Hello</p>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 13)     </div>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 14) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 15)     <div class="form">
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 16)         <h1 class="heading">Register</h1>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 17)         <input type="text" placeholder="name" autocomplete="off" class="name" requiered>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 18)         <input type="email" placeholder="email" autocomplete="off" class="email" requiered>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 19)         <input type="password" placeholder="password" autocomplete="off" class="password" requiered>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 20)         <button class="submit-btn">Register</button>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 21)         <a href="/website/public/js/login.html" class="link">already have an account? Log in here</a>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 22)     </div>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 23) 
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 24)     <script src="/website/public/js/form.js"></script>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 25) </body>
+9c9766d3 (nupadhy3 2023-03-28 04:20:47 -0400 26) </html>
