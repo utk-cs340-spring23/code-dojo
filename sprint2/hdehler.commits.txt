@@ -1,0 +1,165 @@
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 16)         <li><a href = "teacherPage.html"><button class="btn">TEACHER</button></a></li>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 17)         <li><a href = "/public/ABOUT_PAGE/aboutPage.html"><button class="btn">ABOUT</button></a></li>
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 168) }
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 169)   
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 170)   .timer-display {
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 171)     font-size: 2em;
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 172)     font-weight: bold;
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 173)     margin-bottom: 1px;
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 174)     top: 1%;
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 175)     color:#ffffff;
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 176)   }
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400  37) 
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400  38)          
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400  53)         
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400  92)         <center><div class="timer-box">
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400  93)             <div class="timer-display">00:00:00</div>
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400  94)           </div>
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400  95)            </center>
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 34) })
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 35) 
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 36) 
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400   1) html{
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400   2) 	font-family: 'Impact', cursive;
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400   3) }
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400   4) 
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400   5) .container {
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400   6) 	display: flex;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400   7) 	flex-direction: column;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400   8) 	align-items: center;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400   9) 	justify-content: center;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  10) 	height: 100vh;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  13) .form-input {
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  14) 	margin-bottom: 20px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  15) 	display: flex;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  16) 	flex-direction: column;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  17) 	align-items: center;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  20) label {
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  21) 	font-size: 20px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  22) 	margin-bottom: 10px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  23) 	text-align: center;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  26) input[type="text"] {
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  27) 	width: 200%;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  28)     
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  29) 	border: none;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  30) 	border-radius: 5px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  31) 	padding: 10px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  32) 	margin-bottom: 20px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  33) 	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  36) .submit-btn {
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  37) 	background-color: #23a6d5;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  38) 	border: none;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  39) 	color: #ffffff;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  40) 	cursor: pointer;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  41) 	font-family: 'Tilt Warp';
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  42) 	font-size: 18px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  43) 	font-weight: bold;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  44) 	padding: 13.874px 20px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  45) 	position: relative;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  46) 	transition: all 0.3s ease;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  47) 	border-radius: 5px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  50) .submit-btn::before {
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  51) 	background-color: #ffffff;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  52) 	border-radius: 30px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  53) 	content: '';
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  54) 	height: 100%;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  55) 	left: 0;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  56) 	opacity: 0;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  57) 	position: absolute;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  58) 	top: 0;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  59) 	transition: all 0.3s ease;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  60) 	width: 100%;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  61) 	z-index: -1;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  64) .submit-btn:hover {
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  65) 	color: #1b7494;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  68) .submit-btn:hover::before {
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  69) 	opacity: 0.2;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  72) .grid-container {
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  73)     display: grid;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  74)     grid-template-columns: repeat(5, 1fr);
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  75)     grid-gap: 10px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  76)     margin-bottom: 20px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  79) .grid-item {
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  80)     background-color: #ffffff;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  81)     color: #333333;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  82)     border-radius: 5px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  83)     padding: 10px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  84)     font-weight: bold;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  85)     font-size: 16px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  86)     text-align: center;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400  87)     box-shadow: 0 0 5px rgba(0,0,0,0.2);
+12977663 (hdehler       2023-03-27 22:05:06 -0400  90) .buttons-container {
+12977663 (hdehler       2023-03-27 22:05:06 -0400  91) 	display: flex;
+12977663 (hdehler       2023-03-27 22:05:06 -0400  92) 	justify-content: center;
+12977663 (hdehler       2023-03-27 22:05:06 -0400  93) 	margin-top: 20px;
+12977663 (hdehler       2023-03-27 22:05:06 -0400  94)   }
+12977663 (hdehler       2023-03-27 22:05:06 -0400  95)   
+12977663 (hdehler       2023-03-27 22:05:06 -0400  96)   .buttons-container button {
+12977663 (hdehler       2023-03-27 22:05:06 -0400  97) 	display: inline-block;
+12977663 (hdehler       2023-03-27 22:05:06 -0400  98) 	margin: 0 10px;
+12977663 (hdehler       2023-03-27 22:05:06 -0400  99)   }
+12977663 (hdehler       2023-03-27 22:05:06 -0400 100)   
+12977663 (hdehler       2023-03-27 22:05:06 -0400 101)   .red-btn {
+12977663 (hdehler       2023-03-27 22:05:06 -0400 102) 	background-color: red;
+12977663 (hdehler       2023-03-27 22:05:06 -0400 103)   }
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 104) 
+50e29d8f (hdehler       2023-03-27 22:42:34 -0400 105)   
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400  3) 
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400  9) 
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 10)         .white-text {
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 11)             color: #ffffff;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 12)         }
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 13) 
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 14)         .home-btn {
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 15)             position: absolute;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 16)             top: 20px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 17)             left: 20px;
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 18)         }
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 20)     <title>Session Form</title>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 21)     <link rel="stylesheet" type="text/css" href="teacherPage.css">
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 22)     <script src="teacherPage.js"></script>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 24) 
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 26)     <a class="home-btn" href="homePage.html"><button type="button" class="submit-btn">Home</button></a>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 27)     <div class="container">
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 28)         <form>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 29)             <div class="form-input">
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 30)                 <label class="white-text" for="session-id">Session ID:</label>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 31)                 <input type="text" id="session-id" name="session-id" required>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 32)             </div>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 34)             <div class="form-input">
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 35)                 <label class="white-text" for="question">Question:</label>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 36)                 <input type="text" id="question" name="question" required>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 37)             </div>
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 38) 
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 39)             <div class="form-input">
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 40)                 <label class="white-text" for="answer">Answer:</label>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 41)                 <input type="text" id="answer" name="answer" required>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 42)             </div>
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 43) 
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 44)             <div class="form-input">
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 45)                 <label class="white-text" for="time">Time:</label>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 46)                 <input type="text" id="time" name="time" required>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 47)                 <div class="button-group">
+12977663 (hdehler       2023-03-27 22:05:06 -0400 48)                 </div>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 49)             </div>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 50) 
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 51)             <div class="buttons-container">
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 52)                 <button type="submit" class="submit-btn press-down">Submit</button>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 53)                 <button type="button" class="submit-btn red-btn press-down">End Session</button>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 54) 
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 55)             </div>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 56)         </form>
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 57)         <br>
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 58)         <br>
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 59)         <br>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 60) 
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 61)         <div class="grid-container">
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 62)             <div class="grid-item">Socket ID</div>
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 63)             <div class="grid-item">Nickname</div>
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 64)             <div class="grid-item"># Right</div>
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 65)             <div class="grid-item"># Wrong</div>
+1ff7d37f (hdehler       2023-03-27 16:08:32 -0400 66)             <div class="grid-item">Current Answer</div>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 68)     </div>
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 69) 
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 71) 
+4aea2ee4 (hdehler       2023-03-27 23:11:07 -0400 72) </html>
