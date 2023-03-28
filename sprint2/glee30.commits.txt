@@ -1,0 +1,504 @@
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400   1) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400   2) @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400   3) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400   4) html {
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400   5)     font-family: 'Tilt Warp', cursive;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400   6) }
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400   7) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400   8) body{
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400   9)     background: #1c1c1c;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  10)     color: #fff;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  11) }
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  12) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  13) .about{
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  14)     width: 100%;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  15)     background-color: #484343;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  16)     text-align: center;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  17) }
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  18) 
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  19) .about h1{
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  20)     font-size: 40px;
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  21) }
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  22) 
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  23) .about p{
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  24)     font-size: 20px;
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  25) }
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  26) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  27) .about-text{
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  28)     min-width: 550px;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  29)     max-width: 750px;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  30) }
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  31) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  32) .main{
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  33)     position: absolute;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  34)     top: 50%;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  35)     left: 50%;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  36)     transform: translate(-50%, -50%);
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  37)     align-items: center;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  38) }
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  39) 
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  40) .contact-button{
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  41)     background-color: #0061e1;
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  42) 	border-radius: 60px;
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  43) 	position: absolute;
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  44) 	transition: all 0.3s ease;
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  45)     left: 50%;
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  46)     transform: translateX(-50%);
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  47)     color: white;
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  48)     width: 200px;
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  49)     height: 50px;
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  50)     font-size: 20px;
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  51) }
+e8852552 public/ABOUT_PAGE/aboutPage.css (Griff2325 2023-03-27 22:39:27 -0400  52) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  53) #hamburger {
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  54)     /* attributes for hamburger icon */
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  55)     fill: white;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  56)     height: 45px;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  57)     width: 45px;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  58)     cursor: pointer;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  59)     position: absolute;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  60)     top: 10px;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  61)     left: 10px;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  62) }
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  63) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  64) #hamburger:active{
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  65)     /* makes button slightly smaller when being clicked */
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  66)     transform: scale(0.9);
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  67) }
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  68) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  69) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  70) #sidebar {
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  71)     width: 0px;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  72)     height: 100vh;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  73)     /* 100vh: height of screen */
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  74)     background-color: rgb(214, 214, 214);
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  75)     position: fixed;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  76)     top: 0;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  77)     left: 0;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  78) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  79)     /* set z-index to 2, so it's on top of everything */
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  80)     z-index: 2;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  81) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  82)     /* make sure text doesn't still show when sidebar is closed */
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  83)     overflow: hidden;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  84)  
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  85)     transition: width .25s ease;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  86)     white-space: nowrap;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  87) }
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  88) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  89) .sidebar-item {
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  90)     text-decoration: none;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  91)     color: black;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  92)     cursor: pointer;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  93)     padding: 1em;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  94)     display: flex;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  95)     position: center;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  96) }
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  97) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  98) .sidebar-item:hover {
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400  99)     background-color: #23a6d5;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 100) }
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 101) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 102) .btn {
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 103)     /* sidebar button attributes */
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 104)     background-color: #21416800;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 105)     color: black;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 106)     padding: 0px 0px;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 107)     font-family: 'Tilt Warp', cursive;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 108)     font-size: 18px;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 109)     font-weight: bold;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 110)     transition: background-color 0.3s ease;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 111)     width: 100%;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 112)     border: none;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 113)     text-align: left;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 114)   }
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 115) 
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 116)   #overlay {
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 117)     /* overlay is clicked to close sidebar
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 118)        also used to make background slightly
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 119)        darker when sidebar is open */
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 120)     width: 100vw;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 121)     height: 100vh;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 122)     background-color: rgba(0, 0, 0, 0.3);
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 123)     position: fixed;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 124)     top: 0;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 125)     left: 0;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 126)     display: none;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 127)     z-index: 1;
+833492c0 public/HOMEPAGE/aboutPage.css   (Griff2325 2023-03-27 21:11:40 -0400 128) }
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400  1) <!DOCTYPE html>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400  2) <html>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400  3)     <head>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400  4)         <title>About</title>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400  5)         <link rel="stylesheet" href="aboutPage.css">
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400  6)         <meta charset="UTF-8" />
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400  7)         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400  8)     </head>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400  9)     <body>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 10)         <section class="about">
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 11)             <div class="main">
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 12)                 <div class="about-text">
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 13)                     <h1>About us</h1>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 14)                     <p>We are a small group of 5 students from the University of Tennessee. After going through numerous
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 15)                         computer science classes and struggling to learn, we decided that it would be nice to have a website
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 16)                         that, rather than being so generic like Turning Point clickers, was focused directly on learning
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 17)                         how to code in computer science classes. We are constantly adding new functionality to assist 
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 18)                         students like ourselves and make class more engaging.
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 19)                     </p>
+e8852552 public/ABOUT_PAGE/aboutPage.html (Griff2325 2023-03-27 22:39:27 -0400 20)                     <button type="button" class="contact-button">Contact Us</button>
+212389b8 public/ABOUT_PAGE/aboutPage.html (Griff2325 2023-03-28 00:23:15 -0400 21)                     <!-- will link this button to a contact page -->
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 22)                 </div>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 23)             </div>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 24)         </section>
+212389b8 public/ABOUT_PAGE/aboutPage.html (Griff2325 2023-03-28 00:23:15 -0400 25)         
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 26)         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 27)             id="hamburger">
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 28)             <path d="M0 0h24v24H0z" fill="none" />
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 29)             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 30)         </svg>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 31) 
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 32)         <div id="sidebar">
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 33)             <!-- sidebar with references to important pages -->
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 34)             <a href="/public/HOMEPAGE/homePage.html" class="sidebar-item">
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 35)                 <button class="btn">Home</button>
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 36)             </a>
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 37)             <a href="/public/NOTES_PAGE/notesPage.html" class="sidebar-item">
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 38)                 <button class="btn">Notes</button>
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 39)             </a>
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 40)             <a href="/public/HISTORY_PAGE/historyPage.html" class="sidebar-item">
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 41)                 <button class="btn">History</button>
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 42)             </a>
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 43)             <a href="/public/PROFILE/profilePage.html" class="sidebar-item">
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 44)                 <button class="btn">Profile</button>
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 45)             </a>
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 46)             <a href="/public/FAQ_PAGE/faqPage.html" class="sidebar-item">
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 47)                 <button class="btn">FAQ</button>
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 48)             </a>
+6ab1fcf8 public/ABOUT_PAGE/aboutPage.html (Griff2325 2023-03-27 22:26:27 -0400 49)             <a href="/public/ABOUT_PAGE/aboutPage.html" class="sidebar-item">
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 50)                 <button class="btn">About</button>
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 51)             </a>
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 52)         </div>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 53) 
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 54)         <div id="overlay">
+7dca5c10 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 22:23:45 -0400 55)         </div>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 56) 
+6ab1fcf8 public/ABOUT_PAGE/aboutPage.html (Griff2325 2023-03-27 22:26:27 -0400 57)         <script src="/public/ABOUT_PAGE/aboutPage.js"></script>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 58) 
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 59)     </body>
+833492c0 public/HOMEPAGE/aboutPage.html   (Griff2325 2023-03-27 21:11:40 -0400 60) </html>
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400  1) // find the variables by using getElementById
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400  2) const hamburger = document.getElementById('hamburger')
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400  3) const sidebar = document.getElementById('sidebar')
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400  4) const overlay = document.getElementById('overlay')
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400  5) 
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400  6) let menuOpen = false // menu starts closed
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400  7) 
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400  8) function openMenu() {
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400  9)     // change width to 'open' sidebar
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 10)     menuOpen = true
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 11)     overlay.style.display = 'block'
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 12)     sidebar.style.width = '250px'
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 13) }
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 14) 
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 15) function closeMenu() {
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 16)     // change width to 'close' sidebar
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 17)     menuOpen = false
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 18)     overlay.style.display = 'none'
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 19)     sidebar.style.width = '0px'
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 20) }
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 21) 
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 22) hamburger.addEventListener('click', function () {
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 23)     // open the sidebar when hamburger is clicked
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 24)     if (!menuOpen) {
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 25)         openMenu()
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 26)     }
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 27) })
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 28) 
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 29) overlay.addEventListener('click', function () {
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 30)     // close the sidebar when overlay is clicked
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 31)     if (menuOpen) {
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 32)         closeMenu()
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 33)     }
+833492c0 public/aboutPage.js (Griff2325 2023-03-27 21:11:40 -0400 34) })
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400   1) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400   2) @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400   3) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400   4) html {
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400   5)     font-family: 'Tilt Warp', cursive;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400   6) }
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400   7) 
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400   8) body{
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400   9)     background: #1c1c1c;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  10)     color: #fff;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  11) }
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  12) 
+212389b8 (Griff2325 2023-03-28 00:23:15 -0400  13) /* Use css flexbox to style positions of faq objects */
+212389b8 (Griff2325 2023-03-28 00:23:15 -0400  14) 
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  15) section{
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  16)     min-height: 100vh;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  17)     width: 80%;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  18)     margin: 0 auto;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  19)     display: flex;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  20)     flex-direction: column;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  21)     align-items: center;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  22) }
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  23) 
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  24) .title{
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  25)     font-size: 3rem;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  26)     margin: 2rem 0rem;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  27) }
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  28) 
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  29) .faq{
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  30)     min-width: 700px;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  31)     max-width: 700px;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  32)     margin-top: 1rem;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  33)     padding-bottom: 1rem;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  34)     border-bottom: 2px solid #fff;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  35)     cursor: pointer;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  36) }
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  37) 
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  38) .question{
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  39)     display: flex;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  40)     justify-content: space-between;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  41)     align-items: center;;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  42) }
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  43) 
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  44) .question h3{
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  45)     font-size: 1.5rem;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  46) }
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  47) 
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  48) .answer{
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  49)     max-height: 0;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  50)     overflow: hidden;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  51)     transition: max-height 0.7s ease-in;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  52) }
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  53) 
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  54) .answer p{
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  55)     line-height: 1;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  56)     font-size: 1.2rem;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  57) }
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  58) 
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  59) .faq.active .answer{
+212389b8 (Griff2325 2023-03-28 00:23:15 -0400  60)     /* expand faq to show answer when active */
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  61)     max-height: 300px;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  62) }
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  63) 
+15774aea (Griff2325 2023-03-27 20:39:40 -0400  64) .faq.active svg{
+212389b8 (Griff2325 2023-03-28 00:23:15 -0400  65)     /* flip pulldown arrow when answer shown */
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  66)     transform: rotate(180deg);
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  67) }
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  68) 
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  69) svg{
+15774aea (Griff2325 2023-03-27 20:39:40 -0400  70)     transition: transform .2s ease-in;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  71) }
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  72) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  73) #hamburger {
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  74)     /* attributes for hamburger icon */
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  75)     fill: white;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  76)     height: 45px;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  77)     width: 45px;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  78)     cursor: pointer;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  79)     position: absolute;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  80)     top: 10px;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  81)     left: 10px;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  82) }
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  83) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  84) #hamburger:active{
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  85)     /* makes button slightly smaller when being clicked */
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  86)     transform: scale(0.9);
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  87) }
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  88) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  89) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  90) #sidebar {
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  91)     width: 0px;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  92)     height: 100vh;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  93)     /* 100vh: height of screen */
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  94)     background-color: rgb(214, 214, 214);
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  95)     position: fixed;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  96)     top: 0;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  97)     left: 0;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  98) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  99)     /* set z-index to 2, so it's on top of everything */
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 100)     z-index: 2;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 101) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 102)     /* make sure text doesn't still show when sidebar is closed */
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 103)     overflow: hidden;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 104)  
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 105)     transition: width .25s ease;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 106)     white-space: nowrap;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 107) }
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 108) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 109) .sidebar-item {
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 110)     text-decoration: none;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 111)     color: black;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 112)     cursor: pointer;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 113)     padding: 1em;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 114)     display: flex;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 115)     position: center;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 116) }
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 117) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 118) .sidebar-item:hover {
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 119)     background-color: #23a6d5;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 120) }
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 121) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 122) .btn {
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 123)     /* sidebar button attributes */
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 124)     background-color: #21416800;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 125)     color: black;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 126)     padding: 0px 0px;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 127)     font-family: 'Tilt Warp', cursive;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 128)     font-size: 18px;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 129)     font-weight: bold;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 130)     transition: background-color 0.3s ease;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 131)     width: 100%;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 132)     border: none;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 133)     text-align: left;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 134)   }
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 135) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 136)   #overlay {
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 137)     /* overlay is clicked to close sidebar
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 138)        also used to make background slightly
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 139)        darker when sidebar is open */
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 140)     width: 100vw;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 141)     height: 100vh;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 142)     background-color: rgba(0, 0, 0, 0.3);
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 143)     position: fixed;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 144)     top: 0;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 145)     left: 0;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 146)     display: none;
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 147)     z-index: 1;
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400 148) }
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400  4)         <title>FAQs</title>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400  5)         <link rel="stylesheet" href="faqPage.css">
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400  6)         <meta charset="UTF-8" />
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400  7)         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400  9)     <body>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 10)         <section>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 11)             <h2 class="title">FAQs</h2>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 12) 
+212389b8 (Griff2325     2023-03-28 00:23:15 -0400 13)             <!-- each faq is a question and answer -->
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 14)             <div class="faq">
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 15)                 <div class="question">
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 16)                     <h3>What is the intended use of Code Dojo?</h3>
+212389b8 (Griff2325     2023-03-28 00:23:15 -0400 17)                     <!-- svg for the arrow pulldown icon -->
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 18)                     <svg width="15" height="10" viewbox="0 0 42 25">
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 19)                         <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 20)                     </svg>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 21)                 </div>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 22)                 <div class="answer">
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 23)                     <p>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 24)                         Code Dojo's intended use is being able to push questions to students, in a classroom
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 25)                         setting, so that they can more easily be tested on and learn how to code.
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 26)                     </p>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 27)                 </div>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 28)             </div>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 29) 
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 30)             <div class="faq">
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 31)                 <div class="question">
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 32)                     <h3>Does the website function yet?</h3>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 33)                     <svg width="15" height="10" viewbox="0 0 42 25">
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 34)                         <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 35)                     </svg>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 36)                 </div>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 37)                 <div class="answer">
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 38)                     <p>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 39)                         Not yet, but within the next few weeks once we connect some of the code that our development
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 40)                         team has been creating, demo functionality will be possible. 
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 41)                     </p>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 42)                 </div>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 43)             </div>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 44) 
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 45)             <div class="faq">
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 46)                 <div class="question">
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 47)                     <h3>What will the hosting link be?</h3>
+15774aea (Griff2325     2023-03-27 20:39:40 -0400 48)                     <svg width="15" height="10" viewbox="0 0 42 25" id="arrow">
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 49)                         <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 50)                     </svg>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 51)                 </div>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 52)                 <div class="answer">
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 53)                     <p>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 54)                         www.codedojo.ninja
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 55)                     </p>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 56)                 </div>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 57)             </div>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 58)         </section>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 59)         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 60)             id="hamburger">
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 61)             <path d="M0 0h24v24H0z" fill="none" />
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 62)             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 63)         </svg>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 64) 
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 65)         <div id="sidebar">
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 66)             <!-- sidebar with references to important pages -->
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 67)             <a href="/public/HOMEPAGE/homePage.html" class="sidebar-item">
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 68)                 <button class="btn">Home</button>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 69)             </a>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 70)             <a href="/public/NOTES_PAGE/notesPage.html" class="sidebar-item">
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 71)                 <button class="btn">Notes</button>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 72)             </a>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 73)             <a href="/public/HISTORY_PAGE/historyPage.html" class="sidebar-item">
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 74)                 <button class="btn">History</button>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 75)             </a>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 76)             <a href="/public/PROFILE/profilePage.html" class="sidebar-item">
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 77)                 <button class="btn">Profile</button>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 78)             </a>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 79)             <a href="/public/FAQ_PAGE/faqPage.html" class="sidebar-item">
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 80)                 <button class="btn">FAQ</button>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 81)             </a>
+09a61afd (Griff2325     2023-03-28 08:14:50 -0400 82)             <a href="/public/ABOUT_PAGE/aboutPage.html" class="sidebar-item">
+7dca5c10 (Griff2325     2023-03-27 22:23:45 -0400 83)                 <button class="btn">About</button>
+7dca5c10 (Griff2325     2023-03-27 22:23:45 -0400 84)             </a>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 85)         </div>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 86) 
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 87)         <div id="overlay">
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 88)         </div>
+714c71e8 (Griff2325     2023-03-27 20:30:55 -0400 89) 
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 90)         <script src="faqPage.js"></script>
+cb0e0d4d (Griff2325     2023-03-27 17:27:15 -0400 91)     </body>
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  1) const faqs = document.querySelectorAll(".faq");
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  2) 
+212389b8 (Griff2325 2023-03-28 00:23:15 -0400  3) // when an faq object is clicked, change it to active which will expand it
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  4) faqs.forEach(faq => {
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  5)     faq.addEventListener("click", () => {
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  6)         faq.classList.toggle("active");
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400  7)     })
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  8) })
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400  9) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 10) // find the variables by using getElementById
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 11) const hamburger = document.getElementById('hamburger')
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 12) const sidebar = document.getElementById('sidebar')
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 13) const overlay = document.getElementById('overlay')
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 14) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 15) let menuOpen = false // menu starts closed
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 16) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 17) function openMenu() {
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 18)     // change width to 'open' sidebar
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 19)     menuOpen = true
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 20)     overlay.style.display = 'block'
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 21)     sidebar.style.width = '250px'
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 22) }
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 23) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 24) function closeMenu() {
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 25)     // change width to 'close' sidebar
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 26)     menuOpen = false
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 27)     overlay.style.display = 'none'
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 28)     sidebar.style.width = '0px'
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 29) }
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 30) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 31) hamburger.addEventListener('click', function () {
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 32)     // open the sidebar when hamburger is clicked
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 33)     if (!menuOpen) {
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 34)         openMenu()
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 35)     }
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 36) })
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 37) 
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 38) overlay.addEventListener('click', function () {
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 39)     // close the sidebar when overlay is clicked
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 40)     if (menuOpen) {
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 41)         closeMenu()
+714c71e8 (Griff2325 2023-03-27 20:30:55 -0400 42)     }
+cb0e0d4d (Griff2325 2023-03-27 17:27:15 -0400 43) })
+833492c0 (Griff2325     2023-03-27 21:11:40 -0400 18)         <li><a href = "/public/FAQ_PAGE/faqPage.html"><button class="btn">FAQ</button></a></li>
+6ab1fcf8 (Griff2325     2023-03-27 22:26:27 -0400  88)             <a href="/public/ABOUT_PAGE/aboutPage.html" class="sidebar-item">
+7dca5c10 (Griff2325     2023-03-27 22:23:45 -0400  89)                 <button class="btn">About</button>
+7dca5c10 (Griff2325     2023-03-27 22:23:45 -0400  90)             </a>
