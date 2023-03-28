@@ -1,0 +1,23 @@
+<html>
+      <head>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="358604089602-ldc0bsk5loknpk8anp8tqtu1gf486uam.apps.googleusercontent.com">
+      </head>
+      <body>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <script>
+          function onSignIn(googleUser) {
+            var id_token = googleUser.getAuthResponse().id_token;
+            // Send the id_token to the server for verification
+            fetch('/login', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id_token: id_token })
+            }).then(() => {
+              // Redirect to the protected page
+              window.location.href = '/protected';
+            });
+          }
+        </script>
+      </body>
+    </html>
