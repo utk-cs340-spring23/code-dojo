@@ -2,87 +2,71 @@
 <html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu</title>
-    <link rel="stylesheet" href="mainPage.css" />
-    <div class="background-container">
-        <div class="background-image"></div>
-    </div>
     <style>
         body {
             background-color: rgb(55, 54, 54);
         }
+
+        .white-text {
+            color: #ffffff;
+        }
+
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
     </style>
+    <title>Session Form</title>
+    <link rel="stylesheet" type="text/css" href="teacherPage.css">
+    <script src="teacherPage.js"></script>
 </head>
 
 <body>
-    <main>
-        <!-- <p>YOU ARE IN THE TEACHER PAGE NOW</p>
-        <div>
-            <a href="/public/HOMEPAGE/mainPage.html">
-                <button>HOME</button>
-            </a>
-        </div>
-        <div>
-            <form id="room-form">
-                <input id="room-input" placeholder="Room ID">
-                <button>Create Room</button>
-            </form>
-            <form id="question-form">
-                <input id="question-input" placeholder="Question">
-            </form>
-            <form id="answer-form">
-                <input id="answer-input" placeholder="Answer">
-                <button>Push Question</button>
-            </form>
-        </div> -->
-          
-        <div class="question">
-            <p class="questionbox" placeholder="Waiting for host"></p>
-            <textarea class="answerbox" placeholder="Answer here"></textarea>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="submit">
-                <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" height="48" width="48" id="compile">
-                <path
-                    d="M705 928 447 668q-23 8-46 13t-47 5q-97.083 0-165.042-67.667Q121 550.667 121 454q0-31 8.158-60.388Q137.316 364.223 152 338l145 145 92-86-149-149q25.915-15.158 54.957-23.579Q324 216 354 216q99.167 0 168.583 69.417Q592 354.833 592 454q0 24-5 47t-13 46l259 258q11 10.957 11 26.478Q844 847 833 858l-76 70q-10.696 11-25.848 11T705 928Zm28-57 40-40-273-273q16-21 24-49.5t8-54.5q0-75-55.5-127T350 274l101 103q9 9 9 22t-9 22L319 545q-9 9-22 9t-22-9l-97-96q3 77 54.668 127T354 626q25 0 53-8t49-24l277 277ZM476 572Z" />
-            </svg>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"
-            id="hamburger">
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" id="makeNote">
-            <path
-                d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" />
-        </svg>
-        <div class="submitButton">
-        </div>
-        <div id="overlay">
+    <a class="home-btn" href="homePage.html"><button type="button" class="submit-btn">Home</button></a>
+    <div class="container">
+        <form>
+            <div class="form-input">
+                <label class="white-text" for="session-id">Session ID:</label>
+                <input type="text" id="session-id" name="session-id" required>
+            </div>
 
+            <div class="form-input">
+                <label class="white-text" for="question">Question:</label>
+                <input type="text" id="question" name="question" required>
+            </div>
+
+            <div class="form-input">
+                <label class="white-text" for="answer">Answer:</label>
+                <input type="text" id="answer" name="answer" required>
+            </div>
+
+            <div class="form-input">
+                <label class="white-text" for="time">Time:</label>
+                <input type="text" id="time" name="time" required>
+                <div class="button-group">
+                </div>
+            </div>
+
+            <div class="buttons-container">
+                <button type="submit" class="submit-btn press-down">Submit</button>
+                <button type="button" class="submit-btn red-btn press-down">End Session</button>
+
+            </div>
+        </form>
+        <br>
+        <br>
+        <br>
+
+        <div class="grid-container">
+            <div class="grid-item">Socket ID</div>
+            <div class="grid-item">Nickname</div>
+            <div class="grid-item"># Right</div>
+            <div class="grid-item"># Wrong</div>
+            <div class="grid-item">Current Answer</div>
         </div>
-        <div id="sidebar">
-            <a href="homePage.html" class="sidebar-item">
-                <button class="btn">Home</button>
-            </a>
-            <a href="/public/NOTES_PAGE/notesPage.html" class="sidebar-item">
-                <button class="btn">Notes</button>
-            </a>
-            <a href="/public/HISTORY_PAGE/historyPage.html" class="sidebar-item">
-                <button class="btn">History</button>
-            </a>
-            <a href="/public/PROFILE/profilePage.html" class="sidebar-item">
-                <button class="btn">Profile</button>
-            </a>
-            <!-- I think we should keep this only on the home page???? -->
-            <a href="/public/FAQ_PAGE/faqPage.html" class="sidebar-item">
-                <button class="btn">FAQ</button>
-            </a>
-        </div>
-    </main>
-    <script src="mainPage.js"></script>
+    </div>
+
 </body>
 
 </html>

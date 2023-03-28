@@ -10,64 +10,44 @@ body{
     color: #fff;
 }
 
-/* Use css flexbox to style positions of faq objects */
+.about{
+    width: 100%;
+    background-color: #484343;
+    text-align: center;
+}
 
-section{
-    min-height: 100vh;
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+.about h1{
+    font-size: 40px;
+}
+
+.about p{
+    font-size: 20px;
+}
+
+.about-text{
+    min-width: 550px;
+    max-width: 750px;
+}
+
+.main{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     align-items: center;
 }
 
-.title{
-    font-size: 3rem;
-    margin: 2rem 0rem;
-}
-
-.faq{
-    min-width: 700px;
-    max-width: 700px;
-    margin-top: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid #fff;
-    cursor: pointer;
-}
-
-.question{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;;
-}
-
-.question h3{
-    font-size: 1.5rem;
-}
-
-.answer{
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.7s ease-in;
-}
-
-.answer p{
-    line-height: 1;
-    font-size: 1.2rem;
-}
-
-.faq.active .answer{
-    /* expand faq to show answer when active */
-    max-height: 300px;
-}
-
-.faq.active svg{
-    /* flip pulldown arrow when answer shown */
-    transform: rotate(180deg);
-}
-
-svg{
-    transition: transform .2s ease-in;
+.contact-button{
+    background-color: #0061e1;
+	border-radius: 60px;
+	position: absolute;
+	transition: all 0.3s ease;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
 }
 
 #hamburger {

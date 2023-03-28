@@ -32,5 +32,3 @@ overlay.addEventListener('click', function () {
         closeMenu()
     }
 })
-
-

@@ -1,3 +1,12 @@
+const faqs = document.querySelectorAll(".faq");
+
+// when an faq object is clicked, change it to active which will expand it
+faqs.forEach(faq => {
+    faq.addEventListener("click", () => {
+        faq.classList.toggle("active");
+    })
+})
+
 // find the variables by using getElementById
 const hamburger = document.getElementById('hamburger')
 const sidebar = document.getElementById('sidebar')
@@ -32,5 +41,3 @@ overlay.addEventListener('click', function () {
         closeMenu()
     }
 })
-
-

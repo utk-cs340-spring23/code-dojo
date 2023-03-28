@@ -1,10 +1,92 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            body{
-                background-color: rgb(55, 54, 54);
-            }
-        </style>
+        <title>FAQs</title>
+        <link rel="stylesheet" href="faqPage.css">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
+    <body>
+        <section>
+            <h2 class="title">FAQs</h2>
+
+            <!-- each faq is a question and answer -->
+            <div class="faq">
+                <div class="question">
+                    <h3>What is the intended use of Code Dojo?</h3>
+                    <!-- svg for the arrow pulldown icon -->
+                    <svg width="15" height="10" viewbox="0 0 42 25">
+                        <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="answer">
+                    <p>
+                        Code Dojo's intended use is being able to push questions to students, in a classroom
+                        setting, so that they can more easily be tested on and learn how to code.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="question">
+                    <h3>Does the website function yet?</h3>
+                    <svg width="15" height="10" viewbox="0 0 42 25">
+                        <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="answer">
+                    <p>
+                        Not yet, but within the next few weeks once we connect some of the code that our development
+                        team has been creating, demo functionality will be possible. 
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="question">
+                    <h3>What will the hosting link be?</h3>
+                    <svg width="15" height="10" viewbox="0 0 42 25" id="arrow">
+                        <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="answer">
+                    <p>
+                        www.codedojo.ninja
+                    </p>
+                </div>
+            </div>
+        </section>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"
+            id="hamburger">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+
+        <div id="sidebar">
+            <!-- sidebar with references to important pages -->
+            <a href="/public/HOMEPAGE/homePage.html" class="sidebar-item">
+                <button class="btn">Home</button>
+            </a>
+            <a href="/public/NOTES_PAGE/notesPage.html" class="sidebar-item">
+                <button class="btn">Notes</button>
+            </a>
+            <a href="/public/HISTORY_PAGE/historyPage.html" class="sidebar-item">
+                <button class="btn">History</button>
+            </a>
+            <a href="/public/PROFILE/profilePage.html" class="sidebar-item">
+                <button class="btn">Profile</button>
+            </a>
+            <a href="/public/FAQ_PAGE/faqPage.html" class="sidebar-item">
+                <button class="btn">FAQ</button>
+            </a>
+            <a href="/public/HOMEPAGE/aboutPage.html" class="sidebar-item">
+                <button class="btn">About</button>
+            </a>
+        </div>
+
+        <div id="overlay">
+        </div>
+
+        <script src="faqPage.js"></script>
+    </body>
 </html>
