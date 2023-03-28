@@ -1,57 +1,63 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <style>
         body {
             background-color: rgb(55, 54, 54);
         }
+
         .white-text {
             color: #ffffff;
         }
+
         .home-btn {
             position: absolute;
             top: 20px;
             left: 20px;
         }
     </style>
-	<title>Session Form</title>
-	<link rel="stylesheet" type="text/css" href="teacherPage.css">
+    <title>Session Form</title>
+    <link rel="stylesheet" type="text/css" href="teacherPage.css">
+    <script src="teacherPage.js"></script>
 </head>
+
 <body>
     <a class="home-btn" href="homePage.html"><button type="button" class="submit-btn">Home</button></a>
-	<div class="container">
-		<form>
-			<div class="form-input">
-				<label class="white-text" for="session-id">Session ID:</label>
-				<input type="text" id="session-id" name="session-id" required>
-			</div>
+    <div class="container">
+        <form>
+            <div class="form-input">
+                <label class="white-text" for="session-id">Session ID:</label>
+                <input type="text" id="session-id" name="session-id" required>
+            </div>
 
-			<div class="form-input">
-				<label class="white-text" for="question">Question:</label>
-				<input type="text" id="question" name="question" required>
-			</div>
+            <div class="form-input">
+                <label class="white-text" for="question">Question:</label>
+                <input type="text" id="question" name="question" required>
+            </div>
 
-			<div class="form-input">
-				<label class="white-text" for="answer">Answer:</label>
-				<input type="text" id="answer" name="answer" required>
-			</div>
+            <div class="form-input">
+                <label class="white-text" for="answer">Answer:</label>
+                <input type="text" id="answer" name="answer" required>
+            </div>
 
-			<div class="form-input">
-				<label class="white-text" for="time">Time:</label>
-				<input type="text" id="time" name="time" required>
-				<div class="button-group">
+            <div class="form-input">
+                <label class="white-text" for="time">Time:</label>
+                <input type="text" id="time" name="time" required>
+                <div class="button-group">
                 </div>
-			</div>
-            
-			<div class="buttons-container">
-                <button type="submit" class="submit-btn">Submit</button>
-                <button type="button" class="submit-btn red-btn">End Session</button>
-              </div>
-		</form>
+            </div>
+
+            <div class="buttons-container">
+                <button type="submit" class="submit-btn press-down">Submit</button>
+                <button type="button" class="submit-btn red-btn press-down">End Session</button>
+
+            </div>
+        </form>
         <br>
         <br>
         <br>
-        
+
         <div class="grid-container">
             <div class="grid-item">Socket ID</div>
             <div class="grid-item">Nickname</div>
@@ -59,7 +65,8 @@
             <div class="grid-item"># Wrong</div>
             <div class="grid-item">Current Answer</div>
         </div>
-	</div>
-    
+    </div>
+
 </body>
+
 </html>

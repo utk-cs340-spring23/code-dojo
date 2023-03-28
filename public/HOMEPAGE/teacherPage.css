@@ -1,3 +1,7 @@
+html{
+	font-family: 'Impact', cursive;
+}
+
 .container {
 	display: flex;
 	flex-direction: column;
