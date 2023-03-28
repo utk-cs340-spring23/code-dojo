@@ -59,12 +59,12 @@ section{
     max-height: 300px;
 }
 
-.faq-active svg{
+.faq.active svg{
     transform: rotate(180deg);
 }
 
 svg{
-    transition: transform .5s ease-in;
+    transition: transform .2s ease-in;
 }
 
 #hamburger {
