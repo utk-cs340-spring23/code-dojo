@@ -74,8 +74,7 @@ class QuizRoom {
     }
 
     /**
-     * Deletes specified Player object from the "players" table
-     * @param player Player to delete
+     * @param player Player to delete from "players" table
      * @returns True if successful, false otherwise
      */
     delete_player(player: Player): boolean {
@@ -83,7 +82,6 @@ class QuizRoom {
     }
 
     /**
-     *
      * @param socket_id Deletes specified socket ID from the "players" table
      * @returns True if successful, false otherwise
      */
@@ -99,7 +97,6 @@ class QuizRoom {
     }
 
     /**
-     *
      * @param question Question to push to the "questions" table
      * @returns True if successful, false otherwise
      */
@@ -113,12 +110,15 @@ class QuizRoom {
     }
 
     /**
-     *
      * @param player Player to get answer from
      * @returns Player's answer to the current question
      */
     get_player_curr_answer(player: Player): string {
         return player.answers[this.num_questions - 1];
+    }
+
+    set_player_curr_answer(player: Player, answer: string): void {
+        player.answers[this.num_questions - 1] = answer;
     }
 
     /**

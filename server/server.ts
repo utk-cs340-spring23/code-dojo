@@ -184,7 +184,7 @@ io.on("connection", function (socket: Socket) {
         clearTimeout(this_quizroom.timeout_id);
     });
 
-    /* When a player submits an answer, we store that answer in the player's "answers" table. The answer to the current question will be the answer indexed at num_questions - 1 */
+    /* When a player submits an answer, we store that answer in the player's "answers" table. */
     socket.on("submit answer", function (provided_answer) {
         if (this_player == null) {
             io.to(socket.id).emit("submit answer fail", "you don't exist on the server! something is terribly wrong");
@@ -204,7 +204,7 @@ io.on("connection", function (socket: Socket) {
         console.log(`${socket.id} submitted answer ${provided_answer}`);
 
         /* We do not use push here. If player submits more than one answer or if player joined midway through quiz, it still goes to the same index in their array of answers. */
-        this_player.answers[this_quizroom.num_questions - 1] = provided_answer;
+        this_quizroom.set_player_curr_answer(this_player, provided_answer);
 
         io.to(socket.id).emit("submit answer success", `successfully submitted answer "${provided_answer}"`);
         io.to(this_quizroom.host.socket.id).emit("player submit answer", socket.id, provided_answer);
