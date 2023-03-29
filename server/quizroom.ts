@@ -27,31 +27,31 @@ class QuizRoom {
         console.log(`Created new room with id ${id} and host socket id ${host.socket.id}`);
     }
 
-    get id(): string {
+    public get id(): string {
         return this._id;
     }
 
-    get host(): Host {
+    public get host(): Host {
         return this._host;
     }
 
-    get num_players(): number {
+    public get num_players(): number {
         return this._num_players;
     }
 
-    get players(): Player[] {
+    public get players(): Player[] {
         return this._players;
     }
 
-    get questions(): Question[] {
+    public get questions(): Question[] {
         return this._questions;
     }
 
-    get curr_question(): Question | undefined {
+    public get curr_question(): Question | undefined {
         return this._questions.at(-1);
     }
 
-    get num_questions(): number {
+    public get num_questions(): number {
         return this._questions.length;
     }
 
@@ -83,12 +83,12 @@ class QuizRoom {
     }
 
     /**
-     * Deletes specified socket ID from the "players" table
+     *
      * @param socket_id Deletes specified socket ID from the "players" table
      * @returns True if successful, false otherwise
      */
     delete_player_by_socket_id(socket_id: string): boolean {
-        if (this._players[socket_id] == undefined) {
+        if (this._players[socket_id] == null) {
             return false;
         }
 
@@ -99,8 +99,8 @@ class QuizRoom {
     }
 
     /**
-     * Pushes specified Question object to the "questions" table
-     * @param question Question to push
+     *
+     * @param question Question to push to the "questions" table
      * @returns True if successful, false otherwise
      */
     push_question(question: Question): boolean {
@@ -110,6 +110,15 @@ class QuizRoom {
 
         this.questions.push(question);
         return true;
+    }
+
+    /**
+     *
+     * @param player Player to get answer from
+     * @returns Player's answer to the current question
+     */
+    get_player_curr_answer(player: Player): string {
+        return player.answers[this.num_questions - 1];
     }
 
     /**
@@ -124,8 +133,7 @@ class QuizRoom {
         for (const [key, player] of Object.entries(this.players)) {
             assert(key == player.socket.id, "A player's socket id and their key don't match!");
 
-            /* We specifically check player.answers[this.num_questions - 1] instead of player.curr_answer, in the case that the player does not submit an answer for the current question, but their curr_answer happens to be the current answer */
-            if (this.curr_question.check_answer(player.answers[this.num_questions - 1])) {
+            if (this.curr_question.check_answer(this.get_player_curr_answer(player))) {
                 player.push_correct();
                 this.curr_question.increment_num_right();
             } else {
