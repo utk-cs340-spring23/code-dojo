@@ -83,23 +83,14 @@ class Question {
         return provided_answer == this._answer;
     }
 
-    /**
-     * Increases _num_right by 1
-     */
     public increment_num_right(): void {
         ++this._num_right;
     }
 
-    /**
-     * Increases _num_wrong by 1
-     */
     public increment_num_wrong(): void {
         ++this._num_wrong;
     }
 
-    /**
-     * Sets _is_active to false
-     */
     public close(): void {
         this._is_active = false;
     }

@@ -4,12 +4,12 @@ import { QuestionType, Question } from "./question";
 import { strict as assert } from 'node:assert';
 
 class QuizRoom {
-    #id: string;                                // Room id; also used for socket.io rooms
-    #host: Host;                                // Person that controls the room
-    #num_players: number;                       // How many players currently in QuizRoom
-    #players: Player[];                         // Table of players, keyed by socket ID
-    #questions: Question[];                     // Array of all questions
-    timeout_id: ReturnType<typeof setTimeout>   // Timeout ID for timed questions
+    private _id: string;                                // Room id; also used for socket.io rooms
+    private _host: Host;                                // Person that controls the room
+    private _num_players: number;                       // How many players currently in QuizRoom
+    private _players: Player[];                         // Table of players, keyed by socket ID
+    private _questions: Question[];                     // Array of all questions
+    public timeout_id: ReturnType<typeof setTimeout>   // Timeout ID for timed questions
 
     /**
      * Instantiates a new QuizRoom object
@@ -17,42 +17,42 @@ class QuizRoom {
      * @param host Controls question pushing and closing
      */
     constructor(id: string, host: Host) {
-        this.#id = id;
-        this.#host = host;
-        this.#num_players = 0;
-        this.#players = [];
-        this.#questions = [];
+        this._id = id;
+        this._host = host;
+        this._num_players = 0;
+        this._players = [];
+        this._questions = [];
         this.timeout_id = null;
 
         console.log(`Created new room with id ${id} and host socket id ${host.socket.id}`);
     }
 
     get id(): string {
-        return this.#id;
+        return this._id;
     }
 
     get host(): Host {
-        return this.#host;
+        return this._host;
     }
 
     get num_players(): number {
-        return this.#num_players;
+        return this._num_players;
     }
 
     get players(): Player[] {
-        return this.#players;
+        return this._players;
     }
 
     get questions(): Question[] {
-        return this.#questions;
+        return this._questions;
     }
 
     get curr_question(): Question | undefined {
-        return this.#questions.at(-1);
+        return this._questions.at(-1);
     }
 
     get num_questions(): number {
-        return this.#questions.length;
+        return this._questions.length;
     }
 
     /**
@@ -63,12 +63,12 @@ class QuizRoom {
     add_player(player: Player): boolean {
         // assert(this.players[player.socket.id] == null, `Trying to add player ${player.nickname} (${player.socket.id}) but that socket id already exists in the QuizRoom's players table`);
 
-        if (this.#players[player.socket.id] != null) {
+        if (this._players[player.socket.id] != null) {
             return false;
         }
 
         this.players[player.socket.id] = player;
-        ++this.#num_players;
+        ++this._num_players;
 
         return true;
     }
@@ -88,12 +88,12 @@ class QuizRoom {
      * @returns True if successful, false otherwise
      */
     delete_player_by_socket_id(socket_id: string): boolean {
-        if (this.#players[socket_id] == undefined) {
+        if (this._players[socket_id] == undefined) {
             return false;
         }
 
         delete this.players[socket_id];
-        --this.#num_players;
+        --this._num_players;
 
         return true;
     }

@@ -41,7 +41,7 @@ class Player {
         return this._is_correct;
     }
 
-    public get curr_answer(): string | undefined {
+    public get most_recent_answer(): string | undefined {
         return this._answers.at(-1);
     }
 

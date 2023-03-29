@@ -1,12 +1,20 @@
 import { Socket } from "socket.io";
 
 class Host {
-    nickname: String;
-    socket: Socket;
+    private _nickname: String;
+    private _socket: Socket;
 
     constructor(nickname: String, socket: Socket) {
-        this.nickname = nickname;
-        this.socket = socket;
+        this._nickname = nickname;
+        this._socket = socket;
+    }
+
+    public get nickname(): String {
+        return this._nickname;
+    }
+
+    public get socket(): Socket {
+        return this._socket;
     }
 }
 

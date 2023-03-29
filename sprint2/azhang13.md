@@ -24,7 +24,7 @@
 - Integrate front-end and back-end https://github.com/utk-cs340-spring23/code-dojo/issues/26
 
 ### What problems you encountered
-Implementing a fully-synchronous timer was much harder than anticipated. In addition, of the pre-existing code had to be refactored in order to support the addition of timed questions. For example, we had to wrap questions in a class that contained time info, and defer grading from the moment the user submits to when the host closes the question.
+Implementing a fully-synchronous timer was much harder than anticipated. In addition, much of the pre-existing code had to be refactored in order to support the addition of timed questions. For example, we had to wrap questions in a class that contained time info, and defer grading from the moment the user submits to when the host closes the question. This consumed much of my development time, so I did not get to implement the other planned features.
 
 ### Issues you worked on
 - Migrate Server Code to TypeScript https://github.com/utk-cs340-spring23/code-dojo/issues/28
@@ -51,7 +51,7 @@ Implementing a fully-synchronous timer was much harder than anticipated. In addi
 - Created Host class that contains the host's preferred name and socket
 - Created Player class that contains nickname, socket, answer history, and score in the current quiz
 - Created Question class that contains prompt, answer, grading info, and timer info
-- Started implementation of different question types with an override-able "check_answer()" method; will have specific implementation for each derived Question class
+- Started implementation of different question types with an override-able "check_answer()" method; we will have specific implementation for each derived Question class
 - Refactored code to use modern TypeScript-specific features such as class access modifiers, virtual/override class methods, public getters for private/protected members, etc.
 - Refactored the server code base for improved readability, including the addition of comments
 - Deferred question grading to when the question closes, instead of the moment when the user submits the answer
