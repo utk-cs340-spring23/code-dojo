@@ -6,7 +6,7 @@ class Player {
     private _num_right: number;
     private _num_wrong: number;
     private _answers: string[];
-    private _is_correct: boolean[];
+    private _is_correct: boolean[];     // e.g. _is_correct[3] is whether the player got question #4 correct
 
     constructor(nickname: string, socket: Socket) {
         this._nickname = nickname;
@@ -43,10 +43,6 @@ class Player {
 
     public get most_recent_answer(): string | undefined {
         return this._answers.at(-1);
-    }
-
-    public get is_curr_correct(): boolean | undefined {
-        return this._is_correct.at(-1);
     }
 
     public push_correct(): void {

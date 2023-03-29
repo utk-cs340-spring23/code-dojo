@@ -4,7 +4,7 @@ import { QuestionType, Question } from "./question";
 import { strict as assert } from 'node:assert';
 
 class QuizRoom {
-    private _id: string;                                // Room id; also used for socket.io rooms
+    private _id: string;                                // Unique room id; also used for socket.io rooms
     private _host: Host;                                // Person that controls the room
     private _num_players: number;                       // How many players currently in QuizRoom
     private _players: Player[];                         // Table of players, keyed by socket ID

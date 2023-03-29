@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------*/
 /* Imports                                                                    */
 /*----------------------------------------------------------------------------*/
-import { strict as assert } from 'node:assert';
+import { strict as assert } from "node:assert";
 import express from "express";
 import http from "http";
 import { Server as SocketIOServer, Socket } from "socket.io";
@@ -46,7 +46,7 @@ function close_question(this_quizroom: QuizRoom, io: SocketIOServer): boolean {
     for (const [key, player] of Object.entries(this_quizroom.players)) {
         assert(key == player.socket.id, "A player's socket id and their key don't match!");
 
-        if (player.is_curr_correct) {
+        if (player.is_correct[this_quizroom.num_questions - 1]) {
             io.to(player.socket.id).emit("answer correct", this_quizroom.get_player_curr_answer(player), this_quizroom.curr_question.answer);
             io.to(this_quizroom.host.socket.id).emit("player answer correct", player.socket.id);
         } else {
@@ -56,7 +56,7 @@ function close_question(this_quizroom: QuizRoom, io: SocketIOServer): boolean {
     }
 
     io.to(this_quizroom.id).emit("close question success", "Successfully closed and graded questions");
-    return true
+    return true;
 }
 
 /*----------------------------------------------------------------------------*/
@@ -113,7 +113,7 @@ io.on("connection", function (socket: Socket) {
         socket.join(room_id);
         this_quizroom = quizrooms[room_id];
 
-        assert(this_quizroom != null && this_quizroom != undefined, `Player ${nickname} (id ${socket.id}) just joined room ${room_id} but the room does not exist on the server!`);
+        assert(this_quizroom != null, `Player ${nickname} (id ${socket.id}) just joined room ${room_id} but the room does not exist on the server!`);
 
         /* Add player to the QuizRoom "players" table */
         this_quizroom.add_player(new Player(nickname, socket));
@@ -192,7 +192,7 @@ io.on("connection", function (socket: Socket) {
         }
 
         if (this_quizroom == null) {
-            io.to(socket.id).emit("submit answer fail", "room does not exist");
+            io.to(socket.id).emit("submit answer fail", "you are not in a room");
             return;
         }
 
@@ -203,14 +203,14 @@ io.on("connection", function (socket: Socket) {
 
         console.log(`${socket.id} submitted answer ${provided_answer}`);
 
-        /* We do not use push here. If player submits more than one answer or if player joined midway through quiz, it still goes to the same index in their array of answers. */
+        /* We do not simply "push" the answer onto the answers array. We need to account for the possibilty that the player may submit more than one answer and/or the player may join midway through quiz. */
         this_quizroom.set_player_curr_answer(this_player, provided_answer);
 
         io.to(socket.id).emit("submit answer success", `successfully submitted answer "${provided_answer}"`);
         io.to(this_quizroom.host.socket.id).emit("player submit answer", socket.id, provided_answer);
     });
 
-    /* If the host leaves, delete the entire QuizRoom. If a player leaves, only delete that player's entry the QuizRoom's "Players" table. */
+    /* If the host leaves, delete the QuizRoom. If a player leaves, only delete that player's entry the QuizRoom's "Players" table. */
     socket.on("disconnect", function () {
         --num_connections;
         console.log(`disconnect ${socket.id} (total connections ${num_connections})`);
