@@ -34,22 +34,41 @@
             </form>
           </div> 
            -->
-
+        <form id="room-form">
+            <input id="room-input" autocomplete="off" placeholder="room id">
+            <input id="nickname-input" autocomplete="off" placeholder="enter a nickname">
+            <button>Join Room</button>
+        </form>
          
-        <div class="question">
+        <form class="question-set" id="answer-form">
             <!-- text boxes for question and icons -->
-            <p class="questionbox" placeholder="Waiting for host"></p>
-            <textarea class="answerbox" placeholder="Answer here"></textarea>
+            <p class="questionbox" id="question" placeholder="Waiting for host"></p>
+            <textarea class="answerbox" id="answer-input" placeholder="Answer here"></textarea>
 
             <!-- vectors for submit and compile icons -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="submit">
-                <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" height="48" width="48" id="compile">
+            <!-- <button type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+                </svg>
+                Submit
+            </button> -->
+            <button id="submit-answer-button" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="submit">
+                    <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+                </svg>
+            </button>
+            
+            <center><div class="timer-box">
+                <div class="timer-display" id="question-timer">00:00:00</div>
+              </div>
+            </center>
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" height="48" width="48" id="compile">
                 <path
                     d="M705 928 447 668q-23 8-46 13t-47 5q-97.083 0-165.042-67.667Q121 550.667 121 454q0-31 8.158-60.388Q137.316 364.223 152 338l145 145 92-86-149-149q25.915-15.158 54.957-23.579Q324 216 354 216q99.167 0 168.583 69.417Q592 354.833 592 454q0 24-5 47t-13 46l259 258q11 10.957 11 26.478Q844 847 833 858l-76 70q-10.696 11-25.848 11T705 928Zm28-57 40-40-273-273q16-21 24-49.5t8-54.5q0-75-55.5-127T350 274l101 103q9 9 9 22t-9 22L319 545q-9 9-22 9t-22-9l-97-96q3 77 54.668 127T354 626q25 0 53-8t49-24l277 277ZM476 572Z" />
-            </svg>
-        </div>
+            </svg> -->
+            <p class="q-feedback" id="question-feedback">Question feedback placeholder</p>
+
+        </form>
         
 
         <!-- vectors for hamburger and makeNote icons -->
@@ -89,10 +108,6 @@
                 <button class="btn">About</button>
             </a>
         </div>
-        <center><div class="timer-box">
-            <div class="timer-display">00:00:00</div>
-          </div>
-           </center>
     </main>
     <!-- add the js for sidebar pull-out animation -->
     <script src="mainPage.js"></script>

@@ -74,6 +74,9 @@ input[type="text"] {
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px;
     margin-bottom: 20px;
+
+	margin-left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .grid-item {
