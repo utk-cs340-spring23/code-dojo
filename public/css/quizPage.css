@@ -115,7 +115,7 @@ main {}
     left: 50%; */
     /* scale the textbox based on window size */
     /* transform: translate(-50%, -50%); */
-    width: 500px;
+    width: 75%;
     height: 35%;
     max-width: 1440px;
     background-color:rgb(241, 241, 241);
