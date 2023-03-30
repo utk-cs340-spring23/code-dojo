@@ -17,7 +17,7 @@ import { QuizRoom } from "./quizroom.js";
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
 const port: number = 3000;
-const public_path = new URL("../public", import.meta.url).pathname;
+const public_path = new URL("../public/", import.meta.url).pathname;
 
 app.use(express.static(public_path));
 

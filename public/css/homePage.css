@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* background picture. Added to full screen with blue*/
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+.background-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/dojo2.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.content-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* create the stylign for the nav bar and placed at the top of the screen*/
+.top-nav {
+  background-color: rgba(0, 0, 0, 0.986);
+  color: #fff;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.top-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.top-nav ul li {
+  margin: 0 10px;
+}
+
+.top-nav ul li a {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.top-nav ul li a:hover {
+  background-color: #555;
+}
+
+/* buttons for the nav bar */
+.btn {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px 5px;
+  font-style: oblique;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #555555;
+  color: #ffffff;
+}
+
+
+/* button to join the session ID */
+button {
+  background-color: #23a6d5;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: 'Tilt Warp', cursive;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 13.874px 20px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+button::before {
+  background-color: #ffffff;
+  border-radius: 30px;
+  content: '';
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.3s ease;
+  width: 100%;
+  z-index: -1;
+}
+
+button:hover {
+  color: #1b7494;
+}
+
+button:hover::before {
+  opacity: 0.2;
+}
+
+/* message box for the session ID */
+.message-box {
+  display: flex;
+  align-items: center;
+  margin: -8em auto 0;
+  max-width: 400px;
+  background-color: #ffffff00;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.message-box input[type="text"] {
+  font-family: 'Tilt Warp', cursive;
+  flex: 1;
+  padding: 15px;
+  border: none;
+  font-size: 16px;
+}
+
+.message-box button[type="submit"] {
+  background-color: #23a6d5;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 13.874px 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.message-box button[type="submit"]:hover {
+  background-color: #187fa5;
+}

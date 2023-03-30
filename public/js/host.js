@@ -12,6 +12,8 @@ const timer_input = document.getElementById("timer-input");
 const push_question_button = document.getElementById("push-question-button");
 const close_question_button = document.getElementById("close-question-button");
 const player_table = document.getElementById("player-table");
+const player_table_body = document.getElementById("player-table-body");
+
 
 /*----------------------------------------------------------------------------*/
 /* Functions                                                                  */
@@ -119,30 +121,30 @@ socket.on("player join", function (socket_id, nickname) {
     // Add to player table
     let table_row = document.createElement("tr");
     table_row.setAttribute("id", socket_id);
-    player_table.appendChild(table_row);
+    player_table_body.appendChild(table_row);
 
     let table_entry = document.createElement("td");
-    table_entry.setAttribute("class", "socket-id");
+    table_entry.setAttribute("class", "socket-id grid-item");
     table_entry.textContent = socket_id;
     table_row.appendChild(table_entry);
 
     table_entry = document.createElement("td");
-    table_entry.setAttribute("class", "nickname");
+    table_entry.setAttribute("class", "nickname grid-item");
     table_entry.textContent = nickname;
     table_row.appendChild(table_entry);
 
     table_entry = document.createElement("td");
-    table_entry.setAttribute("class", "num-right");
+    table_entry.setAttribute("class", "num-right grid-item");
     table_entry.textContent = "0";
     table_row.appendChild(table_entry);
 
     table_entry = document.createElement("td");
-    table_entry.setAttribute("class", "num-wrong");
+    table_entry.setAttribute("class", "num-wrong grid-item");
     table_entry.textContent = "0";
     table_row.appendChild(table_entry);
 
     table_entry = document.createElement("td");
-    table_entry.setAttribute("class", "current-answer");
+    table_entry.setAttribute("class", "current-answer grid-item");
     table_entry.textContent = "";
     table_row.appendChild(table_entry);
 
