@@ -79,17 +79,24 @@ main {}
     text-align: left;
   }
 
+.question-set{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .questionbox{
     /* format the question textbox */
     font-family: 'Tilt Warp', cursive;
     font-size: medium;
-    position: fixed;
+    /* position: fixed;
     top: 25%;
-    left: 50%;
+    left: 50%; */
     /* scale the textbox based on window size */
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
     width: 75%;
     height: 20%;
+    min-height: 150px;
     max-width: 1440px;
     background-color:rgb(241, 241, 241);
     padding: 1em;
@@ -103,12 +110,12 @@ main {}
     /* format the answer textbox */
     font-family: 'Tilt Warp', cursive;
     font-size: medium;
-    position: fixed;
+    /* position: fixed;
     top: 70%;
-    left: 50%;
+    left: 50%; */
     /* scale the textbox based on window size */
-    transform: translate(-50%, -50%);
-    width: 75%;
+    /* transform: translate(-50%, -50%); */
+    width: 500px;
     height: 35%;
     max-width: 1440px;
     background-color:rgb(241, 241, 241);
@@ -119,18 +126,20 @@ main {}
     resize: none;
 }
 
-#submit{
+#submit-answer-button{
     /* attributes for submit button */
+    background: none;
+    border: none;
     cursor: pointer;
-    width: 55px;
-    height: 55px;
+    width: 65px;
+    height: 65px;
     fill: white;
     position: absolute;
     bottom: 1%;
     right: 10px;
 }
 
-#submit:active{
+#submit-answer-button:active svg{
     /* make slightly smaller on click */
     transform: scale(0.9);
 }
