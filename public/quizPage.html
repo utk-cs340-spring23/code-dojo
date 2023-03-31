@@ -35,33 +35,27 @@
             </form>
           </div>
            -->
-        <form id="room-form">
-            <input id="room-input" autocomplete="off" placeholder="room id">
-            <input id="nickname-input" autocomplete="off" placeholder="enter a nickname">
-            <button>Join Room</button>
-        </form>
-
         <div class="question-set">
+            <form id="room-form">
+                <input id="room-input" autocomplete="off" placeholder="room id">
+                <input id="nickname-input" autocomplete="off" placeholder="enter a nickname">
+                <button>Join Room</button>
+            </form>
+
             <div class="timer-box">
-                    <div class="timer-display" id="question-timer">00:00:00</div>
+                <div class="timer-display" id="question-timer">00:00:00</div>
             </div>
-            <p id="question-feedback" style="color: #fff">Question feedback placeholder</p>
+            <p id="question-feedback" style="color: #fff">Question feedback will be shown here</p>
             <p class="questionbox" id="question" placeholder="Waiting for host">Waiting for host</p>
 
-
-            <form id="answer-form">
+            
+            <form class="answer-submit" id="answer-form">
                 <!-- text boxes for question and icons -->
-                <textarea class="answerbox" id="answer-input" placeholder="Answer here"></textarea>
-
-                <!-- vectors for submit and compile icons -->
-                <!-- <button type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
-                    </svg>
-                    Submit
-                </button> -->
+                <center>
+                    <textarea class="questionbox" id="answer-input" placeholder="Answer here"></textarea>
+                </center>
                 <button id="submit-answer-button" type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="submit">
                         <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
                     </svg>
                 </button>

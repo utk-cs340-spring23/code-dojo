@@ -6,8 +6,9 @@ html{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	height: 100vh;
+
 }
 
 .form-input {
@@ -74,7 +75,6 @@ input[type="text"] {
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px;
     margin-bottom: 20px;
-
 	margin-left: 50%;
 	transform: translate(-50%, -50%);
 }
@@ -82,7 +82,7 @@ input[type="text"] {
 .grid-item {
     background-color: #ffffff;
     color: #333333;
-    border-radius: 5px;
+    border-radius:5px;
     padding: 10px;
     font-weight: bold;
     font-size: 16px;
