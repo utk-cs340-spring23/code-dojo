@@ -73,10 +73,12 @@ input[type="text"] {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 10px;
+	grid-gap: 10px;
+	
     margin-bottom: 20px;
 	margin-left: 50%;
 	transform: translate(-50%, -50%);
+	/* border-spacing: 20px; */
 }
 
 .grid-item {
