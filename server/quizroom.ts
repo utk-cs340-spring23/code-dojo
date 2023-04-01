@@ -9,7 +9,7 @@ class QuizRoom {
     private _num_players: number;                       // How many players currently in QuizRoom
     private _players: Player[];                         // Table of players, keyed by socket ID
     private _questions: Question[];                     // Array of all questions
-    public timeout_id: ReturnType<typeof setTimeout>   // Timeout ID for timed questions
+    public timeout_id: ReturnType<typeof setTimeout>    // Timeout ID for timed questions
 
     /**
      * Instantiates a new QuizRoom object
@@ -60,7 +60,7 @@ class QuizRoom {
      * @param player Player to add
      * @returns True if successful, false otherwise
      */
-    add_player(player: Player): boolean {
+    public add_player(player: Player): boolean {
         // assert(this.players[player.socket.id] == null, `Trying to add player ${player.nickname} (${player.socket.id}) but that socket id already exists in the QuizRoom's players table`);
 
         if (this._players[player.socket.id] != null) {
@@ -77,7 +77,7 @@ class QuizRoom {
      * @param player Player to delete from "players" table
      * @returns True if successful, false otherwise
      */
-    delete_player(player: Player): boolean {
+    public delete_player(player: Player): boolean {
         return this.delete_player_by_socket_id(player.socket.id);
     }
 
@@ -85,7 +85,7 @@ class QuizRoom {
      * @param socket_id Deletes specified socket ID from the "players" table
      * @returns True if successful, false otherwise
      */
-    delete_player_by_socket_id(socket_id: string): boolean {
+    public delete_player_by_socket_id(socket_id: string): boolean {
         if (this._players[socket_id] == null) {
             return false;
         }
@@ -100,7 +100,7 @@ class QuizRoom {
      * @param question Question to push to the "questions" table
      * @returns True if successful, false otherwise
      */
-    push_question(question: Question): boolean {
+    public push_question(question: Question): boolean {
         if (this.curr_question?.is_active) {
             return false;
         }
@@ -113,11 +113,11 @@ class QuizRoom {
      * @param player Player to get answer from
      * @returns Player's answer to the current question
      */
-    get_player_curr_answer(player: Player): string {
+    public get_player_curr_answer(player: Player): string {
         return player.answers[this.num_questions - 1];
     }
 
-    set_player_curr_answer(player: Player, answer: string): void {
+    public set_player_curr_answer(player: Player, answer: string): void {
         player.answers[this.num_questions - 1] = answer;
     }
 
@@ -125,7 +125,7 @@ class QuizRoom {
      * Closes the current question, grading every players' answer
      * @returns True if successful, false otherwise
      */
-    close_question(): boolean {
+    public close_question(): boolean {
         if (!this.curr_question?.is_active) {
             return false;
         }

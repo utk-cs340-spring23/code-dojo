@@ -1,6 +1,8 @@
 enum QuestionType {
     free_response,
-    multiple_choice
+    multiple_choice,
+    multiple_select,
+    code
 }
 
 class Question {
@@ -74,11 +76,6 @@ class Question {
         return this._is_active;
     }
 
-    /**
-     * Returns whether a provided answer is correct
-     * @param provided_answer String of the provided answer
-     * @returns True if correct, false otherwise
-     */
     public check_answer(provided_answer: string): boolean {
         return provided_answer == this._answer;
     }
@@ -99,7 +96,7 @@ class Question {
 
 class MCQuestion extends Question {
     private _answer_choices: string[];      // Answer choices for multiple choice questions
-    private _correct_answer_index: number; // Index of correct answer
+    private _correct_answer_index: number;  // Index of correct answer
 
     constructor(prompt: string, answer_choices: string[], correct_answer_index: number, is_timed: boolean, time_limit: number) {
         super(prompt, answer_choices[correct_answer_index], is_timed, time_limit);
