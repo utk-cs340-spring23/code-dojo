@@ -98,15 +98,9 @@ class QuizRoom {
 
     /**
      * @param question Question to push to the "questions" table
-     * @returns True if successful, false otherwise
      */
-    public push_question(question: Question): boolean {
-        if (this.curr_question?.is_active) {
-            return false;
-        }
-
+    public push_question(question: Question): void {
         this.questions.push(question);
-        return true;
     }
 
     /**

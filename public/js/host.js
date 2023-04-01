@@ -14,7 +14,6 @@ const close_question_button = document.getElementById("close-question-button");
 const player_table = document.getElementById("player-table");
 const player_table_body = document.getElementById("player-table-body");
 
-
 /*----------------------------------------------------------------------------*/
 /* Functions                                                                  */
 /*----------------------------------------------------------------------------*/

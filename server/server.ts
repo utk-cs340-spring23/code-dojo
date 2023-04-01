@@ -8,7 +8,7 @@ import { Server as SocketIOServer, Socket } from "socket.io";
 
 import { Host } from "./host.js";
 import { Player } from "./player.js";
-import { QuestionType, Question } from "./question.js";
+import { QuestionType, Question, FRQuestion } from "./question.js";
 import { QuizRoom } from "./quizroom.js";
 
 /*----------------------------------------------------------------------------*/
@@ -17,7 +17,7 @@ import { QuizRoom } from "./quizroom.js";
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
 const port: number = 3000;
-const public_path = new URL("../public/", import.meta.url).pathname;
+const public_path: string = new URL("../public/", import.meta.url).pathname;
 
 app.use(express.static(public_path));
 
@@ -26,7 +26,7 @@ server.listen(port, function () {
 });
 
 let num_connections: number = 0;
-let quizrooms: QuizRoom[] = [];
+let quizrooms: QuizRoom[] = [];     // Array of all active QuizRooms, keyed by their string room ID
 
 /*----------------------------------------------------------------------------*/
 /* Functions                                                                  */
@@ -147,9 +147,12 @@ io.on("connection", function (socket: Socket) {
             return;
         }
 
-        let is_timed: boolean = !Number.isNaN(time_limit_s) && time_limit_s != null;
+        let is_timed: boolean = time_limit_s > 0;
 
-        let question: Question = new Question(prompt, answer, is_timed, time_limit_s * 1000);
+        let answers: string[] = [];
+        answers.push(answer);
+
+        let question: Question = new FRQuestion(prompt, answers, time_limit_s * 1000);
         this_quizroom.push_question(question);
 
         io.to(socket.id).emit("new question success", "successfully pushed question");

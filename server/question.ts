@@ -1,14 +1,23 @@
 enum QuestionType {
+    unknown,
     free_response,
     multiple_choice,
-    multiple_select,
     code
 }
 
+enum CodeLanguage {
+    JavaScript
+}
+
+/**
+ * Abstract Class Question
+ *
+ * @class Question
+ */
 class Question {
     protected _type: QuestionType;
-    protected _prompt: string;            // The actual text of the question
-    protected _answer: string;            // The correct answer
+    protected _prompt: string;            // The text of the question
+    protected _answer: string;            // The text of the correct answer
     protected _start_time: number;        // Unix time (ms) when question was created
     protected _is_timed: boolean;         // Is the question timed?
     protected _time_limit: number;        // Amount of time (ms) to complete the question
@@ -23,16 +32,20 @@ class Question {
      * @param prompt String of the actual question
      * @param answer String of the answer
      */
-    constructor(prompt: string, answer: string, is_timed: boolean, time_limit: number) {
-        this._type = QuestionType.free_response;
+    constructor(prompt: string, answer: string, time_limit: number) {
+        if (this.constructor == Question) {
+            throw new Error("Abstract classes cannot be instantiated.");
+        }
+
+        this._type = QuestionType.unknown;
         this._prompt = prompt;
         this._answer = answer;
-        this._num_right = 0;
-        this._num_wrong = 0;
         this._start_time = Date.now();
-        this._is_timed = is_timed;
+        this._is_timed = time_limit > 0;
         this._time_limit = time_limit;
         this._end_time = this.start_time + time_limit;
+        this._num_right = 0;
+        this._num_wrong = 0;
         this._is_active = true;
     }
 
@@ -76,8 +89,8 @@ class Question {
         return this._is_active;
     }
 
-    public check_answer(provided_answer: string): boolean {
-        return provided_answer == this._answer;
+    public check_answer(provided_answer: string): number {
+        throw new Error("Method 'check_answer()' must be implemented");
     }
 
     public increment_num_right(): void {
@@ -94,29 +107,55 @@ class Question {
 
 }
 
-class MCQuestion extends Question {
-    private _answer_choices: string[];      // Answer choices for multiple choice questions
-    private _correct_answer_index: number;  // Index of correct answer
+/**
+ * Free Response Question
+ *
+ * @class FRQuestion
+ * @extends Question
+ */
+class FRQuestion extends Question {
+    private _answers: string[];
 
-    constructor(prompt: string, answer_choices: string[], correct_answer_index: number, is_timed: boolean, time_limit: number) {
-        super(prompt, answer_choices[correct_answer_index], is_timed, time_limit);
-        this._type = QuestionType.multiple_choice;
-        this._num_right = 0;
-        this._num_wrong = 0;
-        this._start_time = Date.now();
-        this._end_time = this.start_time + time_limit;
-        this._is_active = true;
-
-        this._answer_choices = answer_choices;
-        this._correct_answer_index = correct_answer_index;
+    constructor(prompt: string, answers: string[], time_limit: number) {
+        super(prompt, answers[0], time_limit);
+        this._type = QuestionType.free_response;
+        this._answers = answers;
     }
 
-    public get_answer_choices(): string[] {
+    public check_answer(provided_answer: string): number {
+        for (const answer of this._answers) {
+            if (provided_answer == answer) {
+                return 1;
+            }
+        }
+
+        return 0;
+    }
+}
+
+/**
+ * Multiple Choice Question
+ *
+ * @class MCQuestion
+ * @extends Question
+ */
+class MCQuestion extends Question {
+    private _answer_choices: string[];      // Answer choices for multiple choice questions
+    private _correct_answer_indices: number[];  // Index of correct answer
+
+    constructor(prompt: string, answer_choices: string[], correct_answer_indices: number[], time_limit: number) {
+        super(prompt, "this is a placeholder! todo: format string of all correct answer choices", time_limit);
+        this._type = QuestionType.multiple_choice;
+        this._answer_choices = answer_choices;
+        this._correct_answer_indices = correct_answer_indices;
+    }
+
+    public get answer_choices(): string[] {
         return this._answer_choices;
     }
 
-    public get_correct_answer_index(): number {
-        return this._correct_answer_index;
+    public get correct_answer_indices(): number[] {
+        return this._correct_answer_indices;
     }
 
     /**
@@ -124,11 +163,35 @@ class MCQuestion extends Question {
      * @param provided_answer_index String of answer choice (e.g. "0", "1", ...)
      * @returns True if correct, false otherwise
      */
-    public override check_answer(provided_answer_index: string): boolean {
-        return parseInt(provided_answer_index) === this._correct_answer_index;
+    public override check_answer(provided_answer_index: string): number {
+        let grade: number = 0;
+
+        // TODO: grade the answer by counting up number of right and subtract by number of wrong
+
+        return 0;
+    }
+}
+
+class CodeQuestion extends Question {
+    private _test_cases: any[];
+    private _correct_outputs: string[];
+    private _language: CodeLanguage;
+
+    constructor(prompt: string, language: CodeLanguage, test_cases: any[], correct_outputs: string[], time_limit: number) {
+        super(prompt, "todo: answer (sample code)", time_limit);
+        this._type = QuestionType.code;
+        this._test_cases = test_cases;
+        this._correct_outputs = correct_outputs;
+        this._language = language;
+    }
+
+    public override check_answer(provided_answer: string): number {
+
     }
 }
 
 export { QuestionType };
+export { CodeLanguage };
 export { Question };
+export { FRQuestion };
 export { MCQuestion };
