@@ -17,13 +17,26 @@ body {
 	left: 20px;
 }
 
+.columns{
+	width: 100vw;
+	display: flex;
+
+}
+
 .container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
 	height: 100vh;
-
+	width: 50vw;
+	left: 50%;
+	
+	margin-left: 15%;
+}
+.right-side{
+	width: 50vw;
+	right: 50%;
 }
 
 .form-input {
@@ -94,6 +107,7 @@ input[type="text"] {
 	margin-left: 50%;
 	transform: translate(-50%, -50%);
 	/* border-spacing: 20px; */
+	margin-top: 25%;
 }
 
 .grid-item {
