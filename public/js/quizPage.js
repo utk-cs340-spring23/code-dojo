@@ -2,8 +2,10 @@
 const hamburger = document.getElementById('hamburger')
 const sidebar = document.getElementById('sidebar')
 const overlay = document.getElementById('overlay')
+const feedback = document.getElementById('question-feedback')
 
 let menuOpen = false // menu starts closed
+let questionCorrect = true;
 
 function openMenu() {
     // change width to 'open' sidebar
@@ -33,4 +35,6 @@ overlay.addEventListener('click', function () {
     }
 })
 
-
+function showCheckMark(){
+    feedback.style.color = 'green'
+}
