@@ -35,19 +35,20 @@
             </form>
           </div>
            -->
+        
         <div class="question-set">
+            <div class="timer-box">
+                <div class="timer-display" id="question-timer">00:00:00</div>
+            </div>
             <form id="room-form">
                 <input id="room-input" autocomplete="off" placeholder="room id">
                 <input id="nickname-input" autocomplete="off" placeholder="enter a nickname">
                 <button>Join Room</button>
             </form>
-
-            <div class="timer-box">
-                <div class="timer-display" id="question-timer">00:00:00</div>
-            </div>
+            
             <p id="question-feedback" style="color: #fff">Question feedback will be shown here</p>
             <p class="questionbox" id="question" placeholder="Waiting for host">Waiting for host</p>
-
+            
             
             <form class="answer-submit" id="answer-form">
                 <!-- text boxes for question and icons -->
@@ -59,7 +60,6 @@
                         <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
                     </svg>
                 </button>
-
 
                 <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" height="48" width="48" id="compile">
                     <path
