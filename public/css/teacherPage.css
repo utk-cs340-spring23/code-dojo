@@ -135,5 +135,12 @@ input[type="text"] {
 .red-btn {
 	background-color: red;
 }
+.timer-display {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 1px;
+    top: 1%;
+    color:#ffffff;
+  }
 
 
