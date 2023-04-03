@@ -38,7 +38,7 @@ body {
 
 /* create the stylign for the nav bar and placed at the top of the screen*/
 .top-nav {
-  background-color: rgba(0, 0, 0, 0.986);
+  background-color: rgb(0, 0, 0);
   color: #fff;
   height: 40px;
   display: flex;
@@ -67,19 +67,17 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.top-nav ul li a:hover {
-  background-color: #555;
-}
+
 
 /* buttons for the nav bar */
 .btn {
-  background-color: #000000;
+  background-color: #00000000;
   color: #ffffff;
   padding: 10px 5px;
   font-style: oblique;
   font-size: 18px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.1s ease;
 }
 
 .btn:hover {
@@ -97,8 +95,10 @@ button {
   font-family: 'Tilt Warp', cursive;
   font-size: 18px;
   font-weight: bold;
-  padding: 13.874px 20px;
+  padding: 13.874px ;
   position: relative;
+  text-align: center; /* add text-align property and set to center */
+  width: 100%; /* add width property and set to 100% */
   transition: all 0.3s ease;
 }
 
@@ -142,6 +142,7 @@ button:hover::before {
   padding: 15px;
   border: none;
   font-size: 16px;
+  width: 700%;
 }
 
 .message-box button[type="submit"] {
@@ -150,7 +151,7 @@ button:hover::before {
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
-  padding: 13.874px 20px;
+  padding: 100.874px 200px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
