@@ -62,6 +62,7 @@ socket.on("join room success", function (room_id) {
 /*----------------------------------------------------------------------------*/
 socket.on("push question", function (prompt, end_time) {
     question_tag.innerText = "Question: " + prompt;
+    question_feedback_tag.innerText = '';
     answer_input.disabled = false;
     submit_answer_button.disabled = false;
 
@@ -91,6 +92,7 @@ document.getElementById("answer-form").addEventListener("submit", function (e) {
 });
 
 socket.on("submit answer success", function (msg) {
+    question_feedback_tag.style.color = 'white';
     question_feedback_tag.innerText = msg;
 });
 
@@ -99,10 +101,13 @@ socket.on("submit answer fail", function (msg) {
 });
 
 socket.on("answer correct", function (player_answer, correct_answer) {
-    question_feedback_tag.innerText = `Correct! You answered "${player_answer}". Correct answer is "${correct_answer}"`;
+    //question_feedback_tag.innerText = `Correct! You answered "${player_answer}". Correct answer is "${correct_answer}"`;
+    question_feedback_tag.innerText = 'Correct!';
+    question_feedback_tag.style.color = 'green';
+    
 });
 
 socket.on("answer incorrect", function (player_answer, correct_answer) {
     question_feedback_tag.innerText = `Incorrect. You answered "${player_answer}". Correct answer is "${correct_answer}"`;
-
+    question_feedback_tag.style.color = 'red';
 });
