@@ -61,13 +61,21 @@ class QuizRoom {
      * @returns True if successful, false otherwise
      */
     public add_player(player: Player): boolean {
-        // assert(this.players[player.socket.id] == null, `Trying to add player ${player.nickname} (${player.socket.id}) but that socket id already exists in the QuizRoom's players table`);
-
         if (this._players[player.socket.id] != null) {
             return false;
         }
 
-        this.players[player.socket.id] = player;
+        /* Check for unique nickname */
+        /* TODO: consider instead storing a table keyed by nicknames for O(1) checking for unique nicknames */
+        for (const [socket_id, other_player] of Object.entries(this._players)) {
+            assert(socket_id == other_player.socket.id, "A player's socket id and their key don't match!");
+
+            if (player.nickname == other_player.nickname) {
+                return false;
+            }
+        }
+
+        this._players[player.socket.id] = player;
         ++this._num_players;
 
         return true;
@@ -90,7 +98,7 @@ class QuizRoom {
             return false;
         }
 
-        delete this.players[socket_id];
+        delete this._players[socket_id];
         --this._num_players;
 
         return true;
@@ -124,8 +132,8 @@ class QuizRoom {
             return false;
         }
 
-        for (const [key, player] of Object.entries(this.players)) {
-            assert(key == player.socket.id, "A player's socket id and their key don't match!");
+        for (const [socket_id, player] of Object.entries(this._players)) {
+            assert(socket_id == player.socket.id, "A player's socket id and their key don't match!");
 
             if (this.curr_question.check_answer(this.get_player_curr_answer(player))) {
                 player.push_correct();

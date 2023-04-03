@@ -110,13 +110,20 @@ io.on("connection", function (socket: Socket) {
         }
 
         /* Join the socket room */
-        socket.join(room_id);
         this_quizroom = quizrooms[room_id];
 
         assert(this_quizroom != null, `Player ${nickname} (id ${socket.id}) just joined room ${room_id} but the room does not exist on the server!`);
 
         /* Add player to the QuizRoom "players" table */
-        this_quizroom.add_player(new Player(nickname, socket));
+        let add_player_success: boolean = this_quizroom.add_player(new Player(nickname, socket));
+
+        if (!add_player_success) {
+            io.to(socket.id).emit("join room fail", `duplicate nickname`);
+            this_quizroom = null;
+            return;
+        }
+
+        socket.join(room_id);
         this_player = this_quizroom.players[socket.id];
 
         io.to(socket.id).emit("join room success", room_id);
