@@ -186,7 +186,8 @@ class CodeQuestion extends Question {
     }
 
     public override check_answer(provided_answer: string): number {
-
+        // TODO: fix temp change
+        return 0;
     }
 }
 
