@@ -1,13 +1,13 @@
 cols = document.getElementById('col')
 container = document.getElementById('inputs')
 
-function putGridBelow(){
+function putGridBelow() {
     if ((window.innerWidth - 100) < window.innerHeight) {
         cols.style.flexDirection = "column";
         container.style.width = "100vh";
         container.style.left = "0%";
         container.style.marginLeft = "0px";
-    }else{
+    } else {
         cols.style.flexDirection = "row";
         container.style.width = "50vh";
         container.style.left = "50%";
@@ -16,3 +16,4 @@ function putGridBelow(){
 }
 
 window.addEventListener("resize", putGridBelow);
+putGridBelow();
