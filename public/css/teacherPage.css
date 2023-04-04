@@ -13,14 +13,15 @@ body {
 
 .home-btn {
 	position: absolute;
-	top: 20px;
-	left: 20px;
+	top: 1%;
+	left: 1%;
 }
 
 .columns{
 	width: 100vw;
 	display: flex;
-
+	justify-content: space-evenly;
+	flex-direction: row;
 }
 
 .container {
@@ -28,15 +29,20 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
-	height: 100vh;
+	height: 100%;
 	width: 50vw;
 	left: 50%;
-	
-	margin-left: 15%;
+	margin-top: 40px;
+	margin-left: 100px;
 }
+
+.buttons-container{
+	margin-bottom: 30px;
+}
+
 .right-side{
 	width: 50vw;
-	right: 50%;
+	left: 50%;
 }
 
 .form-input {
@@ -144,3 +150,18 @@ input[type="text"] {
   }
 
 
+#room-input{
+	width: 25vw;
+}
+
+#question-input{
+	width: 35vw;
+}
+
+#answer-input{
+	width: 35vw;
+}
+
+#timer-input{
+	width: 25vw;
+}
