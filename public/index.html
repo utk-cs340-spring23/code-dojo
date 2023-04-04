@@ -32,14 +32,18 @@
       <center><img src="img/CodeLogo.png" alt="CodeDojo LOGO" style="width:500px;height:400px"></center>
     </div>
     <!-- adding the message box for session ID as well as the connected button-->
-    <div class="message-box">
+    <form id="join-room-form" class="message-box">
       <div>
-        <input type="text" placeholder="Session ID">
-        <input type="text" placeholder="Nickname">
-        <button onclick="window.location.href = 'quizPage.html';">JOIN</button>
+        <input id="room-input" type="text" placeholder="Session ID">
+        <input id="nickname-input" type="text" placeholder="Nickname">
+        <button>JOIN</button>
       </div>
-    </div>
+    </form>
   </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/index.js"></script>
 
 </body>
 

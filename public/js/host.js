@@ -1,4 +1,4 @@
-// NOTE: util.js is loaded before this file. This file uses functions defiend in util.js
+// NOTE: util.js is loaded before this file. This file uses functions defined in util.js
 
 /*----------------------------------------------------------------------------*/
 /* Constants                                                                  */

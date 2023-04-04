@@ -126,7 +126,9 @@ io.on("connection", function (socket: Socket) {
         socket.join(room_id);
         this_player = this_quizroom.players[socket.id];
 
-        io.to(socket.id).emit("join room success", room_id);
+        assert(this_quizroom.id == room_id, "Join Room: this_quizroom.id does not match room_id!");
+
+        io.to(socket.id).emit("join room success", `Successfully joined room "${room_id}" as ${this_player.nickname}! Waiting for host...`);
 
         /* If there's a question active when the user joined, push it to the user */
         if (this_quizroom.curr_question?.is_active) {

@@ -1,4 +1,4 @@
-// NOTE: util.js is loaded before this file. This file uses functions defiend in util.js
+// NOTE: util.js is loaded before this file. This file uses functions defined in util.js
 
 /*----------------------------------------------------------------------------*/
 /* Constants                                                                  */
@@ -21,7 +21,7 @@ answer_input.disabled = true;
 submit_answer_button.disabled = true;
 
 /*----------------------------------------------------------------------------*/
-/* "Global Variables                                                          */
+/* "Global Variables"                                                         */
 /*----------------------------------------------------------------------------*/
 let timer_interval_id = 0;
 
@@ -35,28 +35,45 @@ function update_timer(end_time) {
 /*----------------------------------------------------------------------------*/
 /* Room Joining                                                               */
 /*----------------------------------------------------------------------------*/
-document.getElementById("room-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (room_input.value == null || room_input.value == "") {
-        error_message("Enter a room id");
-        return;
-    }
+// document.getElementById("room-form").addEventListener("submit", function (e) {
+//     e.preventDefault();
+//     if (room_input.value == null || room_input.value == "") {
+//         error_message("Enter a room id");
+//         return;
+//     }
 
-    if (nickname_input.value == null || nickname_input.value == "") {
-        error_message("Enter a nickname");
-        return;
-    }
+//     if (nickname_input.value == null || nickname_input.value == "") {
+//         error_message("Enter a nickname");
+//         return;
+//     }
 
-    console.log("join room" + answer_input.value);
-    socket.emit("join room", room_input.value, nickname_input.value);
-});
+//     console.log("join room" + answer_input.value);
+//     socket.emit("join room", room_input.value, nickname_input.value);
+// });
+
+const params = new URLSearchParams(window.location.search);
+const roomid_param = params.get("roomid");
+const nickname_param = params.get("nickname");
+
+if (roomid_param == null || roomid_param == "") {
+    error_message("Enter a room id");
+    window.location.href = "index.html";
+}
+
+if (nickname_param == null || nickname_param == "") {
+    error_message("Enter a nickname");
+    window.location.href = "index.html";
+}
+
+socket.emit("join room", roomid_param, nickname_param);
 
 socket.on("join room fail", function (msg) {
     error_message(msg);
+    window.location.href = "index.html";
 });
 
-socket.on("join room success", function (room_id) {
-    question_tag.innerText = "Waiting for host...";
+socket.on("join room success", function (msg) {
+    question_tag.innerText = msg;
 });
 
 /*----------------------------------------------------------------------------*/
@@ -107,9 +124,9 @@ socket.on("answer correct", function (player_answer, correct_answer) {
     question_feedback_tag.innerText = 'Correct!';
     question_feedback_tag.style.color = 'green';
     ninja.style.display = 'block';
-    setTimeout(function() {
+    setTimeout(function () {
         ninja.style.display = 'none';
-      }, 400);
+    }, 400);
 });
 
 socket.on("answer incorrect", function (player_answer, correct_answer) {
