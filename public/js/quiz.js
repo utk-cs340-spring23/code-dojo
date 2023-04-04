@@ -35,22 +35,7 @@ function update_timer(end_time) {
 /*----------------------------------------------------------------------------*/
 /* Room Joining                                                               */
 /*----------------------------------------------------------------------------*/
-// document.getElementById("room-form").addEventListener("submit", function (e) {
-//     e.preventDefault();
-//     if (room_input.value == null || room_input.value == "") {
-//         error_message("Enter a room id");
-//         return;
-//     }
-
-//     if (nickname_input.value == null || nickname_input.value == "") {
-//         error_message("Enter a nickname");
-//         return;
-//     }
-
-//     console.log("join room" + answer_input.value);
-//     socket.emit("join room", room_input.value, nickname_input.value);
-// });
-
+/* We expect the user to only ever access this page through the home page. If the necessary URL parameters are not present, then we redirect the user to the homepage using window.location.href */
 const params = new URLSearchParams(window.location.search);
 const roomid_param = params.get("roomid");
 const nickname_param = params.get("nickname");
@@ -77,7 +62,7 @@ socket.on("join room success", function (msg) {
 });
 
 /*----------------------------------------------------------------------------*/
-/* Update Question                                                            */
+/* Update Question and Question Timer                                         */
 /*----------------------------------------------------------------------------*/
 socket.on("push question", function (prompt, end_time) {
     question_tag.innerText = "Question: " + prompt;
@@ -90,7 +75,6 @@ socket.on("push question", function (prompt, end_time) {
     } else {
         question_timer_tag.innerText = "";
     }
-
 });
 
 socket.on("close question success", function () {

@@ -11,8 +11,23 @@ const answer_input = document.getElementById("answer-input");
 const timer_input = document.getElementById("timer-input");
 const push_question_button = document.getElementById("push-question-button");
 const close_question_button = document.getElementById("close-question-button");
+const question_timer_tag = document.getElementById("question-timer");
 const player_table = document.getElementById("player-table");
 const player_table_body = document.getElementById("player-table-body");
+
+const timer_update_frequency = 25;  // in milliseconds
+
+/* Ensure that the question and answer input is disabled to start */
+question_input.disabled = true;
+answer_input.disabled = true;
+timer_input.disabled = true;
+push_question_button.disabled = true;
+close_question_button.disabled = true;
+
+/*----------------------------------------------------------------------------*/
+/* "Global Variables"                                                         */
+/*----------------------------------------------------------------------------*/
+let timer_interval_id = 0;
 
 /*----------------------------------------------------------------------------*/
 /* Functions                                                                  */
@@ -24,10 +39,9 @@ function enable_input_fields(bool) {
 
 }
 
-/* Ensure that the question and answer input is disabled to start */
-enable_input_fields(false);
-push_question_button.disabled = true;
-close_question_button.disabled = true;
+function update_timer(end_time) {
+    question_timer_tag.innerText = ms_to_formatted_string(end_time - Date.now());
+}
 
 /*----------------------------------------------------------------------------*/
 /* Create Room                                                                */
@@ -107,7 +121,23 @@ socket.on("close question fail", function (msg) {
 });
 
 /*----------------------------------------------------------------------------*/
-/* Socket IO                                                                  */
+/* Question Timer                                                             */
+/*----------------------------------------------------------------------------*/
+socket.on("push question", function (prompt, end_time) {
+    if (!Number.isNaN(end_time) && end_time != null) {
+        timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
+    } else {
+        question_timer_tag.innerText = "";
+    }
+});
+
+socket.on("close question success", function () {
+    clearInterval(timer_interval_id);
+});
+
+
+/*----------------------------------------------------------------------------*/
+/* Record Player Answers and Stats                                            */
 /*----------------------------------------------------------------------------*/
 
 /* The following two arrays record how many correct/incorrect answers each player submits. Both arrays are keyed by the socket id string */
