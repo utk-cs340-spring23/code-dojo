@@ -12,6 +12,8 @@ const question_tag = document.getElementById("question");
 const question_timer_tag = document.getElementById("question-timer");
 const question_feedback_tag = document.getElementById("question-feedback");
 
+const ninja = document.getElementById("ninja-slash");
+
 const timer_update_frequency = 25;  // in milliseconds
 
 // Ensure that the answer input is disabled to start
@@ -104,7 +106,10 @@ socket.on("answer correct", function (player_answer, correct_answer) {
     //question_feedback_tag.innerText = `Correct! You answered "${player_answer}". Correct answer is "${correct_answer}"`;
     question_feedback_tag.innerText = 'Correct!';
     question_feedback_tag.style.color = 'green';
-    
+    ninja.style.display = 'block';
+    setTimeout(function() {
+        ninja.style.display = 'none';
+      }, 400);
 });
 
 socket.on("answer incorrect", function (player_answer, correct_answer) {

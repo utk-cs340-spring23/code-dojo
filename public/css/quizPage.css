@@ -168,10 +168,19 @@ main {}
     transform: scale(0.9);
 }
   
-  .timer-display {
+.timer-display {
     font-size: 2em;
     font-weight: bold;
     margin-bottom: 1px;
     top: 1%;
     color:#ffffff;
-  }
+}
+
+#ninja-slash{
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    display: none; 
+    /* display: block */
+}
