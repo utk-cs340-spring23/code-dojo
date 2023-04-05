@@ -1,14 +1,14 @@
-cols = document.getElementById('col')
-container = document.getElementById('inputs')
+var column = document.getElementById('col')
+var container = document.getElementById('inputs')
 
 function putGridBelow() {
     if ((window.innerWidth - 100) < window.innerHeight) {
-        cols.style.flexDirection = "column";
+        column.style.flexDirection = "column";
         container.style.width = "100vh";
         container.style.left = "0%";
         container.style.marginLeft = "0px";
     } else {
-        cols.style.flexDirection = "row";
+        column.style.flexDirection = "row";
         container.style.width = "50vh";
         container.style.left = "50%";
         container.style.marginLeft = "100px";
@@ -16,4 +16,7 @@ function putGridBelow() {
 }
 
 window.addEventListener("resize", putGridBelow);
-putGridBelow();
+
+document.addEventListener("DOMContentLoaded", function () {
+    putGridBelow();
+});
