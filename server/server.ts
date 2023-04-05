@@ -156,15 +156,14 @@ io.on("connection", function (socket: Socket) {
             return;
         }
 
-        let is_timed: boolean = time_limit_s > 0;
-
-        let answers: string[] = [];
-        answers.push(answer);
+        let answers: string[] = answer.split(",");
 
         let question: Question = new FRQuestion(prompt, answers, time_limit_s * 1000);
         this_quizroom.push_question(question);
 
         io.to(socket.id).emit("new question success", "successfully pushed question");
+
+        let is_timed: boolean = time_limit_s > 0;
         io.to(this_quizroom.id).emit("push question", question.prompt, is_timed ? question.end_time : null);
 
         /* Close question when time expires */
