@@ -32,6 +32,16 @@ function update_timer(end_time) {
     question_timer_tag.innerText = ms_to_formatted_string(end_time - Date.now());
 }
 
+function redirect_to_homepage(roomid, nickname) {
+    let params = new URLSearchParams();
+    params.append('roomid', roomid);
+    params.append('nickname', nickname);
+
+    const url = 'index.html?' + params.toString();
+    window.location.href = url;
+
+}
+
 /*----------------------------------------------------------------------------*/
 /* Room Joining                                                               */
 /*----------------------------------------------------------------------------*/
@@ -42,19 +52,19 @@ const nickname_param = params.get("nickname");
 
 if (roomid_param == null || roomid_param == "") {
     error_message("Enter a room id");
-    window.location.href = "index.html";
+    redirect_to_homepage(roomid_param, nickname_param);
 }
 
 if (nickname_param == null || nickname_param == "") {
     error_message("Enter a nickname");
-    window.location.href = "index.html";
+    redirect_to_homepage(roomid_param, nickname_param);
 }
 
 socket.emit("join room", roomid_param, nickname_param);
 
 socket.on("join room fail", function (msg) {
     error_message(msg);
-    window.location.href = "index.html";
+    redirect_to_homepage(roomid_param, nickname_param);
 });
 
 socket.on("join room success", function (msg) {
