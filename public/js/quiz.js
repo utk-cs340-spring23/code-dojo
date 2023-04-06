@@ -11,8 +11,6 @@ const submit_answer_button = document.getElementById("submit-answer-button");
 const question_tag = document.getElementById("question");
 const question_timer_tag = document.getElementById("question-timer");
 const question_feedback_tag = document.getElementById("question-feedback");
-const score_tag = document.getElementById("score-number");
-
 
 const ninja = document.getElementById("ninja-slash");
 
@@ -115,7 +113,7 @@ socket.on("submit answer fail", function (msg) {
     question_feedback_tag.innerText = msg;
 });
 
-socket.on("answer correct", function (player_answer, correct_answer, num_right, num_wrong) {
+socket.on("answer correct", function (player_answer, correct_answer) {
     //question_feedback_tag.innerText = `Correct! You answered "${player_answer}". Correct answer is "${correct_answer}"`;
     question_feedback_tag.innerText = 'Correct!';
     question_feedback_tag.style.color = 'green';
@@ -123,11 +121,9 @@ socket.on("answer correct", function (player_answer, correct_answer, num_right, 
     setTimeout(function () {
         ninja.style.display = 'none';
     }, 400);
-    score_tag.innerText = `${num_right}/${num_right + num_wrong}`;
 });
 
-socket.on("answer incorrect", function (player_answer, correct_answer, num_right, num_wrong) {
+socket.on("answer incorrect", function (player_answer, correct_answer) {
     question_feedback_tag.innerText = `Incorrect. You answered "${player_answer}". Correct answer is "${correct_answer}"`;
     question_feedback_tag.style.color = 'red';
-    score_tag.innerText = `${num_right}/${num_right + num_wrong}`;
 });

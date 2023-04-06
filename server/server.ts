@@ -47,10 +47,10 @@ function close_question(this_quizroom: QuizRoom, io: SocketIOServer): boolean {
         assert(key == player.socket.id, "A player's socket id and their key don't match!");
 
         if (player.is_correct[this_quizroom.num_questions - 1]) {
-            io.to(player.socket.id).emit("answer correct", this_quizroom.get_player_curr_answer(player), this_quizroom.curr_question.answer, player.num_right, player.num_wrong);
+            io.to(player.socket.id).emit("answer correct", this_quizroom.get_player_curr_answer(player), this_quizroom.curr_question.answer);
             io.to(this_quizroom.host.socket.id).emit("player answer correct", player.socket.id);
         } else {
-            io.to(player.socket.id).emit("answer incorrect", this_quizroom.get_player_curr_answer(player), this_quizroom.curr_question.answer, player.num_right, player.num_wrong);
+            io.to(player.socket.id).emit("answer incorrect", this_quizroom.get_player_curr_answer(player), this_quizroom.curr_question.answer);
             io.to(this_quizroom.host.socket.id).emit("player answer incorrect", player.socket.id);
         }
     }
