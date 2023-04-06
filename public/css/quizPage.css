@@ -209,4 +209,53 @@ body {
     font-weight: bold;
     margin-left: 5px;
   }
+
+  *{margin: 0;}
+
+/* TODO: make this centered; right now not good - does not flex */
+#code-input {
+    margin-left: 200px;
+}
+
+.control-panel {
+    background: lightgray;
+    text-align: right;
+    padding: 4px;
+    font-family: sans-serif;
+    display: flex;
+    width: 79.4%;
+}
+
+.languages {
+    background: white;
+    border: 1px solid gray;
+}
+
+#editor { 
+    height: 400px; 
+    width: 80%;
+}
+
+.button-container2 {
+    text-align: right;
+    padding: 4px;
+}
+
+.btn2 {
+    background: #23a6d5;
+    color: white;
+    padding: 8px;
+    border: 0;
+    text-align: left;
+}
+
+.output {
+        padding: 4px;
+        border: 2px solid gray;
+        min-height: 100px;
+        width: 67.6%;
+        resize: none;
+        margin-left: 200px;
+
+}
   

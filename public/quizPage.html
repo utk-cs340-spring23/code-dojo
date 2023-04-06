@@ -66,6 +66,10 @@
             </form>
         </div>
 
+        
+        
+        
+
 
         <!-- vectors for hamburger and makeNote icons -->
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"
@@ -104,6 +108,34 @@
                 <button class="btn">About</button>
             </a>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <!-- Code editor and compiler-->   
+        <div id="code-input">
+            <div class="control-panel">
+                Select Language:
+                &nbsp; &nbsp;
+                <select id="languages" class="languages" onchange="changeLanguage()">
+                    <option value="c"> C </option>
+                    <option value="cpp"> C++ </option>
+                    <option value="php"> PHP </option>
+                    <option value="python"> Python </option>
+                    <option value="node"> Node JS </option>
+                </select>
+            </div>
+            <div class="editor" id="editor"></div>    
+        </div> 
+    
+        <div class="button-container2">
+            <button class="btn2" onclick="executeCode()"> Run </button>
+        </div>
+    
+        <div class="output"></div>
+
+
 
         <img src="img/ninjaslash.gif" id="ninja-slash">
     </main>
@@ -113,6 +145,12 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/util.js"></script>
     <script src="js/quiz.js"></script>
+
+    <!-- Javascript for the code editior-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/lib/ace.js"></script>
+    <script src="js/lib/theme-monokai.js"></script>
+    <script src="js/ide.js"></script>
 
 </body>
 
