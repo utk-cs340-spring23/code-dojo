@@ -52,7 +52,7 @@ class Player {
 
     public push_incorrect(): void {
         this._is_correct.push(false);
-        ++this._num_wrong;
+        ++this._num_right;
     }
 }
 

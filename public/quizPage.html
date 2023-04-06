@@ -29,8 +29,9 @@
             </form>
           </div>
            -->
-
+           
            <div class="question-set">
+            <br>
             <div class="timer-box">
               <div class="timer-display" id="question-timer">00:00:00</div>
               <div class="score-box">
@@ -45,9 +46,11 @@
             </form> -->
 
             <p id="question-feedback" style="color: #fff">Question feedback will be shown here</p>
+            <br>
+            <br>
             <p class="questionbox" id="question" placeholder="Waiting for host">Waiting for host</p>
 
-
+            <br>
             <form class="answer-submit" id="answer-form">
                 <!-- text boxes for question and icons -->
                 <center>
@@ -112,30 +115,31 @@
         <br>
         <br>
         <br>
+        <br>
         
-        <!-- Code editor and compiler-->   
+        <!-- Code editor and compiler-->
         <div id="code-input">
             <div class="control-panel">
-                Select Language:
-                &nbsp; &nbsp;
+                <label for="languages">Select Language:</label>
                 <select id="languages" class="languages" onchange="changeLanguage()">
-                    <option value="c"> C </option>
-                    <option value="cpp"> C++ </option>
-                    <option value="php"> PHP </option>
-                    <option value="python"> Python </option>
-                    <option value="node"> Node JS </option>
+                    <option value="c">C</option>
+                    <option value="cpp">C++</option>
+                    <option value="php">PHP</option>
+                    <option value="python">Python</option>
+                    <option value="node">Node JS</option>
                 </select>
             </div>
-            <div class="editor" id="editor"></div>    
-        </div> 
-    
-        <div class="button-container2">
-            <button class="btn2" onclick="executeCode()"> Run </button>
+            <div class="editor" id="editor"></div>
+            <div class="button-container">
+                <button class="btn" onclick="executeCode()">Run</button>
+            </div>
         </div>
-    
-        <div class="output"></div>
-
-
+        
+        <div class="output-container">
+            <div class="output-header">Output</div>
+            <div class="output" id="output"></div>
+        </div>
+        
 
         <img src="img/ninjaslash.gif" id="ninja-slash">
     </main>
