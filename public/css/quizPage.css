@@ -183,3 +183,30 @@ body {
     display: none;
     /* display: block */
 }
+.question-set {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .timer-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .score-box {
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    margin-left: 20px;
+  }
+  
+  .score-display {
+    color: #fff;
+    font-size: 18px;
+  }
+  
+  #score-number {
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  
