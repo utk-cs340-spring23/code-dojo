@@ -2,3 +2,4 @@
 /node_modules
 /server/*.js
 /get_commits.sh
+/blametracker.py
