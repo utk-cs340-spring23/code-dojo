@@ -15,28 +15,28 @@ import { QuizRoom } from "./quizroom.js";
 /*----------------------------------------------------------------------------*/
 /* MongoDB                                                                    */
 /*----------------------------------------------------------------------------*/
-const mongoclient: MongoClient = new MongoClient(process.env.MONGO_URI);
+// const mongoclient: MongoClient = new MongoClient(process.env.MONGO_URI);
 
-async function run() {
-    try {
-        await mongoclient.connect();
+// async function run() {
+//     try {
+//         await mongoclient.connect();
 
-        const db = mongoclient.db('code-dojo-db');
-        const collection = db.collection('asdf');
+//         const db = mongoclient.db('code-dojo-db');
+//         const collection = db.collection('asdf');
 
-        // Find the first document in the collection
-        const first = await collection.findOne();
+//         // Find the first document in the collection
+//         const first = await collection.findOne();
 
-        console.log(db);
-        console.log(collection);
-        console.log(first);
-    } finally {
-        // Close the database connection when finished or an error occurs
-        await mongoclient.close();
-    }
-}
+//         console.log(db);
+//         console.log(collection);
+//         console.log(first);
+//     } finally {
+//         // Close the database connection when finished or an error occurs
+//         await mongoclient.close();
+//     }
+// }
 
-run().catch(console.error);
+// run().catch(console.error);
 
 /*----------------------------------------------------------------------------*/
 /* Server                                                                     */
