@@ -7,5 +7,8 @@
   },
   "devDependencies": {
     "typescript": "^4.9.5"
+  },
+  "scripts": {
+    "start": "npx tsc --project ./tsconfig.json && node server/server.js"
   }
 }
