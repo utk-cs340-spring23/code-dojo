@@ -12,12 +12,6 @@
     <div class="background-container">
         <div class="background-image"></div>
     </div>
-    <style>
-        body {
-            background-color: rgb(55, 54, 54);
-        }
-
-    </style>
 </head>
 
 <body>
@@ -35,25 +29,32 @@
             </form>
           </div>
            -->
-        
+
         <div class="question-set">
+            <br>
             <div class="timer-box">
                 <div class="timer-display" id="question-timer">00:00:00</div>
+                <div class="score-box">
+                    <div class="score-display">Score: <span id="score-number">0</span></div>
+                </div>
             </div>
-            <form id="room-form">
+            <!-- The below comment is old code for the temporary room form. This has been fixed, so players should only join from the home page now. -->
+            <!-- <form id="room-form">
                 <input id="room-input" autocomplete="off" placeholder="room id">
                 <input id="nickname-input" autocomplete="off" placeholder="enter a nickname">
                 <button>Join Room</button>
-            </form>
-            
+            </form> -->
+
             <p id="question-feedback" style="color: #fff">Question feedback will be shown here</p>
+            <br>
+            <br>
             <p class="questionbox" id="question" placeholder="Waiting for host">Waiting for host</p>
-            
-            
+
+            <br>
             <form class="answer-submit" id="answer-form">
                 <!-- text boxes for question and icons -->
                 <center>
-                    <textarea class="questionbox" id="answer-input" placeholder="Answer here"></textarea>
+                    <input class="questionbox" id="answer-input" placeholder="Answer here"></input>
                 </center>
                 <button id="submit-answer-button" type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="submit">
@@ -67,6 +68,10 @@
                 </svg> -->
             </form>
         </div>
+
+
+
+
 
 
         <!-- vectors for hamburger and makeNote icons -->
@@ -90,22 +95,52 @@
             <a href="index.html" class="sidebar-item">
                 <button class="btn">Home</button>
             </a>
-            <a href="/public/NOTES_PAGE/notesPage.html" class="sidebar-item">
+            <a href="NOTES_PAGE/notesPage.html" class="sidebar-item">
                 <button class="btn">Notes</button>
             </a>
-            <a href="/public/HISTORY_PAGE/historyPage.html" class="sidebar-item">
+            <a href="HISTORY_PAGE/historyPage.html" class="sidebar-item">
                 <button class="btn">History</button>
             </a>
-            <a href="/public/PROFILE/profilePage.html" class="sidebar-item">
+            <a href="PROFILE/profilePage.html" class="sidebar-item">
                 <button class="btn">Profile</button>
             </a>
-            <a href="/public/FAQ_PAGE/faqPage.html" class="sidebar-item">
+            <a href="FAQ_PAGE/faqPage.html" class="sidebar-item">
                 <button class="btn">FAQ</button>
             </a>
-            <a href="/public/ABOUT_PAGE/aboutPage.html" class="sidebar-item">
+            <a href="ABOUT_PAGE/aboutPage.html" class="sidebar-item">
                 <button class="btn">About</button>
             </a>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <!-- Code editor and compiler-->
+        <div id="code-input">
+            <div class="control-panel">
+                
+                <label for="languages">Select Language:</label>
+                <select id="languages" class="languages" onchange="changeLanguage()">
+                    <option value="c">C</option>
+                    <option value="cpp">C++</option>
+                    <option value="php">PHP</option>
+                    <option value="python">Python</option>
+                    <option value="node">Node JS</option>
+                </select>
+            </div>
+            <div class="editor" id="editor"></div>
+            <div class="button-container">
+                <button class="btn" onclick="executeCode()">Run</button>
+            </div>
+        </div>
+
+        <div class="output-container">
+            <div class="output-header">Output</div>
+            <div class="output" id="output"></div>
+        </div>
+
 
         <img src="img/ninjaslash.gif" id="ninja-slash">
     </main>
@@ -115,6 +150,12 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/util.js"></script>
     <script src="js/quiz.js"></script>
+
+    <!-- Javascript for the code editior-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/ace-builds/src/ace.js"></script>
+    <script src="js/ace-builds/theme-monokai.js"></script>
+    <script src="js/ide.js"></script>
 
 </body>
 

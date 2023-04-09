@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+}
+
+body{
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    place-items: center;
+    background-color: rgb(55, 54, 54); /* Set background color to grey */
+    color: white; /* Set text color to white */
+}
+
+h1{
+    margin-bottom: 2rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 24rem;
+    gap: 1rem;
+    background-color: #ffffff; /* Set background color of form to white */
+    border-radius: 10px; /* Add rounded edges to form */
+    padding: 2rem; /* Add padding to form */
+}
+
+input,
+select,
+textarea{
+    padding: 1.4rem;
+    background: transparent;
+    border: 1px solid black;
+    border-radius: 5px; /* Add rounded edges to all input fields */
+}
+
+textarea {
+    height: 6rem;
+}
+
+button {
+    text-align: center;
+    width: 8rem;
+    padding: 1.4rem;
+    cursor: pointer;
+    background: #23a6d5;
+    color: white;
+    border-radius: 5px; /* Add rounded edges to button */
+}

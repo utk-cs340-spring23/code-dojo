@@ -1,4 +1,4 @@
-// NOTE: util.js is loaded before this file. This file uses functions defiend in util.js
+// NOTE: util.js is loaded before this file. This file uses functions defined in util.js
 
 /*----------------------------------------------------------------------------*/
 /* Constants                                                                  */
@@ -21,7 +21,7 @@ answer_input.disabled = true;
 submit_answer_button.disabled = true;
 
 /*----------------------------------------------------------------------------*/
-/* "Global Variables                                                          */
+/* "Global Variables"                                                         */
 /*----------------------------------------------------------------------------*/
 let timer_interval_id = 0;
 
@@ -32,35 +32,47 @@ function update_timer(end_time) {
     question_timer_tag.innerText = ms_to_formatted_string(end_time - Date.now());
 }
 
+function redirect_to_homepage(roomid, nickname) {
+    let params = new URLSearchParams();
+    params.append('roomid', roomid);
+    params.append('nickname', nickname);
+
+    const url = 'index.html?' + params.toString();
+    window.location.href = url;
+
+}
+
 /*----------------------------------------------------------------------------*/
 /* Room Joining                                                               */
 /*----------------------------------------------------------------------------*/
-document.getElementById("room-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (room_input.value == null || room_input.value == "") {
-        error_message("Enter a room id");
-        return;
-    }
+/* We expect the user to only ever access this page through the home page. If the necessary URL parameters are not present, then we redirect the user to the homepage using window.location.href */
+const params = new URLSearchParams(window.location.search);
+const roomid_param = params.get("roomid");
+const nickname_param = params.get("nickname");
 
-    if (nickname_input.value == null || nickname_input.value == "") {
-        error_message("Enter a nickname");
-        return;
-    }
+if (roomid_param == null || roomid_param == "") {
+    error_message("Enter a room id");
+    redirect_to_homepage(roomid_param, nickname_param);
+}
 
-    console.log("join room" + answer_input.value);
-    socket.emit("join room", room_input.value, nickname_input.value);
-});
+if (nickname_param == null || nickname_param == "") {
+    error_message("Enter a nickname");
+    redirect_to_homepage(roomid_param, nickname_param);
+}
+
+socket.emit("join room", roomid_param, nickname_param);
 
 socket.on("join room fail", function (msg) {
     error_message(msg);
+    redirect_to_homepage(roomid_param, nickname_param);
 });
 
-socket.on("join room success", function (room_id) {
-    question_tag.innerText = "Waiting for host...";
+socket.on("join room success", function (msg) {
+    question_tag.innerText = msg;
 });
 
 /*----------------------------------------------------------------------------*/
-/* Update Question                                                            */
+/* Update Question and Question Timer                                         */
 /*----------------------------------------------------------------------------*/
 socket.on("push question", function (prompt, end_time) {
     question_tag.innerText = "Question: " + prompt;
@@ -73,7 +85,6 @@ socket.on("push question", function (prompt, end_time) {
     } else {
         question_timer_tag.innerText = "";
     }
-
 });
 
 socket.on("close question success", function () {
@@ -107,9 +118,9 @@ socket.on("answer correct", function (player_answer, correct_answer) {
     question_feedback_tag.innerText = 'Correct!';
     question_feedback_tag.style.color = 'green';
     ninja.style.display = 'block';
-    setTimeout(function() {
+    setTimeout(function () {
         ninja.style.display = 'none';
-      }, 400);
+    }, 400);
 });
 
 socket.on("answer incorrect", function (player_answer, correct_answer) {

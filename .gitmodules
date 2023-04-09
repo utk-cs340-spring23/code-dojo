@@ -1,0 +1,4 @@
+[submodule "public/js/ace-builds"]
+	path = public/js/ace-builds
+	url = https://github.com/ajaxorg/ace-builds.git
+	ignore = dirty

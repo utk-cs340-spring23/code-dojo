@@ -7,7 +7,7 @@ Then clone this repository and open a terminal.
 `cd` to the code-dojo directory, then run the following commands.
 
     npm install
-    ./start.sh
+    npm start
 
 Then head to localhost:3000 to view the website.
 

@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
 
-html {
+body {
     font-family: 'Tilt Warp', cursive;
+    background-color: rgb(55, 54, 54);
 }
-
-main {}
 
 #hamburger {
     /* attributes for hamburger icon */
@@ -17,7 +16,7 @@ main {}
     left: 1%;
 }
 
-#hamburger:active{
+#hamburger:active {
     /* makes button slightly smaller when being clicked */
     transform: scale(0.9);
 }
@@ -36,7 +35,7 @@ main {}
 
     /* make sure text doesn't still show when sidebar is closed */
     overflow: hidden;
- 
+
     transition: width .25s ease;
     white-space: nowrap;
 }
@@ -80,15 +79,15 @@ main {}
     width: 100%;
     border: none;
     text-align: left;
-  }
+}
 
-.question-set{
+.question-set {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.questionbox{
+.questionbox {
     /* format the question textbox */
     font-family: 'Tilt Warp', cursive;
     font-size: medium;
@@ -101,7 +100,7 @@ main {}
     height: 20%;
     min-height: 150px;
     max-width: 1440px;
-    background-color:rgb(241, 241, 241);
+    background-color: rgb(241, 241, 241);
     padding: 1em;
     border-radius: 20px;
     border: 2px solid transparent;
@@ -109,16 +108,16 @@ main {}
     resize: none;
 }
 
-#answer-input{
+#answer-input {
     min-height: 90px;
 }
 
-.answer-submit{
+.answer-submit {
     width: 100%;
     height: 100%;
 }
 
-#submit-answer-button{
+#submit-answer-button {
     /* attributes for submit button */
     background: none;
     border: none;
@@ -131,12 +130,12 @@ main {}
     right: 1%;
 }
 
-#submit-answer-button:active svg{
+#submit-answer-button:active svg {
     /* make slightly smaller on click */
     transform: scale(0.9);
 }
 
-#compile{
+#compile {
     /* attributes for compile button */
     cursor: pointer;
     width: 50px;
@@ -147,12 +146,12 @@ main {}
     right: 75px;
 }
 
-#compile:active{
+#compile:active {
     /* make slightly smaller on click */
     transform: scale(0.9);
 }
 
-#makeNote{
+#makeNote {
     /* attributes for makeNote button */
     cursor: pointer;
     width: 40px;
@@ -163,24 +162,133 @@ main {}
     right: 1%;
 }
 
-#makeNote:active{
+#makeNote:active {
     /* make slightly smaller on click */
     transform: scale(0.9);
 }
-  
+
 .timer-display {
     font-size: 2em;
     font-weight: bold;
     margin-bottom: 1px;
     top: 1%;
-    color:#ffffff;
+    color: #ffffff;
 }
 
-#ninja-slash{
+#ninja-slash {
     z-index: 10;
     position: absolute;
     top: 0;
     height: 100vh;
-    display: none; 
+    display: none;
     /* display: block */
 }
+.question-set {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .timer-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .score-box {
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    margin-left: 20px;
+  }
+  
+  .score-display {
+    color: #fff;
+    font-size: 18px;
+  }
+  
+  #score-number {
+    font-weight: bold;
+    margin-left: 5px;
+  }
+
+  *{margin: 0;}
+
+/* TODO: make this centered; right now not good - does not flex */
+/* Use a CSS reset to remove default browser styles */
+#code-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.control-panel {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.languages {
+    margin-left: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.editor {
+    height: 400px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn {
+    background-color: #23a6d5;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.output-container {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 16px auto 0;
+}
+
+.output-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.output {
+    min-height: 100px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    font-family: "Courier New", Courier, monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+  

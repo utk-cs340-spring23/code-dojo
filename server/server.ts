@@ -4,6 +4,7 @@
 import { strict as assert } from "node:assert";
 import express from "express";
 import http from "http";
+import { MongoClient } from "mongodb";
 import { Server as SocketIOServer, Socket } from "socket.io";
 
 import { Host } from "./host.js";
@@ -12,11 +13,37 @@ import { QuestionType, Question, FRQuestion } from "./question.js";
 import { QuizRoom } from "./quizroom.js";
 
 /*----------------------------------------------------------------------------*/
+/* MongoDB                                                                    */
+/*----------------------------------------------------------------------------*/
+// const mongoclient: MongoClient = new MongoClient(process.env.MONGO_URI);
+
+// async function run() {
+//     try {
+//         await mongoclient.connect();
+
+//         const db = mongoclient.db('code-dojo-db');
+//         const collection = db.collection('asdf');
+
+//         // Find the first document in the collection
+//         const first = await collection.findOne();
+
+//         console.log(db);
+//         console.log(collection);
+//         console.log(first);
+//     } finally {
+//         // Close the database connection when finished or an error occurs
+//         await mongoclient.close();
+//     }
+// }
+
+// run().catch(console.error);
+
+/*----------------------------------------------------------------------------*/
 /* Server                                                                     */
 /*----------------------------------------------------------------------------*/
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
-const port: number = 3000;
+const port: number = parseInt(process.env.PORT) || 3000;
 const public_path: string = new URL("../public/", import.meta.url).pathname;
 
 app.use(express.static(public_path));
@@ -126,7 +153,9 @@ io.on("connection", function (socket: Socket) {
         socket.join(room_id);
         this_player = this_quizroom.players[socket.id];
 
-        io.to(socket.id).emit("join room success", room_id);
+        assert(this_quizroom.id == room_id, "Join Room: this_quizroom.id does not match room_id!");
+
+        io.to(socket.id).emit("join room success", `Successfully joined room "${room_id}" as ${this_player.nickname}! Waiting for host...`);
 
         /* If there's a question active when the user joined, push it to the user */
         if (this_quizroom.curr_question?.is_active) {
@@ -154,15 +183,14 @@ io.on("connection", function (socket: Socket) {
             return;
         }
 
-        let is_timed: boolean = time_limit_s > 0;
-
-        let answers: string[] = [];
-        answers.push(answer);
+        let answers: string[] = answer.split(",");
 
         let question: Question = new FRQuestion(prompt, answers, time_limit_s * 1000);
         this_quizroom.push_question(question);
 
         io.to(socket.id).emit("new question success", "successfully pushed question");
+
+        let is_timed: boolean = time_limit_s > 0;
         io.to(this_quizroom.id).emit("push question", question.prompt, is_timed ? question.end_time : null);
 
         /* Close question when time expires */
