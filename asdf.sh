@@ -1,1 +1,0 @@
-python3 blametracker.py -in "*.*" "**/*.*" -ex sprints "**/*.md" "**/*.txt" node_modules public/js/ace-builds website "**/*.jpg" "**/*.png" "**/*.gif" "**/*.jpeg" "**/*.JPG" "**/*.HEIC" --since 3/29/2023 -by "rivetingpeach" -ws --info --output sprints/sprint3/jharves1.commits.txt
