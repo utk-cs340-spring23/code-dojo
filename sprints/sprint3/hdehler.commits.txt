@@ -1,0 +1,663 @@
+contactUs.css (hdehler on 04/08/2023 at 01:23): *{
+contactUs.css (hdehler on 04/08/2023 at 01:23):     margin: 0;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     padding: 0;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     outline: 0;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     border: 0;
+contactUs.css (hdehler on 04/08/2023 at 01:23): }
+contactUs.css (hdehler on 04/08/2023 at 01:23): 
+contactUs.css (hdehler on 04/08/2023 at 01:23): body{
+contactUs.css (hdehler on 04/08/2023 at 01:23):     height: 100vh;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     font-family: Arial, Helvetica, sans-serif;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     display: grid;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     place-items: center;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     background-color: rgb(55, 54, 54); /* Set background color to grey */
+contactUs.css (hdehler on 04/08/2023 at 01:23):     color: white; /* Set text color to white */
+contactUs.css (hdehler on 04/08/2023 at 01:23): }
+contactUs.css (hdehler on 04/08/2023 at 01:23): 
+contactUs.css (hdehler on 04/08/2023 at 01:23): h1{
+contactUs.css (hdehler on 04/08/2023 at 01:23):     margin-bottom: 2rem;
+contactUs.css (hdehler on 04/08/2023 at 01:23): }
+contactUs.css (hdehler on 04/08/2023 at 01:23): 
+contactUs.css (hdehler on 04/08/2023 at 01:23): form{
+contactUs.css (hdehler on 04/08/2023 at 01:23):     display: flex;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     flex-direction: column;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     width: 24rem;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     gap: 1rem;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     background-color: #ffffff; /* Set background color of form to white */
+contactUs.css (hdehler on 04/08/2023 at 01:23):     border-radius: 10px; /* Add rounded edges to form */
+contactUs.css (hdehler on 04/08/2023 at 01:23):     padding: 2rem; /* Add padding to form */
+contactUs.css (hdehler on 04/08/2023 at 01:23): }
+contactUs.css (hdehler on 04/08/2023 at 01:23): 
+contactUs.css (hdehler on 04/08/2023 at 01:23): input,
+contactUs.css (hdehler on 04/08/2023 at 01:23): select,
+contactUs.css (hdehler on 04/08/2023 at 01:23): textarea{
+contactUs.css (hdehler on 04/08/2023 at 01:23):     padding: 1.4rem;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     background: transparent;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     border: 1px solid black;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     border-radius: 5px; /* Add rounded edges to all input fields */
+contactUs.css (hdehler on 04/08/2023 at 01:23): }
+contactUs.css (hdehler on 04/08/2023 at 01:23): 
+contactUs.css (hdehler on 04/08/2023 at 01:23): textarea {
+contactUs.css (hdehler on 04/08/2023 at 01:23):     height: 6rem;
+contactUs.css (hdehler on 04/08/2023 at 01:23): }
+contactUs.css (hdehler on 04/08/2023 at 01:23): 
+contactUs.css (hdehler on 04/08/2023 at 01:23): button {
+contactUs.css (hdehler on 04/08/2023 at 01:23):     text-align: center;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     width: 8rem;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     padding: 1.4rem;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     cursor: pointer;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     background: #23a6d5;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     color: white;
+contactUs.css (hdehler on 04/08/2023 at 01:23):     border-radius: 5px; /* Add rounded edges to button */
+contactUs.css (hdehler on 04/08/2023 at 01:23): }
+notesAPI.js  (hdehler on 04/04/2023 at 22:53): export default class notesAPI {
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):     static getAllNotes() {
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):         const notes = JSON.parse(localStorage.getItem("notesapp-notes") || "[]");
+notesAPI.js  (hdehler on 04/04/2023 at 22:53): 
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):         return notes.sort((a, b) => {
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):             return new Date(a.updated) > new Date(b.updated) ? -1 : 1;
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):         });
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):     }
+notesAPI.js  (hdehler on 04/04/2023 at 22:53): 
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):     static saveNote(noteToSave) {
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):         const notes = notesAPI.getAllNotes();
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):         const existing = notes.find(note => note.id == noteToSave.id);
+notesAPI.js  (hdehler on 04/04/2023 at 22:53): 
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):         // Edit/Update
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):         if (existing) {
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):             existing.title = noteToSave.title;
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):             existing.body = noteToSave.body;
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):             existing.updated = new Date().toISOString();
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):         } else {
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):             noteToSave.id = Math.floor(Math.random() * 1000000);
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):             noteToSave.updated = new Date().toISOString();
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):             notes.push(noteToSave);
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):         }
+notesAPI.js  (hdehler on 04/04/2023 at 22:53): 
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):         localStorage.setItem("notesapp-notes", JSON.stringify(notes));
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):     }
+notesAPI.js  (hdehler on 04/04/2023 at 22:53): 
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):     static deleteNote(id) {
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):         const notes = notesAPI.getAllNotes();
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):         const newNotes = notes.filter(note => note.id != id);
+notesAPI.js  (hdehler on 04/04/2023 at 22:53): 
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):         localStorage.setItem("notesapp-notes", JSON.stringify(newNotes));
+notesAPI.js  (hdehler on 04/04/2023 at 22:53):     }
+notesAPI.js  (hdehler on 04/04/2023 at 22:53): }
+quizPage.css (hdehler on 04/06/2023 at 17:44): .question-set {
+quizPage.css (hdehler on 04/06/2023 at 17:44):     display: flex;
+quizPage.css (hdehler on 04/06/2023 at 17:44):     justify-content: center;
+quizPage.css (hdehler on 04/06/2023 at 17:44):   }
+quizPage.css (hdehler on 04/06/2023 at 17:44):   
+quizPage.css (hdehler on 04/06/2023 at 17:44):   .timer-box {
+quizPage.css (hdehler on 04/06/2023 at 17:44):     display: flex;
+quizPage.css (hdehler on 04/06/2023 at 17:44):     align-items: center;
+quizPage.css (hdehler on 04/06/2023 at 17:44):     position: relative;
+quizPage.css (hdehler on 04/06/2023 at 17:44):   }
+quizPage.css (hdehler on 04/06/2023 at 17:44):   
+quizPage.css (hdehler on 04/06/2023 at 17:44):   .score-box {
+quizPage.css (hdehler on 04/06/2023 at 17:44):     border: 1px solid #fff;
+quizPage.css (hdehler on 04/06/2023 at 17:44):     padding: 5px 10px;
+quizPage.css (hdehler on 04/06/2023 at 17:44):     margin-left: 20px;
+quizPage.css (hdehler on 04/06/2023 at 17:44):   }
+quizPage.css (hdehler on 04/06/2023 at 17:44):   
+quizPage.css (hdehler on 04/06/2023 at 17:44):   .score-display {
+quizPage.css (hdehler on 04/06/2023 at 17:44):     color: #fff;
+quizPage.css (hdehler on 04/06/2023 at 17:44):     font-size: 18px;
+quizPage.css (hdehler on 04/06/2023 at 17:44):   }
+quizPage.css (hdehler on 04/06/2023 at 17:44):   
+quizPage.css (hdehler on 04/06/2023 at 17:44):   #score-number {
+quizPage.css (hdehler on 04/06/2023 at 17:44):     font-weight: bold;
+quizPage.css (hdehler on 04/06/2023 at 17:44):     margin-left: 5px;
+quizPage.css (hdehler on 04/06/2023 at 17:44):   }
+quizPage.css (hdehler on 04/06/2023 at 19:23): 
+quizPage.css (hdehler on 04/06/2023 at 19:23):   *{margin: 0;}
+quizPage.css (hdehler on 04/06/2023 at 19:23): 
+quizPage.css (hdehler on 04/06/2023 at 19:23): /* TODO: make this centered; right now not good - does not flex */
+quizPage.css (hdehler on 04/06/2023 at 19:42): /* Use a CSS reset to remove default browser styles */
+quizPage.css (hdehler on 04/06/2023 at 19:23): #code-input {
+quizPage.css (hdehler on 04/06/2023 at 19:42):     display: flex;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     flex-direction: column;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     align-items: center;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     background-color: #f8f8f8;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     border: 1px solid #ccc;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     border-radius: 8px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     padding: 16px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+quizPage.css (hdehler on 04/06/2023 at 19:42):     max-width: 800px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     margin: 0 auto;
+quizPage.css (hdehler on 04/06/2023 at 19:23): }
+quizPage.css (hdehler on 04/06/2023 at 19:23): 
+quizPage.css (hdehler on 04/06/2023 at 19:23): .control-panel {
+quizPage.css (hdehler on 04/06/2023 at 19:23):     display: flex;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     justify-content: flex-end;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     align-items: center;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     margin-bottom: 16px;
+quizPage.css (hdehler on 04/06/2023 at 19:23): }
+quizPage.css (hdehler on 04/06/2023 at 19:23): 
+quizPage.css (hdehler on 04/06/2023 at 19:23): .languages {
+quizPage.css (hdehler on 04/06/2023 at 19:42):     margin-left: 8px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     border: 1px solid #ccc;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     border-radius: 4px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     padding: 4px;
+quizPage.css (hdehler on 04/06/2023 at 19:23): }
+quizPage.css (hdehler on 04/06/2023 at 19:23): 
+quizPage.css (hdehler on 04/06/2023 at 19:42): .editor {
+quizPage.css (hdehler on 04/06/2023 at 19:42):     height: 400px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     width: 100%;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     border: 1px solid #ccc;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     border-radius: 8px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     margin-bottom: 16px;
+quizPage.css (hdehler on 04/06/2023 at 19:23): }
+quizPage.css (hdehler on 04/06/2023 at 19:23): 
+quizPage.css (hdehler on 04/06/2023 at 19:42): .button-container {
+quizPage.css (hdehler on 04/06/2023 at 19:42):     display: flex;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     justify-content: flex-end;
+quizPage.css (hdehler on 04/06/2023 at 19:23): }
+quizPage.css (hdehler on 04/06/2023 at 19:23): 
+quizPage.css (hdehler on 04/06/2023 at 19:42): .btn {
+quizPage.css (hdehler on 04/06/2023 at 19:42):     background-color: #23a6d5;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     color: #fff;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     border: none;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     border-radius: 4px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     padding: 8px 16px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     cursor: pointer;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     font-size: 16px;
+quizPage.css (hdehler on 04/06/2023 at 19:23): }
+quizPage.css (hdehler on 04/06/2023 at 19:23): 
+quizPage.css (hdehler on 04/06/2023 at 19:42): .output-container {
+quizPage.css (hdehler on 04/06/2023 at 19:42):     background-color: #f8f8f8;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     border: 1px solid #ccc;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     border-radius: 8px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     padding: 16px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+quizPage.css (hdehler on 04/06/2023 at 19:42):     max-width: 800px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     margin: 16px auto 0;
+quizPage.css (hdehler on 04/06/2023 at 19:42): }
+quizPage.css (hdehler on 04/06/2023 at 19:42): 
+quizPage.css (hdehler on 04/06/2023 at 19:42): .output-header {
+quizPage.css (hdehler on 04/06/2023 at 19:42):     font-size: 24px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     font-weight: bold;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     margin-bottom: 16px;
+quizPage.css (hdehler on 04/06/2023 at 19:42): }
+quizPage.css (hdehler on 04/06/2023 at 19:23): 
+quizPage.css (hdehler on 04/06/2023 at 19:42): .output {
+quizPage.css (hdehler on 04/06/2023 at 19:42):     min-height: 100px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     width: 100%;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     border: 1px solid #ccc;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     border-radius: 8px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     padding: 8px;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     font-family: "Courier New", Courier, monospace;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     white-space: pre-wrap;
+quizPage.css (hdehler on 04/06/2023 at 19:42):     word-wrap: break-word;
+quizPage.css (hdehler on 04/06/2023 at 19:23): }
+quizPage.css (hdehler on 04/06/2023 at 19:42): 
+quizPage.css (hdehler on 04/06/2023 at 17:44):   
+aboutPage.html (hdehler on 04/08/2023 at 01:23):                     <button type="button" class="contact-button" onclick="window.location.href='./contactUs.html'">Contact Us</button>
+app.js       (hdehler on 04/04/2023 at 22:53): import NotesView from "./notesView.js";
+app.js       (hdehler on 04/04/2023 at 22:53): import NotesAPI from "./notesAPI.js";
+app.js       (hdehler on 04/04/2023 at 22:53): 
+app.js       (hdehler on 04/04/2023 at 22:53): export default class App {
+app.js       (hdehler on 04/04/2023 at 22:53):     constructor(root) {
+app.js       (hdehler on 04/04/2023 at 22:53):         this.notes = [];
+app.js       (hdehler on 04/04/2023 at 22:53):         this.activeNote = null;
+app.js       (hdehler on 04/04/2023 at 22:53):         this.view = new NotesView(root, this._handlers());
+app.js       (hdehler on 04/04/2023 at 22:53): 
+app.js       (hdehler on 04/04/2023 at 22:53):         this._refreshNotes();
+app.js       (hdehler on 04/04/2023 at 22:53):     }
+app.js       (hdehler on 04/04/2023 at 22:53): 
+app.js       (hdehler on 04/04/2023 at 22:53):     _refreshNotes() {
+app.js       (hdehler on 04/04/2023 at 22:53):         const notes = NotesAPI.getAllNotes();
+app.js       (hdehler on 04/04/2023 at 22:53): 
+app.js       (hdehler on 04/04/2023 at 22:53):         this._setNotes(notes);
+app.js       (hdehler on 04/04/2023 at 22:53): 
+app.js       (hdehler on 04/04/2023 at 22:53):         if (notes.length > 0) {
+app.js       (hdehler on 04/04/2023 at 22:53):             this._setActiveNote(notes[0]);
+app.js       (hdehler on 04/04/2023 at 22:53):         }
+app.js       (hdehler on 04/04/2023 at 22:53):     }
+app.js       (hdehler on 04/04/2023 at 22:53): 
+app.js       (hdehler on 04/04/2023 at 22:53):     _setNotes(notes) {
+app.js       (hdehler on 04/04/2023 at 22:53):         this.notes = notes;
+app.js       (hdehler on 04/04/2023 at 22:53):         this.view.updateNoteList(notes);
+app.js       (hdehler on 04/04/2023 at 22:53):         this.view.updateNotePreviewVisibility(notes.length > 0);
+app.js       (hdehler on 04/04/2023 at 22:53):     }
+app.js       (hdehler on 04/04/2023 at 22:53): 
+app.js       (hdehler on 04/04/2023 at 22:53):     _setActiveNote(note) {
+app.js       (hdehler on 04/04/2023 at 22:53):         this.activeNote = note;
+app.js       (hdehler on 04/04/2023 at 22:53):         this.view.updateActiveNote(note);
+app.js       (hdehler on 04/04/2023 at 22:53):     }
+app.js       (hdehler on 04/04/2023 at 22:53): 
+app.js       (hdehler on 04/04/2023 at 22:53):     _handlers() {
+app.js       (hdehler on 04/04/2023 at 22:53):         return {
+app.js       (hdehler on 04/04/2023 at 22:53):             onNoteSelect: noteId => {
+app.js       (hdehler on 04/04/2023 at 22:53):                 const selectedNote = this.notes.find(note => note.id == noteId);
+app.js       (hdehler on 04/04/2023 at 22:53):                 this._setActiveNote(selectedNote);
+app.js       (hdehler on 04/04/2023 at 22:53):             },
+app.js       (hdehler on 04/04/2023 at 22:53):             onNoteAdd: () => {
+app.js       (hdehler on 04/04/2023 at 22:53):                 const newNote = {
+app.js       (hdehler on 04/04/2023 at 22:53):                     title: "New Note",
+app.js       (hdehler on 04/04/2023 at 22:53):                     body: "Take note..."
+app.js       (hdehler on 04/04/2023 at 22:53):                 };
+app.js       (hdehler on 04/04/2023 at 22:53): 
+app.js       (hdehler on 04/04/2023 at 22:53):                 NotesAPI.saveNote(newNote);
+app.js       (hdehler on 04/04/2023 at 22:53):                 this._refreshNotes();
+app.js       (hdehler on 04/04/2023 at 22:53):             },
+app.js       (hdehler on 04/04/2023 at 22:53):             onNoteEdit: (title, body) => {
+app.js       (hdehler on 04/04/2023 at 22:53):                 NotesAPI.saveNote({
+app.js       (hdehler on 04/04/2023 at 22:53):                     id: this.activeNote.id,
+app.js       (hdehler on 04/04/2023 at 22:53):                     title,
+app.js       (hdehler on 04/04/2023 at 22:53):                     body
+app.js       (hdehler on 04/04/2023 at 22:53):                 });
+app.js       (hdehler on 04/04/2023 at 22:53): 
+app.js       (hdehler on 04/04/2023 at 22:53):                 this._refreshNotes();
+app.js       (hdehler on 04/04/2023 at 22:53):             },
+app.js       (hdehler on 04/04/2023 at 22:53):             onNoteDelete: noteId => {
+app.js       (hdehler on 04/04/2023 at 22:53):                 NotesAPI.deleteNote(noteId);
+app.js       (hdehler on 04/04/2023 at 22:53):                 this._refreshNotes();
+app.js       (hdehler on 04/04/2023 at 22:53):             },
+app.js       (hdehler on 04/04/2023 at 22:53):         };
+app.js       (hdehler on 04/04/2023 at 22:53):     }
+app.js       (hdehler on 04/04/2023 at 22:53): }
+notesPage.html (hdehler on 04/04/2023 at 22:53): <html lang="en">
+notesPage.html (hdehler on 04/04/2023 at 22:53):         <meta charset="UTF-8">
+notesPage.html (hdehler on 04/04/2023 at 22:53):         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+notesPage.html (hdehler on 04/04/2023 at 22:53):         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+notesPage.html (hdehler on 04/04/2023 at 22:53):         <title>Notes Page</title>
+notesPage.html (hdehler on 04/04/2023 at 22:53):         <link rel="stylesheet" href="notesPage.css">
+notesPage.html (hdehler on 04/04/2023 at 22:53):     <body>
+notesPage.html (hdehler on 04/04/2023 at 22:53):         <div class="notes" id="app">
+notesPage.html (hdehler on 04/04/2023 at 22:53):             <div class="notes__sidebar">
+notesPage.html (hdehler on 04/04/2023 at 22:53):                 <button class="notes__add" type="button">Add Note</button>
+notesPage.html (hdehler on 04/04/2023 at 22:53):                 <div class="notes__list">
+notesPage.html (hdehler on 04/04/2023 at 22:53):                     <div class="list__item notes__list-item--selected">
+notesPage.html (hdehler on 04/04/2023 at 22:53):                         <div class="notes__small-title">Lecutre Notes</div>
+notesPage.html (hdehler on 04/04/2023 at 22:53):                         <div class="notes__small-body">I learned nothing today</div>
+notesPage.html (hdehler on 04/04/2023 at 22:53):                         <div class="notes__small-updated">Thursday 3:00pm</div>
+notesPage.html (hdehler on 04/04/2023 at 22:53):                     </div>
+notesPage.html (hdehler on 04/04/2023 at 22:53):                 </div>
+notesPage.html (hdehler on 04/04/2023 at 22:53):             </div>
+notesPage.html (hdehler on 04/04/2023 at 22:53):             <div class="notes__preview">\
+notesPage.html (hdehler on 04/04/2023 at 22:53):                 <input class="notes__title" type="text" placeholder="Enter a title...">
+notesPage.html (hdehler on 04/04/2023 at 22:53):                 <textarea class="notes__body">I am the notes body</textarea>
+notesPage.html (hdehler on 04/04/2023 at 22:53):             </div>
+notesPage.html (hdehler on 04/04/2023 at 22:53):         </div>
+notesPage.html (hdehler on 04/04/2023 at 22:53):         <script src="main.js" type="module"></script>
+notesPage.html (hdehler on 04/04/2023 at 22:53):     </body>
+index.html   (hdehler on 04/03/2023 at 17:31):       <div>
+index.html   (hdehler on 04/08/2023 at 01:23):         <input id="room-input" type="text" placeholder="Session ID" required>
+index.html   (hdehler on 04/08/2023 at 01:23):         <input id="nickname-input" type="text" placeholder="Nickname" required>
+index.html   (hdehler on 04/03/2023 at 17:31):       </div>
+teacherPage.html (hdehler on 04/03/2023 at 15:50):                 <button type="button" class="submit-btn red-btn press-down" id="close-question-button">Close Question</button>
+teacherPage.html (hdehler on 04/03/2023 at 17:35):         <div class="timer-box">
+teacherPage.html (hdehler on 04/03/2023 at 17:35):             <center>
+teacherPage.html (hdehler on 04/03/2023 at 17:35):                 <br>
+teacherPage.html (hdehler on 04/03/2023 at 17:35):                 <div class="timer-display" id="question-timer">00:00:00</div>
+teacherPage.html (hdehler on 04/03/2023 at 17:35):             </center>
+teacherPage.html (hdehler on 04/03/2023 at 17:35):         </div>
+quizPage.html (hdehler on 04/06/2023 at 19:42):             <br>
+quizPage.html (hdehler on 04/06/2023 at 19:42):             <br>
+quizPage.html (hdehler on 04/06/2023 at 19:42):             <br>
+quizPage.html (hdehler on 04/06/2023 at 19:42):             <br>
+quizPage.html (hdehler on 04/06/2023 at 19:23): 
+quizPage.html (hdehler on 04/06/2023 at 19:23):         <br>
+quizPage.html (hdehler on 04/06/2023 at 19:23):         <br>
+quizPage.html (hdehler on 04/06/2023 at 19:23):         <br>
+quizPage.html (hdehler on 04/06/2023 at 19:23):         <br>
+quizPage.html (hdehler on 04/06/2023 at 19:42):         <br>
+quizPage.html (hdehler on 04/06/2023 at 19:23):         <div id="code-input">
+quizPage.html (hdehler on 04/06/2023 at 19:23):             <div class="control-panel">
+quizPage.html (hdehler on 04/08/2023 at 13:13):                 
+quizPage.html (hdehler on 04/06/2023 at 19:42):                 <label for="languages">Select Language:</label>
+quizPage.html (hdehler on 04/06/2023 at 19:23):                 <select id="languages" class="languages" onchange="changeLanguage()">
+quizPage.html (hdehler on 04/06/2023 at 19:42):                     <option value="c">C</option>
+quizPage.html (hdehler on 04/06/2023 at 19:42):                     <option value="cpp">C++</option>
+quizPage.html (hdehler on 04/06/2023 at 19:42):                     <option value="php">PHP</option>
+quizPage.html (hdehler on 04/06/2023 at 19:42):                     <option value="python">Python</option>
+quizPage.html (hdehler on 04/06/2023 at 19:42):                     <option value="node">Node JS</option>
+quizPage.html (hdehler on 04/06/2023 at 19:23):                 </select>
+quizPage.html (hdehler on 04/06/2023 at 19:23):             </div>
+quizPage.html (hdehler on 04/06/2023 at 19:42):             <div class="button-container">
+quizPage.html (hdehler on 04/06/2023 at 19:42):                 <button class="btn" onclick="executeCode()">Run</button>
+quizPage.html (hdehler on 04/06/2023 at 19:42):             </div>
+quizPage.html (hdehler on 04/06/2023 at 19:42):         <div class="output-container">
+quizPage.html (hdehler on 04/06/2023 at 19:42):             <div class="output-header">Output</div>
+quizPage.html (hdehler on 04/06/2023 at 19:42):             <div class="output" id="output"></div>
+quizPage.html (hdehler on 04/06/2023 at 19:23):         </div>
+quizPage.html (hdehler on 04/06/2023 at 19:23):     <!-- Javascript for the code editior-->
+quizPage.html (hdehler on 04/06/2023 at 19:23):     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+quizPage.html (hdehler on 04/06/2023 at 19:23):     <script src="js/ide.js"></script>
+quizPage.html (hdehler on 04/06/2023 at 19:23): 
+notesView.js (hdehler on 04/04/2023 at 22:53): export default class NotesView {
+notesView.js (hdehler on 04/04/2023 at 22:53):     constructor(root, { onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete } = {}) {
+notesView.js (hdehler on 04/04/2023 at 22:53):         this.root = root;
+notesView.js (hdehler on 04/04/2023 at 22:53):         this.onNoteSelect = onNoteSelect;
+notesView.js (hdehler on 04/04/2023 at 22:53):         this.onNoteAdd = onNoteAdd;
+notesView.js (hdehler on 04/04/2023 at 22:53):         this.onNoteEdit = onNoteEdit;
+notesView.js (hdehler on 04/04/2023 at 22:53):         this.onNoteDelete = onNoteDelete;
+notesView.js (hdehler on 04/04/2023 at 22:53):         this.root.innerHTML = `
+notesView.js (hdehler on 04/04/2023 at 22:53):             <div class="notes__sidebar">
+notesView.js (hdehler on 04/04/2023 at 22:53):                 <button class="notes__add" type="button">Add Note</button>
+notesView.js (hdehler on 04/04/2023 at 22:53):                 <div class="notes__list"></div>
+notesView.js (hdehler on 04/04/2023 at 22:53):             </div>
+notesView.js (hdehler on 04/04/2023 at 22:53):             <div class="notes__preview">
+notesView.js (hdehler on 04/04/2023 at 22:53):                 <input class="notes__title" type="text" placeholder="New Note...">
+notesView.js (hdehler on 04/04/2023 at 22:53):                 <textarea class="notes__body">Take Note...</textarea>
+notesView.js (hdehler on 04/04/2023 at 22:53):             </div>
+notesView.js (hdehler on 04/04/2023 at 22:53):         `;
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):         const btnAddNote = this.root.querySelector(".notes__add");
+notesView.js (hdehler on 04/04/2023 at 22:53):         const inpTitle = this.root.querySelector(".notes__title");
+notesView.js (hdehler on 04/04/2023 at 22:53):         const inpBody = this.root.querySelector(".notes__body");
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):         btnAddNote.addEventListener("click", () => {
+notesView.js (hdehler on 04/04/2023 at 22:53):             this.onNoteAdd();
+notesView.js (hdehler on 04/04/2023 at 22:53):         });
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):         [inpTitle, inpBody].forEach(inputField => {
+notesView.js (hdehler on 04/04/2023 at 22:53):             inputField.addEventListener("blur", () => {
+notesView.js (hdehler on 04/04/2023 at 22:53):                 const updatedTitle = inpTitle.value.trim();
+notesView.js (hdehler on 04/04/2023 at 22:53):                 const updatedBody = inpBody.value.trim();
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):                 this.onNoteEdit(updatedTitle, updatedBody);
+notesView.js (hdehler on 04/04/2023 at 22:53):             });
+notesView.js (hdehler on 04/04/2023 at 22:53):         });
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):         this.updateNotePreviewVisibility(false);
+notesView.js (hdehler on 04/04/2023 at 22:53):     }
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):     _createListItemHTML(id, title, body, updated) {
+notesView.js (hdehler on 04/04/2023 at 22:53):         const MAX_BODY_LENGTH = 60;
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):         return `
+notesView.js (hdehler on 04/04/2023 at 22:53):             <div class="notes__list-item" data-note-id="${id}">
+notesView.js (hdehler on 04/04/2023 at 22:53):                 <div class="notes__small-title">${title}</div>
+notesView.js (hdehler on 04/04/2023 at 22:53):                 <div class="notes__small-body">
+notesView.js (hdehler on 04/04/2023 at 22:53):                     ${body.substring(0, MAX_BODY_LENGTH)}
+notesView.js (hdehler on 04/04/2023 at 22:53):                     ${body.length > MAX_BODY_LENGTH ? "..." : ""}
+notesView.js (hdehler on 04/04/2023 at 22:53):                 </div>
+notesView.js (hdehler on 04/04/2023 at 22:53):                 <div class="notes__small-updated">
+notesView.js (hdehler on 04/04/2023 at 22:53):                     ${updated.toLocaleString(undefined, { dateStyle: "full", timeStyle: "short" })}
+notesView.js (hdehler on 04/04/2023 at 22:53):                 </div>
+notesView.js (hdehler on 04/04/2023 at 22:53):             </div>
+notesView.js (hdehler on 04/04/2023 at 22:53):         `;
+notesView.js (hdehler on 04/04/2023 at 22:53):     }
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):     updateNoteList(notes) {
+notesView.js (hdehler on 04/04/2023 at 22:53):         const notesListContainer = this.root.querySelector(".notes__list");
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):         // Empty list
+notesView.js (hdehler on 04/04/2023 at 22:53):         notesListContainer.innerHTML = "";
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):         for (const note of notes) {
+notesView.js (hdehler on 04/04/2023 at 22:53):             const html = this._createListItemHTML(note.id, note.title, note.body, new Date(note.updated));
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):             notesListContainer.insertAdjacentHTML("beforeend", html);
+notesView.js (hdehler on 04/04/2023 at 22:53):         }
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):         // Add select/delete events for each list item
+notesView.js (hdehler on 04/04/2023 at 22:53):         notesListContainer.querySelectorAll(".notes__list-item").forEach(noteListItem => {
+notesView.js (hdehler on 04/04/2023 at 22:53):             noteListItem.addEventListener("click", () => {
+notesView.js (hdehler on 04/04/2023 at 22:53):                 this.onNoteSelect(noteListItem.dataset.noteId);
+notesView.js (hdehler on 04/04/2023 at 22:53):             });
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):             noteListItem.addEventListener("dblclick", () => {
+notesView.js (hdehler on 04/04/2023 at 22:53):                 const doDelete = confirm("Are you sure you want to delete this note?");
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):                 if (doDelete) {
+notesView.js (hdehler on 04/04/2023 at 22:53):                     this.onNoteDelete(noteListItem.dataset.noteId);
+notesView.js (hdehler on 04/04/2023 at 22:53):                 }
+notesView.js (hdehler on 04/04/2023 at 22:53):             });
+notesView.js (hdehler on 04/04/2023 at 22:53):         });
+notesView.js (hdehler on 04/04/2023 at 22:53):     }
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):     updateActiveNote(note) {
+notesView.js (hdehler on 04/04/2023 at 22:53):         this.root.querySelector(".notes__title").value = note.title;
+notesView.js (hdehler on 04/04/2023 at 22:53):         this.root.querySelector(".notes__body").value = note.body;
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):         this.root.querySelectorAll(".notes__list-item").forEach(noteListItem => {
+notesView.js (hdehler on 04/04/2023 at 22:53):             noteListItem.classList.remove("notes__list-item--selected");
+notesView.js (hdehler on 04/04/2023 at 22:53):         });
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):         this.root.querySelector(`.notes__list-item[data-note-id="${note.id}"]`).classList.add("notes__list-item--selected");
+notesView.js (hdehler on 04/04/2023 at 22:53):     }
+notesView.js (hdehler on 04/04/2023 at 22:53): 
+notesView.js (hdehler on 04/04/2023 at 22:53):     updateNotePreviewVisibility(visible) {
+notesView.js (hdehler on 04/04/2023 at 22:53):         this.root.querySelector(".notes__preview").style.visibility = visible ? "visible" : "hidden";
+notesView.js (hdehler on 04/04/2023 at 22:53):     }
+notesView.js (hdehler on 04/04/2023 at 22:53): }
+teacherPage.css (hdehler on 04/03/2023 at 16:09): 	justify-content: space-evenly;
+teacherPage.css (hdehler on 04/03/2023 at 17:35): .timer-display {
+teacherPage.css (hdehler on 04/03/2023 at 17:35):     font-size: 2em;
+teacherPage.css (hdehler on 04/03/2023 at 17:35):     font-weight: bold;
+teacherPage.css (hdehler on 04/03/2023 at 17:35):     margin-bottom: 1px;
+teacherPage.css (hdehler on 04/03/2023 at 17:35):     top: 1%;
+teacherPage.css (hdehler on 04/03/2023 at 17:35):     color:#ffffff;
+teacherPage.css (hdehler on 04/03/2023 at 17:35):   }
+teacherPage.css (hdehler on 04/03/2023 at 16:09): 
+teacherPage.css (hdehler on 04/03/2023 at 16:09): 
+contactUs.html (hdehler on 04/08/2023 at 01:23): <!DOCTYPE html>
+contactUs.html (hdehler on 04/08/2023 at 01:23): <html lang="en">
+contactUs.html (hdehler on 04/08/2023 at 01:23):     <head>
+contactUs.html (hdehler on 04/08/2023 at 01:23):         <meta charset="UTF-8">
+contactUs.html (hdehler on 04/08/2023 at 01:23):         <meta http-equiv="X-IA-Compatible" content="IE-edge">
+contactUs.html (hdehler on 04/08/2023 at 01:23):         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+contactUs.html (hdehler on 04/08/2023 at 01:23):         <title>HTML Contact Form Submission</title>
+contactUs.html (hdehler on 04/08/2023 at 01:23):         <link rel="stylesheet" href="./contactUs.css">
+contactUs.html (hdehler on 04/08/2023 at 01:23):     </head>
+contactUs.html (hdehler on 04/08/2023 at 01:23):     <body>
+contactUs.html (hdehler on 04/08/2023 at 01:23):         <div class="container">
+contactUs.html (hdehler on 04/08/2023 at 01:23):             <h1>Contact Form</h1>
+contactUs.html (hdehler on 04/08/2023 at 01:23):             <form action="https://formspree.io/f/xlekoeqe" method="POST">
+contactUs.html (hdehler on 04/08/2023 at 01:23):                 <input type="text" name="Name" placeholder="Full Name" required>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                 <input type="email" name="Email" placeholder="Email" required>
+contactUs.html (hdehler on 04/08/2023 at 01:23): 
+contactUs.html (hdehler on 04/08/2023 at 01:23):                 <select name="State">
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Alabama</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Alaska</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Arizona</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Arkansas</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>California</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Colorado</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Connecticut</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Deleware</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Florida</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Georgia</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Hawaii</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Idaho</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Illinois</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Indiana</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Iowa</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Kansas</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Kentucky</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Louisiana</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Maine</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Maryland</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Massachusetts</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Michigan</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Mississippi</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Missouri</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Montana</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Nebrasa</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Nevada</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>New Hampshire</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>New Jersey</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>New Mexico</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>New York</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>North Carolina</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>North Dakota</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Ohio</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Oklahoma</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Oregon</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Pennsylvania</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>South Carolina</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>South Dakota</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Tennessee</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Texas</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Utah</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Vermont</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Virginia</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Washington</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>West Virginia</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Wisconsin</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     <option>Wyoming</option>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                     
+contactUs.html (hdehler on 04/08/2023 at 01:23):                 </select>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                 <textarea name="Message" placeholder="Message" required></textarea>
+contactUs.html (hdehler on 04/08/2023 at 01:23):                 <center><button type="submit">Send</button></center>
+contactUs.html (hdehler on 04/08/2023 at 01:23):             </form>
+contactUs.html (hdehler on 04/08/2023 at 01:23):         </div>
+contactUs.html (hdehler on 04/08/2023 at 01:23):         
+contactUs.html (hdehler on 04/08/2023 at 01:23):     </body>
+contactUs.html (hdehler on 04/08/2023 at 01:23): </html>
+home-svgrepo-com.svg (hdehler on 04/04/2023 at 22:53): <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+home-svgrepo-com.svg (hdehler on 04/04/2023 at 22:53): <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+home-svgrepo-com.svg (hdehler on 04/04/2023 at 22:53): <path fill-rule="evenodd" clip-rule="evenodd" d="M11.3103 1.77586C11.6966 1.40805 12.3034 1.40805 12.6897 1.77586L20.6897 9.39491L23.1897 11.7759C23.5896 12.1567 23.605 12.7897 23.2241 13.1897C22.8433 13.5896 22.2103 13.605 21.8103 13.2241L21 12.4524V20C21 21.1046 20.1046 22 19 22H14H10H5C3.89543 22 3 21.1046 3 20V12.4524L2.18966 13.2241C1.78972 13.605 1.15675 13.5896 0.775862 13.1897C0.394976 12.7897 0.410414 12.1567 0.810345 11.7759L3.31034 9.39491L11.3103 1.77586ZM5 10.5476V20H9V15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15V20H19V10.5476L12 3.88095L5 10.5476ZM13 20V15C13 14.4477 12.5523 14 12 14C11.4477 14 11 14.4477 11 15V20H13Z" fill="#000000"/>
+home-svgrepo-com.svg (hdehler on 04/04/2023 at 22:53): </svg>
+main.js      (hdehler on 04/04/2023 at 22:53): import App from "./app.js";
+main.js      (hdehler on 04/04/2023 at 22:53): 
+main.js      (hdehler on 04/04/2023 at 22:53): const root = document.getElementById("app");
+main.js      (hdehler on 04/04/2023 at 22:53): const app = new App(root);
+ide.js       (hdehler on 04/06/2023 at 19:23): let editor;
+ide.js       (hdehler on 04/06/2023 at 19:23): 
+ide.js       (hdehler on 04/06/2023 at 19:23): window.onload = function() {
+ide.js       (hdehler on 04/06/2023 at 19:23):     editor = ace.edit("editor");
+ide.js       (hdehler on 04/08/2023 at 13:13):     editor.setTheme("ace/theme/one_dark");
+ide.js       (hdehler on 04/06/2023 at 19:23):     editor.session.setMode("ace/mode/c_cpp");
+ide.js       (hdehler on 04/06/2023 at 19:23): }
+ide.js       (hdehler on 04/06/2023 at 19:23): 
+ide.js       (hdehler on 04/06/2023 at 19:23): function changeLanguage() {
+ide.js       (hdehler on 04/06/2023 at 19:23): 
+ide.js       (hdehler on 04/06/2023 at 19:23):     let language = $("#languages").val();
+ide.js       (hdehler on 04/06/2023 at 19:23): 
+ide.js       (hdehler on 04/06/2023 at 19:23):     if(language == 'c' || language == 'cpp')editor.session.setMode("ace/mode/c_cpp");
+ide.js       (hdehler on 04/06/2023 at 19:23):     else if(language == 'php')editor.session.setMode("ace/mode/php");
+ide.js       (hdehler on 04/06/2023 at 19:23):     else if(language == 'python')editor.session.setMode("ace/mode/python");
+ide.js       (hdehler on 04/06/2023 at 19:23):     else if(language == 'node')editor.session.setMode("ace/mode/javascript");
+ide.js       (hdehler on 04/06/2023 at 19:23): }
+ide.js       (hdehler on 04/06/2023 at 19:23): 
+ide.js       (hdehler on 04/06/2023 at 19:23): function executeCode() {
+ide.js       (hdehler on 04/06/2023 at 19:23): 
+ide.js       (hdehler on 04/06/2023 at 19:23):     $.ajax({
+ide.js       (hdehler on 04/06/2023 at 19:23): 
+ide.js       (hdehler on 04/06/2023 at 19:23):         url: "/ide/app/compiler.php",
+ide.js       (hdehler on 04/06/2023 at 19:23): 
+ide.js       (hdehler on 04/06/2023 at 19:23):         method: "POST",
+ide.js       (hdehler on 04/06/2023 at 19:23): 
+ide.js       (hdehler on 04/06/2023 at 19:23):         data: {
+ide.js       (hdehler on 04/06/2023 at 19:23):             language: $("#languages").val(),
+ide.js       (hdehler on 04/06/2023 at 19:23):             code: editor.getSession().getValue()
+ide.js       (hdehler on 04/06/2023 at 19:23):         },
+ide.js       (hdehler on 04/06/2023 at 19:23): 
+ide.js       (hdehler on 04/06/2023 at 19:23):         success: function(response) {
+ide.js       (hdehler on 04/06/2023 at 19:23):             $(".output").text(response)
+ide.js       (hdehler on 04/06/2023 at 19:23):         }
+ide.js       (hdehler on 04/06/2023 at 19:23):     })
+ide.js       (hdehler on 04/06/2023 at 19:23): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): html,
+notesPage.css (hdehler on 04/04/2023 at 22:53): body {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   height: 100%;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   margin: 0;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   background-color: rgb(55, 54, 54);
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   display: flex;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   height: 100%;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes * {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   font-family: sans-serif;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__sidebar {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   border-right: 2px solid #dddddd;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   flex-shrink: 0;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   overflow-y: auto;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   padding: 1em;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   width: 300px;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   background-color: #fff; /* Add white background color */
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__add {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   background: #23a6d5;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   border: none;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   border-radius: 7px;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   color: #ffffff;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   cursor: pointer;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   font-size: 1.25em;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   font-weight: bold;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   margin-bottom: 1em;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   padding: 0.75em 0;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   width: 100%;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__add:hover {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   background: #12799f;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__list-item {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   cursor: pointer;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__list-item--selected {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   background: #eeeeee;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   border-radius: 7px;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   font-weight: bold;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__small-title,
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__small-updated {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   padding: 10px;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__small-title {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   font-size: 1.2em;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__small-body {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   padding: 0 10px;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__small-updated {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   color: #aaaaaa;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   font-style: italic;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   text-align: right;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__preview {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   display: flex;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   flex-direction: column;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   padding: 2em 3em;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   flex-grow: 1;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__title,
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__body {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   background-color:  rgb(55, 54, 54);
+notesPage.css (hdehler on 04/04/2023 at 22:53):   color:#ffffff;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   border: none;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   outline: none;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   width: 100%;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__title {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   font-size: 3em;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   font-weight: bold;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+notesPage.css (hdehler on 04/04/2023 at 22:53): 
+notesPage.css (hdehler on 04/04/2023 at 22:53): .notes__body {
+notesPage.css (hdehler on 04/04/2023 at 22:53):   flex-grow: 1;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   font-size: 1.2em;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   line-height: 1.5;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   margin-top: 2em;
+notesPage.css (hdehler on 04/04/2023 at 22:53):   resize: none;
+notesPage.css (hdehler on 04/04/2023 at 22:53): }
+homePage.css (hdehler on 04/03/2023 at 17:31):   background-color: rgb(0, 0, 0);
+homePage.css (hdehler on 04/03/2023 at 17:31): 
+homePage.css (hdehler on 04/03/2023 at 17:31):   background-color: #00000000;
+homePage.css (hdehler on 04/03/2023 at 17:31):   transition: background-color 0.1s ease;
+homePage.css (hdehler on 04/03/2023 at 17:31):   padding: 13.874px ;
+homePage.css (hdehler on 04/03/2023 at 17:31):   text-align: center; /* add text-align property and set to center */
+homePage.css (hdehler on 04/03/2023 at 17:31):   width: 100%; /* add width property and set to 100% */
+homePage.css (hdehler on 04/03/2023 at 17:31):   width: 700%;
+homePage.css (hdehler on 04/03/2023 at 17:31):   padding: 100.874px 200px;

@@ -1,0 +1,436 @@
+package-lock.json (nupadhy3 on 04/09/2023 at 17:59):   "name": "code-dojo",
+mcq.js       (nupadhy3 on 04/10/2023 at 15:09): /*const questions = [
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):       question: "What is the capital of France?",
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):       options: {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):         a: "London",
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):         b: "Paris",
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):         c: "Madrid",
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):         d: "Rome"
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):       },
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):       answer: "b"
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     }
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   ];
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   const questionEl = document.getElementById("question");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   const optionAEl = document.getElementById("option-a");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   const optionBEl = document.getElementById("option-b");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   const optionCEl = document.getElementById("option-c");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   const optionDEl = document.getElementById("option-d");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   const nextBtn = document.getElementById("next-btn");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   const addQuestionBtn = document.getElementById("add-question-btn");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   let currentQuestion = 0;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   function loadQuestion() {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     const currentQuizQuestion = questions[currentQuestion];
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     questionEl.textContent = currentQuizQuestion.question;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     optionAEl.textContent = currentQuizQuestion.options.a;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     optionBEl.textContent = currentQuizQuestion.options.b;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     optionCEl.textContent = currentQuizQuestion.options.c;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     optionDEl.textContent = currentQuizQuestion.options.d;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     }
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     loadQuestion();
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     function getSelectedOption() {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     const answerEls = document.getElementsByName("answer");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     let selectedOption = undefined;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     answerEls.forEach((answerEl) => {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     if (answerEl.checked) {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     selectedOption = answerEl.value;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     }
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     });
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     return selectedOption;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     }
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     let score = 0;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     nextBtn.addEventListener("click", () => {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     const selectedOption = getSelectedOption();
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     if (selectedOption) {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     if (selectedOption === questions[currentQuestion].answer) {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     score++;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     }
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     currentQuestion++;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59): 
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59): if (currentQuestion < questions.length) {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   loadQuestion();
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59): } else {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   alert(`Quiz Completed! Your score is ${score}/${questions.length}.`);
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   currentQuestion = 0;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   score = 0;
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):   loadQuestion();
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59): }
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59): } else {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     alert("Please select an option.");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     }
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     });
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     addQuestionBtn.addEventListener("click", () => {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     const newQuestion = prompt("Enter a new question:");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     const newOptionA = prompt("Enter option A:");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     const newOptionB = prompt("Enter option B:");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     const newOptionC = prompt("Enter option C:");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     const newOptionD = prompt("Enter option D:");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     const newAnswer = prompt("Enter the correct answer (a, b, c or d):");
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     const newQuizQuestion = {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     question: newQuestion,
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     options: {
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     a: newOptionA,
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     b: newOptionB,
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     c: newOptionC,
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     d: newOptionD
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     },
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     answer: newAnswer
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     };
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     
+mcq.js       (nupadhy3 on 04/09/2023 at 17:59):     questions.push(newQuizQuestion);
+mcq.js       (nupadhy3 on 04/10/2023 at 15:09):     });*/
+mcq.js       (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.js       (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.js       (nupadhy3 on 04/10/2023 at 15:09):     
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59): #quiz-container {
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     width: 80%;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     margin: auto;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     text-align: center;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     font-size: 1.2rem;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   }
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   ul {
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     list-style-type: none;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     padding: 0;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   }
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   li {
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     margin: 10px;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   }
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   input[type="radio"] {
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     display: none;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   }
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   label {
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     display: inline-block;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     padding: 10px;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     background-color: #f2f2f2;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     border-radius: 5px;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     cursor: pointer;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   }
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   label:hover {
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     background-color: #ddd;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   }
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   input[type="radio"]:checked + label {
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     background-color: #4CAF50;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     color: white;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   }
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   #next-btn {
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     background-color: #4CAF50;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     color: white;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     border: none;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     padding: 10px 20px;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     border-radius: 5px;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     cursor: pointer;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   }
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):   #add-question-btn {
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     margin-top: 20px;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     background-color: #4CAF50;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     color: white;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     border: none;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     padding: 10px 20px;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     border-radius: 5px;
+mcq.css      (nupadhy3 on 04/09/2023 at 17:59):     cursor: pointer;
+mcq.css      (nupadhy3 on 04/10/2023 at 15:09):   }
+mcq.css      (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.css      (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): <!-- <!DOCTYPE html>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59): <html>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):   <head>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):     <title>Multiple Choice Quiz</title>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):     <link rel="stylesheet" type="text/css" href="mcq.css">
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):   </head>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):   <body>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):     <div id="quiz-container">
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):       <h2 id="question">Question 1</h2>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):       <ul>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):         <li>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):           <input type="radio" name="answer" value="a" id="a">
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):           <label for="a" id="option-a"></label>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):         </li>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):         <li>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):           <input type="radio" name="answer" value="b" id="b">
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):           <label for="b" id="option-b"></label>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):         </li>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):         <li>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):           <input type="radio" name="answer" value="c" id="c">
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):           <label for="c" id="option-c"></label>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):         </li>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):         <li>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):           <input type="radio" name="answer" value="d" id="d">
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):           <label for="d" id="option-d"></label>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):         </li>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):       </ul>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):       <button id="next-btn">Next</button>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):     </div>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):     <button id="add-question-btn">Add Question</button>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):     <script src="mcq.js"></script>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59):   </body>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): </html> -->
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): <!DOCTYPE html>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): <html lang="en">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): <head>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):     <meta charset="UTF-8">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):     <title>Multiple Choice Questions</title>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         crossorigin="anonymous">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         crossorigin="anonymous"></script>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): </head>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): <body>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):     <div class="container mt-5">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         <h5 class="card-text float-right font-weight-bold">Total Time : <br> (00 : <span id="time">00</span>)</h5>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         <!--First Page-->
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         <div class="row d-flex justify-content-center">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             <div class="col-md-8 border p-4">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 <div class="card-body">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     <h5 class="card-text float-left font-weight-bold">MC QUIZ</h5>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     <h5>(<span id = "number">0</span> of 5)</h5>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 </div>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 <hr>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 <div class="start_page">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     <h3 class="text-center mb-5">HTML & CSS BASICS MCQ's</h3>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     <p>You will get 5 point for each correct answer, At the end of the Quiz,
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         your total score will be displayed. Maximum score is 25 points.
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     </p>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     <button class="btn btn-success d-flex mx-auto mt-4" id="btn"><h5>Start the Quiz</h5></button>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 </div>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 <!-- QUIZ PAGE -->
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 <div id="main">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     <div class="card-body">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         <h5 class="card-text font-weight-bold" id="question"></h5>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     </div>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     <div class="col-md-12 p-4" id="options">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         <button class="btn btn-block btn-outline-success text-left option" id="options1"></button>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         <button class="btn btn-block btn-outline-success text-left option" id="options2"></button>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         <button class="btn btn-block btn-outline-success text-left option" id="options3"></button>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         <button class="btn btn-block btn-outline-success text-left option" id="options4"></button>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         <div class="footer p-4">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                             <button class="btn btn-success float-left" id="prev">Pervious</button>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                             <button class="btn btn-success float-right" id="next">Next</button>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         </div>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     </div>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     <div class="d-flex justify-content-center">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         <button class="btn btn-primary btn-lg mx-auto" id="finish">Finish</button>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     </div>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 </div>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 <!-- RESULT PAGE-->
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 <div id="Result">
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     <h3 class="mt-5 display-4">Marks: <span id="marks"></span>/25</h3>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     <h3 class="mt-4"><span id="correct-answer">3</span> Correct out of 5</h3>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     <h3 class="mt-4">Result : <span id="precentage">100%</span></h3>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 </div>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             </div>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         </div>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):     </div>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):     
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):     <script>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         //Variables
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         var count = 0;
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         var time = 30;
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         var marks = 0;
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         var answer = [];
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         var timer;
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         //main ready function
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         $(document).ready(function(){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             $('#finish').hide();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             $('#Result').hide();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             buttons_manager();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             //Create function
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             function buttons_manager(){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 if(count > 0){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     $('#prev').show();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     if(count == 4){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         $('#next').hide();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         $('#finish').show();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     } else { 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         $('#next').show();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     }
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 } else {
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     $('#prev').hide();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 }
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             }
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             //Create question function
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             function adding_Questions(data,i){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $('#question').text(data[i].Quiz)
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $('#options1').text(data[i].options1)
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $('#options2').text(data[i].options2)
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $('#options3').text(data[i].options3)
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $('#options4').text(data[i].options4)
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $('#number').text(Number(i+1));
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             }
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             //Answer selection function
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             function selected_Answer(){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 for(var i = 0; i<4; i++){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     var a = document.getElementById("options").children;
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     if (a[i].innerHTML == answer[count]){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         $("#options").children("button")[i].classList.add("active");
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     } else {
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         $("#options").children("button")[i].classList.remove("active");
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     }
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 }
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             }
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             function creating_result(data){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 for(var i = 0; i<answer.length; i++){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     marks += 5;
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 }
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $('#main').hide;
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $("marks").text(marks);
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $("#correct-answer").text(marks / 5 );
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $('#correct-answer').text((marks / 25) * 100 + "%");
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $("#Result").show();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             }
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             $("#options").hide();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             //Attach API
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             fetch('data.json')
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             .then(function (response){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 return response.json();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             })
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             .then(function (data){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $('#btn').click(function(){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     $('#options').show();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     adding_Questions(data.Questions, count);
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     $('.start_page').hide();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     $('#prev').hide();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     timer = setInterval(timer_function, 1000);
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     function timer_function(){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         $('#time').text(time);
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         if(time < 1){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                             clearInterval(timer);
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                             alert("Out of time");
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                             creating_result(data);
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                             $("#main").hide();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                             $("#result").show();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         }
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         time--;
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     }
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 });
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 //select option
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $(".option").click(function (){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     $(this).addClass("active");
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     $(this).siblings().removeClass("active");
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     answer[count] = $(this).html();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 });
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 //Next questions
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $('#next').click(function (){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     if(count > answer.length - 1){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         alert("Select At least 1 option");
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     } else{
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         count++;
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         adding_Questions(data.Questions, count);
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         $("#prev").show();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         $(".option").removeClass("active");
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         buttons_manager();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         selected_Answer();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     }
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 });
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 //Perv Questions
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $('#prev').click(function (){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     count--;
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     adding_Questions(data.Questions, count);
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     buttons_manager();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     selected_Answer();
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 });
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 //Finish Qiestions
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 $("#finish").click(function(){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     if(count > answer.length - 1){
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         alert("Select Atleast option")
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     }else{
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         creating_result(data);
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                         clearInterval(timer);
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                     }
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):                 });
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):             })
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         })
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):     </script>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         crossorigin="anonymous"></script>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" 
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09):         crossorigin="anonymous"></script>
+mcq.html     (nupadhy3 on 04/10/2023 at 15:09): </body>
+mcq.html     (nupadhy3 on 04/09/2023 at 17:59): </html>
+data.json    (nupadhy3 on 04/10/2023 at 15:09): {
+data.json    (nupadhy3 on 04/10/2023 at 15:09):     "Questions": [
+data.json    (nupadhy3 on 04/10/2023 at 15:09):         {
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "Quiz": "Q1) What does HTML stand for?",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option1": "Hyper Type Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option2": "Home Tool Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option3": "Hyper Link and Text Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option4": "Hyper Text Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "answer": "Hyper Type Markup Language"
+data.json    (nupadhy3 on 04/10/2023 at 15:09):         },
+data.json    (nupadhy3 on 04/10/2023 at 15:09):         {
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "Quiz": "Q2) What does CSS stand for?",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option1": "Colorful Style Sheets",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option2": "Computer Style Sheets",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option3": "Creative Style Sheets",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option4": "Cascading Style Sheets",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "answer": "Cascading Style Sheets"
+data.json    (nupadhy3 on 04/10/2023 at 15:09):         },
+data.json    (nupadhy3 on 04/10/2023 at 15:09):         {
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "Quiz": "Q3) What does HTML stand for?",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option1": "Hyper Type Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option2": "Home Tool Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option3": "Hyper Link and Text Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option4": "Hyper Text Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "answer": "Hyper Type Markup Language"
+data.json    (nupadhy3 on 04/10/2023 at 15:09):         },
+data.json    (nupadhy3 on 04/10/2023 at 15:09):         {
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "Quiz": "Q4) What does HTML stand for?",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option1": "Hyper Type Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option2": "Home Tool Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option3": "Hyper Link and Text Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option4": "Hyper Text Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "answer": "Hyper Type Markup Language"
+data.json    (nupadhy3 on 04/10/2023 at 15:09):         },
+data.json    (nupadhy3 on 04/10/2023 at 15:09):         {
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "Quiz": "Q5) What does HTML stand for?",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option1": "Hyper Type Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option2": "Home Tool Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option3": "Hyper Link and Text Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "option4": "Hyper Text Markup Language",
+data.json    (nupadhy3 on 04/10/2023 at 15:09):             "answer": "Hyper Type Markup Language"
+data.json    (nupadhy3 on 04/10/2023 at 15:09):         }
+data.json    (nupadhy3 on 04/10/2023 at 15:09):     ]
+data.json    (nupadhy3 on 04/10/2023 at 15:09): }
