@@ -126,8 +126,10 @@ body {
     height: 65px;
     fill: white;
     position: absolute;
-    bottom: 1%;
-    right: 1%;
+    top: 7%;
+    right: 0%;
+    /* bottom: 1%;
+    right: 1%; */
 }
 
 #submit-answer-button:active svg {
