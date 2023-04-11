@@ -89,6 +89,3 @@ if (currentQuestion < questions.length) {
     
     questions.push(newQuizQuestion);
     });*/
-
-
-    
