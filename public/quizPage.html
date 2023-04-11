@@ -31,8 +31,12 @@
            -->
 
         <div class="question-set">
+            <br>
             <div class="timer-box">
                 <div class="timer-display" id="question-timer">00:00:00</div>
+                <div class="score-box">
+                    <div class="score-display">Score: <span id="score-number">0</span></div>
+                </div>
             </div>
             <!-- The below comment is old code for the temporary room form. This has been fixed, so players should only join from the home page now. -->
             <!-- <form id="room-form">
@@ -42,9 +46,11 @@
             </form> -->
 
             <p id="question-feedback" style="color: #fff">Question feedback will be shown here</p>
+            <br>
+            <br>
             <p class="questionbox" id="question" placeholder="Waiting for host">Waiting for host</p>
 
-
+            <br>
             <form class="answer-submit" id="answer-form">
                 <!-- text boxes for question and icons -->
                 <center>
@@ -64,16 +70,22 @@
         </div>
 
 
+
+
+
+
         <!-- vectors for hamburger and makeNote icons -->
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"
             id="hamburger">
             <path d="M0 0h24v24H0z" fill="none" />
             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
         </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" id="makeNote">
-            <path
-                d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" />
-        </svg>
+        <a href="NOTES_PAGE/notesPage.html">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" id="makeNote">
+                <path
+                    d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" />
+            </svg>
+        </a>
 
         <div class="submitButton">
         </div>
@@ -85,22 +97,52 @@
             <a href="index.html" class="sidebar-item">
                 <button class="btn">Home</button>
             </a>
-            <a href="/public/NOTES_PAGE/notesPage.html" class="sidebar-item">
+            <a href="NOTES_PAGE/notesPage.html" class="sidebar-item">
                 <button class="btn">Notes</button>
             </a>
-            <a href="/public/HISTORY_PAGE/historyPage.html" class="sidebar-item">
+            <a href="HISTORY_PAGE/historyPage.html" class="sidebar-item">
                 <button class="btn">History</button>
             </a>
-            <a href="/public/PROFILE/profilePage.html" class="sidebar-item">
+            <a href="PROFILE/profilePage.html" class="sidebar-item">
                 <button class="btn">Profile</button>
             </a>
-            <a href="/public/FAQ_PAGE/faqPage.html" class="sidebar-item">
+            <a href="FAQ_PAGE/faqPage.html" class="sidebar-item">
                 <button class="btn">FAQ</button>
             </a>
-            <a href="/public/ABOUT_PAGE/aboutPage.html" class="sidebar-item">
+            <a href="ABOUT_PAGE/aboutPage.html" class="sidebar-item">
                 <button class="btn">About</button>
             </a>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <!-- Code editor and compiler-->
+        <div id="code-input">
+            <div class="control-panel">
+                
+                <label for="languages">Select Language:</label>
+                <select id="languages" class="languages" onchange="changeLanguage()">
+                    <option value="c">C</option>
+                    <option value="cpp">C++</option>
+                    <option value="php">PHP</option>
+                    <option value="python">Python</option>
+                    <option value="node">Node JS</option>
+                </select>
+            </div>
+            <div class="editor" id="editor"></div>
+            <div class="button-container">
+                <button class="btn" onclick="executeCode()">Run</button>
+            </div>
+        </div>
+
+        <div class="output-container">
+            <div class="output-header">Output</div>
+            <div class="output" id="output"></div>
+        </div>
+
 
         <img src="img/ninjaslash.gif" id="ninja-slash">
     </main>
@@ -110,6 +152,12 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/util.js"></script>
     <script src="js/quiz.js"></script>
+
+    <!-- Javascript for the code editior-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/ace-builds/src/ace.js"></script>
+    <script src="js/ace-builds/theme-monokai.js"></script>
+    <script src="js/ide.js"></script>
 
 </body>
 

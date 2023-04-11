@@ -1,0 +1,579 @@
+index.js     (alex zhang on 04/04/2023 at 14:59): // NOTE: util.js is loaded before this file. This file uses functions defined in util.js
+index.js     (alex zhang on 04/04/2023 at 14:59): 
+index.js     (alex zhang on 04/04/2023 at 14:59): /*----------------------------------------------------------------------------*/
+index.js     (alex zhang on 04/04/2023 at 14:59): /* Constants                                                                  */
+index.js     (alex zhang on 04/04/2023 at 14:59): /*----------------------------------------------------------------------------*/
+index.js     (alex zhang on 04/04/2023 at 14:59): const socket = io();
+index.js     (alex zhang on 04/05/2023 at 16:58): const roomid_input = document.getElementById("room-input");
+index.js     (alex zhang on 04/04/2023 at 14:59): const nickname_input = document.getElementById("nickname-input");
+index.js     (alex zhang on 04/04/2023 at 14:59): const join_room_form = document.getElementById("join-room-form");
+index.js     (alex zhang on 04/04/2023 at 14:59): 
+index.js     (alex zhang on 04/05/2023 at 16:58): /*----------------------------------------------------------------------------*/
+index.js     (alex zhang on 04/05/2023 at 16:58): /* Handle URL Parameters                                                      */
+index.js     (alex zhang on 04/05/2023 at 16:58): /*----------------------------------------------------------------------------*/
+index.js     (alex zhang on 04/05/2023 at 16:58): const params = new URLSearchParams(window.location.search);
+index.js     (alex zhang on 04/05/2023 at 16:58): const roomid_param = params.get("roomid");
+index.js     (alex zhang on 04/05/2023 at 16:58): const nickname_param = params.get("nickname");
+index.js     (alex zhang on 04/05/2023 at 16:58): 
+index.js     (alex zhang on 04/05/2023 at 16:58): roomid_input.value = roomid_param;
+index.js     (alex zhang on 04/05/2023 at 16:58): nickname_input.value = nickname_param;
+index.js     (alex zhang on 04/05/2023 at 16:58): 
+index.js     (alex zhang on 04/04/2023 at 14:59): /*----------------------------------------------------------------------------*/
+index.js     (alex zhang on 04/04/2023 at 14:59): /* Handle Room Joining                                                        */
+index.js     (alex zhang on 04/04/2023 at 14:59): /*----------------------------------------------------------------------------*/
+index.js     (alex zhang on 04/04/2023 at 14:59): join_room_form.addEventListener("submit", function (e) {
+index.js     (alex zhang on 04/04/2023 at 14:59):     e.preventDefault();
+index.js     (alex zhang on 04/04/2023 at 14:59): 
+index.js     (alex zhang on 04/04/2023 at 14:59):     let params = new URLSearchParams();
+index.js     (alex zhang on 04/05/2023 at 16:58):     params.append('roomid', roomid_input.value);
+index.js     (alex zhang on 04/04/2023 at 14:59):     params.append('nickname', nickname_input.value);
+index.js     (alex zhang on 04/04/2023 at 14:59): 
+index.js     (alex zhang on 04/04/2023 at 14:59):     const url = 'quizPage.html?' + params.toString();
+index.js     (alex zhang on 04/04/2023 at 14:59):     window.location.href = url;
+index.js     (alex zhang on 04/04/2023 at 14:59): });
+question.ts  (alex zhang on 04/01/2023 at 18:58):     unknown,
+question.ts  (alex zhang on 04/01/2023 at 18:11):     multiple_choice,
+question.ts  (alex zhang on 04/01/2023 at 18:11):     code
+question.ts  (alex zhang on 04/01/2023 at 18:58): enum CodeLanguage {
+question.ts  (alex zhang on 04/01/2023 at 18:58):     JavaScript
+question.ts  (alex zhang on 04/01/2023 at 18:58): }
+question.ts  (alex zhang on 04/01/2023 at 18:58): 
+question.ts  (alex zhang on 04/01/2023 at 18:58): /**
+question.ts  (alex zhang on 04/01/2023 at 18:58):  * Abstract Class Question
+question.ts  (alex zhang on 04/01/2023 at 18:58):  *
+question.ts  (alex zhang on 04/01/2023 at 18:58):  * @class Question
+question.ts  (alex zhang on 04/01/2023 at 18:58):  */
+question.ts  (alex zhang on 04/01/2023 at 18:58):     protected _prompt: string;            // The text of the question
+question.ts  (alex zhang on 04/01/2023 at 18:58):     protected _answer: string;            // The text of the correct answer
+question.ts  (alex zhang on 04/01/2023 at 18:58):     constructor(prompt: string, answer: string, time_limit: number) {
+question.ts  (alex zhang on 04/01/2023 at 18:58):         if (this.constructor == Question) {
+question.ts  (alex zhang on 04/01/2023 at 18:58):             throw new Error("Abstract classes cannot be instantiated.");
+question.ts  (alex zhang on 04/01/2023 at 18:58):         }
+question.ts  (alex zhang on 04/01/2023 at 18:58): 
+question.ts  (alex zhang on 04/01/2023 at 18:58):         this._type = QuestionType.unknown;
+question.ts  (alex zhang on 04/01/2023 at 18:58):         this._is_timed = time_limit > 0;
+question.ts  (alex zhang on 04/01/2023 at 18:58):         this._num_right = 0;
+question.ts  (alex zhang on 04/01/2023 at 18:58):         this._num_wrong = 0;
+question.ts  (alex zhang on 04/01/2023 at 18:58):     public check_answer(provided_answer: string): number {
+question.ts  (alex zhang on 04/01/2023 at 18:58):         throw new Error("Method 'check_answer()' must be implemented");
+question.ts  (alex zhang on 04/01/2023 at 18:58): /**
+question.ts  (alex zhang on 04/01/2023 at 18:58):  * Free Response Question
+question.ts  (alex zhang on 04/01/2023 at 18:58):  *
+question.ts  (alex zhang on 04/01/2023 at 18:58):  * @class FRQuestion
+question.ts  (alex zhang on 04/01/2023 at 18:58):  * @extends Question
+question.ts  (alex zhang on 04/01/2023 at 18:58):  */
+question.ts  (alex zhang on 04/01/2023 at 18:58): class FRQuestion extends Question {
+question.ts  (alex zhang on 04/01/2023 at 18:58):     private _answers: string[];
+question.ts  (alex zhang on 04/01/2023 at 18:58): 
+question.ts  (alex zhang on 04/01/2023 at 18:58):     constructor(prompt: string, answers: string[], time_limit: number) {
+question.ts  (alex zhang on 04/01/2023 at 18:58):         super(prompt, answers[0], time_limit);
+question.ts  (alex zhang on 04/01/2023 at 18:58):         this._type = QuestionType.free_response;
+question.ts  (alex zhang on 04/01/2023 at 18:58):         this._answers = answers;
+question.ts  (alex zhang on 04/01/2023 at 18:58):     }
+question.ts  (alex zhang on 04/01/2023 at 18:58): 
+question.ts  (alex zhang on 04/01/2023 at 18:58):     public check_answer(provided_answer: string): number {
+question.ts  (alex zhang on 04/01/2023 at 18:58):         for (const answer of this._answers) {
+question.ts  (alex zhang on 04/01/2023 at 18:58):             if (provided_answer == answer) {
+question.ts  (alex zhang on 04/01/2023 at 18:58):                 return 1;
+question.ts  (alex zhang on 04/01/2023 at 18:58):             }
+question.ts  (alex zhang on 04/01/2023 at 18:58):         }
+question.ts  (alex zhang on 04/01/2023 at 18:58): 
+question.ts  (alex zhang on 04/01/2023 at 18:58):         return 0;
+question.ts  (alex zhang on 04/01/2023 at 18:58):     }
+question.ts  (alex zhang on 04/01/2023 at 18:58): }
+question.ts  (alex zhang on 04/01/2023 at 18:58): 
+question.ts  (alex zhang on 04/01/2023 at 18:58): /**
+question.ts  (alex zhang on 04/01/2023 at 18:58):  * Multiple Choice Question
+question.ts  (alex zhang on 04/01/2023 at 18:58):  *
+question.ts  (alex zhang on 04/01/2023 at 18:58):  * @class MCQuestion
+question.ts  (alex zhang on 04/01/2023 at 18:58):  * @extends Question
+question.ts  (alex zhang on 04/01/2023 at 18:58):  */
+question.ts  (alex zhang on 04/01/2023 at 18:58):     private _correct_answer_indices: number[];  // Index of correct answer
+question.ts  (alex zhang on 04/01/2023 at 18:58):     constructor(prompt: string, answer_choices: string[], correct_answer_indices: number[], time_limit: number) {
+question.ts  (alex zhang on 04/01/2023 at 18:58):         super(prompt, "this is a placeholder! todo: format string of all correct answer choices", time_limit);
+question.ts  (alex zhang on 04/01/2023 at 18:58):         this._correct_answer_indices = correct_answer_indices;
+question.ts  (alex zhang on 04/01/2023 at 18:58):     public get answer_choices(): string[] {
+question.ts  (alex zhang on 04/01/2023 at 18:58):     public get correct_answer_indices(): number[] {
+question.ts  (alex zhang on 04/01/2023 at 18:58):         return this._correct_answer_indices;
+question.ts  (alex zhang on 04/01/2023 at 18:58):     public override check_answer(provided_answer_index: string): number {
+question.ts  (alex zhang on 04/01/2023 at 18:58):         let grade: number = 0;
+question.ts  (alex zhang on 04/01/2023 at 18:58): 
+question.ts  (alex zhang on 04/01/2023 at 18:58):         // TODO: grade the answer by counting up number of right and subtract by number of wrong
+question.ts  (alex zhang on 04/01/2023 at 18:58): 
+question.ts  (alex zhang on 04/01/2023 at 18:58):         return 0;
+question.ts  (alex zhang on 04/01/2023 at 18:58):     }
+question.ts  (alex zhang on 04/01/2023 at 18:58): }
+question.ts  (alex zhang on 04/01/2023 at 18:58): 
+question.ts  (alex zhang on 04/01/2023 at 18:58): class CodeQuestion extends Question {
+question.ts  (alex zhang on 04/01/2023 at 18:58):     private _test_cases: any[];
+question.ts  (alex zhang on 04/01/2023 at 18:58):     private _correct_outputs: string[];
+question.ts  (alex zhang on 04/01/2023 at 18:58):     private _language: CodeLanguage;
+question.ts  (alex zhang on 04/01/2023 at 18:58): 
+question.ts  (alex zhang on 04/01/2023 at 18:58):     constructor(prompt: string, language: CodeLanguage, test_cases: any[], correct_outputs: string[], time_limit: number) {
+question.ts  (alex zhang on 04/01/2023 at 18:58):         super(prompt, "todo: answer (sample code)", time_limit);
+question.ts  (alex zhang on 04/01/2023 at 18:58):         this._type = QuestionType.code;
+question.ts  (alex zhang on 04/01/2023 at 18:58):         this._test_cases = test_cases;
+question.ts  (alex zhang on 04/01/2023 at 18:58):         this._correct_outputs = correct_outputs;
+question.ts  (alex zhang on 04/01/2023 at 18:58):         this._language = language;
+question.ts  (alex zhang on 04/01/2023 at 18:58):     }
+question.ts  (alex zhang on 04/01/2023 at 18:58): 
+question.ts  (alex zhang on 04/01/2023 at 18:58):     public override check_answer(provided_answer: string): number {
+question.ts  (alex zhang on 04/03/2023 at 15:50):         // TODO: fix temp change
+question.ts  (alex zhang on 04/05/2023 at 16:58):         // This should only test the outputs of the supplied user's answer, and see how many align with the correct test cases
+question.ts  (alex zhang on 04/03/2023 at 15:50):         return 0;
+question.ts  (alex zhang on 04/01/2023 at 18:58): export { CodeLanguage };
+question.ts  (alex zhang on 04/01/2023 at 18:58): export { FRQuestion };
+player.ts    (alex zhang on 03/29/2023 at 16:08):     private _is_correct: boolean[];     // e.g. _is_correct[3] is whether the player got question #4 correct
+player.ts    (alex zhang on 03/29/2023 at 15:23):     public get most_recent_answer(): string | undefined {
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58): services:
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):   app:
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):     build: .
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):     ports:
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):       - "8080:8080"
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):     depends_on:
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):       - db
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):     environment:
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):       MONGO_URI: mongodb://db:27017/code-dojo-db
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):   db:
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):     image: "mongo"
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):     environment:
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):       MONGO_INITDB_DATABASE: code-dojo-db
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):     ports:
+docker-compose.yml (alex zhang on 04/07/2023 at 14:58):       - "27017:27017"
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): body {
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	margin: 0;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	padding: 0;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	font-family: 'Tilt Warp', 'Helvetica', 'Arial', sans-serif;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	background-color: rgb(55, 54, 54);
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): }
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): .white-text {
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	color: #ffffff;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): }
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): .home-btn {
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	position: absolute;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	display: grid;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	grid-template-columns: repeat(5, 1fr);
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	margin-bottom: 20px;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	background-color: #ffffff;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	color: #333333;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	border-radius: 5px;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	padding: 10px;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	font-weight: bold;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	font-size: 16px;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	text-align: center;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): }
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): .buttons-container button {
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): }
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): .red-btn {
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): 	background-color: red;
+teacherPage.css (alex zhang on 04/01/2023 at 19:05): }
+index.html   (alex zhang on 03/30/2023 at 17:29): <!-- refference the css for styling-->
+index.html   (alex zhang on 03/30/2023 at 17:29):   <link rel="stylesheet" href="css/homePage.css">
+index.html   (alex zhang on 03/30/2023 at 17:29):   <div class="background-container">
+index.html   (alex zhang on 03/30/2023 at 17:29):     <div class="background-image"></div>
+index.html   (alex zhang on 03/30/2023 at 17:29):   </div>
+index.html   (alex zhang on 03/30/2023 at 17:29): 
+index.html   (alex zhang on 03/30/2023 at 17:29):   <!-- creating/adding the nav bar to the top of the page-->
+index.html   (alex zhang on 03/30/2023 at 17:29):   <nav class="top-nav">
+index.html   (alex zhang on 03/30/2023 at 17:29):     <left><img src="img/SmallDojoLogo.png" alt="CD Logo" style="width:125px;height:100px"></left>
+index.html   (alex zhang on 03/30/2023 at 17:29):     <ul>
+index.html   (alex zhang on 03/30/2023 at 17:29):       <li><a href="teacherPage.html"><button class="btn">TEACHER</button></a></li>
+index.html   (alex zhang on 04/08/2023 at 13:06):       <li><a href="NOTES_PAGE/notesPage.html"><button class="btn">NOTES</button></a></li>
+index.html   (alex zhang on 04/08/2023 at 13:06):       <li><a href="ABOUT_PAGE/aboutPage.html"><button class="btn">ABOUT</button></a></li>
+index.html   (alex zhang on 04/08/2023 at 13:06):       <li><a href="FAQ_PAGE/faqPage.html"><button class="btn">FAQ</button></a></li>
+index.html   (alex zhang on 03/30/2023 at 17:29):     </ul>
+index.html   (alex zhang on 03/30/2023 at 17:29):   </nav>
+index.html   (alex zhang on 03/30/2023 at 17:29): 
+index.html   (alex zhang on 03/30/2023 at 17:29):   <div class="content-container">
+index.html   (alex zhang on 03/30/2023 at 17:29): 
+index.html   (alex zhang on 03/30/2023 at 17:29):     <!-- add code dojo logo-->
+index.html   (alex zhang on 03/30/2023 at 17:29):     <div>
+index.html   (alex zhang on 03/30/2023 at 17:29):       <br>
+index.html   (alex zhang on 03/30/2023 at 17:29):       <br>
+index.html   (alex zhang on 03/30/2023 at 17:29):       <br>
+index.html   (alex zhang on 03/30/2023 at 17:29):       <br>
+index.html   (alex zhang on 03/30/2023 at 17:29):       <center><img src="img/CodeLogo.png" alt="CodeDojo LOGO" style="width:500px;height:400px"></center>
+index.html   (alex zhang on 03/30/2023 at 17:29):     </div>
+index.html   (alex zhang on 03/30/2023 at 17:29):     <!-- adding the message box for session ID as well as the connected button-->
+index.html   (alex zhang on 04/04/2023 at 14:59):     <form id="join-room-form" class="message-box">
+index.html   (alex zhang on 04/04/2023 at 14:59):         <button>JOIN</button>
+index.html   (alex zhang on 04/04/2023 at 14:59):     </form>
+index.html   (alex zhang on 03/30/2023 at 17:29):   </div>
+index.html   (alex zhang on 03/30/2023 at 17:29): 
+index.html   (alex zhang on 04/04/2023 at 14:59):   <script src="/socket.io/socket.io.js"></script>
+index.html   (alex zhang on 04/04/2023 at 14:59):   <script src="js/util.js"></script>
+index.html   (alex zhang on 04/04/2023 at 14:59):   <script src="js/index.js"></script>
+index.html   (alex zhang on 04/04/2023 at 14:59): 
+package-lock.json (alex zhang on 04/06/2023 at 19:49):   "name": "code-dojo",
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): FROM node
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): 
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): WORKDIR /app
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): 
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): COPY package*.json ./
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): 
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): RUN npm install
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): 
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): COPY . .
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): 
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): ENV PORT=8080
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): 
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): EXPOSE 8080
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): 
+Dockerfile   (alex zhang on 04/07/2023 at 14:58): CMD ["./start.sh"]
+start_docker.sh (alex zhang on 04/07/2023 at 14:58): #!/bin/bash
+start_docker.sh (alex zhang on 04/07/2023 at 14:58): 
+start_docker.sh (alex zhang on 04/07/2023 at 14:58): docker-compose up --build
+faqPage.html (alex zhang on 04/08/2023 at 13:35):                         team has been creating, demo functionality will be possible.
+faqPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="../index.html" class="sidebar-item">
+faqPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="../NOTES_PAGE/notesPage.html" class="sidebar-item">
+faqPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="../HISTORY_PAGE/historyPage.html" class="sidebar-item">
+faqPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="../PROFILE/profilePage.html" class="sidebar-item">
+faqPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="../FAQ_PAGE/faqPage.html" class="sidebar-item">
+faqPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="../ABOUT_PAGE/aboutPage.html" class="sidebar-item">
+faqPage.html (alex zhang on 04/08/2023 at 13:35): </html>
+host.js      (alex zhang on 04/04/2023 at 14:59): // NOTE: util.js is loaded before this file. This file uses functions defined in util.js
+host.js      (alex zhang on 04/04/2023 at 15:28): const question_timer_tag = document.getElementById("question-timer");
+host.js      (alex zhang on 03/30/2023 at 17:29): const player_table_body = document.getElementById("player-table-body");
+host.js      (alex zhang on 03/30/2023 at 17:29): 
+host.js      (alex zhang on 04/04/2023 at 15:28): const timer_update_frequency = 25;  // in milliseconds
+host.js      (alex zhang on 04/04/2023 at 15:28): 
+host.js      (alex zhang on 04/04/2023 at 15:28): /* Ensure that the question and answer input is disabled to start */
+host.js      (alex zhang on 04/04/2023 at 15:28): question_input.disabled = true;
+host.js      (alex zhang on 04/04/2023 at 15:28): answer_input.disabled = true;
+host.js      (alex zhang on 04/04/2023 at 15:28): timer_input.disabled = true;
+host.js      (alex zhang on 04/04/2023 at 15:28): push_question_button.disabled = true;
+host.js      (alex zhang on 04/04/2023 at 15:28): close_question_button.disabled = true;
+host.js      (alex zhang on 04/04/2023 at 15:28): 
+host.js      (alex zhang on 04/04/2023 at 15:28): /*----------------------------------------------------------------------------*/
+host.js      (alex zhang on 04/04/2023 at 15:28): /* "Global Variables"                                                         */
+host.js      (alex zhang on 04/04/2023 at 15:28): /*----------------------------------------------------------------------------*/
+host.js      (alex zhang on 04/04/2023 at 15:28): let timer_interval_id = 0;
+host.js      (alex zhang on 04/04/2023 at 15:28): 
+host.js      (alex zhang on 04/04/2023 at 15:28): function update_timer(end_time) {
+host.js      (alex zhang on 04/04/2023 at 15:28):     question_timer_tag.innerText = ms_to_formatted_string(end_time - Date.now());
+host.js      (alex zhang on 04/04/2023 at 15:28): }
+host.js      (alex zhang on 04/04/2023 at 15:28): /* Question Timer                                                             */
+host.js      (alex zhang on 04/04/2023 at 15:28): /*----------------------------------------------------------------------------*/
+host.js      (alex zhang on 04/04/2023 at 15:28): socket.on("push question", function (prompt, end_time) {
+host.js      (alex zhang on 04/04/2023 at 15:28):     if (!Number.isNaN(end_time) && end_time != null) {
+host.js      (alex zhang on 04/04/2023 at 15:28):         timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
+host.js      (alex zhang on 04/04/2023 at 15:28):     } else {
+host.js      (alex zhang on 04/04/2023 at 15:28):         question_timer_tag.innerText = "";
+host.js      (alex zhang on 04/04/2023 at 15:28):     }
+host.js      (alex zhang on 04/04/2023 at 15:28): });
+host.js      (alex zhang on 04/04/2023 at 15:28): 
+host.js      (alex zhang on 04/04/2023 at 15:28): socket.on("close question success", function () {
+host.js      (alex zhang on 04/04/2023 at 15:28):     clearInterval(timer_interval_id);
+host.js      (alex zhang on 04/04/2023 at 15:28): });
+host.js      (alex zhang on 04/04/2023 at 15:28): 
+host.js      (alex zhang on 04/04/2023 at 15:28): 
+host.js      (alex zhang on 04/04/2023 at 15:28): /*----------------------------------------------------------------------------*/
+host.js      (alex zhang on 04/04/2023 at 15:28): /* Record Player Answers and Stats                                            */
+host.js      (alex zhang on 03/30/2023 at 17:29):     player_table_body.appendChild(table_row);
+host.js      (alex zhang on 03/30/2023 at 17:29):     table_entry.setAttribute("class", "socket-id grid-item");
+host.js      (alex zhang on 03/30/2023 at 17:29):     table_entry.setAttribute("class", "nickname grid-item");
+host.js      (alex zhang on 03/30/2023 at 17:29):     table_entry.setAttribute("class", "num-right grid-item");
+host.js      (alex zhang on 03/30/2023 at 17:29):     table_entry.setAttribute("class", "num-wrong grid-item");
+host.js      (alex zhang on 03/30/2023 at 17:29):     table_entry.setAttribute("class", "current-answer grid-item");
+quizPage.html (alex zhang on 03/30/2023 at 17:29):     <link rel="stylesheet" href="css/quizPage.css" />
+quizPage.html (alex zhang on 03/30/2023 at 17:29): 
+quizPage.html (alex zhang on 03/30/2023 at 17:29):           </div>
+quizPage.html (alex zhang on 04/04/2023 at 14:59): 
+quizPage.html (alex zhang on 04/06/2023 at 19:49):         <div class="question-set">
+quizPage.html (alex zhang on 04/06/2023 at 19:49):                 <div class="timer-display" id="question-timer">00:00:00</div>
+quizPage.html (alex zhang on 04/06/2023 at 19:49):                 <div class="score-box">
+quizPage.html (alex zhang on 04/06/2023 at 19:49):                     <div class="score-display">Score: <span id="score-number">0</span></div>
+quizPage.html (alex zhang on 04/06/2023 at 19:49):                 </div>
+quizPage.html (alex zhang on 04/04/2023 at 15:28):             <!-- The below comment is old code for the temporary room form. This has been fixed, so players should only join from the home page now. -->
+quizPage.html (alex zhang on 04/04/2023 at 14:59):             <!-- <form id="room-form">
+quizPage.html (alex zhang on 04/04/2023 at 14:59):             </form> -->
+quizPage.html (alex zhang on 04/04/2023 at 14:59): 
+quizPage.html (alex zhang on 04/04/2023 at 14:59): 
+quizPage.html (alex zhang on 04/04/2023 at 15:28):                     <input class="questionbox" id="answer-input" placeholder="Answer here"></input>
+quizPage.html (alex zhang on 03/30/2023 at 17:29): 
+quizPage.html (alex zhang on 03/30/2023 at 17:29): 
+quizPage.html (alex zhang on 04/06/2023 at 19:49): 
+quizPage.html (alex zhang on 04/06/2023 at 19:49): 
+quizPage.html (alex zhang on 04/06/2023 at 19:49): 
+quizPage.html (alex zhang on 03/30/2023 at 17:29):             <a href="index.html" class="sidebar-item">
+quizPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="NOTES_PAGE/notesPage.html" class="sidebar-item">
+quizPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="HISTORY_PAGE/historyPage.html" class="sidebar-item">
+quizPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="PROFILE/profilePage.html" class="sidebar-item">
+quizPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="FAQ_PAGE/faqPage.html" class="sidebar-item">
+quizPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="ABOUT_PAGE/aboutPage.html" class="sidebar-item">
+quizPage.html (alex zhang on 04/06/2023 at 19:49): 
+quizPage.html (alex zhang on 04/06/2023 at 19:49):         <!-- Code editor and compiler-->
+quizPage.html (alex zhang on 04/06/2023 at 19:49):             <div class="editor" id="editor"></div>
+quizPage.html (alex zhang on 04/06/2023 at 19:49):         </div>
+quizPage.html (alex zhang on 04/06/2023 at 19:49): 
+quizPage.html (alex zhang on 04/06/2023 at 19:49): 
+quizPage.html (alex zhang on 03/30/2023 at 17:29):     <script src="js/quizPage.js"></script>
+quizPage.html (alex zhang on 03/30/2023 at 17:29): 
+quizPage.html (alex zhang on 03/30/2023 at 17:29):     <script src="/socket.io/socket.io.js"></script>
+quizPage.html (alex zhang on 03/30/2023 at 17:29):     <script src="js/util.js"></script>
+quizPage.html (alex zhang on 03/30/2023 at 17:29):     <script src="js/quiz.js"></script>
+quizPage.html (alex zhang on 03/30/2023 at 17:29): 
+quizPage.html (alex zhang on 04/06/2023 at 19:49):     <script src="js/ace-builds/src/ace.js"></script>
+quizPage.html (alex zhang on 04/06/2023 at 19:49):     <script src="js/ace-builds/theme-monokai.js"></script>
+quizPage.html (alex zhang on 03/30/2023 at 17:29): </html>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):     <link rel="stylesheet" type="text/css" href="css/teacherPage.css">
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):     <script src="js/teacherPage.js"></script>
+teacherPage.html (alex zhang on 04/04/2023 at 20:12): 
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):                 <label class="white-text" for="session-id">Session ID:</label>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):                 <input type="text" id="room-input" name="session-id" required>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):         <form id="question-form">
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):                 <label class="white-text" for="question">Question:</label>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):                 <input type="text" id="question-input" name="question" required>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):                 <label class="white-text" for="answer">Answer:</label>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):                 <input type="text" id="answer-input" name="answer" required>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):                 <label class="white-text" for="time">Time:</label>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):                 <input type="text" id="timer-input" name="time" required>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):         <tbody id="player-table-body">
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):             <tr>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):                 <th class="grid-item">Socket ID</th>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):                 <th class="grid-item">Nickname</th>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):                 <th class="grid-item"># Right</th>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):                 <th class="grid-item"># Wrong</th>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):                 <th class="grid-item">Current Answer</th>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):             </tr>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):         </tbody>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):     <script src="/socket.io/socket.io.js"></script>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):     <script src="js/util.js"></script>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29):     <script src="js/host.js"></script>
+teacherPage.html (alex zhang on 03/30/2023 at 17:29): 
+teacherPage.html (alex zhang on 03/30/2023 at 17:29): </html>
+aboutPage.html (alex zhang on 04/08/2023 at 13:35):                         how to code in computer science classes. We are constantly adding new functionality to assist
+aboutPage.html (alex zhang on 04/08/2023 at 13:35): 
+aboutPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="../index.html" class="sidebar-item">
+aboutPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="../NOTES_PAGE/notesPage.html" class="sidebar-item">
+aboutPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="../HISTORY_PAGE/historyPage.html" class="sidebar-item">
+aboutPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="../PROFILE/profilePage.html" class="sidebar-item">
+aboutPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="../FAQ_PAGE/faqPage.html" class="sidebar-item">
+aboutPage.html (alex zhang on 04/08/2023 at 13:35):             <a href="../ABOUT_PAGE/aboutPage.html" class="sidebar-item">
+aboutPage.html (alex zhang on 04/08/2023 at 13:35):         <script src="aboutPage.js"></script>
+aboutPage.html (alex zhang on 04/08/2023 at 13:35): </html>
+package.json (alex zhang on 04/09/2023 at 13:38):   },
+package.json (alex zhang on 04/09/2023 at 13:38):   "scripts": {
+package.json (alex zhang on 04/09/2023 at 13:38):     "start": "npx tsc --project ./tsconfig.json && node server/server.js"
+quiz.html    (alex zhang on 03/30/2023 at 17:29):     <script src="js/util.js"></script>
+quiz.html    (alex zhang on 03/30/2023 at 17:29):     <script src="js/quiz.js"></script>
+homePage.css (alex zhang on 03/30/2023 at 17:29):   background-image: url("../img/dojo2.png");
+homePage.css (alex zhang on 03/30/2023 at 17:29): }
+index.html   (alex zhang on 03/30/2023 at 17:29): <!DOCTYPE html>
+index.html   (alex zhang on 03/30/2023 at 17:29): <html>
+index.html   (alex zhang on 03/30/2023 at 17:29): 
+index.html   (alex zhang on 03/30/2023 at 17:29): <head>
+index.html   (alex zhang on 03/30/2023 at 17:29):     <title>Code Dojo</title>
+index.html   (alex zhang on 03/30/2023 at 17:29): </head>
+index.html   (alex zhang on 03/30/2023 at 17:29): 
+index.html   (alex zhang on 03/30/2023 at 17:29): <body>
+index.html   (alex zhang on 03/30/2023 at 17:29):     <a href="quiz.html">Go to quiz</a>
+index.html   (alex zhang on 03/30/2023 at 17:29):     <a href="host.html">Go to host panel</a>
+index.html   (alex zhang on 03/30/2023 at 17:29): </body>
+index.html   (alex zhang on 03/30/2023 at 17:29): 
+index.html   (alex zhang on 03/30/2023 at 17:29): </html>
+teacherPage.js (alex zhang on 04/04/2023 at 20:12): var column = document.getElementById('col')
+teacherPage.js (alex zhang on 04/04/2023 at 20:12): var container = document.getElementById('inputs')
+teacherPage.js (alex zhang on 04/04/2023 at 19:52): function putGridBelow() {
+teacherPage.js (alex zhang on 04/04/2023 at 20:12):         column.style.flexDirection = "column";
+teacherPage.js (alex zhang on 04/04/2023 at 19:52):     } else {
+teacherPage.js (alex zhang on 04/04/2023 at 20:12):         column.style.flexDirection = "row";
+teacherPage.js (alex zhang on 04/04/2023 at 19:52): window.addEventListener("resize", putGridBelow);
+teacherPage.js (alex zhang on 04/04/2023 at 20:12): 
+teacherPage.js (alex zhang on 04/04/2023 at 20:12): document.addEventListener("DOMContentLoaded", function () {
+teacherPage.js (alex zhang on 04/04/2023 at 20:12):     putGridBelow();
+teacherPage.js (alex zhang on 04/04/2023 at 20:12): });
+server.ts    (alex zhang on 03/29/2023 at 16:08): import { strict as assert } from "node:assert";
+server.ts    (alex zhang on 04/07/2023 at 14:58): import { MongoClient } from "mongodb";
+server.ts    (alex zhang on 04/01/2023 at 18:58): import { QuestionType, Question, FRQuestion } from "./question.js";
+server.ts    (alex zhang on 04/07/2023 at 14:58): /*----------------------------------------------------------------------------*/
+server.ts    (alex zhang on 04/07/2023 at 14:58): /* MongoDB                                                                    */
+server.ts    (alex zhang on 04/07/2023 at 14:58): /*----------------------------------------------------------------------------*/
+server.ts    (alex zhang on 04/08/2023 at 13:02): // const mongoclient: MongoClient = new MongoClient(process.env.MONGO_URI);
+server.ts    (alex zhang on 04/07/2023 at 14:58): 
+server.ts    (alex zhang on 04/08/2023 at 13:02): // async function run() {
+server.ts    (alex zhang on 04/08/2023 at 13:02): //     try {
+server.ts    (alex zhang on 04/08/2023 at 13:02): //         await mongoclient.connect();
+server.ts    (alex zhang on 04/07/2023 at 14:58): 
+server.ts    (alex zhang on 04/08/2023 at 13:02): //         const db = mongoclient.db('code-dojo-db');
+server.ts    (alex zhang on 04/08/2023 at 13:02): //         const collection = db.collection('asdf');
+server.ts    (alex zhang on 04/07/2023 at 14:58): 
+server.ts    (alex zhang on 04/08/2023 at 13:02): //         // Find the first document in the collection
+server.ts    (alex zhang on 04/08/2023 at 13:02): //         const first = await collection.findOne();
+server.ts    (alex zhang on 04/07/2023 at 14:58): 
+server.ts    (alex zhang on 04/08/2023 at 13:02): //         console.log(db);
+server.ts    (alex zhang on 04/08/2023 at 13:02): //         console.log(collection);
+server.ts    (alex zhang on 04/08/2023 at 13:02): //         console.log(first);
+server.ts    (alex zhang on 04/08/2023 at 13:02): //     } finally {
+server.ts    (alex zhang on 04/08/2023 at 13:02): //         // Close the database connection when finished or an error occurs
+server.ts    (alex zhang on 04/08/2023 at 13:02): //         await mongoclient.close();
+server.ts    (alex zhang on 04/08/2023 at 13:02): //     }
+server.ts    (alex zhang on 04/08/2023 at 13:02): // }
+server.ts    (alex zhang on 04/07/2023 at 14:58): 
+server.ts    (alex zhang on 04/08/2023 at 13:02): // run().catch(console.error);
+server.ts    (alex zhang on 04/07/2023 at 14:58): 
+server.ts    (alex zhang on 04/07/2023 at 14:58): const port: number = parseInt(process.env.PORT) || 3000;
+server.ts    (alex zhang on 04/01/2023 at 18:58): const public_path: string = new URL("../public/", import.meta.url).pathname;
+server.ts    (alex zhang on 04/01/2023 at 18:58): let quizrooms: QuizRoom[] = [];     // Array of all active QuizRooms, keyed by their string room ID
+server.ts    (alex zhang on 03/29/2023 at 16:08):         if (player.is_correct[this_quizroom.num_questions - 1]) {
+server.ts    (alex zhang on 03/29/2023 at 16:08):     return true;
+server.ts    (alex zhang on 03/29/2023 at 16:08):         assert(this_quizroom != null, `Player ${nickname} (id ${socket.id}) just joined room ${room_id} but the room does not exist on the server!`);
+server.ts    (alex zhang on 04/03/2023 at 17:26):         let add_player_success: boolean = this_quizroom.add_player(new Player(nickname, socket));
+server.ts    (alex zhang on 04/03/2023 at 17:26): 
+server.ts    (alex zhang on 04/03/2023 at 17:26):         if (!add_player_success) {
+server.ts    (alex zhang on 04/03/2023 at 17:26):             io.to(socket.id).emit("join room fail", `duplicate nickname`);
+server.ts    (alex zhang on 04/03/2023 at 17:26):             this_quizroom = null;
+server.ts    (alex zhang on 04/03/2023 at 17:26):             return;
+server.ts    (alex zhang on 04/03/2023 at 17:26):         }
+server.ts    (alex zhang on 04/03/2023 at 17:26): 
+server.ts    (alex zhang on 04/03/2023 at 17:26):         socket.join(room_id);
+server.ts    (alex zhang on 04/04/2023 at 14:59):         assert(this_quizroom.id == room_id, "Join Room: this_quizroom.id does not match room_id!");
+server.ts    (alex zhang on 04/04/2023 at 14:59): 
+server.ts    (alex zhang on 04/04/2023 at 14:59):         io.to(socket.id).emit("join room success", `Successfully joined room "${room_id}" as ${this_player.nickname}! Waiting for host...`);
+server.ts    (alex zhang on 04/04/2023 at 20:12):         let answers: string[] = answer.split(",");
+server.ts    (alex zhang on 04/01/2023 at 18:58): 
+server.ts    (alex zhang on 04/01/2023 at 18:58):         let question: Question = new FRQuestion(prompt, answers, time_limit_s * 1000);
+server.ts    (alex zhang on 04/04/2023 at 20:12): 
+server.ts    (alex zhang on 04/04/2023 at 20:12):         let is_timed: boolean = time_limit_s > 0;
+server.ts    (alex zhang on 03/29/2023 at 15:48):     /* When a player submits an answer, we store that answer in the player's "answers" table. */
+server.ts    (alex zhang on 03/29/2023 at 16:08):             io.to(socket.id).emit("submit answer fail", "you are not in a room");
+server.ts    (alex zhang on 03/29/2023 at 16:08):         /* We do not simply "push" the answer onto the answers array. We need to account for the possibilty that the player may submit more than one answer and/or the player may join midway through quiz. */
+server.ts    (alex zhang on 03/29/2023 at 15:48):         this_quizroom.set_player_curr_answer(this_player, provided_answer);
+server.ts    (alex zhang on 03/29/2023 at 16:08):     /* If the host leaves, delete the QuizRoom. If a player leaves, only delete that player's entry the QuizRoom's "Players" table. */
+quizroom.ts  (alex zhang on 03/29/2023 at 16:08):     private _id: string;                                // Unique room id; also used for socket.io rooms
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):     private _host: Host;                                // Person that controls the room
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):     private _num_players: number;                       // How many players currently in QuizRoom
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):     private _players: Player[];                         // Table of players, keyed by socket ID
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):     private _questions: Question[];                     // Array of all questions
+quizroom.ts  (alex zhang on 04/01/2023 at 18:11):     public timeout_id: ReturnType<typeof setTimeout>    // Timeout ID for timed questions
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         this._id = id;
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         this._host = host;
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         this._num_players = 0;
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         this._players = [];
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         this._questions = [];
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):     public get id(): string {
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         return this._id;
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):     public get host(): Host {
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         return this._host;
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):     public get num_players(): number {
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         return this._num_players;
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):     public get players(): Player[] {
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         return this._players;
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):     public get questions(): Question[] {
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         return this._questions;
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):     public get curr_question(): Question | undefined {
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         return this._questions.at(-1);
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):     public get num_questions(): number {
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         return this._questions.length;
+quizroom.ts  (alex zhang on 04/01/2023 at 18:11):     public add_player(player: Player): boolean {
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         if (this._players[player.socket.id] != null) {
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26):         /* Check for unique nickname */
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26):         /* TODO: consider instead storing a table keyed by nicknames for O(1) checking for unique nicknames */
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26):         for (const [socket_id, other_player] of Object.entries(this._players)) {
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26):             assert(socket_id == other_player.socket.id, "A player's socket id and their key don't match!");
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26): 
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26):             if (player.nickname == other_player.nickname) {
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26):                 return false;
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26):             }
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26):         }
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26): 
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26):         this._players[player.socket.id] = player;
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         ++this._num_players;
+quizroom.ts  (alex zhang on 03/29/2023 at 15:48):      * @param player Player to delete from "players" table
+quizroom.ts  (alex zhang on 04/01/2023 at 18:11):     public delete_player(player: Player): boolean {
+quizroom.ts  (alex zhang on 04/01/2023 at 18:11):     public delete_player_by_socket_id(socket_id: string): boolean {
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):         if (this._players[socket_id] == null) {
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26):         delete this._players[socket_id];
+quizroom.ts  (alex zhang on 03/29/2023 at 15:23):         --this._num_players;
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):      * @param question Question to push to the "questions" table
+quizroom.ts  (alex zhang on 04/01/2023 at 18:58):     public push_question(question: Question): void {
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):     /**
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):      * @param player Player to get answer from
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):      * @returns Player's answer to the current question
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):      */
+quizroom.ts  (alex zhang on 04/01/2023 at 18:11):     public get_player_curr_answer(player: Player): string {
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):         return player.answers[this.num_questions - 1];
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):     }
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41): 
+quizroom.ts  (alex zhang on 04/01/2023 at 18:11):     public set_player_curr_answer(player: Player, answer: string): void {
+quizroom.ts  (alex zhang on 03/29/2023 at 15:48):         player.answers[this.num_questions - 1] = answer;
+quizroom.ts  (alex zhang on 03/29/2023 at 15:48):     }
+quizroom.ts  (alex zhang on 03/29/2023 at 15:48): 
+quizroom.ts  (alex zhang on 04/01/2023 at 18:11):     public close_question(): boolean {
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26):         for (const [socket_id, player] of Object.entries(this._players)) {
+quizroom.ts  (alex zhang on 04/03/2023 at 17:26):             assert(socket_id == player.socket.id, "A player's socket id and their key don't match!");
+quizroom.ts  (alex zhang on 03/29/2023 at 15:41):             if (this.curr_question.check_answer(this.get_player_curr_answer(player))) {
+host.ts      (alex zhang on 03/29/2023 at 15:23):     private _nickname: String;
+host.ts      (alex zhang on 03/29/2023 at 15:23):     private _socket: Socket;
+host.ts      (alex zhang on 03/29/2023 at 15:23):         this._nickname = nickname;
+host.ts      (alex zhang on 03/29/2023 at 15:23):         this._socket = socket;
+host.ts      (alex zhang on 03/29/2023 at 15:23):     }
+host.ts      (alex zhang on 03/29/2023 at 15:23): 
+host.ts      (alex zhang on 03/29/2023 at 15:23):     public get nickname(): String {
+host.ts      (alex zhang on 03/29/2023 at 15:23):         return this._nickname;
+host.ts      (alex zhang on 03/29/2023 at 15:23):     }
+host.ts      (alex zhang on 03/29/2023 at 15:23): 
+host.ts      (alex zhang on 03/29/2023 at 15:23):     public get socket(): Socket {
+host.ts      (alex zhang on 03/29/2023 at 15:23):         return this._socket;
+quiz.js      (alex zhang on 04/04/2023 at 14:59): // NOTE: util.js is loaded before this file. This file uses functions defined in util.js
+quiz.js      (alex zhang on 04/04/2023 at 14:59): /* "Global Variables"                                                         */
+quiz.js      (alex zhang on 04/05/2023 at 16:58): function redirect_to_homepage(roomid, nickname) {
+quiz.js      (alex zhang on 04/05/2023 at 16:58):     let params = new URLSearchParams();
+quiz.js      (alex zhang on 04/05/2023 at 16:58):     params.append('roomid', roomid);
+quiz.js      (alex zhang on 04/05/2023 at 16:58):     params.append('nickname', nickname);
+quiz.js      (alex zhang on 04/05/2023 at 16:58): 
+quiz.js      (alex zhang on 04/05/2023 at 16:58):     const url = 'index.html?' + params.toString();
+quiz.js      (alex zhang on 04/05/2023 at 16:58):     window.location.href = url;
+quiz.js      (alex zhang on 04/05/2023 at 16:58): 
+quiz.js      (alex zhang on 04/05/2023 at 16:58): }
+quiz.js      (alex zhang on 04/05/2023 at 16:58): 
+quiz.js      (alex zhang on 04/04/2023 at 15:28): /* We expect the user to only ever access this page through the home page. If the necessary URL parameters are not present, then we redirect the user to the homepage using window.location.href */
+quiz.js      (alex zhang on 04/04/2023 at 14:59): const params = new URLSearchParams(window.location.search);
+quiz.js      (alex zhang on 04/04/2023 at 14:59): const roomid_param = params.get("roomid");
+quiz.js      (alex zhang on 04/04/2023 at 14:59): const nickname_param = params.get("nickname");
+quiz.js      (alex zhang on 04/04/2023 at 14:59): 
+quiz.js      (alex zhang on 04/04/2023 at 14:59): if (roomid_param == null || roomid_param == "") {
+quiz.js      (alex zhang on 04/04/2023 at 14:59):     error_message("Enter a room id");
+quiz.js      (alex zhang on 04/05/2023 at 16:58):     redirect_to_homepage(roomid_param, nickname_param);
+quiz.js      (alex zhang on 04/04/2023 at 14:59): }
+quiz.js      (alex zhang on 04/04/2023 at 14:59): if (nickname_param == null || nickname_param == "") {
+quiz.js      (alex zhang on 04/04/2023 at 14:59):     error_message("Enter a nickname");
+quiz.js      (alex zhang on 04/05/2023 at 16:58):     redirect_to_homepage(roomid_param, nickname_param);
+quiz.js      (alex zhang on 04/04/2023 at 14:59): }
+quiz.js      (alex zhang on 04/04/2023 at 14:59): socket.emit("join room", roomid_param, nickname_param);
+quiz.js      (alex zhang on 04/05/2023 at 16:58):     redirect_to_homepage(roomid_param, nickname_param);
+quiz.js      (alex zhang on 04/04/2023 at 14:59): socket.on("join room success", function (msg) {
+quiz.js      (alex zhang on 04/04/2023 at 14:59):     question_tag.innerText = msg;
+quiz.js      (alex zhang on 04/04/2023 at 15:28): /* Update Question and Question Timer                                         */
+quiz.js      (alex zhang on 04/04/2023 at 14:59):     setTimeout(function () {
+quiz.js      (alex zhang on 04/04/2023 at 14:59):     }, 400);
+quizPage.css (alex zhang on 04/04/2023 at 14:59): body {
+quizPage.css (alex zhang on 04/04/2023 at 14:59):     background-color: rgb(55, 54, 54);
+quizPage.css (alex zhang on 04/04/2023 at 14:59): #hamburger:active {
+quizPage.css (alex zhang on 04/04/2023 at 14:59): 
+quizPage.css (alex zhang on 04/04/2023 at 14:59): }
+quizPage.css (alex zhang on 04/04/2023 at 14:59): .question-set {
+quizPage.css (alex zhang on 04/04/2023 at 14:59): .questionbox {
+quizPage.css (alex zhang on 04/04/2023 at 14:59):     background-color: rgb(241, 241, 241);
+quizPage.css (alex zhang on 04/04/2023 at 14:59): #answer-input {
+quizPage.css (alex zhang on 04/04/2023 at 14:59): .answer-submit {
+quizPage.css (alex zhang on 04/04/2023 at 14:59): #submit-answer-button {
+quizPage.css (alex zhang on 04/04/2023 at 14:59): #submit-answer-button:active svg {
+quizPage.css (alex zhang on 04/04/2023 at 14:59): #compile {
+quizPage.css (alex zhang on 04/04/2023 at 14:59): #compile:active {
+quizPage.css (alex zhang on 04/04/2023 at 14:59): #makeNote {
+quizPage.css (alex zhang on 04/04/2023 at 14:59): #makeNote:active {
+quizPage.css (alex zhang on 04/04/2023 at 14:59): 
+quizPage.css (alex zhang on 04/04/2023 at 14:59):     color: #ffffff;
+quizPage.css (alex zhang on 04/04/2023 at 14:59): #ninja-slash {
+quizPage.css (alex zhang on 04/04/2023 at 14:59):     display: none;
+quizPage.css (alex zhang on 04/04/2023 at 14:59): }

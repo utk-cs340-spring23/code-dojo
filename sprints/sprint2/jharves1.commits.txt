@@ -1,0 +1,113 @@
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  1) const express = require('express');
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  2) const session = require('express-session');
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  3) const { OAuth2Client } = require('google-auth-library');
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  4) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  5) const app = express();
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  6) const port = 5000;
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  7) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  8) app.set('view engine', 'ejs');
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  9) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 10) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 11) // Configure session middleware
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 12) app.use(session({
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 13)   secret: 'secret-key',
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 14)   resave: false,
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 15)   saveUninitialized: true
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 16) }));
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 17) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 18) // Serve the login page
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 19) app.get('/', (req, res) => {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 20)   res.render('login');
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 21) });
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 22) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 23) // Handle the login request
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 24) app.post('/login', async (req, res) => {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 25)   const client = new OAuth2Client('358604089602-ldc0bsk5loknpk8anp8tqtu1gf486uam.apps.googleusercontent.com');
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 26)   const { id_token } = req.body;
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 27) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 28)   try {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 29)     const ticket = await client.verifyIdToken({
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 30)       idToken: id_token,
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 31)       audience: '358604089602-ldc0bsk5loknpk8anp8tqtu1gf486uam.apps.googleusercontent.com'
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 32)     });
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 33)     const payload = ticket.getPayload();
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 34)     const email = payload.email;
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 35) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 36)     // Save the user's email in the session
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 37)     req.session.email = email;
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 38)     res.sendStatus(200);
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 39)   } catch (error) {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 40)     console.error(error);
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 41)     res.sendStatus(401);
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 42)   }
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 43) });
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 44) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 45) // Protect the protected page
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 46) app.get('/protected', (req, res) => {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 47)   const email = req.session.email;
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 48)   if (email) {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 49)     res.send(`Hello, ${email}! This page is protected.`);
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 50)   } else {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 51)     res.redirect(`http://localhost:${port}/auth/google/callback`);
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 52)   }
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 53) });
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 54) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 55) // Start the server
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 56) app.listen(port, () => {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 57)   console.log(`Server listening at http://localhost:${port}`);
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 58) });
+
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  1) <html>
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  2)       <head>
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  3)         <script src="https://apis.google.com/js/platform.js" async defer></script>
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  4)         <meta name="google-signin-client_id" content="358604089602-ldc0bsk5loknpk8anp8tqtu1gf486uam.apps.googleusercontent.com">
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  5)       </head>
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  6)       <body>
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  7)         <div class="g-signin2" data-onsuccess="onSignIn"></div>
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  8)         <script>
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  9)           function onSignIn(googleUser) {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 10)             var id_token = googleUser.getAuthResponse().id_token;
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 11)             // Send the id_token to the server for verification
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 12)             fetch('/login', {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 13)               method: 'POST',
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 14)               headers: { 'Content-Type': 'application/json' },
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 15)               body: JSON.stringify({ id_token: id_token })
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 16)             }).then(() => {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 17)               // Redirect to the protected page
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 18)               window.location.href = '/protected';
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 19)             });
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 20)           }
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 21)         </script>
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 22)       </body>
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 23)     </html>
+
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  1) const axios = require("axios");
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  2) const { readFile } = require('fs/promises')
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  3) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  4) const encodedParams = new URLSearchParams();
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  5) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  6) async function content(path) {  
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  7)     return await readFile(path, 'utf8')
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  8) }
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400  9) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 10) encodedParams.append("code", "#include <stdio.h>\nint main(){\nprintf(\"Hello World\");\n}");
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 11) encodedParams.append("language", "cpp");
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 12) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 13) const options = {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 14)   method: 'POST',
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 15)   url: 'https://codex7.p.rapidapi.com/',
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 16)   headers: {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 17)     'content-type': 'application/x-www-form-urlencoded',
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 18)     'X-RapidAPI-Key': '97f677e765mshcbb9631f7ebcaf6p17a90djsn6a8e2a5742ba',
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 19)     'X-RapidAPI-Host': 'codex7.p.rapidapi.com'
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 20)   },
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 21)   data: encodedParams
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 22) };
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 23) 
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 24) axios.request(options).then(function (response) {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 25) 	console.log(response.data);
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 26) }).catch(function (error) {
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 27) 	console.error(error);
+05c3daaa (rivetingpeach 2023-03-28 06:56:58 -0400 28) });
+
+

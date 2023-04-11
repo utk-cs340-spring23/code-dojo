@@ -187,6 +187,7 @@ class CodeQuestion extends Question {
 
     public override check_answer(provided_answer: string): number {
         // TODO: fix temp change
+        // This should only test the outputs of the supplied user's answer, and see how many align with the correct test cases
         return 0;
     }
 }
