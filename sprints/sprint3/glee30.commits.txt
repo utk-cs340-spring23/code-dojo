@@ -1,0 +1,188 @@
+quizPage.js  (griff2325 on 04/03/2023 at 16:53): const feedback = document.getElementById('question-feedback')
+quizPage.js  (griff2325 on 04/03/2023 at 16:53): let questionCorrect = true;
+quizPage.js  (griff2325 on 04/03/2023 at 16:53): function showCheckMark(){
+quizPage.js  (griff2325 on 04/03/2023 at 16:53):     feedback.style.color = 'green'
+quizPage.js  (griff2325 on 04/03/2023 at 16:53): }
+quizPage.html (griff2325 on 04/03/2023 at 16:53):             <div class="timer-box">
+quizPage.html (griff2325 on 04/03/2023 at 16:53):             </div>
+quizPage.html (griff2325 on 03/31/2023 at 14:29):                 <input id="room-input" autocomplete="off" placeholder="room id">
+quizPage.html (griff2325 on 03/31/2023 at 14:29):                 <input id="nickname-input" autocomplete="off" placeholder="enter a nickname">
+quizPage.html (griff2325 on 03/31/2023 at 14:29):                 <button>Join Room</button>
+quizPage.html (griff2325 on 03/31/2023 at 14:29):             <p id="question-feedback" style="color: #fff">Question feedback will be shown here</p>
+quizPage.html (griff2325 on 03/30/2023 at 17:45):             <p class="questionbox" id="question" placeholder="Waiting for host">Waiting for host</p>
+quizPage.html (griff2325 on 03/31/2023 at 14:29):             <form class="answer-submit" id="answer-form">
+quizPage.html (griff2325 on 03/30/2023 at 17:45):                 <!-- text boxes for question and icons -->
+quizPage.html (griff2325 on 03/31/2023 at 14:29):                 <center>
+quizPage.html (griff2325 on 03/31/2023 at 14:29):                 </center>
+quizPage.html (griff2325 on 03/30/2023 at 17:45):                 <button id="submit-answer-button" type="submit">
+quizPage.html (griff2325 on 03/31/2023 at 14:29):                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="submit">
+quizPage.html (griff2325 on 03/30/2023 at 17:45):                         <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+quizPage.html (griff2325 on 03/30/2023 at 17:45):                     </svg>
+quizPage.html (griff2325 on 03/30/2023 at 17:45):                 </button>
+quizPage.html (griff2325 on 03/30/2023 at 17:45):                 <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" height="48" width="48" id="compile">
+quizPage.html (griff2325 on 03/30/2023 at 17:45):                     <path
+quizPage.html (griff2325 on 03/30/2023 at 17:45):                         d="M705 928 447 668q-23 8-46 13t-47 5q-97.083 0-165.042-67.667Q121 550.667 121 454q0-31 8.158-60.388Q137.316 364.223 152 338l145 145 92-86-149-149q25.915-15.158 54.957-23.579Q324 216 354 216q99.167 0 168.583 69.417Q592 354.833 592 454q0 24-5 47t-13 46l259 258q11 10.957 11 26.478Q844 847 833 858l-76 70q-10.696 11-25.848 11T705 928Zm28-57 40-40-273-273q16-21 24-49.5t8-54.5q0-75-55.5-127T350 274l101 103q9 9 9 22t-9 22L319 545q-9 9-22 9t-22-9l-97-96q3 77 54.668 127T354 626q25 0 53-8t49-24l277 277ZM476 572Z" />
+quizPage.html (griff2325 on 03/30/2023 at 17:45):                 </svg> -->
+quizPage.html (griff2325 on 03/30/2023 at 17:45):             </form>
+quizPage.html (griff2325 on 03/30/2023 at 17:45):         </div>
+quizPage.html (griff2325 on 04/10/2023 at 17:23):         <a href="NOTES_PAGE/notesPage.html">
+quizPage.html (griff2325 on 04/10/2023 at 17:23):             <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" id="makeNote">
+quizPage.html (griff2325 on 04/10/2023 at 17:23):                 <path
+quizPage.html (griff2325 on 04/10/2023 at 17:23):                     d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" />
+quizPage.html (griff2325 on 04/10/2023 at 17:23):             </svg>
+quizPage.html (griff2325 on 04/10/2023 at 17:23):         </a>
+quizPage.html (griff2325 on 04/04/2023 at 11:48): 
+quizPage.html (griff2325 on 04/04/2023 at 11:48):         <img src="img/ninjaslash.gif" id="ninja-slash">
+notesPage.css (griff2325 on 04/10/2023 at 17:23): .return_buttons{
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   width: 333.8px;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   display: flex;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   flex-direction: row;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   justify-content: center;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   align-items: center;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   background-color: white;
+notesPage.css (griff2325 on 04/10/2023 at 17:23): }
+notesPage.css (griff2325 on 04/10/2023 at 17:23): 
+notesPage.css (griff2325 on 04/10/2023 at 17:23): .back_to_quiz{
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   background: #23a6d5;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   border: none;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   border-radius: 7px;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   color: white;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   cursor: pointer;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   font-weight: bold;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   font-size: 14;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   width: 150px;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   height: 35px;
+notesPage.css (griff2325 on 04/10/2023 at 17:23): }
+notesPage.css (griff2325 on 04/10/2023 at 17:23): 
+notesPage.css (griff2325 on 04/10/2023 at 17:23): 
+notesPage.css (griff2325 on 04/10/2023 at 17:23): #home {
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   /* attributes for makeNote button */
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   cursor: pointer;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   width: 40px;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   height: 40px;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   fill: black;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   position: relative;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   /* position: absolute;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   top: 1%;
+notesPage.css (griff2325 on 04/10/2023 at 17:23):   right: 1%; */
+notesPage.css (griff2325 on 04/10/2023 at 17:23): }
+teacherPage.js (griff2325 on 04/04/2023 at 11:04):     if ((window.innerWidth - 100) < window.innerHeight) {
+teacherPage.js (griff2325 on 04/04/2023 at 11:04):         container.style.width = "100vh";
+teacherPage.js (griff2325 on 04/04/2023 at 11:04):         container.style.left = "0%";
+teacherPage.js (griff2325 on 04/04/2023 at 11:04):         container.style.marginLeft = "0px";
+teacherPage.js (griff2325 on 04/04/2023 at 11:04):         container.style.width = "50vh";
+teacherPage.js (griff2325 on 04/04/2023 at 11:04):         container.style.left = "50%";
+teacherPage.js (griff2325 on 04/04/2023 at 11:04):         container.style.marginLeft = "100px";
+teacherPage.js (griff2325 on 04/04/2023 at 11:04): }
+notesPage.html (griff2325 on 04/10/2023 at 17:23):         <div class="return_buttons">
+notesPage.html (griff2325 on 04/10/2023 at 17:23):             <a href="../index.html">
+notesPage.html (griff2325 on 04/10/2023 at 17:23):                 <svg xmlns="http://www.w3.org/2000/svg" id="home" height="48" viewBox="0 96 960 960" width="48">
+notesPage.html (griff2325 on 04/10/2023 at 17:23):                 <path d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z"/></svg>
+notesPage.html (griff2325 on 04/10/2023 at 17:23):             </a>
+notesPage.html (griff2325 on 04/10/2023 at 17:23):             <a href="../quizPage.html">
+notesPage.html (griff2325 on 04/10/2023 at 17:23):                 <button class="back_to_quiz" type="button">Back to quiz</button>
+notesPage.html (griff2325 on 04/10/2023 at 17:23):             </a>
+notesPage.html (griff2325 on 04/10/2023 at 17:23):         </div>
+teacherPage.html (griff2325 on 04/04/2023 at 11:04):     <div class="columns" id="col">
+teacherPage.html (griff2325 on 04/04/2023 at 11:04):         <a class="home-btn" href="index.html"><button type="button" class="submit-btn">Home</button></a>
+teacherPage.html (griff2325 on 04/04/2023 at 11:04):     <div class="container" id="inputs">
+teacherPage.html (griff2325 on 03/30/2023 at 16:49):         <form id="room-form">
+teacherPage.html (griff2325 on 03/30/2023 at 16:49):             <div class="buttons-container">
+teacherPage.html (griff2325 on 03/30/2023 at 16:49):                 <button type="submit" class="submit-btn press-down" id="create-room-button">Create Room</button>
+teacherPage.html (griff2325 on 03/30/2023 at 16:49):             </div>
+teacherPage.html (griff2325 on 03/30/2023 at 16:49):         </form>
+teacherPage.html (griff2325 on 03/30/2023 at 16:49):                 <button type="submit" class="submit-btn press-down" id="push-question-button">Submit</button>
+teacherPage.html (griff2325 on 03/30/2023 at 16:49): 
+teacherPage.html (griff2325 on 04/03/2023 at 16:28):     <div class="right-side">
+teacherPage.html (griff2325 on 03/30/2023 at 16:49):     <table class="grid-container" id="player-table">
+teacherPage.html (griff2325 on 03/30/2023 at 16:49):     </table>
+teacherPage.html (griff2325 on 04/03/2023 at 16:28):     </div>
+teacherPage.html (griff2325 on 04/03/2023 at 16:28):     </div>
+teacherPage.html (griff2325 on 03/30/2023 at 16:49): 
+teacherPage.html (griff2325 on 04/04/2023 at 11:04):     <script src="js/teacherPage.js"></script>
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 	top: 1%;
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 	left: 1%;
+teacherPage.css (griff2325 on 04/03/2023 at 16:28): .columns{
+teacherPage.css (griff2325 on 04/03/2023 at 16:28): 	width: 100vw;
+teacherPage.css (griff2325 on 04/03/2023 at 16:28): 	display: flex;
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 	justify-content: space-evenly;
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 	flex-direction: row;
+teacherPage.css (griff2325 on 04/03/2023 at 16:28): }
+teacherPage.css (griff2325 on 04/03/2023 at 16:28): 
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 	height: 100%;
+teacherPage.css (griff2325 on 04/03/2023 at 16:28): 	width: 50vw;
+teacherPage.css (griff2325 on 04/03/2023 at 16:28): 	left: 50%;
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 	margin-top: 40px;
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 	margin-left: 100px;
+teacherPage.css (griff2325 on 04/03/2023 at 16:28): }
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): .buttons-container{
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 	margin-bottom: 30px;
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): }
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 
+teacherPage.css (griff2325 on 04/03/2023 at 16:28): .right-side{
+teacherPage.css (griff2325 on 04/03/2023 at 16:28): 	width: 50vw;
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 	left: 50%;
+teacherPage.css (griff2325 on 03/31/2023 at 14:46): 	grid-gap: 10px;
+teacherPage.css (griff2325 on 03/30/2023 at 16:49): 	margin-left: 50%;
+teacherPage.css (griff2325 on 03/30/2023 at 16:49): 	transform: translate(-50%, -50%);
+teacherPage.css (griff2325 on 03/31/2023 at 14:46): 	/* border-spacing: 20px; */
+teacherPage.css (griff2325 on 04/03/2023 at 16:28): 	margin-top: 25%;
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): #room-input{
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 	width: 25vw;
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): }
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): #question-input{
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 	width: 35vw;
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): }
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): #answer-input{
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 	width: 35vw;
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): }
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): #timer-input{
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): 	width: 25vw;
+teacherPage.css (griff2325 on 04/04/2023 at 11:04): }
+quiz.js      (griff2325 on 04/04/2023 at 11:48): const ninja = document.getElementById("ninja-slash");
+quiz.js      (griff2325 on 04/04/2023 at 11:48): 
+quiz.js      (griff2325 on 04/03/2023 at 16:53):     question_feedback_tag.innerText = '';
+quiz.js      (griff2325 on 04/03/2023 at 16:53):     question_feedback_tag.style.color = 'white';
+quiz.js      (griff2325 on 04/03/2023 at 16:53):     //question_feedback_tag.innerText = `Correct! You answered "${player_answer}". Correct answer is "${correct_answer}"`;
+quiz.js      (griff2325 on 04/03/2023 at 16:53):     question_feedback_tag.innerText = 'Correct!';
+quiz.js      (griff2325 on 04/03/2023 at 16:53):     question_feedback_tag.style.color = 'green';
+quiz.js      (griff2325 on 04/04/2023 at 11:48):     ninja.style.display = 'block';
+quiz.js      (griff2325 on 04/04/2023 at 11:48):         ninja.style.display = 'none';
+quiz.js      (griff2325 on 04/03/2023 at 16:53):     question_feedback_tag.style.color = 'red';
+quizPage.css (griff2325 on 03/31/2023 at 14:29):     position: fixed;
+quizPage.css (griff2325 on 03/31/2023 at 14:29):     top: 1%;
+quizPage.css (griff2325 on 03/31/2023 at 14:29):     left: 1%;
+quizPage.css (griff2325 on 03/30/2023 at 17:45):     display: flex;
+quizPage.css (griff2325 on 03/30/2023 at 17:45):     flex-direction: column;
+quizPage.css (griff2325 on 03/30/2023 at 17:45):     align-items: center;
+quizPage.css (griff2325 on 03/30/2023 at 17:45): }
+quizPage.css (griff2325 on 03/30/2023 at 17:45): 
+quizPage.css (griff2325 on 03/30/2023 at 17:45):     /* position: fixed;
+quizPage.css (griff2325 on 03/30/2023 at 17:45):     left: 50%; */
+quizPage.css (griff2325 on 03/30/2023 at 17:45):     /* transform: translate(-50%, -50%); */
+quizPage.css (griff2325 on 03/30/2023 at 17:45):     min-height: 150px;
+quizPage.css (griff2325 on 03/31/2023 at 14:29):     min-height: 90px;
+quizPage.css (griff2325 on 03/31/2023 at 14:29): }
+quizPage.css (griff2325 on 03/31/2023 at 14:29): 
+quizPage.css (griff2325 on 03/31/2023 at 14:29):     width: 100%;
+quizPage.css (griff2325 on 03/31/2023 at 14:29):     height: 100%;
+quizPage.css (griff2325 on 03/30/2023 at 17:45):     background: none;
+quizPage.css (griff2325 on 03/30/2023 at 17:45):     border: none;
+quizPage.css (griff2325 on 03/30/2023 at 17:45):     width: 65px;
+quizPage.css (griff2325 on 03/30/2023 at 17:45):     height: 65px;
+quizPage.css (griff2325 on 04/11/2023 at 08:29):     top: 7%;
+quizPage.css (griff2325 on 04/11/2023 at 08:29):     right: 0%;
+quizPage.css (griff2325 on 04/11/2023 at 08:29):     /* bottom: 1%;
+quizPage.css (griff2325 on 04/11/2023 at 08:29):     right: 1%; */
+quizPage.css (griff2325 on 04/04/2023 at 11:48): .timer-display {
+quizPage.css (griff2325 on 04/04/2023 at 11:48): }
+quizPage.css (griff2325 on 04/04/2023 at 11:48): 
+quizPage.css (griff2325 on 04/04/2023 at 11:48):     z-index: 10;
+quizPage.css (griff2325 on 04/04/2023 at 11:48):     position: absolute;
+quizPage.css (griff2325 on 04/04/2023 at 11:48):     top: 0;
+quizPage.css (griff2325 on 04/04/2023 at 11:48):     height: 100vh;
+quizPage.css (griff2325 on 04/04/2023 at 11:48):     /* display: block */
