@@ -36,10 +36,17 @@ mcquestion_form.style.display = "none";
 /*----------------------------------------------------------------------------*/
 let timer_interval_id = 0;
 let question_type = "";
+let mcquestion_input_tags;
+let mcquestion_checkbox_tags;
 
 /*----------------------------------------------------------------------------*/
 /* Functions                                                                  */
 /*----------------------------------------------------------------------------*/
+function update_mcquestion_tags() {
+    mcquestion_input_tags = document.getElementsByClassName("mcquestion-answer-input");
+    mcquestion_checkbox_tags = document.getElementsByClassName("mcquestion-answer-checkbox");
+}
+
 function enable_input_fields(bool) {
     question_type_input.disabled = !bool;
     question_input.disabled = !bool;
@@ -49,6 +56,7 @@ function enable_input_fields(bool) {
 
 function update_question_type() {
     question_type = question_type_input.value;
+    update_mcquestion_tags();
 
     switch (question_type) {
         case "frquestion":
@@ -56,11 +64,21 @@ function update_question_type() {
             mcquestion_form.style.display = "none";
             // codequestion_form.style.display = "none";
 
+            frquestion_answer_input.required = true;
+            Array.from(mcquestion_input_tags).forEach(input => {
+                input.required = false;
+            });
+
             break;
         case "mcquestion":
             frquestion_form.style.display = "none";
             mcquestion_form.style.display = form_display_style;
             // codequestion_form.style.display = "none";
+
+            frquestion_answer_input.required = false;
+            Array.from(mcquestion_input_tags).forEach(input => {
+                input.required = true;
+            });
             break;
         case "codequestion":
             frquestion_form.style.display = "none";
@@ -72,12 +90,16 @@ function update_question_type() {
     }
 }
 
-// TODO: wait till dom loads, thencall this
-update_question_type()
-
 function update_timer(end_time) {
     question_timer_tag.innerText = ms_to_formatted_string(end_time - Date.now());
 }
+
+/*----------------------------------------------------------------------------*/
+/* When Window Loads                                                          */
+/*----------------------------------------------------------------------------*/
+window.onload = function () {
+    update_question_type();
+};
 
 /*----------------------------------------------------------------------------*/
 /* Create Room                                                                */
@@ -123,8 +145,6 @@ document.getElementById("question-form").addEventListener("submit", function (e)
 
     update_question_type();
     switch (question_type) {
-
-
         case "frquestion": {
             if (frquestion_answer_input.value == "") {
                 error_message("Answer cannot be empty");
