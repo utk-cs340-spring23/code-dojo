@@ -9,7 +9,7 @@ import { Server as SocketIOServer, Socket } from "socket.io";
 
 import { Host } from "./host.js";
 import { Player } from "./player.js";
-import { QuestionType, Question, FRQuestion } from "./question.js";
+import { QuestionType, Question, FRQuestion, MCQuestion } from "./question.js";
 import { QuizRoom } from "./quizroom.js";
 
 /*----------------------------------------------------------------------------*/
@@ -61,28 +61,47 @@ let quizrooms: QuizRoom[] = [];     // Array of all active QuizRooms, keyed by t
 
 /**
  * Calls close_question() method on the specified QuizRoom, and communicates question feedback to all players and host
- * @param this_quizroom The quizroom to call close_question() on
  * @param io The current SocketIO Server
+ * @param this_quizroom The quizroom to call close_question() on
  * @return True if successful, false otherwise
  */
-function close_question(this_quizroom: QuizRoom, io: SocketIOServer): boolean {
-    if (!this_quizroom.close_question()) {
+function close_question(io: SocketIOServer, quizroom: QuizRoom): boolean {
+    if (!quizroom.close_question()) {
         return false;
     }
 
-    for (const [key, player] of Object.entries(this_quizroom.players)) {
+    for (const [key, player] of Object.entries(quizroom.players)) {
         assert(key == player.socket.id, "A player's socket id and their key don't match!");
 
-        if (player.is_correct[this_quizroom.num_questions - 1]) {
-            io.to(player.socket.id).emit("answer correct", this_quizroom.get_player_curr_answer(player), this_quizroom.curr_question.answer, player.num_right, player.num_wrong);
-            io.to(this_quizroom.host.socket.id).emit("player answer correct", player.socket.id);
+        if (player.is_correct[quizroom.num_questions - 1]) {
+            io.to(player.socket.id).emit("answer correct", quizroom.get_player_curr_answer(player), quizroom.curr_question.answer, player.num_right, player.num_wrong);
+            io.to(quizroom.host.socket.id).emit("player answer correct", player.socket.id);
         } else {
-            io.to(player.socket.id).emit("answer incorrect", this_quizroom.get_player_curr_answer(player), this_quizroom.curr_question.answer, player.num_right, player.num_wrong);
-            io.to(this_quizroom.host.socket.id).emit("player answer incorrect", player.socket.id);
+            io.to(player.socket.id).emit("answer incorrect", quizroom.get_player_curr_answer(player), quizroom.curr_question.answer, player.num_right, player.num_wrong);
+            io.to(quizroom.host.socket.id).emit("player answer incorrect", player.socket.id);
         }
     }
 
-    io.to(this_quizroom.id).emit("close question success", "Successfully closed and graded questions");
+    io.to(quizroom.id).emit("close question success", "Successfully closed and graded questions");
+    return true;
+}
+
+function on_new_question_check(io: SocketIOServer, quizroom: QuizRoom, socket: Socket): boolean {
+    if (quizroom == null) {
+        io.to(socket.id).emit("new question fail", "room does not exist");
+        return false;
+    }
+
+    if (socket != quizroom.host.socket) {
+        io.to(socket.id).emit("new question fail", "you are not the host!");
+        return false;
+    }
+
+    if (quizroom.curr_question?.is_active) {
+        io.to(socket.id).emit("new question fail", "there is already a question active!");
+        return false;
+    }
+
     return true;
 }
 
@@ -158,45 +177,61 @@ io.on("connection", function (socket: Socket) {
         io.to(socket.id).emit("join room success", `Successfully joined room "${room_id}" as ${this_player.nickname}! Waiting for host...`);
 
         /* If there's a question active when the user joined, push it to the user */
+
         if (this_quizroom.curr_question?.is_active) {
-            io.to(socket.id).emit("push question", this_quizroom.curr_question.prompt, this_quizroom.curr_question.end_time);
+            switch (this_quizroom.curr_question.type) {
+                case QuestionType.free_response:
+                    io.to(socket.id).emit("push frquestion", this_quizroom.curr_question.prompt, this_quizroom.curr_question.end_time);
+                    break;
+                case QuestionType.multiple_choice:
+                    io.to(this_quizroom.id).emit("push mcquestion", this_quizroom.curr_question.prompt, (this_quizroom.curr_question as MCQuestion).answer_choices, this_quizroom.curr_question.end_time);
+                    break;
+            }
+
         }
 
         /* Inform the room that a new player joined; used by host to maintain the player list */
         io.to(this_quizroom.id).emit("player join", socket.id, nickname);
     });
 
-    /* When the host creates a new question, push that question to every player */
-    socket.on("new question", function (prompt: string, answer: string, time_limit_s: number) {
-        if (this_quizroom == null) {
-            io.to(socket.id).emit("new question fail", "room does not exist");
+    socket.on("new frquestion", function (prompt: string, answers: string[], time_limit_s: number) {
+        if (!on_new_question_check(io, this_quizroom, socket)) {
             return;
         }
-
-        if (socket != this_quizroom.host.socket) {
-            io.to(socket.id).emit("new question fail", "you are not the host!");
-            return;
-        }
-
-        if (this_quizroom.curr_question?.is_active) {
-            io.to(socket.id).emit("new question fail", "there is already a question active!");
-            return;
-        }
-
-        let answers: string[] = answer.split(",");
 
         let question: Question = new FRQuestion(prompt, answers, time_limit_s * 1000);
         this_quizroom.push_question(question);
 
-        io.to(socket.id).emit("new question success", "successfully pushed question");
-
         let is_timed: boolean = time_limit_s > 0;
-        io.to(this_quizroom.id).emit("push question", question.prompt, is_timed ? question.end_time : null);
+
+        io.to(this_quizroom.id).emit("push frquestion", question.prompt, is_timed ? question.end_time : null);
+        io.to(this_quizroom.host.socket.id).emit("new question success", "successfully pushed question", is_timed ? question.end_time : null);
 
         /* Close question when time expires */
         if (is_timed) {
             this_quizroom.timeout_id = setTimeout(function () {
-                close_question(this_quizroom, io);
+                close_question(io, this_quizroom);
+            }, time_limit_s * 1000);
+        }
+    });
+
+    socket.on("new mcquestion", function (prompt: string, answer_choices: string[], correct_answer_indices: number[], time_limit_s: number) {
+        if (!on_new_question_check(io, this_quizroom, socket)) {
+            return;
+        }
+
+        let question: MCQuestion = new MCQuestion(prompt, answer_choices, correct_answer_indices, time_limit_s * 1000);
+        this_quizroom.push_question(question);
+
+        let is_timed: boolean = time_limit_s > 0;
+
+        io.to(this_quizroom.id).emit("push mcquestion", question.prompt, question.answer_choices, is_timed ? question.end_time : null);
+        io.to(this_quizroom.host.socket.id).emit("new question success", "successfully pushed question", is_timed ? question.end_time : null);
+
+        /* Close question when time expires */
+        if (is_timed) {
+            this_quizroom.timeout_id = setTimeout(function () {
+                close_question(io, this_quizroom);
             }, time_limit_s * 1000);
         }
     });
@@ -218,12 +253,12 @@ io.on("connection", function (socket: Socket) {
             return;
         }
 
-        close_question(this_quizroom, io);
+        close_question(io, this_quizroom);
         clearTimeout(this_quizroom.timeout_id);
     });
 
     /* When a player submits an answer, we store that answer in the player's "answers" table. */
-    socket.on("submit answer", function (provided_answer) {
+    socket.on("submit answer", function (provided_answer: any) {
         if (this_player == null) {
             io.to(socket.id).emit("submit answer fail", "you don't exist on the server! something is terribly wrong");
             return;

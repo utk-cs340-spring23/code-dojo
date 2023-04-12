@@ -28,9 +28,9 @@ class Question {
 
     /**
      * Instantiates a new Question object; untimed by default
-     * @param type QuestionType
      * @param prompt String of the actual question
      * @param answer String of the answer
+     * @param time_limit Time limit in milliseconds
      */
     constructor(prompt: string, answer: string, time_limit: number) {
         if (this.constructor == Question) {
@@ -89,7 +89,7 @@ class Question {
         return this._is_active;
     }
 
-    public check_answer(provided_answer: string): number {
+    public check_answer(provided_answer: any): number {
         throw new Error("Method 'check_answer()' must be implemented");
     }
 
@@ -123,7 +123,7 @@ class FRQuestion extends Question {
     }
 
     public check_answer(provided_answer: string): number {
-        for (const answer of this._answers) {
+        for (const [i, answer] of this._answers.entries()) {
             if (provided_answer == answer) {
                 return 1;
             }
@@ -140,11 +140,22 @@ class FRQuestion extends Question {
  * @extends Question
  */
 class MCQuestion extends Question {
-    private _answer_choices: string[];      // Answer choices for multiple choice questions
+    private _answer_choices: string[];          // Answer choices for multiple choice questions
     private _correct_answer_indices: number[];  // Index of correct answer
+    private _answer_string: string;
 
     constructor(prompt: string, answer_choices: string[], correct_answer_indices: number[], time_limit: number) {
-        super(prompt, "this is a placeholder! todo: format string of all correct answer choices", time_limit);
+        let answer_string: string = "";
+        for (let i = 0; i < correct_answer_indices.length; ++i) {
+            if (i > 0) {
+                answer_string += ", ";
+            }
+
+            answer_string += answer_choices[correct_answer_indices[i]];
+        }
+
+        super(prompt, answer_string, time_limit);
+
         this._type = QuestionType.multiple_choice;
         this._answer_choices = answer_choices;
         this._correct_answer_indices = correct_answer_indices;
@@ -160,15 +171,23 @@ class MCQuestion extends Question {
 
     /**
      * Returns whether a provided answer choice is correct
-     * @param provided_answer_index String of answer choice (e.g. "0", "1", ...)
+     * @param provided_answer_indices array of answer indices
      * @returns True if correct, false otherwise
      */
-    public override check_answer(provided_answer_index: string): number {
+    public override check_answer(provided_answer_indices: number[]): number {
+        if (provided_answer_indices == null) {
+            return 0;
+        }
+
         let grade: number = 0;
 
-        // TODO: grade the answer by counting up number of right and subtract by number of wrong
+        for (const [i, answer_index] of provided_answer_indices.entries()) {
+            if (this.correct_answer_indices.includes(answer_index)) {
+                ++grade;
+            }
+        }
 
-        return 0;
+        return grade;
     }
 }
 

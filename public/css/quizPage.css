@@ -185,34 +185,45 @@ body {
     display: none;
     /* display: block */
 }
+
+#quiz-info {
+    display: inline-block;
+    text-align: center;
+    margin-left: auto;
+}
+
 .question-set {
     display: flex;
     justify-content: center;
-  }
-  
-  .timer-box {
+}
+
+.timer-box {
     display: flex;
     align-items: center;
     position: relative;
-  }
-  
-  .score-box {
+}
+
+.score-box {
     border: 1px solid #fff;
     padding: 5px 10px;
     margin-left: 20px;
-  }
-  
-  .score-display {
+}
+
+.score-display {
     color: #fff;
     font-size: 18px;
-  }
-  
-  #score-number {
+}
+
+#score-number {
     font-weight: bold;
     margin-left: 5px;
-  }
+}
 
-  *{margin: 0;}
+#mcquestion-fieldset {
+    color: #FFF;
+    border-radius: 20px;
+}
+
 
 /* TODO: make this centered; right now not good - does not flex */
 /* Use a CSS reset to remove default browser styles */
@@ -292,5 +303,3 @@ body {
     white-space: pre-wrap;
     word-wrap: break-word;
 }
-
-  

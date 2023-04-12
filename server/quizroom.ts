@@ -135,7 +135,7 @@ class QuizRoom {
         for (const [socket_id, player] of Object.entries(this._players)) {
             assert(socket_id == player.socket.id, "A player's socket id and their key don't match!");
 
-            if (this.curr_question.check_answer(this.get_player_curr_answer(player))) {
+            if (this.curr_question.check_answer(this.get_player_curr_answer(player)) > 0) {
                 player.push_correct();
                 this.curr_question.increment_num_right();
             } else {

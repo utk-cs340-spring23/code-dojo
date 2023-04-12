@@ -9,6 +9,7 @@
     "typescript": "^4.9.5"
   },
   "scripts": {
+    "debug": "npx tsc --project ./tsconfig.json && DEBUG=* node server/server.js",
     "start": "npx tsc --project ./tsconfig.json && node server/server.js"
   }
 }
