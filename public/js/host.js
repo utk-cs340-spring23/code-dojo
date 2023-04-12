@@ -6,8 +6,11 @@
 const socket = io();
 const room_input = document.getElementById("room-input");
 const create_room_button = document.getElementById("create-room-button");
+const question_type_input = document.getElementById("question-type-input");
 const question_input = document.getElementById("question-input");
-const answer_input = document.getElementById("answer-input");
+const frquestion_form = document.getElementById("frquestion-form");
+const frquestion_answer_input = document.getElementById("frquestion-answer-input");
+const mcquestion_form = document.getElementById("mcquestion-form");
 const timer_input = document.getElementById("timer-input");
 const push_question_button = document.getElementById("push-question-button");
 const close_question_button = document.getElementById("close-question-button");
@@ -15,29 +18,62 @@ const question_timer_tag = document.getElementById("question-timer");
 const player_table = document.getElementById("player-table");
 const player_table_body = document.getElementById("player-table-body");
 
+const form_display_style = "flex";
 const timer_update_frequency = 25;  // in milliseconds
 
 /* Ensure that the question and answer input is disabled to start */
+question_type_input.disabled = true;
 question_input.disabled = true;
-answer_input.disabled = true;
+frquestion_answer_input.disabled = true;
 timer_input.disabled = true;
 push_question_button.disabled = true;
 close_question_button.disabled = true;
+
+mcquestion_form.style.display = "none";
 
 /*----------------------------------------------------------------------------*/
 /* "Global Variables"                                                         */
 /*----------------------------------------------------------------------------*/
 let timer_interval_id = 0;
+let question_type = "";
 
 /*----------------------------------------------------------------------------*/
 /* Functions                                                                  */
 /*----------------------------------------------------------------------------*/
 function enable_input_fields(bool) {
+    question_type_input.disabled = !bool;
     question_input.disabled = !bool;
-    answer_input.disabled = !bool;
+    frquestion_answer_input.disabled = !bool;
     timer_input.disabled = !bool;
-
 }
+
+function update_question_type() {
+    question_type = question_type_input.value;
+
+    switch (question_type) {
+        case "frquestion":
+            frquestion_form.style.display = form_display_style;
+            mcquestion_form.style.display = "none";
+            // codequestion_form.style.display = "none";
+
+            break;
+        case "mcquestion":
+            frquestion_form.style.display = "none";
+            mcquestion_form.style.display = form_display_style;
+            // codequestion_form.style.display = "none";
+            break;
+        case "codequestion":
+            frquestion_form.style.display = "none";
+            mcquestion_form.style.display = "none";
+            // codequestion_form.style.display = form_display_style;
+            break;
+        default:
+            break;
+    }
+}
+
+// TODO: wait till dom loads, thencall this
+update_question_type()
 
 function update_timer(end_time) {
     question_timer_tag.innerText = ms_to_formatted_string(end_time - Date.now());
@@ -82,19 +118,69 @@ document.getElementById("question-form").addEventListener("submit", function (e)
         return;
     }
 
-    if (answer_input.value == "") {
-        error_message("Answer cannot be empty");
-        return;
-    }
+    let prompt = question_input.value;
+    let time_limit_s = parseInt(timer_input.value);
 
-    socket.emit("new question", question_input.value, answer_input.value, parseInt(timer_input.value));
+    update_question_type();
+    switch (question_type) {
+
+
+        case "frquestion": {
+            if (frquestion_answer_input.value == "") {
+                error_message("Answer cannot be empty");
+                return;
+            }
+
+            socket.emit("new frquestion", prompt, frquestion_answer_input.value.split(","), time_limit_s);
+            break;
+        }
+
+        case "mcquestion": {
+            let mcquestion_input_tags = document.getElementsByClassName("mcquestion-answer-input");
+            let mcquestion_checkbox_tags = document.getElementsByClassName("mcquestion-answer-checkbox");
+
+            if (mcquestion_input_tags.length != mcquestion_checkbox_tags.length) {
+                error_message("Number of MCQuestion inputs not the same as number of MCQuestion checkboxes");
+            }
+
+            let answer_choices = [];
+            let correct_answer_indices = [];
+
+            for (let i = 0; i < mcquestion_input_tags.length; ++i) {
+                answer_choices.push(mcquestion_input_tags[i].value);
+
+                if (mcquestion_checkbox_tags[i].checked) {
+                    correct_answer_indices.push(i);
+                }
+            }
+
+            socket.emit("new mcquestion", prompt, answer_choices, correct_answer_indices, time_limit_s);
+            break;
+        }
+
+        case "codequestion": {
+            break;
+        }
+
+        default: {
+            error_message("Unknown question type");
+        }
+    }
 });
 
-socket.on("new question success", function (msg) {
+socket.on("new question success", function (msg, end_time) {
     console.log(msg);
     enable_input_fields(false);
     push_question_button.disabled = true;
     close_question_button.disabled = false;
+
+    console.log(end_time);
+
+    if (!Number.isNaN(end_time) && end_time != null) {
+        timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
+    } else {
+        question_timer_tag.innerText = "";
+    }
 });
 
 socket.on("new question fail", function (msg) {
@@ -114,27 +200,13 @@ socket.on("close question success", function (msg) {
     enable_input_fields(true);
     push_question_button.disabled = false;
     close_question_button.disabled = true;
+    clearInterval(timer_interval_id);
+
 });
 
 socket.on("close question fail", function (msg) {
     error_message(msg);
 });
-
-/*----------------------------------------------------------------------------*/
-/* Question Timer                                                             */
-/*----------------------------------------------------------------------------*/
-socket.on("push question", function (prompt, end_time) {
-    if (!Number.isNaN(end_time) && end_time != null) {
-        timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
-    } else {
-        question_timer_tag.innerText = "";
-    }
-});
-
-socket.on("close question success", function () {
-    clearInterval(timer_interval_id);
-});
-
 
 /*----------------------------------------------------------------------------*/
 /* Record Player Answers and Stats                                            */

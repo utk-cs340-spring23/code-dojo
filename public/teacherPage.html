@@ -9,68 +9,100 @@
 </head>
 
 <body>
-
     <div class="columns" id="col">
         <a class="home-btn" href="index.html"><button type="button" class="submit-btn">Home</button></a>
-    <div class="container" id="inputs">
-        <form id="room-form">
-            <div class="form-input">
-                <label class="white-text" for="session-id">Session ID:</label>
-                <input type="text" id="room-input" name="session-id" required>
-            </div>
-            <div class="buttons-container">
-                <button type="submit" class="submit-btn press-down" id="create-room-button">Create Room</button>
-            </div>
-        </form>
-
-        <form id="question-form">
-            <div class="form-input">
-                <label class="white-text" for="question">Question:</label>
-                <input type="text" id="question-input" name="question" required>
-            </div>
-
-            <div class="form-input">
-                <label class="white-text" for="answer">Answer:</label>
-                <input type="text" id="answer-input" name="answer" required>
-            </div>
-
-            <div class="form-input">
-                <label class="white-text" for="time">Time:</label>
-                <input type="text" id="timer-input" name="time" required>
-                <div class="button-group">
+        <div class="container" id="inputs">
+            <form id="room-form">
+                <div class="form-input">
+                    <label class="white-text" for="session-id">Session ID:</label>
+                    <input type="text" id="room-input" class="text-input" name="session-id" required>
                 </div>
-            </div>
+                <div class="buttons-container">
+                    <button type="submit" class="submit-btn press-down" id="create-room-button">Create Room</button>
+                </div>
+            </form>
 
-            <div class="buttons-container">
-                <button type="submit" class="submit-btn press-down" id="push-question-button">Submit</button>
-                <button type="button" class="submit-btn red-btn press-down" id="close-question-button">Close Question</button>
-            </div>
-        </form>
-        <br>
-        <br>
-        <br>
-    </div>
+            <form id="question-form">
+                <div class="form-input">
+                    <label class="white-text" for="question-type">Question
+                        Type:</label>
+                    <select name="question-type" id="question-type-input" onchange="update_question_type()">
+                        <option value="frquestion">Free Response Question</option>
+                        <option value="mcquestion">Multiple Choice Question</option>
+                        <option value="codequestion">Code Question</option>
+                    </select>
+                </div>
+
+                <div class="form-input">
+                    <label class="white-text" for="question">Question:</label>
+                    <input type="text" id="question-input" class="text-input" name="question" required>
+                </div>
+
+                <div class="form-input" id="frquestion-form">
+                    <label class="white-text" for="answer">Answer:</label>
+                    <input type="text" id="frquestion-answer-input" class="text-input" name="answer" required>
+                </div>
+
+                <div class="form-input" id="mcquestion-form">
+                    <label class="white-text" for="mcquestion-answer-input-1">Answer:</label>
+                    <!-- Planned feature: variable number of answer choices -->
+                    <!-- <input type="range" min="1" max="26" value="4" class="slider" id="myRange"> -->
+
+                    <div class="text-input">
+                        <input type="checkbox" class="mcquestion-answer-checkbox">
+                        <input type="text" class="mcquestion-answer-input" name="mcquestion-answer" required>
+                    </div>
+
+                    <div class="text-input">
+                        <input type="checkbox" class="mcquestion-answer-checkbox">
+                        <input type="text" class="mcquestion-answer-input" name="mcquestion-answer" required>
+                    </div>
+
+                    <div class="text-input">
+                        <input type="checkbox" class="mcquestion-answer-checkbox">
+                        <input type="text" class="mcquestion-answer-input" name="mcquestion-answer" required>
+                    </div>
+
+                    <div class="text-input">
+                        <input type="checkbox" class="mcquestion-answer-checkbox">
+                        <input type="text" class="mcquestion-answer-input" name="mcquestion-answer" required>
+                    </div>
+                </div>
 
 
-    <div class="right-side">
-        <div class="timer-box">
-            <center>
-                <br>
-                <div class="timer-display" id="question-timer">00:00:00</div>
-            </center>
+                <div class="form-input">
+                    <label class="white-text" for="time">Time:</label>
+                    <input type="number" id="timer-input" class="text-input" name="time" required>
+                    <div class="button-group">
+                    </div>
+                </div>
+
+                <div class="buttons-container">
+                    <button type="submit" class="submit-btn press-down" id="push-question-button">Submit</button>
+                    <button type="button" class="submit-btn red-btn press-down" id="close-question-button">Close
+                        Question</button>
+                </div>
+            </form>
         </div>
-    <table class="grid-container" id="player-table">
-        <tbody id="player-table-body">
-            <tr>
-                <th class="grid-item">Socket ID</th>
-                <th class="grid-item">Nickname</th>
-                <th class="grid-item"># Right</th>
-                <th class="grid-item"># Wrong</th>
-                <th class="grid-item">Current Answer</th>
-            </tr>
-        </tbody>
-    </table>
-    </div>
+
+        <div class="right-side">
+            <div class="timer-box">
+                <center>
+                    <div class="timer-display" id="question-timer">00:00:00</div>
+                </center>
+            </div>
+            <table class="grid-container" id="player-table">
+                <tbody id="player-table-body">
+                    <tr>
+                        <th class="grid-item">Socket ID</th>
+                        <th class="grid-item">Nickname</th>
+                        <th class="grid-item"># Right</th>
+                        <th class="grid-item"># Wrong</th>
+                        <th class="grid-item">Current Answer</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>

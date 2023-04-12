@@ -5,7 +5,7 @@ class Player {
     private _socket: Socket;
     private _num_right: number;
     private _num_wrong: number;
-    private _answers: string[];
+    private _answers: any[];
     private _is_correct: boolean[];     // e.g. _is_correct[3] is whether the player got question #4 correct
 
     constructor(nickname: string, socket: Socket) {
@@ -33,7 +33,7 @@ class Player {
         return this._num_wrong;
     }
 
-    public get answers(): string[] {
+    public get answers(): any[] {
         return this._answers;
     }
 
@@ -41,7 +41,7 @@ class Player {
         return this._is_correct;
     }
 
-    public get most_recent_answer(): string | undefined {
+    public get most_recent_answer(): any | undefined {
         return this._answers.at(-1);
     }
 
