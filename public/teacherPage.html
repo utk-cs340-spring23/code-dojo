@@ -24,8 +24,7 @@
 
             <form id="question-form">
                 <div class="form-input">
-                    <label class="white-text" for="question-type">Question
-                        Type:</label>
+                    <label class="white-text" for="question-type">Question Type:</label>
                     <select name="question-type" id="question-type-input" onchange="update_question_type()">
                         <option value="frquestion">Free Response Question</option>
                         <option value="mcquestion">Multiple Choice Question</option>
@@ -35,7 +34,7 @@
 
                 <div class="form-input">
                     <label class="white-text" for="question">Question:</label>
-                    <input type="text" id="question-input" class="text-input" name="question" required>
+                    <input type="text" id="frquestion-input" class="text-input" name="question" required>
                 </div>
 
                 <div class="form-input" id="frquestion-form">
@@ -69,6 +68,9 @@
                     </div>
                 </div>
 
+                <div class="form-input" id="codequestion-form">
+                    <input type="text" id="codequestion-input" class="text-input" name="question" required>
+                </div>
 
                 <div class="form-input">
                     <label class="white-text" for="time">Time:</label>

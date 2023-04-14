@@ -3,11 +3,12 @@ enum QuestionType {
     free_response,
     multiple_choice,
     code
-}
+};
 
 enum CodeLanguage {
-    JavaScript
-}
+    JavaScript,
+    C
+};
 
 /**
  * Abstract Class Question
@@ -196,7 +197,7 @@ class CodeQuestion extends Question {
     private _correct_outputs: string[];
     private _language: CodeLanguage;
 
-    constructor(prompt: string, language: CodeLanguage, test_cases: any[], correct_outputs: string[], time_limit: number) {
+    constructor(prompt: string, test_cases: any[], correct_outputs: string[], language: CodeLanguage, time_limit: number) {
         super(prompt, "todo: answer (sample code)", time_limit);
         this._type = QuestionType.code;
         this._test_cases = test_cases;
@@ -216,3 +217,4 @@ export { CodeLanguage };
 export { Question };
 export { FRQuestion };
 export { MCQuestion };
+export { CodeQuestion };

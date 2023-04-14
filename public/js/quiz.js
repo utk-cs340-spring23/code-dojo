@@ -14,6 +14,8 @@ const question_feedback_tag = document.getElementById("question-feedback");
 const frquestion_form = document.getElementById("frquestion-form");
 const mcquestion_form = document.getElementById("mcquestion-form");
 const codequestion_form = document.getElementById("codequestion-form");
+const run_code_button = document.getElementById("run-code-button");
+const output_tag = document.getElementById("output");
 
 const score_tag = document.getElementById("score-number");
 const ninja = document.getElementById("ninja-slash");
@@ -28,8 +30,6 @@ submit_answer_button.disabled = true;
 frquestion_form.style.display = "none";
 mcquestion_form.style.display = "none";
 codequestion_form.style.display = "none";
-
-
 
 /*----------------------------------------------------------------------------*/
 /* "Global Variables"                                                         */
@@ -180,6 +180,26 @@ socket.on("push mcquestion", function (prompt, answer_choices, end_time) {
     }
 });
 
+socket.on("push codequestion", function (prompt, inputs, expected_outputs, provided_language, end_time) {
+    curr_question_type = "codequestion";
+
+    frquestion_form.style.display = "none";
+    frquestion_form.disabled = true;
+    mcquestion_form.style.display = "none";
+    mcquestion_form.disabled = true;
+    codequestion_form.style.display = form_display_style;
+    codequestion_form.disabled = false;
+
+    question_tag.innerText = `Question:  ${prompt}`;
+    question_feedback_tag.innerText = '';
+
+    if (!Number.isNaN(end_time) && end_time != null) {
+        timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
+    } else {
+        question_timer_tag.innerText = "";
+    }
+});
+
 socket.on("close question success", function () {
     answer_input.disabled = true;
     submit_answer_button.disabled = true;
@@ -223,4 +243,30 @@ socket.on("answer incorrect", function (player_answer, correct_answer, num_right
     question_feedback_tag.innerText = `Incorrect. You answered "${player_answer}". Correct answer is "${correct_answer}"`;
     question_feedback_tag.style.color = 'red';
     score_tag.innerText = `${num_right}/${num_right + num_wrong}`;
+});
+
+/*----------------------------------------------------------------------------*/
+/* Run and Compile Code                                                       */
+/*----------------------------------------------------------------------------*/
+
+run_code_button.addEventListener("click", function (e) {
+    e.preventDefault();
+    const ide_form = document.getElementsByClassName("ace_content")[0];
+    socket.emit("compile and run", ide_form.innerText, "C");
+
+});
+
+socket.on("compile fail", function (stderr) {
+    console.log(stderr);
+    output_tag.innerText = stderr;
+});
+
+socket.on("run fail", function (stderr) {
+    console.log(stderr);
+    output_tag.innerText = stderr;
+});
+
+socket.on("run success", function (stdout) {
+    console.log(stdout);
+    output_tag.innerText = stdout;
 });

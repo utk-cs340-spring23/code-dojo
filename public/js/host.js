@@ -6,12 +6,15 @@
 const socket = io();
 const room_input = document.getElementById("room-input");
 const create_room_button = document.getElementById("create-room-button");
+
 const question_type_input = document.getElementById("question-type-input");
-const question_input = document.getElementById("question-input");
+const frquestion_input = document.getElementById("frquestion-input");
 const frquestion_form = document.getElementById("frquestion-form");
-const frquestion_answer_input = document.getElementById("frquestion-answer-input");
 const mcquestion_form = document.getElementById("mcquestion-form");
+const codequestion_form = document.getElementById("codequestion-form");
+const frquestion_answer_input = document.getElementById("frquestion-answer-input");
 const timer_input = document.getElementById("timer-input");
+
 const push_question_button = document.getElementById("push-question-button");
 const close_question_button = document.getElementById("close-question-button");
 const question_timer_tag = document.getElementById("question-timer");
@@ -23,7 +26,7 @@ const timer_update_frequency = 25;  // in milliseconds
 
 /* Ensure that the question and answer input is disabled to start */
 question_type_input.disabled = true;
-question_input.disabled = true;
+frquestion_input.disabled = true;
 frquestion_answer_input.disabled = true;
 timer_input.disabled = true;
 push_question_button.disabled = true;
@@ -49,7 +52,7 @@ function update_mcquestion_tags() {
 
 function enable_input_fields(bool) {
     question_type_input.disabled = !bool;
-    question_input.disabled = !bool;
+    frquestion_input.disabled = !bool;
     frquestion_answer_input.disabled = !bool;
     timer_input.disabled = !bool;
 }
@@ -62,7 +65,7 @@ function update_question_type() {
         case "frquestion":
             frquestion_form.style.display = form_display_style;
             mcquestion_form.style.display = "none";
-            // codequestion_form.style.display = "none";
+            codequestion_form.style.display = "none";
 
             frquestion_answer_input.required = true;
             Array.from(mcquestion_input_tags).forEach(input => {
@@ -70,21 +73,30 @@ function update_question_type() {
             });
 
             break;
+
         case "mcquestion":
             frquestion_form.style.display = "none";
             mcquestion_form.style.display = form_display_style;
-            // codequestion_form.style.display = "none";
+            codequestion_form.style.display = "none";
 
             frquestion_answer_input.required = false;
             Array.from(mcquestion_input_tags).forEach(input => {
                 input.required = true;
             });
+
             break;
+
         case "codequestion":
             frquestion_form.style.display = "none";
             mcquestion_form.style.display = "none";
-            // codequestion_form.style.display = form_display_style;
+            codequestion_form.style.display = form_display_style;
+
+            frquestion_answer_input.required = false;
+            Array.from(mcquestion_input_tags).forEach(input => {
+                input.required = false;
+            });
             break;
+
         default:
             break;
     }
@@ -135,13 +147,15 @@ socket.on("create room fail", function (msg) {
 /*----------------------------------------------------------------------------*/
 document.getElementById("question-form").addEventListener("submit", function (e) {
     e.preventDefault();
-    if (question_input.value == "") {
+    if (frquestion_input.value == "") {
         error_message("Question cannot be empty");
         return;
     }
 
-    let prompt = question_input.value;
+    let prompt = frquestion_input.value;
     let time_limit_s = parseInt(timer_input.value);
+
+    console.log("Codequestion");
 
     update_question_type();
     switch (question_type) {
@@ -179,6 +193,14 @@ document.getElementById("question-form").addEventListener("submit", function (e)
         }
 
         case "codequestion": {
+            console.log("Codequestion");
+
+            // TODO: implement inputs and test cases
+            let inputs = ["1", "2", "3"];
+            let expected_outputs = ["1", "2", "3"];
+            let language = "C";
+
+            socket.emit("new codequestion", prompt, inputs, expected_outputs, language, time_limit_s);
             break;
         }
 

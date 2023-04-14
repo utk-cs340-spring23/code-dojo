@@ -9,8 +9,9 @@ import { Server as SocketIOServer, Socket } from "socket.io";
 
 import { Host } from "./host.js";
 import { Player } from "./player.js";
-import { QuestionType, Question, FRQuestion, MCQuestion } from "./question.js";
+import { QuestionType, CodeLanguage, Question, FRQuestion, MCQuestion, CodeQuestion } from "./question.js";
 import { QuizRoom } from "./quizroom.js";
+import { RunResult, RunOutput, run_c } from "./runcode.js";
 
 /*----------------------------------------------------------------------------*/
 /* MongoDB                                                                    */
@@ -103,6 +104,15 @@ function on_new_question_check(io: SocketIOServer, quizroom: QuizRoom, socket: S
     }
 
     return true;
+}
+
+function string_to_codelanguage(str: string): CodeLanguage | null {
+    switch (str) {
+        case "C":
+            return CodeLanguage.C;
+        default:
+            return null;
+    }
 }
 
 /*----------------------------------------------------------------------------*/
@@ -233,6 +243,61 @@ io.on("connection", function (socket: Socket) {
             this_quizroom.timeout_id = setTimeout(function () {
                 close_question(io, this_quizroom);
             }, time_limit_s * 1000);
+        }
+    });
+
+    socket.on("new codequestion", function (prompt: string, inputs: string[], expected_outputs: string[], provided_language: string, time_limit_s: number) {
+        if (!on_new_question_check(io, this_quizroom, socket)) {
+            return;
+        }
+
+        const code_language: CodeLanguage = string_to_codelanguage(provided_language);
+
+        if (code_language == null) {
+            io.to(socket.id).emit("new question fail", "no such language exists");
+        }
+
+        let question: Question = new CodeQuestion(prompt, inputs, expected_outputs, code_language, time_limit_s * 1000);
+        this_quizroom.push_question(question);
+
+        let is_timed: boolean = time_limit_s > 0;
+
+        io.to(this_quizroom.id).emit("push codequestion", question.prompt, inputs, expected_outputs, provided_language, is_timed ? question.end_time : null);
+        io.to(this_quizroom.host.socket.id).emit("new question success", "successfully pushed question", is_timed ? question.end_time : null);
+
+        /* Close question when time expires */
+        if (is_timed) {
+            this_quizroom.timeout_id = setTimeout(function () {
+                close_question(io, this_quizroom);
+            }, time_limit_s * 1000);
+        }
+    });
+
+    socket.on("compile and run", async function (code: string, provided_language: string) {
+        let output: RunOutput = new RunOutput();
+
+        switch (provided_language) {
+            case "C":
+                await run_c(code, socket.id, output);
+                break;
+            default:
+                io.to(socket.id).emit("compile fail", `Language ${provided_language} not supported!`);
+                break;
+        }
+
+        switch (output.result) {
+            case RunResult.compile_fail:
+                io.to(socket.id).emit("compile fail", output.stderr);
+                break;
+            case RunResult.run_fail:
+                io.to(socket.id).emit("run fail", output.stderr);
+                break;
+            case RunResult.run_success:
+                io.to(socket.id).emit("run success", output.stdout);
+                break;
+            default:
+                io.to(socket.id).emit("run fail", "Run never occured? (You should not be seeing this)");
+                break;
         }
     });
 
