@@ -26,11 +26,27 @@ class Player {
     }
 
     public get num_right(): number {
-        return this._num_right;
+        let num_right: number = 0;
+
+        for (const [i, correct] of Object.entries(this._is_correct)) {
+            if (correct) {
+                ++num_right;
+            }
+        }
+
+        return num_right;
     }
 
     public get num_wrong(): number {
-        return this._num_wrong;
+        let num_wrong: number = 0;
+
+        for (const [i, correct] of Object.entries(this._is_correct)) {
+            if (!correct) {
+                ++num_wrong;
+            }
+        }
+
+        return num_wrong;
     }
 
     public get answers(): any[] {
@@ -45,14 +61,22 @@ class Player {
         return this._answers.at(-1);
     }
 
-    public push_correct(): void {
-        this._is_correct.push(true);
-        ++this._num_right;
+    // public push_correct(): void {
+    //     this._is_correct.push(true);
+    //     ++this._num_right;
+    // }
+
+    // public push_incorrect(): void {
+    //     this._is_correct.push(false);
+    //     ++this._num_wrong;
+    // }
+
+    public set_correct(index: number): void {
+        this._is_correct[index] = true;
     }
 
-    public push_incorrect(): void {
-        this._is_correct.push(false);
-        ++this._num_wrong;
+    public set_incorrect(index: number): void {
+        this._is_correct[index] = false;
     }
 }
 

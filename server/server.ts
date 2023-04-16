@@ -231,6 +231,9 @@ io.on("connection", function (socket: Socket) {
         }
 
         let question: MCQuestion = new MCQuestion(prompt, answer_choices, correct_answer_indices, time_limit_s * 1000);
+        console.log(prompt);
+        console.log(answer_choices);
+        console.log(correct_answer_indices);
         this_quizroom.push_question(question);
 
         let is_timed: boolean = time_limit_s > 0;
