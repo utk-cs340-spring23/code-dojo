@@ -221,7 +221,9 @@ body {
 
 #mcquestion-fieldset {
     color: #FFF;
+    margin:auto;
     border-radius: 20px;
+    width: 500px;
 }
 
 
@@ -240,19 +242,28 @@ body {
     margin: 0 auto;
 }
 
+
+
 .control-panel {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-bottom: 16px;
+    gap: 16px; 
 }
 
-.languages {
-    margin-left: 8px;
+.languages, .themes {
+    margin-left: 4px;
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 4px;
 }
+
+.dropdown-wrapper {
+    margin-left: -6px;
+}
+
+
 
 .editor {
     height: 400px;

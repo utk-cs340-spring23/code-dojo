@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Menu</title>
 
     <!-- reference the css styling page -->
@@ -66,6 +67,7 @@
         <div id="code-input">
             <div class="control-panel">
                 <label for="languages">Select Language:</label>
+                <div class="dropdown-wrapper">
                 <select id="languages" class="languages" onchange="changeLanguage()">
                     <option value="c">C</option>
                     <option value="cpp">C++</option>
@@ -73,6 +75,20 @@
                     <option value="python">Python</option>
                     <option value="node">Node JS</option>
                 </select>
+                </div>
+                <!-- THEME SELECT -->
+                <label for="themes">Select Theme:</label>
+                <div class="dropdown-wrapper">
+                <select id="themes" class="themes" onchange="changeTheme()">
+                    <option value="ace/theme/one_dark">One Dark</option>
+                    <option value="ace/theme/eclipse">Eclipse</option>
+                    <option value="ace/theme/twilight">Twilight</option>
+                    <option value="ace/theme/solarized_light">Solarized Light</option>
+                    <option value="ace/theme/gob">Gob</option>
+                    <option value="ace/theme/monokai">Monokai</option>
+                    <option value="ace/theme/github">GitHub</option>
+                </select>
+                </div>
             </div>
             <div class="editor" id="editor"></div>
             <div class="button-container">

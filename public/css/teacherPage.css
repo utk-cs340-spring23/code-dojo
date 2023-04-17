@@ -159,21 +159,6 @@ label {
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-/* #room-input {
-	width: 25vw;
-}
-
-#question-input {
-	width: 35vw;
-}
-
-#answer-input {
-	width: 35vw;
-}
-
-#timer-input {
-	width: 25vw;
-} */
 
 .slider {
 	-webkit-appearance: none;
@@ -205,3 +190,41 @@ label {
 	background: #04AA6D;
 	cursor: pointer;
 }
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.form-input {
+    margin: 20px 0;
+}
+
+.white-text {
+    color: #fff;
+}
+
+
+/* Drop down for question type */
+
+#question-type-input {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #333;
+    font-size: 14px;
+    padding: 5px 10px;
+    outline: none;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#question-type-input:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.5);
+}
+
+#question-type-input > option {
+    padding: 5px 10px;
+}
+
+
+

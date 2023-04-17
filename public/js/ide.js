@@ -7,28 +7,27 @@ window.onload = function() {
 }
 
 function changeLanguage() {
-
     let language = $("#languages").val();
 
-    if(language == 'c' || language == 'cpp')editor.session.setMode("ace/mode/c_cpp");
-    else if(language == 'php')editor.session.setMode("ace/mode/php");
-    else if(language == 'python')editor.session.setMode("ace/mode/python");
-    else if(language == 'node')editor.session.setMode("ace/mode/javascript");
+    if(language == 'c' || language == 'cpp') editor.session.setMode("ace/mode/c_cpp");
+    else if(language == 'php') editor.session.setMode("ace/mode/php");
+    else if(language == 'python') editor.session.setMode("ace/mode/python");
+    else if(language == 'node') editor.session.setMode("ace/mode/javascript");
+}
+
+function changeTheme() {
+    const theme = $("#themes").val();
+    editor.setTheme(theme);
 }
 
 function executeCode() {
-
     $.ajax({
-
         url: "/ide/app/compiler.php",
-
         method: "POST",
-
         data: {
             language: $("#languages").val(),
             code: editor.getSession().getValue()
         },
-
         success: function(response) {
             $(".output").text(response)
         }
