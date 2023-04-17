@@ -67,6 +67,8 @@ body {
     z-index: 1;
 }
 
+
+
 .btn {
     /* sidebar button attributes */
     background-color: #21416800;
@@ -279,8 +281,9 @@ body {
 }
 
 .btn {
-    background-color: #23a6d5;
-    color: #fff;
+    /*background-color: #23a6d5;*/
+
+    color: black;
     border: none;
     border-radius: 4px;
     padding: 8px 16px;
