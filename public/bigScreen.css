@@ -1,31 +1,18 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Tilt Warp';
+    background-color: rgb(55, 54, 54);
 }
 
-.container {
-    max-width: 600px;
-    margin: 0 auto;
+.modern-container {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 16px auto 0;
 }
 
-.barGraph {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    height: 300px;
-    margin-top: 30px;
-    border-bottom: 2px solid #333;
-}
-
-.bar {
-    position: relative;
-    width: 20%;
-    background-color: #4caf50;
-    text-align: center;
-}
-
-.bar span {
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
+.white-text{
+    color: white;
 }
