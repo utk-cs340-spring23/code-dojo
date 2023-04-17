@@ -293,6 +293,10 @@ socket.on("player join", function (socket_id, nickname) {
 
     player_correct_total[socket_id] = 0;
     player_incorrect_total[socket_id] = 0;
+
+    // player_table.style.position = "absolute";
+    // player_table.style.left = "25%";
+
 });
 
 socket.on("player submit answer", function (socket_id, player_answer) {
