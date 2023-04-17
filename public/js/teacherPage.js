@@ -4,12 +4,12 @@ var container = document.getElementById('inputs')
 function putGridBelow() {
     if ((window.innerWidth - 100) < window.innerHeight) {
         column.style.flexDirection = "column";
-        container.style.width = "100vh";
+        container.style.width = "50vw";
         container.style.left = "0%";
         container.style.marginLeft = "0px";
     } else {
         column.style.flexDirection = "row";
-        container.style.width = "50vh";
+        container.style.width = "40vw";
         container.style.left = "50%";
         container.style.marginLeft = "100px";
     }
