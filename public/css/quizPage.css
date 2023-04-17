@@ -182,8 +182,9 @@ body {
 #ninja-slash {
     z-index: 10;
     position: absolute;
-    top: 0;
-    height: 100vh;
+    margin-left: 50%;
+	transform: translate(-50%, -50%);
+    width: 50vw;
     display: none;
     /* display: block */
 }
