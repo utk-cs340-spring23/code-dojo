@@ -50,3 +50,10 @@ button {
     color: white;
     border-radius: 5px; /* Add rounded edges to button */
 }
+
+#back_button{
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    fill: white;
+}
