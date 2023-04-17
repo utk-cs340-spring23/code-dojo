@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Graph Example</title>
+    <link rel="stylesheet" href="bigScreen.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Which programming language do you prefer?</h1>
+        <form id="surveyForm">
+            <input type="radio" name="language" value="Python"> Python<br>
+            <input type="radio" name="language" value="JavaScript"> JavaScript<br>
+            <input type="radio" name="language" value="Java"> Java<br>
+            <input type="radio" name="language" value="C++"> C++<br>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="barGraph">
+            <div class="bar" id="barPython" data-value="0"><span>Python</span></div>
+            <div class="bar" id="barJavaScript" data-value="0"><span>JavaScript</span></div>
+            <div class="bar" id="barJava" data-value="0"><span>Java</span></div>
+            <div class="bar" id="barCPlusPlus" data-value="0"><span>C++</span></div>
+        </div>
+    </div>
+    <script src="bigScreen.js"></script>
+</body>
+</html>
