@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 body {
   margin: 0;
   padding: 0;
+
 }
 
 /* background picture. Added to full screen with blue*/
@@ -88,8 +89,8 @@ body {
 
 /* button to join the session ID */
 button {
-  background-color: #23a6d5;
-  border: none;
+  background: #23a6d5;
+  border: none; 
   color: #ffffff;
   cursor: pointer;
   font-family: 'Tilt Warp', cursive;
@@ -160,3 +161,6 @@ button:hover::before {
 .message-box button[type="submit"]:hover {
   background-color: #187fa5;
 }
+
+
+

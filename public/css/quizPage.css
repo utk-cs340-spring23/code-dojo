@@ -284,7 +284,6 @@ body {
     /*background-color: #23a6d5;*/
 
     color: black;
-    border: none;
     border-radius: 4px;
     padding: 8px 16px;
     cursor: pointer;
@@ -317,3 +316,4 @@ body {
     white-space: pre-wrap;
     word-wrap: break-word;
 }
+

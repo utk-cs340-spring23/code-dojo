@@ -69,10 +69,40 @@ body {
 }
 
 .form-input {
-	margin-bottom: 20px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Add the following CSS rules */
+
+.mcquestion-answer-checkbox {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.mcquestion-answer-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    outline: none;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.mcquestion-answer-input:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.5);
+}
+
+.text-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 label {
@@ -136,7 +166,7 @@ label {
 	margin-left: 50%;
 	transform: translate(-50%, -50%);
 	/* border-spacing: 20px; */
-	margin-top: 25%;
+	margin-top: 13%;
 }
 
 .grid-item {
@@ -166,12 +196,19 @@ label {
 }
 
 .timer-display {
-	font-size: 2em;
-	font-weight: bold;
-	margin-bottom: 1px;
-	top: 1%;
-	color: #ffffff;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 1px;
+    top: 1%;
+    color: #ffffff;
 }
+
+
+.timer-box {
+    margin-top: 50px;
+    position: relative;
+}
+
 
 .text-input {
 	width: 100%;
@@ -218,9 +255,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.form-input {
-    margin: 20px 0;
-}
 
 .white-text {
     color: black;
