@@ -1,0 +1,26 @@
+/*table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+  }
+  
+  th {
+    background-color: #cccccc;
+    font-weight: bold;
+  }
+  
+  .bar-graph {
+    width: 500px;
+    height: 200px;
+    border: 1px solid black;
+    margin-top: 20px;
+    position: relative;
+  }
+  
+  .bar {
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    background-color: blue;
+    margin-right: 10px;
+  }*/

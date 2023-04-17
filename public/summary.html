@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz Summary</title>
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 100%;
+			margin-bottom: 20px;
+		}
+
+		th, td {
+			border: 1px solid #ddd;
+			padding: 8px;
+			text-align: left;
+		}
+
+		th {
+			background-color: #f2f2f2;
+		}
+
+		.chart-container {
+			position: relative;
+			height: 300px;
+			margin-bottom: 40px;
+		}
+
+		.chart-bar {
+			position: absolute;
+			bottom: 0;
+			width: calc(25% - 10px);
+			background-color: #4CAF50;
+			color: #fff;
+			text-align: center;
+			padding: 5px;
+			font-weight: bold;
+			font-size: 18px;
+			transition: height 0.5s ease;
+		}
+
+		.chart-bar:hover {
+			height: 70%;
+		}
+
+		.chart-bar.correct {
+			background-color: #008000;
+		}
+
+		.chart-labels {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 10px;
+		}
+
+		.chart-labels span {
+			flex: 1;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Quiz Summary</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Question</th>
+					<th>Student Answer</th>
+					<th>Correct Answer</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- loop through database results and populate table rows -->
+				<tr>
+					<td>Question 1</td>
+					<td>Option A</td>
+					<td>Option B</td>
+				</tr>
+				<tr>
+					<td>Question 2</td>
+					<td>Option C</td>
+					<td>Option C</td>
+				</tr>
+				<tr>
+					<td>Question 3</td>
+					<td>Option D</td>
+					<td>Option A</td>
+				</tr>
+				<!-- repeat for each question -->
+			</tbody>
+		</table>
+		<div class="chart-container">
+			<!-- chart will be generated dynamically using JS -->
+		</div>
+	</div>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+	<script type="text/javascript" src="path/to/your/js/file.js"></script>
+</body>
+</html>
