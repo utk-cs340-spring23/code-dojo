@@ -57,3 +57,8 @@ button {
     left: 1%;
     fill: white;
 }
+
+#back_button:active {
+    /* make slightly smaller on click */
+    transform: scale(0.9);
+}
