@@ -66,8 +66,9 @@ let quizrooms: QuizRoom[] = [];     // Array of all active QuizRooms, keyed by t
  * @param this_quizroom The quizroom to call close_question() on
  * @return True if successful, false otherwise
  */
-function close_question(io: SocketIOServer, quizroom: QuizRoom): boolean {
-    if (!quizroom.close_question()) {
+async function close_question(io: SocketIOServer, quizroom: QuizRoom): Promise<boolean> {
+    let grade_question_success: boolean = await quizroom.close_question();
+    if (!grade_question_success) {
         return false;
     }
 
@@ -187,7 +188,6 @@ io.on("connection", function (socket: Socket) {
         io.to(socket.id).emit("join room success", `Successfully joined room "${room_id}" as ${this_player.nickname}! Waiting for host...`);
 
         /* If there's a question active when the user joined, push it to the user */
-
         if (this_quizroom.curr_question?.is_active) {
             switch (this_quizroom.curr_question.type) {
                 case QuestionType.free_response:
@@ -249,7 +249,7 @@ io.on("connection", function (socket: Socket) {
         }
     });
 
-    socket.on("new codequestion", function (prompt: string, inputs: string[], expected_outputs: string[], provided_language: string, time_limit_s: number) {
+    socket.on("new codequestion", function (prompt: string, template: string, answer: string, provided_language: string, time_limit_s: number) {
         if (!on_new_question_check(io, this_quizroom, socket)) {
             return;
         }
@@ -260,12 +260,12 @@ io.on("connection", function (socket: Socket) {
             io.to(socket.id).emit("new question fail", "no such language exists");
         }
 
-        let question: Question = new CodeQuestion(prompt, inputs, expected_outputs, code_language, time_limit_s * 1000);
+        let question: Question = new CodeQuestion(prompt, template, answer, code_language, time_limit_s * 1000);
         this_quizroom.push_question(question);
 
         let is_timed: boolean = time_limit_s > 0;
 
-        io.to(this_quizroom.id).emit("push codequestion", question.prompt, inputs, expected_outputs, provided_language, is_timed ? question.end_time : null);
+        io.to(this_quizroom.id).emit("push codequestion", question.prompt, template, provided_language, is_timed ? question.end_time : null);
         io.to(this_quizroom.host.socket.id).emit("new question success", "successfully pushed question", is_timed ? question.end_time : null);
 
         /* Close question when time expires */

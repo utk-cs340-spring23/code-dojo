@@ -20,7 +20,7 @@ class RunOutput {
     }
 };
 
-async function run_c(code, name, output) {
+async function run_c(code, name, output): Promise<void> {
     const file_name = `tmp/${name}.c`;
     const executable_name = `tmp/${name}.out`;
 

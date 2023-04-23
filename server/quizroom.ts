@@ -132,7 +132,7 @@ class QuizRoom {
      * Closes the current question, grading every players' answer
      * @returns True if successful, false otherwise
      */
-    public close_question(): boolean {
+    public async close_question(): Promise<boolean> {
         if (!this.curr_question?.is_active) {
             return false;
         }
@@ -142,7 +142,9 @@ class QuizRoom {
 
             console.log(`checking if ${this.curr_question.answer} = ${this.get_player_curr_answer(player)}`);
 
-            if (this.curr_question.check_answer(this.get_player_curr_answer(player)) > 0) {
+            const grade: number = await this.curr_question.check_answer(this.get_player_curr_answer(player));
+
+            if (grade > 0) {
                 player.set_correct(this.curr_question_index);
                 this.curr_question.increment_num_right();
             } else {

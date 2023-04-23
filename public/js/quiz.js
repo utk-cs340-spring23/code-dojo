@@ -40,6 +40,15 @@ let curr_question_type = "";
 /*----------------------------------------------------------------------------*/
 /* Functions                                                                  */
 /*----------------------------------------------------------------------------*/
+
+function start_timer(end_time) {
+    if (!Number.isNaN(end_time) && end_time != null) {
+        timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
+    } else {
+        question_timer_tag.innerText = "";
+    }
+}
+
 function update_timer(end_time) {
     question_timer_tag.innerText = ms_to_formatted_string(end_time - Date.now());
 }
@@ -76,10 +85,13 @@ function submit_mcquestion_answer() {
 }
 
 function submit_codequestion_answer() {
+    console.log("submit answer " + editor.getValue());
+    socket.emit("submit answer", editor.getValue());
     return;
 }
 
 function submit_answer_generic() {
+    console.log("submit_answer_generic()");
     switch (curr_question_type) {
         case "frquestion":
             submit_frquestion_answer();
@@ -94,7 +106,6 @@ function submit_answer_generic() {
             break;
     }
 }
-
 
 /*----------------------------------------------------------------------------*/
 /* Room Joining                                                               */
@@ -144,11 +155,7 @@ socket.on("push frquestion", function (prompt, end_time) {
     answer_input.disabled = false;
     submit_answer_button.disabled = false;
 
-    if (!Number.isNaN(end_time) && end_time != null) {
-        timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
-    } else {
-        question_timer_tag.innerText = "";
-    }
+    start_timer(end_time);
 });
 
 socket.on("push mcquestion", function (prompt, answer_choices, end_time) {
@@ -173,14 +180,10 @@ socket.on("push mcquestion", function (prompt, answer_choices, end_time) {
         mcquestion_label_tags[i].innerText = answer_choices[i];
     }
 
-    if (!Number.isNaN(end_time) && end_time != null) {
-        timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
-    } else {
-        question_timer_tag.innerText = "";
-    }
+    start_timer(end_time);
 });
 
-socket.on("push codequestion", function (prompt, inputs, expected_outputs, provided_language, end_time) {
+socket.on("push codequestion", function (prompt, template, expected_outputs, provided_language, end_time) {
     curr_question_type = "codequestion";
 
     frquestion_form.style.display = "none";
@@ -193,11 +196,11 @@ socket.on("push codequestion", function (prompt, inputs, expected_outputs, provi
     question_tag.innerText = `Question:  ${prompt}`;
     question_feedback_tag.innerText = '';
 
-    if (!Number.isNaN(end_time) && end_time != null) {
-        timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
-    } else {
-        question_timer_tag.innerText = "";
-    }
+    submit_answer_button.disabled = false;
+
+    editor.setValue(template);
+
+    start_timer(end_time);
 });
 
 socket.on("close question success", function () {
@@ -209,6 +212,12 @@ socket.on("close question success", function () {
 /*----------------------------------------------------------------------------*/
 /* Answer Submissions                                                         */
 /*----------------------------------------------------------------------------*/
+
+submit_answer_button.addEventListener("click", function (e) {
+    e.preventDefault();
+    submit_answer_generic();
+})
+
 frquestion_form.addEventListener("submit", function (e) {
     e.preventDefault();
     submit_frquestion_answer();
@@ -217,6 +226,11 @@ frquestion_form.addEventListener("submit", function (e) {
 mcquestion_form.addEventListener("submit", function (e) {
     e.preventDefault();
     submit_mcquestion_answer();
+});
+
+codequestion_form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    submit_codequestion_answer();
 });
 
 socket.on("submit answer success", function (msg) {
@@ -251,8 +265,7 @@ socket.on("answer incorrect", function (player_answer, correct_answer, num_right
 
 run_code_button.addEventListener("click", function (e) {
     e.preventDefault();
-    const ide_form = document.getElementsByClassName("ace_content")[0];
-    socket.emit("compile and run", ide_form.innerText, "C");
+    socket.emit("compile and run", editor.getValue(), "C");
 
 });
 

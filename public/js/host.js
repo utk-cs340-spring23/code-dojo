@@ -13,6 +13,7 @@ const frquestion_form = document.getElementById("frquestion-form");
 const mcquestion_form = document.getElementById("mcquestion-form");
 const codequestion_form = document.getElementById("codequestion-form");
 const frquestion_answer_input = document.getElementById("frquestion-answer-input");
+const codequestion_answer_input = document.getElementById("codequestion-answer-input");
 const timer_input = document.getElementById("timer-input");
 
 const push_question_button = document.getElementById("push-question-button");
@@ -155,8 +156,6 @@ document.getElementById("question-form").addEventListener("submit", function (e)
     let prompt = frquestion_input.value;
     let time_limit_s = parseInt(timer_input.value);
 
-    console.log("Codequestion");
-
     update_question_type();
     switch (question_type) {
         case "frquestion": {
@@ -196,11 +195,12 @@ document.getElementById("question-form").addEventListener("submit", function (e)
             console.log("Codequestion");
 
             // TODO: implement inputs and test cases
-            let inputs = ["1", "2", "3"];
-            let expected_outputs = ["1", "2", "3"];
+            // let inputs = ["1", "2", "3"];
+            // let expected_outputs = ["1", "2", "3"];
+
             let language = "C";
 
-            socket.emit("new codequestion", prompt, inputs, expected_outputs, language, time_limit_s);
+            socket.emit("new codequestion", prompt, editor.getValue(), codequestion_answer_input.value, language, time_limit_s);
             break;
         }
 

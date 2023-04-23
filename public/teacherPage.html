@@ -17,8 +17,8 @@
                 <form id="room-form">
                     <div class="form-input">
                         <label class="white-text" for="session-id">Session ID:</label>
-                        <input type="text" id="room-input" class="text-input" name="session-id" placeholder="Session ID"
-                            required>
+                        <input type="text" id="room-input" class="text-input" name="session-id"
+                            placeholder="Session ID">
                     </div>
                     <div class="buttons-container">
                         <button type="submit" class="submit-btn press-down" id="create-room-button">Create Room</button>
@@ -38,13 +38,13 @@
                     <div class="form-input">
                         <label class="white-text" for="question">Question:</label>
                         <input type="text" id="frquestion-input" class="text-input" name="question"
-                            placeholder="Quesiton" required>
+                            placeholder="Question">
                     </div>
 
                     <div class="form-input" id="frquestion-form">
                         <label class="white-text" for="answer">Answer:</label>
                         <input type="text" id="frquestion-answer-input" class="text-input" name="answer"
-                            placeholder="Answer" required>
+                            placeholder="Answer">
                     </div>
 
                     <div class="form-input" id="mcquestion-form">
@@ -55,72 +55,68 @@
                         <div class="text-input">
                             <input type="checkbox" class="mcquestion-answer-checkbox">
                             <input type="text" class="mcquestion-answer-input" name="mcquestion-answer"
-                                placeholder="Answer" required>
+                                placeholder="Answer">
                         </div>
 
                         <div class="text-input">
                             <input type="checkbox" class="mcquestion-answer-checkbox">
                             <input type="text" class="mcquestion-answer-input" name="mcquestion-answer"
-                                placeholder="Answer" required>
+                                placeholder="Answer">
                         </div>
 
                         <div class="text-input">
                             <input type="checkbox" class="mcquestion-answer-checkbox">
                             <input type="text" class="mcquestion-answer-input" name="mcquestion-answer"
-                                placeholder="Answer" required>
+                                placeholder="Answer">
                         </div>
 
                         <div class="text-input">
                             <input type="checkbox" class="mcquestion-answer-checkbox">
                             <input type="text" class="mcquestion-answer-input" name="mcquestion-answer"
-                                placeholder="Answer" required>
+                                placeholder="Answer">
                         </div>
                     </div>
 
                     <div class="form-input" id="codequestion-form">
-                        <form id="codequestion-form">
-                            <div id="code-input">
-                                <div class="control-panel">
-                                    <div class="dropdown-wrapper">
-                                        <select id="languages" class="languages" onchange="changeLanguage()">
-                                            <option value="c">C</option>
-                                            <option value="cpp">C++</option>
-                                            <option value="php">PHP</option>
-                                            <option value="python">Python</option>
-                                            <option value="node">Node JS</option>
-                                        </select>
-                                    </div>
-                                    <!-- THEME SELECT -->
-                                    <div class="dropdown-wrapper">
-                                        <select id="themes" class="themes" onchange="changeTheme()">
-                                            <option value="ace/theme/one_dark">One Dark</option>
-                                            <option value="ace/theme/eclipse">Eclipse</option>
-                                            <option value="ace/theme/twilight">Twilight</option>
-                                            <option value="ace/theme/solarized_light">Solarized Light</option>
-                                            <option value="ace/theme/gob">Gob</option>
-                                            <option value="ace/theme/monokai">Monokai</option>
-                                            <option value="ace/theme/github">GitHub</option>
-                                        </select>
-                                    </div>
+                        <div id="code-input">
+                            <div class="control-panel">
+                                <div class="dropdown-wrapper">
+                                    <select id="languages" class="languages" onchange="changeLanguage()">
+                                        <option value="c">C</option>
+                                        <option value="cpp">C++</option>
+                                        <option value="php">PHP</option>
+                                        <option value="python">Python</option>
+                                        <option value="node">Node JS</option>
+                                    </select>
                                 </div>
-                                <div class="editor" id="editor"></div>
+                                <!-- THEME SELECT -->
+                                <div class="dropdown-wrapper">
+                                    <select id="themes" class="themes" onchange="changeTheme()">
+                                        <option value="ace/theme/one_dark">One Dark</option>
+                                        <option value="ace/theme/eclipse">Eclipse</option>
+                                        <option value="ace/theme/twilight">Twilight</option>
+                                        <option value="ace/theme/solarized_light">Solarized Light</option>
+                                        <option value="ace/theme/gob">Gob</option>
+                                        <option value="ace/theme/monokai">Monokai</option>
+                                        <option value="ace/theme/github">GitHub</option>
+                                    </select>
+                                </div>
                             </div>
-                        
-                            <br>
+                            <div class="editor" id="editor"></div>
+                        </div>
+                        <br>
 
-                            <div class="output-container">
-                                <div class="white-text">Output:</div>
-                                <div class="output" id="output"></div>
-                            </div>
-                        </form>
-                        <input type="text" id="codequestion-input" class="text-input" name="question"
+                        <div class="output-container">
+                            <div class="white-text">Output:</div>
+                            <div class="output" id="output"></div>
+                        </div>
+                        <input type="text" id="codequestion-answer-input" class="text-input" name="question"
                             placeholder="Output Answer">
                     </div>
 
                     <div class="form-input">
                         <label class="white-text" for="time">Time:</label>
-                        <input type="number" id="timer-input" class="text-input" name="time" placeholder="Time"
-                            required>
+                        <input type="number" id="timer-input" class="text-input" name="time" placeholder="Time">
                         <div class="button-group">
                         </div>
                     </div>
@@ -135,7 +131,7 @@
                 </form>
             </div>
         </div>
-        
+
         <div class="right-side">
             <div class="timer-box">
                 <center>
@@ -161,11 +157,14 @@
     <script src="js/host.js"></script>
     <script src="js/teacherPage.js"></script>
 
+
     <!-- JS for code editor -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/ace-builds/src/ace.js"></script>
     <script src="js/ace-builds/theme-monokai.js"></script>
     <script src="js/ide.js"></script>
+
+    <script>update_question_type();</script>
 
 </body>
 

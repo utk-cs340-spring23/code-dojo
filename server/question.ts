@@ -1,3 +1,5 @@
+import { RunResult, RunOutput, run_c } from "./runcode.js";
+
 enum QuestionType {
     unknown,
     free_response,
@@ -90,7 +92,7 @@ class Question {
         return this._is_active;
     }
 
-    public check_answer(provided_answer: any): number {
+    public async check_answer(provided_answer: any): Promise<number> {
         throw new Error("Method 'check_answer()' must be implemented");
     }
 
@@ -123,7 +125,7 @@ class FRQuestion extends Question {
         this._answers = answers;
     }
 
-    public check_answer(provided_answer: string): number {
+    public override async check_answer(provided_answer: string): Promise<number> {
         for (const [i, answer] of this._answers.entries()) {
             if (provided_answer == answer) {
                 return 1;
@@ -175,7 +177,7 @@ class MCQuestion extends Question {
      * @param provided_answer_indices array of answer indices
      * @returns True if correct, false otherwise
      */
-    public override check_answer(provided_answer_indices: number[]): number {
+    public override async check_answer(provided_answer_indices: number[]): Promise<number> {
         if (provided_answer_indices == null) {
             return 0;
         }
@@ -193,23 +195,47 @@ class MCQuestion extends Question {
 }
 
 class CodeQuestion extends Question {
-    private _test_cases: any[];
-    private _correct_outputs: string[];
+    // private _test_cases: any[];
+    // private _correct_outputs: string[];
     private _language: CodeLanguage;
 
-    constructor(prompt: string, test_cases: any[], correct_outputs: string[], language: CodeLanguage, time_limit: number) {
-        super(prompt, "todo: answer (sample code)", time_limit);
+    constructor(prompt: string, template: any, answer: string, language: CodeLanguage, time_limit: number) {
+        super(prompt, answer, time_limit);
         this._type = QuestionType.code;
-        this._test_cases = test_cases;
-        this._correct_outputs = correct_outputs;
+        // this._test_cases = test_cases;
+        // this._correct_outputs = correct_outputs;
         this._language = language;
     }
 
-    public override check_answer(provided_answer: string): number {
+
+    public override async check_answer(provided_answer: string): Promise<number> {
+        if (provided_answer == null || provided_answer == "") {
+            return 0;
+        }
+
         // TODO: fix temp change
         // This should only test the outputs of the supplied user's answer, and see how many align with the correct test cases
 
-        return 0;
+        let output: RunOutput = new RunOutput();
+
+        switch (this._language) {
+            case CodeLanguage.C:
+                await run_c(provided_answer, Date.now().toString(), output);
+                break;
+        }
+
+        console.log("SUBMISSION RESULT:" + output.stdout);
+        console.log("ANSWER: " + this._answer);
+
+        if (output.result != RunResult.run_success) {
+            return 0;
+        }
+
+        if (output.stdout != this._answer) {
+            return 0;
+        }
+
+        return 1;
     }
 }
 
