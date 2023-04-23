@@ -1,0 +1,185 @@
+summary.html (nupadhy3 on 04/17/2023 at 18:12): <!DOCTYPE html>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): <html>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): <head>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 	<title>Quiz Summary</title>
+summary.html (nupadhy3 on 04/17/2023 at 18:17):     <!-- <link rel="stylesheet" href="summary.css"> -->
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 	<style type="text/css">
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		body {
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			font-family: Arial, sans-serif;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			margin: 0;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			padding: 0;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		}
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		.container {
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			max-width: 800px;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			margin: 0 auto;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			padding: 20px;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		}
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		h1 {
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			text-align: center;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			margin-bottom: 20px;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		}
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		table {
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			border-collapse: collapse;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			width: 100%;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			margin-bottom: 20px;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		}
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		th, td {
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			border: 1px solid #ddd;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			padding: 8px;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			text-align: left;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		}
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		th {
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			background-color: #f2f2f2;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		}
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		.chart-container {
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			position: relative;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			height: 300px;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			margin-bottom: 40px;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		}
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		.chart-bar {
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			position: absolute;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			bottom: 0;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			width: calc(25% - 10px);
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			background-color: #4CAF50;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			color: #fff;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			text-align: center;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			padding: 5px;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			font-weight: bold;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			font-size: 18px;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			transition: height 0.5s ease;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		}
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		.chart-bar:hover {
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			height: 70%;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		}
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		.chart-bar.correct {
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			background-color: #008000;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		}
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		.chart-labels {
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			display: flex;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			justify-content: space-between;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			margin-top: 10px;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		}
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		.chart-labels span {
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			flex: 1;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			text-align: center;
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		}
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 	</style>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): </head>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): <body>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 	<div class="container">
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		<h1>Quiz Summary</h1>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		<table>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			<thead>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 				<tr>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 					<th>Question</th>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 					<th>Student Answer</th>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 					<th>Correct Answer</th>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 				</tr>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			</thead>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			<tbody>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 				<!-- loop through database results and populate table rows -->
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 				<tr>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 					<td>Question 1</td>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 					<td>Option A</td>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 					<td>Option B</td>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 				</tr>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 				<tr>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 					<td>Question 2</td>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 					<td>Option C</td>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 					<td>Option C</td>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 				</tr>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 				<tr>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 					<td>Question 3</td>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 					<td>Option D</td>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 					<td>Option A</td>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 				</tr>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 				<!-- repeat for each question -->
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			</tbody>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		</table>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		<div class="chart-container">
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 			<!-- chart will be generated dynamically using JS -->
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 		</div>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 	</div>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): 	<script type="text/javascript" src="path/to/your/js/file.js"></script>
+summary.html (nupadhy3 on 04/17/2023 at 18:12): </body>
+summary.html (nupadhy3 on 04/17/2023 at 18:17): </html>
+mcq.css      (nupadhy3 on 04/11/2023 at 12:14):   }
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): @media only screen and (max-width: 920px) {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	body {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	font-size: 16px;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}.columns {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		flex-direction: column;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.main-container {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		width: 90%;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		padding: 10px;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.right-side {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		width: 100%;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		left: 0;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.grid-container {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		grid-template-columns: repeat(2, 1fr);
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.timer-display {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		font-size: 1.5em;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.text-input {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		width: 100%;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.mcquestion-answer-input {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		width: 90%;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.submit-btn {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		font-size: 16px;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		padding: 10px 15px;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.grid-item {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		font-size: 14px;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		padding: 8px;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): }
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): body {
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): 	background-color: #F7F7F7;
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): }
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): 
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): h1 {
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): 	color: #333333;
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): }
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): 
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): table {
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): 	background-color: #FFFFFF;
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): }
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): 
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): th {
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): 	background-color: #EEEEEE;
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): }
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): 
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): .chart-bar {
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): 	background-color: #4CAF50;
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): 	color: #FFFFFF;
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): }
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): 
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): .chart-bar.correct {
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): 	background-color: #008000;
+summary.css  (nupadhy3 on 04/17/2023 at 18:17): }

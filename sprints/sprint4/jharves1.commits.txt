@@ -1,0 +1,101 @@
+index.html   (rivetingpeach on 04/11/2023 at 08:07): <!DOCTYPE html>
+index.html   (rivetingpeach on 04/11/2023 at 08:07): <html lang="en">
+index.html   (rivetingpeach on 04/11/2023 at 08:07): <head>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):     <meta charset="UTF-8">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):     <link rel="stylesheet" href="testCreation.css">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):     <title>Create a Test</title>
+index.html   (rivetingpeach on 04/11/2023 at 08:07): </head>
+index.html   (rivetingpeach on 04/11/2023 at 08:07): <body>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):     <form action="/createTest" method="POST">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <label for="questionString">Question:</label>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <input type="text" id="questionString" name="questionString">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):       
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <label for="email">Email:</label>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <input type="email" id="email" name="email">
+index.html   (rivetingpeach on 04/11/2023 at 08:07): 
+index.html   (rivetingpeach on 04/11/2023 at 08:07): 
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <label for="lang">Question Type:</label>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <select name="questionType" id="lang">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):             <option value="multipleChoice">Multiple Choice</option>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):             <option value="selectAll">Select All That Apply</option>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):             <option value="shortAnswer">Short Answer</option>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):             <option value="trueFalse">True or False</option>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         </select>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):       
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <button type="submit">Submit</button>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):       </form>
+index.html   (rivetingpeach on 04/11/2023 at 08:07): </body>
+index.html   (rivetingpeach on 04/11/2023 at 08:07): </html>
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): const http = require('http');
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): const fs = require('fs');
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): const path = require('path');
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): const url = require('url');
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): 
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): const { MongoClient } = require("mongodb");
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): // Connection URI
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): const uri = "mongodb://rootuser:rootpass@localhost:27017/";
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): // Create a new MongoClient
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): const client = new MongoClient(uri);
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): // Access database from mongodb
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): const theDB = client.db("room");
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): // Access a Collection in theDB
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): let theCollection;
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): let splitInput;
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): let theDoc;
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): 
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): 
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): // Create a server
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): http.createServer((req, res) => {
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):   const reqUrl = url.parse(req.url, true);
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): 
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):   // Serve the webpage
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):   if (reqUrl.pathname === '/') {
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):     const filePath = path.join(__dirname, 'index.html');
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):     fs.readFile(filePath, (err, content) => {
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       if (err) {
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):         res.writeHead(500);
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):         res.end('Error loading index.html');
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):         return;
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       }
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       res.writeHead(200, {'Content-Type': 'text/html'});
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       res.end(content);
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):     });
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):   }
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): 
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):   // Handle the form submission
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):   if (reqUrl.pathname === '/create-files' && req.method === 'POST') {
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):     let body = '';
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):     req.on('data', (chunk) => {
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       body += chunk.toString();
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):     });
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):     req.on('end', () => {
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       const formData = JSON.parse(body);
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): 
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       const filename = formData.filename;
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       const jsonData = formData.data;
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): 
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       for (let i = 0; i < jsonData.length; i++) {
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):         const filePath = path.join(__dirname, `${filename}-${i+1}.json`);
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):         const fileContent = JSON.stringify(jsonData[i]);
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):         fs.writeFile(filePath, fileContent, (err) => {
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):           if (err) {
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):             console.error(`Error writing file ${filePath}: ${err}`);
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):             res.writeHead(500, {'Content-Type': 'application/json'});
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):             res.end(JSON.stringify({success: false, error: err}));
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):             return;
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):           }
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):           console.log(`File ${filePath} written successfully`);
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):         });
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       }
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       // Grab collection and Insert Doc
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       theCollection = theDB.collection("questions");
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       theDoc = fileContent;
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       theCollection.insertOne(theDoc);
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): 
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       res.writeHead(200, {'Content-Type': 'application/json'});
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       res.end(JSON.stringify({success: true}));
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):     });
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07):   }
+createJSON.js (rivetingpeach on 04/11/2023 at 08:07): }).listen(8080, () => console.log('Server listening on port 8080'));
