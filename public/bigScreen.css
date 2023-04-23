@@ -13,11 +13,11 @@ body {
     margin: 16px auto 0;
 }
 
-.white-text{
+.white-text {
     color: white;
 }
 
-#back_button{
+#back_button {
     position: relative;
     top: 1%;
     left: 1%;
@@ -28,3 +28,45 @@ body {
     /* make slightly smaller on click */
     transform: scale(0.9);
 }
+.seshID{
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 1px;
+    top: 1%;
+    color: #ffffff;
+}
+.question-set {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timer-box {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.timer-display {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 1px;
+    top: 1%;
+    color: #ffffff;
+}
+
+.border {
+    border: 1px solid #ffffff;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.separator {
+    border-left: 1px solid #ffffff;
+    margin: 0 10px;
+    height: 1.5em;
+}
+
