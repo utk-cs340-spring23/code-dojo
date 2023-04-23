@@ -1,34 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bar Graph Example</title>
-    <link rel="stylesheet" href="bigScreen.css">
-</head>
+<html>
+
+<link rel="stylesheet" href="bigScreen.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <body>
-    <a href="./quizPage.html">
-        <svg xmlns="http://www.w3.org/2000/svg" 
-            id="back_button" height="48" viewBox="0 96 960 960" width="48">
-            <path d="M480 896 160 576l320-320 42 42-248 248h526v60H274l248 248-42 42Z"/>
+    <!-- MAKE THIS GO BACK TO THE TEACHER PAGE -->
+    <a href="teacherPage.html">
+        <svg xmlns="http://www.w3.org/2000/svg" id="back_button" height="48" viewBox="0 96 960 960" width="48">
+            <path d="M480 896 160 576l320-320 42 42-248 248h526v60H274l248 248-42 42Z" />
         </svg>
     </a>
-    <div class="container">
-        <h1>Which programming language do you prefer?</h1>
-        <form id="surveyForm">
-            <input type="radio" name="language" value="Python"> Python<br>
-            <input type="radio" name="language" value="JavaScript"> JavaScript<br>
-            <input type="radio" name="language" value="Java"> Java<br>
-            <input type="radio" name="language" value="C++"> C++<br>
-            <button type="submit">Submit</button>
-        </form>
-        <div class="barGraph">
-            <div class="bar" id="barPython" data-value="0"><span>Python</span></div>
-            <div class="bar" id="barJavaScript" data-value="0"><span>JavaScript</span></div>
-            <div class="bar" id="barJava" data-value="0"><span>Java</span></div>
-            <div class="bar" id="barCPlusPlus" data-value="0"><span>C++</span></div>
-        </div>
+
+    <div id="insert id" class="white-text">
+        <center>
+            <h1>
+                The Question Will Go Here..
+            </h1>
+        </center>
     </div>
-    <script src="bigScreen.js"></script>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="modern-container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="js/chart.umd.js"></script>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>

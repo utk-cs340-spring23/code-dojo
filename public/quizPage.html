@@ -9,8 +9,7 @@
 
     <!-- reference the css styling page -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3S10sibVcOQVnN"
-    crossorigin="anonymous">
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3S10sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/quizPage.css" />
 
     <div class="background-container">
@@ -70,27 +69,18 @@
         <div id="code-input">
             <div class="control-panel">
                 <label for="languages">Select Language:</label>
-                <div class="dropdown-wrapper">
-                <select id="languages" class="languages" onchange="changeLanguage()">
-                    <option value="c">C</option>
-                    <option value="cpp">C++</option>
-                    <option value="php">PHP</option>
-                    <option value="python">Python</option>
-                    <option value="node">Node JS</option>
-                </select>
-                </div>
                 <!-- THEME SELECT -->
                 <label for="themes">Select Theme:</label>
                 <div class="dropdown-wrapper">
-                <select id="themes" class="themes" onchange="changeTheme()">
-                    <option value="ace/theme/one_dark">One Dark</option>
-                    <option value="ace/theme/eclipse">Eclipse</option>
-                    <option value="ace/theme/twilight">Twilight</option>
-                    <option value="ace/theme/solarized_light">Solarized Light</option>
-                    <option value="ace/theme/gob">Gob</option>
-                    <option value="ace/theme/monokai">Monokai</option>
-                    <option value="ace/theme/github">GitHub</option>
-                </select>
+                    <select id="themes" class="themes" onchange="changeTheme()">
+                        <option value="ace/theme/one_dark">One Dark</option>
+                        <option value="ace/theme/eclipse">Eclipse</option>
+                        <option value="ace/theme/twilight">Twilight</option>
+                        <option value="ace/theme/solarized_light">Solarized Light</option>
+                        <option value="ace/theme/gob">Gob</option>
+                        <option value="ace/theme/monokai">Monokai</option>
+                        <option value="ace/theme/github">GitHub</option>
+                    </select>
                 </div>
             </div>
             <div class="editor" id="editor"></div>

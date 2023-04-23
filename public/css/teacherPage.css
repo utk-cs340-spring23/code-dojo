@@ -16,6 +16,11 @@ body {
 	top: 1%;
 	left: 1%;
 }
+.display-btn {
+	position: absolute;
+	top: 9%;
+	left: 1%;
+}
 
 .columns {
 	width: 100vw;
@@ -133,6 +138,21 @@ label {
 	position: relative;
 	transition: all 0.3s ease;
 	border-radius: 5px;
+}
+
+.side-btn {
+    background-color: #23a6d5;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: 'Tilt Warp';
+    font-size: 18px;
+    font-weight: bold;
+    padding: 13.874px 20px;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    width: 100px; /* Add this line to set a fixed width */
 }
 
 .submit-btn::before {
@@ -257,7 +277,7 @@ body {
 
 
 .white-text {
-    color: black;
+    color: rgb(255, 255, 255);
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-weight: bold;
 }
@@ -328,4 +348,49 @@ body {
 		font-size: 14px;
 		padding: 8px;
 	}
+}
+
+#code-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+	width: 100%;
+}
+
+
+
+.control-panel {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 16px; 
+}
+
+.languages, .themes {
+    margin-left: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.dropdown-wrapper {
+    margin-left: -6px;
+}
+
+
+
+.editor {
+    height: 400px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 16px;
 }
