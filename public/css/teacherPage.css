@@ -27,18 +27,6 @@ body {
 	left: 1%;
 }
 
-.home-btn:active{
-	transform: scale(0.9);
-}
-
-.display-btn:active{
-	transform: scale(0.9);
-}
-
-.download-scores-btn:active{
-	transform: scale(0.9);
-}
-
 .columns {
 	width: 100vw;
 	display: flex;
@@ -157,6 +145,10 @@ label {
 	border-radius: 5px;
 }
 
+.submit-btn:active{
+	transform: scale(0.9);
+}
+
 .side-btn {
     background-color: #23a6d5;
     border: none;
@@ -170,6 +162,9 @@ label {
     transition: all 0.3s ease;
     border-radius: 5px;
     width: 100px; /* Add this line to set a fixed width */
+}
+.side-btn:active{
+	transform: scale(0.9);
 }
 
 .submit-btn::before {
