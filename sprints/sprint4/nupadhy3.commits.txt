@@ -1,3 +1,47 @@
+mcq.css      (nupadhy3 on 04/11/2023 at 12:14):   }
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): @media only screen and (max-width: 920px) {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	body {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	font-size: 16px;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}.columns {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		flex-direction: column;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.main-container {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		width: 90%;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		padding: 10px;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.right-side {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		width: 100%;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		left: 0;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.grid-container {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		grid-template-columns: repeat(2, 1fr);
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.timer-display {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		font-size: 1.5em;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.text-input {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		width: 100%;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.mcquestion-answer-input {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		width: 90%;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.submit-btn {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		font-size: 16px;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		padding: 10px 15px;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.grid-item {
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		font-size: 14px;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		padding: 8px;
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
+teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): }
 summary.html (nupadhy3 on 04/17/2023 at 18:12): <!DOCTYPE html>
 summary.html (nupadhy3 on 04/17/2023 at 18:12): <html>
 summary.html (nupadhy3 on 04/17/2023 at 18:12): <head>
@@ -115,50 +159,6 @@ summary.html (nupadhy3 on 04/17/2023 at 18:12): 	<script type="text/javascript" 
 summary.html (nupadhy3 on 04/17/2023 at 18:12): 	<script type="text/javascript" src="path/to/your/js/file.js"></script>
 summary.html (nupadhy3 on 04/17/2023 at 18:12): </body>
 summary.html (nupadhy3 on 04/17/2023 at 18:17): </html>
-mcq.css      (nupadhy3 on 04/11/2023 at 12:14):   }
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): @media only screen and (max-width: 920px) {
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	body {
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	font-size: 16px;
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}.columns {
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		flex-direction: column;
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.main-container {
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		width: 90%;
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		padding: 10px;
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.right-side {
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		width: 100%;
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		left: 0;
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.grid-container {
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		grid-template-columns: repeat(2, 1fr);
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.timer-display {
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		font-size: 1.5em;
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.text-input {
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		width: 100%;
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.mcquestion-answer-input {
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		width: 90%;
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.submit-btn {
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		font-size: 16px;
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		padding: 10px 15px;
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	.grid-item {
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		font-size: 14px;
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 		padding: 8px;
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): 	}
-teacherPage.css (nupadhy3 on 04/17/2023 at 16:59): }
 summary.css  (nupadhy3 on 04/17/2023 at 18:17): body {
 summary.css  (nupadhy3 on 04/17/2023 at 18:17): 	background-color: #F7F7F7;
 summary.css  (nupadhy3 on 04/17/2023 at 18:17): }

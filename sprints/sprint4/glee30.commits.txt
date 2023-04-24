@@ -1,12 +1,22 @@
-quizPage.css (griff2325 on 04/11/2023 at 08:29):     top: 7%;
-quizPage.css (griff2325 on 04/11/2023 at 08:29):     right: 0%;
-quizPage.css (griff2325 on 04/11/2023 at 08:29):     /* bottom: 1%;
-quizPage.css (griff2325 on 04/11/2023 at 08:29):     right: 1%; */
-quizPage.css (griff2325 on 04/17/2023 at 17:43):     margin-left: 50%;
-quizPage.css (griff2325 on 04/17/2023 at 17:43): 	transform: translate(-50%, -50%);
-quizPage.css (griff2325 on 04/17/2023 at 17:43):     width: 50vw;
-teacherPage.js (griff2325 on 04/17/2023 at 17:19):         container.style.width = "50vw";
-teacherPage.js (griff2325 on 04/17/2023 at 17:19):         container.style.width = "40vw";
+scores.css   (griff2325 on 04/24/2023 at 18:48): h1{
+scores.css   (griff2325 on 04/24/2023 at 18:48):     position: relative;
+scores.css   (griff2325 on 04/24/2023 at 18:48):     text-align: center;
+scores.css   (griff2325 on 04/24/2023 at 18:48):     margin-bottom: 70px;
+scores.css   (griff2325 on 04/24/2023 at 18:48): }
+scores.css   (griff2325 on 04/24/2023 at 18:48): 
+scores.css   (griff2325 on 04/24/2023 at 18:48): table {
+scores.css   (griff2325 on 04/24/2023 at 18:48):     position: relative;
+scores.css   (griff2325 on 04/24/2023 at 18:48):     display: inline-block;
+scores.css   (griff2325 on 04/24/2023 at 18:48):     left: 50%;
+scores.css   (griff2325 on 04/24/2023 at 18:48):     top: 15%;
+scores.css   (griff2325 on 04/24/2023 at 18:48):     transform: translate(-50%, -50%);
+scores.css   (griff2325 on 04/24/2023 at 18:48): }
+scores.css   (griff2325 on 04/24/2023 at 18:48): 
+scores.css   (griff2325 on 04/24/2023 at 18:48): 
+scores.css   (griff2325 on 04/24/2023 at 18:48): #num_correct, #num_incorrect{
+scores.css   (griff2325 on 04/24/2023 at 18:48):     text-align: center;
+scores.css   (griff2325 on 04/24/2023 at 18:48):     font-weight: bold;
+scores.css   (griff2325 on 04/24/2023 at 18:48): }
 contactUs.html (griff2325 on 04/17/2023 at 16:07):         <a href="../ABOUT_PAGE/aboutPage.html">
 contactUs.html (griff2325 on 04/17/2023 at 16:07):             <svg xmlns="http://www.w3.org/2000/svg" 
 contactUs.html (griff2325 on 04/17/2023 at 16:07):                 id="back_button" height="48" viewBox="0 96 960 960" width="48">
@@ -29,19 +39,200 @@ host.js      (griff2325 on 04/17/2023 at 16:45):
 host.js      (griff2325 on 04/17/2023 at 16:45):     // player_table.style.position = "absolute";
 host.js      (griff2325 on 04/17/2023 at 16:45):     // player_table.style.left = "25%";
 host.js      (griff2325 on 04/17/2023 at 16:45): 
-bigScreen.html (griff2325 on 04/21/2023 at 15:51):         </svg>
-bigScreen.html (griff2325 on 04/21/2023 at 15:51):     </a>
-bigScreen.css (griff2325 on 04/21/2023 at 15:51): 
-bigScreen.css (griff2325 on 04/21/2023 at 15:51):     position: relative;
-bigScreen.css (griff2325 on 04/21/2023 at 15:51):     top: 1%;
-bigScreen.css (griff2325 on 04/21/2023 at 15:51):     left: 1%;
-bigScreen.css (griff2325 on 04/21/2023 at 15:51):     fill: white;
-bigScreen.css (griff2325 on 04/21/2023 at 15:51): }
-bigScreen.css (griff2325 on 04/21/2023 at 15:51): 
-bigScreen.css (griff2325 on 04/21/2023 at 15:51): #back_button:active {
-bigScreen.css (griff2325 on 04/21/2023 at 15:51):     /* make slightly smaller on click */
-bigScreen.css (griff2325 on 04/21/2023 at 15:51):     transform: scale(0.9);
-bigScreen.css (griff2325 on 04/21/2023 at 15:51): }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "jspdf": "^2.5.1",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/@babel/runtime": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "7.21.0",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/@babel/runtime/-/runtime-7.21.0.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "dependencies": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "regenerator-runtime": "^0.13.11"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "engines": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "node": ">=6.9.0"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/@types/raf": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "3.4.0",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/@types/raf/-/raf-3.4.0.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-taW5/WYqo36N7V39oYyHP9Ipfd5pNFvGTIQsNGj86xV88YQ7GnI30/yMfKDF7Zgin0m3e+ikX88FvImnK4RjGw==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/atob": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "2.1.2",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/atob/-/atob-2.1.2.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "bin": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "atob": "bin/atob.js"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "engines": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "node": ">= 4.5.0"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/base64-arraybuffer": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "1.0.2",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/base64-arraybuffer/-/base64-arraybuffer-1.0.2.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true,
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "engines": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "node": ">= 0.6.0"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/btoa": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "1.2.1",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/btoa/-/btoa-1.2.1.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-SB4/MIGlsiVkMcHmT+pSmIPoNDoHg+7cMzmt3Uxt628MTz2487DKSqK/fuhFBrkuqrYv5UCEnACpF4dTFNKc/g==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "bin": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "btoa": "bin/btoa.js"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "engines": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "node": ">= 0.4.0"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/canvg": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "3.0.10",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/canvg/-/canvg-3.0.10.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-qwR2FRNO9NlzTeKIPIKpnTY6fqwuYSequ8Ru8c0YkYU7U0oW+hLUvWadLvAu1Rl72OMNiFhoLu4f8eUjQ7l/+Q==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true,
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "dependencies": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "@babel/runtime": "^7.12.5",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "@types/raf": "^3.4.0",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "core-js": "^3.8.3",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "raf": "^3.4.1",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "regenerator-runtime": "^0.13.7",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "rgbcolor": "^1.0.1",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "stackblur-canvas": "^2.0.0",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "svg-pathdata": "^6.0.3"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "engines": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "node": ">=10.0.0"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/core-js": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "3.30.1",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/core-js/-/core-js-3.30.1.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-ZNS5nbiSwDTq4hFosEDqm65izl2CWmLz0hARJMyNQBgkUZMIF51cQiMvIQKA6hvuaeWxQDP3hEedM1JZIgTldQ==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "hasInstallScript": true,
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true,
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "funding": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "type": "opencollective",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "url": "https://opencollective.com/core-js"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/css-line-break": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "2.1.0",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/css-line-break/-/css-line-break-2.1.0.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-FHcKFCZcAha3LwfVBhCQbW2nCNbkZXn7KVUJcsT5/P8YmfsVja0FMPJr0B903j/E69HUphKiV9iQArX8SDYA4w==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true,
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "dependencies": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "utrie": "^1.0.2"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/dompurify": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "2.4.5",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/dompurify/-/dompurify-2.4.5.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-jggCCd+8Iqp4Tsz0nIvpcb22InKEBrGz5dw3EQJMs8HPJDsKbFIO3STYtAvCfDx26Muevn1MHVI0XxjgFfmiSA==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/fflate": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "0.4.8",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/fflate/-/fflate-0.4.8.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-FJqqoDBR00Mdj9ppamLa/Y7vxm+PRmNWA67N846RvsoYVMKB4q3y/de5PA7gUmRMYK/8CMz2GDZQmCRN1wBcWA=="
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/html2canvas": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "1.4.1",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/html2canvas/-/html2canvas-1.4.1.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-fPU6BHNpsyIhr8yyMpTLLxAbkaK8ArIBcmZIRiBLiDhjeqvXolaEmDGmELFuX9I4xDcaKKcJl+TKZLqruBbmWA==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true,
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "dependencies": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "css-line-break": "^2.1.0",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "text-segmentation": "^1.0.3"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "engines": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "node": ">=8.0.0"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/jspdf": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "2.5.1",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/jspdf/-/jspdf-2.5.1.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-hXObxz7ZqoyhxET78+XR34Xu2qFGrJJ2I2bE5w4SM8eFaFEkW2xcGRVUss360fYelwRSid/jT078kbNvmoW0QA==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "dependencies": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "@babel/runtime": "^7.14.0",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "atob": "^2.1.2",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "btoa": "^1.2.1",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "fflate": "^0.4.8"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optionalDependencies": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "canvg": "^3.0.6",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "core-js": "^3.6.0",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "dompurify": "^2.2.0",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "html2canvas": "^1.0.0-rc.5"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/performance-now": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "2.1.0",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/performance-now/-/performance-now-2.1.0.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/raf": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "3.4.1",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/raf/-/raf-3.4.1.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true,
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "dependencies": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "performance-now": "^2.1.0"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/regenerator-runtime": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "0.13.11",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg=="
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/rgbcolor": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "1.0.1",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/rgbcolor/-/rgbcolor-1.0.1.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-9aZLIrhRaD97sgVhtJOW6ckOEh6/GnvQtdVNfdZ6s67+3/XwLS9lBcQYzEEhYVeUowN7pRzMLsyGhK2i/xvWbw==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true,
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "engines": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "node": ">= 0.8.15"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/stackblur-canvas": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "2.5.0",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/stackblur-canvas/-/stackblur-canvas-2.5.0.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-EeNzTVfj+1In7aSLPKDD03F/ly4RxEuF/EX0YcOG0cKoPXs+SLZxDawQbexQDBzwROs4VKLWTOaZQlZkGBFEIQ==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true,
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "engines": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "node": ">=0.1.14"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/svg-pathdata": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "6.0.3",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/svg-pathdata/-/svg-pathdata-6.0.3.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-qsjeeq5YjBZ5eMdFuUa4ZosMLxgr5RZ+F+Y1OrDhuOCEInRMA3x74XdBtggJcj9kOeInz0WE+LgCPDkZFlBYJw==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true,
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "engines": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "node": ">=12.0.0"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/text-segmentation": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "1.0.3",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/text-segmentation/-/text-segmentation-1.0.3.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-iOiPUo/BGnZ6+54OsWxZidGCsdU8YbE4PSpdPinp7DeMtUJNJBoJ/ouUSTJjHkh1KntHaltHl/gDs2FC4i5+Nw==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true,
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "dependencies": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "utrie": "^1.0.2"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/utrie": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "1.0.2",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "resolved": "https://registry.npmjs.org/utrie/-/utrie-1.0.2.tgz",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "integrity": "sha512-1MLa5ouZiOmQzUbjbu9VmjLzn1QLXBhwpUa7kdLUQK+KQ5KA9I1vk5U4YHe/X2Ch7PYnJfWuWT+VbuxbGwljhw==",
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "optional": true,
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       "dependencies": {
+package-lock.json (griff2325 on 04/24/2023 at 18:48):         "base64-arraybuffer": "^1.0.2"
+package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
+package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
 faqPage.html (griff2325 on 04/17/2023 at 16:12):             <div class="faq">
 faqPage.html (griff2325 on 04/17/2023 at 16:12):                 <div class="question">
 faqPage.html (griff2325 on 04/17/2023 at 16:12):                     <h3>How can I contact Code Dojo?</h3>
@@ -55,3 +246,110 @@ faqPage.html (griff2325 on 04/17/2023 at 16:12):                         Click <
 faqPage.html (griff2325 on 04/17/2023 at 16:12):                     </p>
 faqPage.html (griff2325 on 04/17/2023 at 16:12):                 </div>
 faqPage.html (griff2325 on 04/17/2023 at 16:12):             </div>
+scores.html  (griff2325 on 04/24/2023 at 18:48): <!DOCTYPE html>
+scores.html  (griff2325 on 04/24/2023 at 18:48): <html>
+scores.html  (griff2325 on 04/24/2023 at 18:48):     <head>
+scores.html  (griff2325 on 04/24/2023 at 18:48):         <title>Scoreboard</title>
+scores.html  (griff2325 on 04/24/2023 at 18:48):     </head>
+scores.html  (griff2325 on 04/24/2023 at 18:48):     <body>
+scores.html  (griff2325 on 04/24/2023 at 18:48):         <table>
+scores.html  (griff2325 on 04/24/2023 at 18:48):             <h1>Scoreboard</h1>
+scores.html  (griff2325 on 04/24/2023 at 18:48):             <thead>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                 <tr>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <th>Name</th>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <th>Correct</th>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <th>Incorrect</th>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                 </tr>
+scores.html  (griff2325 on 04/24/2023 at 18:48):             </thead>
+scores.html  (griff2325 on 04/24/2023 at 18:48):             <tbody>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                 <tr id="213lj2">
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <td>Nate</td>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <td id="num_correct">5</td>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <td id="num_incorrect">1</td>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                 </tr>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                 <tr id="fq99dd">
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <td>Jake</td>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <td id="num_correct">2</td>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <td id="num_incorrect">4</td>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                 </tr>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                 <tr id="dj86rm">
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <td>Smith</td>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <td id="num_correct">3</td>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <td id="num_incorrect">3</td>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                 </tr>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                 <tr id="urr832">
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <td>Wesson</td>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <td id="num_correct">4</td>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                     <td id="num_incorrect">5</td>
+scores.html  (griff2325 on 04/24/2023 at 18:48):                 </tr>
+scores.html  (griff2325 on 04/24/2023 at 18:48):             </tbody>
+scores.html  (griff2325 on 04/24/2023 at 18:48):         </table>
+scores.html  (griff2325 on 04/24/2023 at 18:48):         <link rel="stylesheet" href="scores.css">
+scores.html  (griff2325 on 04/24/2023 at 18:48):     </body>
+scores.html  (griff2325 on 04/24/2023 at 18:48): </html>
+teacherPage.html (griff2325 on 04/24/2023 at 18:48):     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js">
+teacherPage.html (griff2325 on 04/24/2023 at 18:48):     </script>
+teacherPage.html (griff2325 on 04/24/2023 at 18:49):             <a class="download-scores-btn"><button id="download-pdf" type="button" class="side-btn">Results</button></a>
+teacherPage.html (griff2325 on 04/24/2023 at 18:48):     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+bigScreen.css (griff2325 on 04/21/2023 at 15:51): 
+bigScreen.css (griff2325 on 04/21/2023 at 15:51):     position: relative;
+bigScreen.css (griff2325 on 04/21/2023 at 15:51):     top: 1%;
+bigScreen.css (griff2325 on 04/21/2023 at 15:51):     left: 1%;
+bigScreen.css (griff2325 on 04/21/2023 at 15:51):     fill: white;
+bigScreen.css (griff2325 on 04/21/2023 at 15:51): }
+bigScreen.css (griff2325 on 04/21/2023 at 15:51): 
+bigScreen.css (griff2325 on 04/21/2023 at 15:51): #back_button:active {
+bigScreen.css (griff2325 on 04/21/2023 at 15:51):     /* make slightly smaller on click */
+bigScreen.css (griff2325 on 04/21/2023 at 15:51):     transform: scale(0.9);
+bigScreen.css (griff2325 on 04/21/2023 at 15:51): }
+package.json (griff2325 on 04/24/2023 at 18:48):     "jspdf": "^2.5.1",
+quizPage.css (griff2325 on 04/11/2023 at 08:29):     top: 7%;
+quizPage.css (griff2325 on 04/11/2023 at 08:29):     right: 0%;
+quizPage.css (griff2325 on 04/11/2023 at 08:29):     /* bottom: 1%;
+quizPage.css (griff2325 on 04/11/2023 at 08:29):     right: 1%; */
+quizPage.css (griff2325 on 04/17/2023 at 17:43):     margin-left: 50%;
+quizPage.css (griff2325 on 04/17/2023 at 17:43): 	transform: translate(-50%, -50%);
+quizPage.css (griff2325 on 04/17/2023 at 17:43):     width: 50vw;
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): .download-scores-btn{
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	position: absolute;
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	top: 17%; 
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	left: 1%;
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): }
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): 
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): .home-btn:active{
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	transform: scale(0.9);
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): }
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): 
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): .display-btn:active{
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	transform: scale(0.9);
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): }
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): 
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): .download-scores-btn:active{
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	transform: scale(0.9);
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): }
+teacherPage.css (griff2325 on 04/24/2023 at 18:49):     width: 100px; /* Add this line to set a fixed width */
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): 
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): // use the jsPDF library to download the scores into a pdf file
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): var button = document.getElementById("download-pdf");
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): button.addEventListener("click", function() {
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   var doc = new jsPDF();
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): 
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   // Load the scores.html page using an XMLHttpRequest
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   var xhr = new XMLHttpRequest();
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   xhr.open('GET', 'scores.html', true);
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   xhr.onload = function() {
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):     if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):       // When the scores.html page is loaded, use doc.fromHTML to add it to the PDF
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):       var scoresHtml = xhr.responseText;
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):       doc.fromHTML(scoresHtml);
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):       doc.save("scores.pdf");
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):     }
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   };
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   xhr.send();
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): });
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): 
+teacherPage.js (griff2325 on 04/17/2023 at 17:19):         container.style.width = "50vw";
+teacherPage.js (griff2325 on 04/17/2023 at 17:19):         container.style.width = "40vw";
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): 
+bigScreen.html (griff2325 on 04/21/2023 at 15:51):         </svg>
+bigScreen.html (griff2325 on 04/21/2023 at 15:51):     </a>

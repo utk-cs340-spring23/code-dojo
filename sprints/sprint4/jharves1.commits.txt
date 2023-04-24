@@ -1,33 +1,3 @@
-index.html   (rivetingpeach on 04/11/2023 at 08:07): <!DOCTYPE html>
-index.html   (rivetingpeach on 04/11/2023 at 08:07): <html lang="en">
-index.html   (rivetingpeach on 04/11/2023 at 08:07): <head>
-index.html   (rivetingpeach on 04/11/2023 at 08:07):     <meta charset="UTF-8">
-index.html   (rivetingpeach on 04/11/2023 at 08:07):     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-index.html   (rivetingpeach on 04/11/2023 at 08:07):     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-index.html   (rivetingpeach on 04/11/2023 at 08:07):     <link rel="stylesheet" href="testCreation.css">
-index.html   (rivetingpeach on 04/11/2023 at 08:07):     <title>Create a Test</title>
-index.html   (rivetingpeach on 04/11/2023 at 08:07): </head>
-index.html   (rivetingpeach on 04/11/2023 at 08:07): <body>
-index.html   (rivetingpeach on 04/11/2023 at 08:07):     <form action="/createTest" method="POST">
-index.html   (rivetingpeach on 04/11/2023 at 08:07):         <label for="questionString">Question:</label>
-index.html   (rivetingpeach on 04/11/2023 at 08:07):         <input type="text" id="questionString" name="questionString">
-index.html   (rivetingpeach on 04/11/2023 at 08:07):       
-index.html   (rivetingpeach on 04/11/2023 at 08:07):         <label for="email">Email:</label>
-index.html   (rivetingpeach on 04/11/2023 at 08:07):         <input type="email" id="email" name="email">
-index.html   (rivetingpeach on 04/11/2023 at 08:07): 
-index.html   (rivetingpeach on 04/11/2023 at 08:07): 
-index.html   (rivetingpeach on 04/11/2023 at 08:07):         <label for="lang">Question Type:</label>
-index.html   (rivetingpeach on 04/11/2023 at 08:07):         <select name="questionType" id="lang">
-index.html   (rivetingpeach on 04/11/2023 at 08:07):             <option value="multipleChoice">Multiple Choice</option>
-index.html   (rivetingpeach on 04/11/2023 at 08:07):             <option value="selectAll">Select All That Apply</option>
-index.html   (rivetingpeach on 04/11/2023 at 08:07):             <option value="shortAnswer">Short Answer</option>
-index.html   (rivetingpeach on 04/11/2023 at 08:07):             <option value="trueFalse">True or False</option>
-index.html   (rivetingpeach on 04/11/2023 at 08:07):         </select>
-index.html   (rivetingpeach on 04/11/2023 at 08:07):       
-index.html   (rivetingpeach on 04/11/2023 at 08:07):         <button type="submit">Submit</button>
-index.html   (rivetingpeach on 04/11/2023 at 08:07):       </form>
-index.html   (rivetingpeach on 04/11/2023 at 08:07): </body>
-index.html   (rivetingpeach on 04/11/2023 at 08:07): </html>
 createJSON.js (rivetingpeach on 04/11/2023 at 08:07): const http = require('http');
 createJSON.js (rivetingpeach on 04/11/2023 at 08:07): const fs = require('fs');
 createJSON.js (rivetingpeach on 04/11/2023 at 08:07): const path = require('path');
@@ -99,3 +69,33 @@ createJSON.js (rivetingpeach on 04/11/2023 at 08:07):       res.end(JSON.stringi
 createJSON.js (rivetingpeach on 04/11/2023 at 08:07):     });
 createJSON.js (rivetingpeach on 04/11/2023 at 08:07):   }
 createJSON.js (rivetingpeach on 04/11/2023 at 08:07): }).listen(8080, () => console.log('Server listening on port 8080'));
+index.html   (rivetingpeach on 04/11/2023 at 08:07): <!DOCTYPE html>
+index.html   (rivetingpeach on 04/11/2023 at 08:07): <html lang="en">
+index.html   (rivetingpeach on 04/11/2023 at 08:07): <head>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):     <meta charset="UTF-8">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):     <link rel="stylesheet" href="testCreation.css">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):     <title>Create a Test</title>
+index.html   (rivetingpeach on 04/11/2023 at 08:07): </head>
+index.html   (rivetingpeach on 04/11/2023 at 08:07): <body>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):     <form action="/createTest" method="POST">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <label for="questionString">Question:</label>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <input type="text" id="questionString" name="questionString">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):       
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <label for="email">Email:</label>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <input type="email" id="email" name="email">
+index.html   (rivetingpeach on 04/11/2023 at 08:07): 
+index.html   (rivetingpeach on 04/11/2023 at 08:07): 
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <label for="lang">Question Type:</label>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <select name="questionType" id="lang">
+index.html   (rivetingpeach on 04/11/2023 at 08:07):             <option value="multipleChoice">Multiple Choice</option>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):             <option value="selectAll">Select All That Apply</option>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):             <option value="shortAnswer">Short Answer</option>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):             <option value="trueFalse">True or False</option>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         </select>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):       
+index.html   (rivetingpeach on 04/11/2023 at 08:07):         <button type="submit">Submit</button>
+index.html   (rivetingpeach on 04/11/2023 at 08:07):       </form>
+index.html   (rivetingpeach on 04/11/2023 at 08:07): </body>
+index.html   (rivetingpeach on 04/11/2023 at 08:07): </html>
