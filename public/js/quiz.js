@@ -183,7 +183,7 @@ socket.on("push mcquestion", function (prompt, answer_choices, end_time) {
     start_timer(end_time);
 });
 
-socket.on("push codequestion", function (prompt, template, expected_outputs, provided_language, end_time) {
+socket.on("push codequestion", function (prompt, template, provided_language, end_time) {
     curr_question_type = "codequestion";
 
     frquestion_form.style.display = "none";
