@@ -47,6 +47,8 @@ https://github.com/utk-cs340-spring23/code-dojo/issues/103
 - code-dojo/public/bigScreen.js
 - code-dojo/public/bigScreen.html
 - code-dojo/public/bigScreen.css
+- code-dojo/public/js/ace-builds/ide.js
+
 
 ### What you accomplished
 <!-- (Give a description of the features you added or tasks you accomplished. Provide some detail here. This section will be a little longer than the bulleted lists above) -->
