@@ -1,0 +1,19 @@
+h1{
+    position: relative;
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+table {
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    top: 15%;
+    transform: translate(-50%, -50%);
+}
+
+
+#num_correct, #num_incorrect{
+    text-align: center;
+    font-weight: bold;
+}
