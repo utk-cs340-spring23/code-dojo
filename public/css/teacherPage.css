@@ -169,7 +169,7 @@ label {
     position: relative;
     transition: all 0.3s ease;
     border-radius: 5px;
-    width: 120px; /* Add this line to set a fixed width */
+    width: 100px; /* Add this line to set a fixed width */
 }
 
 .submit-btn::before {
