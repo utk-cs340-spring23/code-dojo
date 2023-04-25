@@ -150,7 +150,9 @@ label {
 }
 
 .side-btn {
-    background-color: #23a6d5;
+	background: linear-gradient(to left, #23a6d5, #1e87ae, #176d88, #11586a);
+	border: none;
+    /*background-color: #23a6d5;*/
     border: none;
     color: #ffffff;
     cursor: pointer;

@@ -13,7 +13,8 @@
 <body>
     <div class="columns" id="col">
         <div class="main-container">
-            <a class="home-btn" href="index.html"><button type="button" class="side-btn">Home</button></a>
+            <a class="home-btn" href="index.html" onclick="return confirm('Are you sure you want to close the session?');"><button type="button" class="side-btn">Home</button></a>
+            <!-- <a class="home-btn" href="index.html"><button type="button" class="side-btn">Home</button></a>-->
             <a class="display-btn" href="bigScreen.html"><button type="button" class="side-btn">Display</button></a>
             <a class="download-scores-btn"><button id="download-pdf" type="button" class="side-btn">Results</button></a>
             <div class="light-grey-border" id="inputs">
@@ -128,8 +129,8 @@
                         <button type="submit" class="submit-btn press-down" id="push-question-button">Submit</button>
                         <button type="button" class="submit-btn red-btn press-down" id="close-question-button">Close
                             Question</button>
-                            <a href="index.html">
-                                <button type="button" class="side-btn" style="background-color: red;">Close Session</button>
+                            <a href="index.html" onclick="return confirm('Are you sure you want to close the session?');">
+                                <button type="button" class="submit-btn press-down" style="background-color: red;">Close Session</button>
                             </a>
                     </div>
                 </form>
