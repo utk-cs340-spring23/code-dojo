@@ -25,7 +25,8 @@
 ### What problems you encountered
 <!-- (List the problems you encountered) -->
 - Implementing the different question styles was more work than anticipated.
-- The project is becoming disorganized, and it is getting difficult to find where specific features are implemented as well as adding new features
+- The project is becoming disorganized, and it is getting difficult to find where specific features are implemented as well as adding new features.
+- Did not get around to implementing back-end for other members' features.
 
 ### Issues you worked on
 <!-- (List the specific github issues that you worked on with a link to the issue (ex: #1 Sample Issue) -->
