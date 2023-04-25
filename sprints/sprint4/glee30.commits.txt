@@ -1,3 +1,39 @@
+quizPage.css (griff2325 on 04/11/2023 at 08:29):     top: 7%;
+quizPage.css (griff2325 on 04/11/2023 at 08:29):     right: 0%;
+quizPage.css (griff2325 on 04/11/2023 at 08:29):     /* bottom: 1%;
+quizPage.css (griff2325 on 04/11/2023 at 08:29):     right: 1%; */
+quizPage.css (griff2325 on 04/17/2023 at 17:43):     margin-left: 50%;
+quizPage.css (griff2325 on 04/17/2023 at 17:43): 	transform: translate(-50%, -50%);
+quizPage.css (griff2325 on 04/17/2023 at 17:43):     width: 50vw;
+host.js      (griff2325 on 04/17/2023 at 16:45): 
+host.js      (griff2325 on 04/17/2023 at 16:45):     // player_table.style.position = "absolute";
+host.js      (griff2325 on 04/17/2023 at 16:45):     // player_table.style.left = "25%";
+host.js      (griff2325 on 04/17/2023 at 16:45): 
+faqPage.html (griff2325 on 04/17/2023 at 16:12):             <div class="faq">
+faqPage.html (griff2325 on 04/17/2023 at 16:12):                 <div class="question">
+faqPage.html (griff2325 on 04/17/2023 at 16:12):                     <h3>How can I contact Code Dojo?</h3>
+faqPage.html (griff2325 on 04/17/2023 at 16:12):                     <svg width="15" height="10" viewbox="0 0 42 25" id="arrow">
+faqPage.html (griff2325 on 04/17/2023 at 16:12):                         <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+faqPage.html (griff2325 on 04/17/2023 at 16:12):                     </svg>
+faqPage.html (griff2325 on 04/17/2023 at 16:12):                 </div>
+faqPage.html (griff2325 on 04/17/2023 at 16:12):                 <div class="answer">
+faqPage.html (griff2325 on 04/17/2023 at 16:12):                     <p>
+faqPage.html (griff2325 on 04/17/2023 at 16:12):                         Click <a href="../ABOUT_PAGE/contactUs.html" style="color: blue;">here</a> to fill out our contact form
+faqPage.html (griff2325 on 04/17/2023 at 16:12):                     </p>
+faqPage.html (griff2325 on 04/17/2023 at 16:12):                 </div>
+faqPage.html (griff2325 on 04/17/2023 at 16:12):             </div>
+contactUs.css (griff2325 on 04/17/2023 at 16:07): 
+contactUs.css (griff2325 on 04/17/2023 at 16:07): #back_button{
+contactUs.css (griff2325 on 04/17/2023 at 16:07):     position: absolute;
+contactUs.css (griff2325 on 04/17/2023 at 16:07):     top: 1%;
+contactUs.css (griff2325 on 04/17/2023 at 16:07):     left: 1%;
+contactUs.css (griff2325 on 04/17/2023 at 16:07):     fill: white;
+contactUs.css (griff2325 on 04/17/2023 at 16:07): }
+contactUs.css (griff2325 on 04/21/2023 at 15:51): 
+contactUs.css (griff2325 on 04/21/2023 at 15:51): #back_button:active {
+contactUs.css (griff2325 on 04/21/2023 at 15:51):     /* make slightly smaller on click */
+contactUs.css (griff2325 on 04/21/2023 at 15:51):     transform: scale(0.9);
+contactUs.css (griff2325 on 04/21/2023 at 15:51): }
 scores.css   (griff2325 on 04/24/2023 at 18:48): h1{
 scores.css   (griff2325 on 04/24/2023 at 18:48):     position: relative;
 scores.css   (griff2325 on 04/24/2023 at 18:48):     text-align: center;
@@ -17,28 +53,67 @@ scores.css   (griff2325 on 04/24/2023 at 18:48): #num_correct, #num_incorrect{
 scores.css   (griff2325 on 04/24/2023 at 18:48):     text-align: center;
 scores.css   (griff2325 on 04/24/2023 at 18:48):     font-weight: bold;
 scores.css   (griff2325 on 04/24/2023 at 18:48): }
+teacherPage.html (griff2325 on 04/24/2023 at 18:48):     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js">
+teacherPage.html (griff2325 on 04/24/2023 at 18:48):     </script>
+teacherPage.html (griff2325 on 04/24/2023 at 18:49):             <a class="download-scores-btn"><button id="download-pdf" type="button" class="side-btn">Results</button></a>
+teacherPage.html (griff2325 on 04/24/2023 at 18:48):     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): 
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): // use the jsPDF library to download the scores into a pdf file
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): var button = document.getElementById("download-pdf");
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): button.addEventListener("click", function() {
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   var doc = new jsPDF();
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): 
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   // Load the scores.html page using an XMLHttpRequest
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   var xhr = new XMLHttpRequest();
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   xhr.open('GET', 'scores.html', true);
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   xhr.onload = function() {
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):     if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):       // When the scores.html page is loaded, use doc.fromHTML to add it to the PDF
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):       var scoresHtml = xhr.responseText;
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):       doc.fromHTML(scoresHtml);
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):       doc.save("scores.pdf");
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):     }
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   };
+teacherPage.js (griff2325 on 04/24/2023 at 18:48):   xhr.send();
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): });
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): 
+teacherPage.js (griff2325 on 04/17/2023 at 17:19):         container.style.width = "50vw";
+teacherPage.js (griff2325 on 04/17/2023 at 17:19):         container.style.width = "40vw";
+teacherPage.js (griff2325 on 04/24/2023 at 18:48): 
 contactUs.html (griff2325 on 04/17/2023 at 16:07):         <a href="../ABOUT_PAGE/aboutPage.html">
 contactUs.html (griff2325 on 04/17/2023 at 16:07):             <svg xmlns="http://www.w3.org/2000/svg" 
 contactUs.html (griff2325 on 04/17/2023 at 16:07):                 id="back_button" height="48" viewBox="0 96 960 960" width="48">
 contactUs.html (griff2325 on 04/17/2023 at 16:07):                 <path d="M480 896 160 576l320-320 42 42-248 248h526v60H274l248 248-42 42Z"/>
 contactUs.html (griff2325 on 04/17/2023 at 16:07):             </svg>
 contactUs.html (griff2325 on 04/17/2023 at 16:07):         </a>
-contactUs.css (griff2325 on 04/17/2023 at 16:07): 
-contactUs.css (griff2325 on 04/17/2023 at 16:07): #back_button{
-contactUs.css (griff2325 on 04/17/2023 at 16:07):     position: absolute;
-contactUs.css (griff2325 on 04/17/2023 at 16:07):     top: 1%;
-contactUs.css (griff2325 on 04/17/2023 at 16:07):     left: 1%;
-contactUs.css (griff2325 on 04/17/2023 at 16:07):     fill: white;
-contactUs.css (griff2325 on 04/17/2023 at 16:07): }
-contactUs.css (griff2325 on 04/21/2023 at 15:51): 
-contactUs.css (griff2325 on 04/21/2023 at 15:51): #back_button:active {
-contactUs.css (griff2325 on 04/21/2023 at 15:51):     /* make slightly smaller on click */
-contactUs.css (griff2325 on 04/21/2023 at 15:51):     transform: scale(0.9);
-contactUs.css (griff2325 on 04/21/2023 at 15:51): }
-host.js      (griff2325 on 04/17/2023 at 16:45): 
-host.js      (griff2325 on 04/17/2023 at 16:45):     // player_table.style.position = "absolute";
-host.js      (griff2325 on 04/17/2023 at 16:45):     // player_table.style.left = "25%";
-host.js      (griff2325 on 04/17/2023 at 16:45): 
+bigScreen.css (griff2325 on 04/21/2023 at 15:51): 
+bigScreen.css (griff2325 on 04/21/2023 at 15:51):     position: relative;
+bigScreen.css (griff2325 on 04/21/2023 at 15:51):     top: 1%;
+bigScreen.css (griff2325 on 04/21/2023 at 15:51):     left: 1%;
+bigScreen.css (griff2325 on 04/21/2023 at 15:51):     fill: white;
+bigScreen.css (griff2325 on 04/21/2023 at 15:51): }
+bigScreen.css (griff2325 on 04/21/2023 at 15:51): 
+bigScreen.css (griff2325 on 04/21/2023 at 15:51): #back_button:active {
+bigScreen.css (griff2325 on 04/21/2023 at 15:51):     /* make slightly smaller on click */
+bigScreen.css (griff2325 on 04/21/2023 at 15:51):     transform: scale(0.9);
+bigScreen.css (griff2325 on 04/21/2023 at 15:51): }
+package.json (griff2325 on 04/24/2023 at 18:48):     "jspdf": "^2.5.1",
+bigScreen.html (griff2325 on 04/21/2023 at 15:51):         </svg>
+bigScreen.html (griff2325 on 04/21/2023 at 15:51):     </a>
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): .download-scores-btn{
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	position: absolute;
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	top: 17%; 
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	left: 1%;
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): }
+teacherPage.css (griff2325 on 04/24/2023 at 18:48): 
+teacherPage.css (griff2325 on 04/24/2023 at 18:57): .submit-btn:active{
+teacherPage.css (griff2325 on 04/24/2023 at 18:57): 	transform: scale(0.9);
+teacherPage.css (griff2325 on 04/24/2023 at 18:57): }
+teacherPage.css (griff2325 on 04/24/2023 at 18:57): 
+teacherPage.css (griff2325 on 04/24/2023 at 18:49):     width: 100px; /* Add this line to set a fixed width */
+teacherPage.css (griff2325 on 04/24/2023 at 18:57): .side-btn:active{
+teacherPage.css (griff2325 on 04/24/2023 at 18:57): 	transform: scale(0.9);
+teacherPage.css (griff2325 on 04/24/2023 at 18:57): }
 package-lock.json (griff2325 on 04/24/2023 at 18:48):         "jspdf": "^2.5.1",
 package-lock.json (griff2325 on 04/24/2023 at 18:48):     "node_modules/@babel/runtime": {
 package-lock.json (griff2325 on 04/24/2023 at 18:48):       "version": "7.21.0",
@@ -233,19 +308,6 @@ package-lock.json (griff2325 on 04/24/2023 at 18:48):       "dependencies": {
 package-lock.json (griff2325 on 04/24/2023 at 18:48):         "base64-arraybuffer": "^1.0.2"
 package-lock.json (griff2325 on 04/24/2023 at 18:48):       }
 package-lock.json (griff2325 on 04/24/2023 at 18:48):     },
-faqPage.html (griff2325 on 04/17/2023 at 16:12):             <div class="faq">
-faqPage.html (griff2325 on 04/17/2023 at 16:12):                 <div class="question">
-faqPage.html (griff2325 on 04/17/2023 at 16:12):                     <h3>How can I contact Code Dojo?</h3>
-faqPage.html (griff2325 on 04/17/2023 at 16:12):                     <svg width="15" height="10" viewbox="0 0 42 25" id="arrow">
-faqPage.html (griff2325 on 04/17/2023 at 16:12):                         <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
-faqPage.html (griff2325 on 04/17/2023 at 16:12):                     </svg>
-faqPage.html (griff2325 on 04/17/2023 at 16:12):                 </div>
-faqPage.html (griff2325 on 04/17/2023 at 16:12):                 <div class="answer">
-faqPage.html (griff2325 on 04/17/2023 at 16:12):                     <p>
-faqPage.html (griff2325 on 04/17/2023 at 16:12):                         Click <a href="../ABOUT_PAGE/contactUs.html" style="color: blue;">here</a> to fill out our contact form
-faqPage.html (griff2325 on 04/17/2023 at 16:12):                     </p>
-faqPage.html (griff2325 on 04/17/2023 at 16:12):                 </div>
-faqPage.html (griff2325 on 04/17/2023 at 16:12):             </div>
 scores.html  (griff2325 on 04/24/2023 at 18:48): <!DOCTYPE html>
 scores.html  (griff2325 on 04/24/2023 at 18:48): <html>
 scores.html  (griff2325 on 04/24/2023 at 18:48):     <head>
@@ -287,69 +349,3 @@ scores.html  (griff2325 on 04/24/2023 at 18:48):         </table>
 scores.html  (griff2325 on 04/24/2023 at 18:48):         <link rel="stylesheet" href="scores.css">
 scores.html  (griff2325 on 04/24/2023 at 18:48):     </body>
 scores.html  (griff2325 on 04/24/2023 at 18:48): </html>
-teacherPage.html (griff2325 on 04/24/2023 at 18:48):     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js">
-teacherPage.html (griff2325 on 04/24/2023 at 18:48):     </script>
-teacherPage.html (griff2325 on 04/24/2023 at 18:49):             <a class="download-scores-btn"><button id="download-pdf" type="button" class="side-btn">Results</button></a>
-teacherPage.html (griff2325 on 04/24/2023 at 18:48):     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
-bigScreen.css (griff2325 on 04/21/2023 at 15:51): 
-bigScreen.css (griff2325 on 04/21/2023 at 15:51):     position: relative;
-bigScreen.css (griff2325 on 04/21/2023 at 15:51):     top: 1%;
-bigScreen.css (griff2325 on 04/21/2023 at 15:51):     left: 1%;
-bigScreen.css (griff2325 on 04/21/2023 at 15:51):     fill: white;
-bigScreen.css (griff2325 on 04/21/2023 at 15:51): }
-bigScreen.css (griff2325 on 04/21/2023 at 15:51): 
-bigScreen.css (griff2325 on 04/21/2023 at 15:51): #back_button:active {
-bigScreen.css (griff2325 on 04/21/2023 at 15:51):     /* make slightly smaller on click */
-bigScreen.css (griff2325 on 04/21/2023 at 15:51):     transform: scale(0.9);
-bigScreen.css (griff2325 on 04/21/2023 at 15:51): }
-package.json (griff2325 on 04/24/2023 at 18:48):     "jspdf": "^2.5.1",
-quizPage.css (griff2325 on 04/11/2023 at 08:29):     top: 7%;
-quizPage.css (griff2325 on 04/11/2023 at 08:29):     right: 0%;
-quizPage.css (griff2325 on 04/11/2023 at 08:29):     /* bottom: 1%;
-quizPage.css (griff2325 on 04/11/2023 at 08:29):     right: 1%; */
-quizPage.css (griff2325 on 04/17/2023 at 17:43):     margin-left: 50%;
-quizPage.css (griff2325 on 04/17/2023 at 17:43): 	transform: translate(-50%, -50%);
-quizPage.css (griff2325 on 04/17/2023 at 17:43):     width: 50vw;
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): .download-scores-btn{
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	position: absolute;
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	top: 17%; 
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	left: 1%;
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): }
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): 
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): .home-btn:active{
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	transform: scale(0.9);
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): }
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): 
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): .display-btn:active{
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	transform: scale(0.9);
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): }
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): 
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): .download-scores-btn:active{
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): 	transform: scale(0.9);
-teacherPage.css (griff2325 on 04/24/2023 at 18:48): }
-teacherPage.css (griff2325 on 04/24/2023 at 18:49):     width: 100px; /* Add this line to set a fixed width */
-teacherPage.js (griff2325 on 04/24/2023 at 18:48): 
-teacherPage.js (griff2325 on 04/24/2023 at 18:48): // use the jsPDF library to download the scores into a pdf file
-teacherPage.js (griff2325 on 04/24/2023 at 18:48): var button = document.getElementById("download-pdf");
-teacherPage.js (griff2325 on 04/24/2023 at 18:48): button.addEventListener("click", function() {
-teacherPage.js (griff2325 on 04/24/2023 at 18:48):   var doc = new jsPDF();
-teacherPage.js (griff2325 on 04/24/2023 at 18:48): 
-teacherPage.js (griff2325 on 04/24/2023 at 18:48):   // Load the scores.html page using an XMLHttpRequest
-teacherPage.js (griff2325 on 04/24/2023 at 18:48):   var xhr = new XMLHttpRequest();
-teacherPage.js (griff2325 on 04/24/2023 at 18:48):   xhr.open('GET', 'scores.html', true);
-teacherPage.js (griff2325 on 04/24/2023 at 18:48):   xhr.onload = function() {
-teacherPage.js (griff2325 on 04/24/2023 at 18:48):     if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-teacherPage.js (griff2325 on 04/24/2023 at 18:48):       // When the scores.html page is loaded, use doc.fromHTML to add it to the PDF
-teacherPage.js (griff2325 on 04/24/2023 at 18:48):       var scoresHtml = xhr.responseText;
-teacherPage.js (griff2325 on 04/24/2023 at 18:48):       doc.fromHTML(scoresHtml);
-teacherPage.js (griff2325 on 04/24/2023 at 18:48):       doc.save("scores.pdf");
-teacherPage.js (griff2325 on 04/24/2023 at 18:48):     }
-teacherPage.js (griff2325 on 04/24/2023 at 18:48):   };
-teacherPage.js (griff2325 on 04/24/2023 at 18:48):   xhr.send();
-teacherPage.js (griff2325 on 04/24/2023 at 18:48): });
-teacherPage.js (griff2325 on 04/24/2023 at 18:48): 
-teacherPage.js (griff2325 on 04/17/2023 at 17:19):         container.style.width = "50vw";
-teacherPage.js (griff2325 on 04/17/2023 at 17:19):         container.style.width = "40vw";
-teacherPage.js (griff2325 on 04/24/2023 at 18:48): 
-bigScreen.html (griff2325 on 04/21/2023 at 15:51):         </svg>
-bigScreen.html (griff2325 on 04/21/2023 at 15:51):     </a>

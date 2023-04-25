@@ -1,4 +1,3 @@
-package.json (hdehler on 04/17/2023 at 17:53):     "chart.js": "^4.2.1",
 bigScreen.css (hdehler on 04/17/2023 at 17:53): body {
 bigScreen.css (hdehler on 04/17/2023 at 18:29):     font-family: 'Tilt Warp';
 bigScreen.css (hdehler on 04/17/2023 at 18:29):     background-color: rgb(55, 54, 54);
@@ -61,16 +60,26 @@ bigScreen.css (hdehler on 04/23/2023 at 14:50):     height: 1.5em;
 bigScreen.css (hdehler on 04/23/2023 at 14:50): }
 bigScreen.css (hdehler on 04/23/2023 at 14:50): 
 bigScreen.css (hdehler on 04/23/2023 at 14:52): 
-notesPage.css (hdehler on 04/17/2023 at 13:18): 
-homePage.css (hdehler on 04/17/2023 at 16:01): @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
-homePage.css (hdehler on 04/17/2023 at 16:01): 
-homePage.css (hdehler on 04/17/2023 at 16:01):   background: #23a6d5;
-homePage.css (hdehler on 04/17/2023 at 16:01):   border: none; 
-homePage.css (hdehler on 04/17/2023 at 16:01): 
-homePage.css (hdehler on 04/17/2023 at 16:01): 
-homePage.css (hdehler on 04/17/2023 at 16:01): 
+quizPage.css (hdehler on 04/17/2023 at 13:18): 
+quizPage.css (hdehler on 04/17/2023 at 13:18): 
+quizPage.css (hdehler on 04/16/2023 at 23:56):     margin:auto;
+quizPage.css (hdehler on 04/16/2023 at 23:56):     width: 500px;
+quizPage.css (hdehler on 04/16/2023 at 23:56): 
+quizPage.css (hdehler on 04/16/2023 at 23:56): 
+quizPage.css (hdehler on 04/16/2023 at 23:56):     gap: 16px; 
+quizPage.css (hdehler on 04/16/2023 at 23:56): .languages, .themes {
+quizPage.css (hdehler on 04/16/2023 at 23:56):     margin-left: 4px;
+quizPage.css (hdehler on 04/16/2023 at 23:56): .dropdown-wrapper {
+quizPage.css (hdehler on 04/16/2023 at 23:56):     margin-left: -6px;
+quizPage.css (hdehler on 04/16/2023 at 23:56): }
+quizPage.css (hdehler on 04/16/2023 at 23:56): 
+quizPage.css (hdehler on 04/16/2023 at 23:56): 
+quizPage.css (hdehler on 04/16/2023 at 23:56): 
+quizPage.css (hdehler on 04/17/2023 at 13:18):     /*background-color: #23a6d5;*/
+quizPage.css (hdehler on 04/17/2023 at 13:18): 
+quizPage.css (hdehler on 04/17/2023 at 13:18):     color: black;
+quizPage.css (hdehler on 04/17/2023 at 16:01): 
 teacherPage.html (hdehler on 04/17/2023 at 14:14):         <div class="main-container">
-teacherPage.html (hdehler on 04/23/2023 at 13:34):             <a class="home-btn" href="index.html"><button type="button" class="side-btn">Home</button></a>
 teacherPage.html (hdehler on 04/23/2023 at 13:34):             <a class="display-btn" href="bigScreen.html"><button type="button" class="side-btn">Display</button></a>
 teacherPage.html (hdehler on 04/23/2023 at 13:34):             <div class="light-grey-border" id="inputs">
 teacherPage.html (hdehler on 04/23/2023 at 13:34):                 <form id="room-form">
@@ -135,8 +144,6 @@ teacherPage.html (hdehler on 04/23/2023 at 13:34):                     <div clas
 teacherPage.html (hdehler on 04/23/2023 at 13:34):                         <button type="submit" class="submit-btn press-down" id="push-question-button">Submit</button>
 teacherPage.html (hdehler on 04/23/2023 at 13:34):                         <button type="button" class="submit-btn red-btn press-down" id="close-question-button">Close
 teacherPage.html (hdehler on 04/23/2023 at 13:34):                             Question</button>
-teacherPage.html (hdehler on 04/23/2023 at 13:34):                         <button type="button" class="submit-btn red-btn press-down" id="close-question-button">Close
-teacherPage.html (hdehler on 04/23/2023 at 13:34):                             Session</button>
 teacherPage.html (hdehler on 04/23/2023 at 13:34):                     </div>
 teacherPage.html (hdehler on 04/23/2023 at 13:34):                 </form>
 teacherPage.html (hdehler on 04/23/2023 at 13:34):             </div>
@@ -147,73 +154,23 @@ teacherPage.html (hdehler on 04/23/2023 at 13:34):     <script src="js/ace-build
 teacherPage.html (hdehler on 04/23/2023 at 13:34):     <script src="js/ace-builds/theme-monokai.js"></script>
 teacherPage.html (hdehler on 04/23/2023 at 13:34):     <script src="js/ide.js"></script>
 teacherPage.html (hdehler on 04/23/2023 at 13:34): 
-quizPage.html (hdehler on 04/16/2023 at 23:56):     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-quizPage.html (hdehler on 04/17/2023 at 16:01):     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-quizPage.html (hdehler on 04/23/2023 at 13:34):         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3S10sibVcOQVnN" crossorigin="anonymous">
-quizPage.html (hdehler on 04/17/2023 at 17:53):         <p class="questionbox" id="question">Waiting for host...</p>
-quizPage.html (hdehler on 04/16/2023 at 23:56):                 <!-- THEME SELECT -->
-quizPage.html (hdehler on 04/16/2023 at 23:56):                 <label for="themes">Select Theme:</label>
-quizPage.html (hdehler on 04/16/2023 at 23:56):                 <div class="dropdown-wrapper">
-quizPage.html (hdehler on 04/23/2023 at 13:34):                     <select id="themes" class="themes" onchange="changeTheme()">
-quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/one_dark">One Dark</option>
-quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/eclipse">Eclipse</option>
-quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/twilight">Twilight</option>
-quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/solarized_light">Solarized Light</option>
-quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/gob">Gob</option>
-quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/monokai">Monokai</option>
-quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/github">GitHub</option>
-quizPage.html (hdehler on 04/23/2023 at 13:34):                     </select>
-quizPage.html (hdehler on 04/16/2023 at 23:56):                 </div>
-chart_js_test.html (hdehler on 04/17/2023 at 18:29): <link rel="stylesheet" href="bigScreen.css">
-chart_js_test.html (hdehler on 04/17/2023 at 18:29): <meta name="viewport" content="width=device-width, initial-scale=1.0">
-chart_js_test.html (hdehler on 04/17/2023 at 18:29):     <div id="insert id" class="white-text">
-chart_js_test.html (hdehler on 04/17/2023 at 18:29):         <center><h1>
-chart_js_test.html (hdehler on 04/17/2023 at 18:29):             The Question Will Go Here..
-chart_js_test.html (hdehler on 04/17/2023 at 18:29):         </h1></center>
-chart_js_test.html (hdehler on 04/17/2023 at 18:29):     </div>
-chart_js_test.html (hdehler on 04/17/2023 at 18:29): 
-chart_js_test.html (hdehler on 04/17/2023 at 18:29):     <br>
-chart_js_test.html (hdehler on 04/17/2023 at 18:29):     <br>
-chart_js_test.html (hdehler on 04/17/2023 at 18:29):     <br>
-chart_js_test.html (hdehler on 04/17/2023 at 18:29):     <br>
-chart_js_test.html (hdehler on 04/17/2023 at 18:29):     <div class="modern-container">
-notesPage.html (hdehler on 04/23/2023 at 13:34): 
-notesPage.html (hdehler on 04/23/2023 at 13:34): <head>
-notesPage.html (hdehler on 04/23/2023 at 13:34):     <meta charset="UTF-8">
-notesPage.html (hdehler on 04/23/2023 at 13:34):     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-notesPage.html (hdehler on 04/23/2023 at 13:34):     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-notesPage.html (hdehler on 04/23/2023 at 13:34):     <title>Notes Page</title>
-notesPage.html (hdehler on 04/23/2023 at 13:34):     <link rel="stylesheet" href="notesPage.css">
-notesPage.html (hdehler on 04/23/2023 at 13:34): </head>
-notesPage.html (hdehler on 04/23/2023 at 13:34): 
-notesPage.html (hdehler on 04/23/2023 at 13:34): <body>
-notesPage.html (hdehler on 04/23/2023 at 13:34):     <div class="return_buttons">
-notesPage.html (hdehler on 04/23/2023 at 13:34):         <a href="../index.html">
-notesPage.html (hdehler on 04/23/2023 at 13:34):             <svg xmlns="http://www.w3.org/2000/svg" id="home" height="48" viewBox="0 96 960 960" width="48">
-notesPage.html (hdehler on 04/23/2023 at 13:34):                 <path
-notesPage.html (hdehler on 04/23/2023 at 13:34):                     d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z" />
-notesPage.html (hdehler on 04/23/2023 at 13:34):             </svg>
-notesPage.html (hdehler on 04/23/2023 at 13:34):         </a>
-notesPage.html (hdehler on 04/23/2023 at 13:34):         <a href="../quizPage.html">
-notesPage.html (hdehler on 04/23/2023 at 13:34):             <button class="back_to_quiz" type="button">Back to quiz</button>
-notesPage.html (hdehler on 04/23/2023 at 13:34):         </a>
-notesPage.html (hdehler on 04/23/2023 at 13:34):     </div>
-notesPage.html (hdehler on 04/23/2023 at 13:34):     <div class="notes" id="app">
-notesPage.html (hdehler on 04/23/2023 at 13:34):         <div class="notes__sidebar">
-notesPage.html (hdehler on 04/23/2023 at 13:34):             <button class="notes__add" type="button">Add Note</button>
-notesPage.html (hdehler on 04/23/2023 at 13:34):             <div class="notes__list">
-notesPage.html (hdehler on 04/23/2023 at 13:34):                 <div class="list__item notes__list-item--selected">
-notesPage.html (hdehler on 04/23/2023 at 13:34):                     <div class="notes__small-title">Lecutre Notes</div>
-notesPage.html (hdehler on 04/23/2023 at 13:34):                     <div class="notes__small-body">I learned nothing today</div>
-notesPage.html (hdehler on 04/23/2023 at 13:34):                     <div class="notes__small-updated">Thursday 3:00pm</div>
-notesPage.html (hdehler on 04/23/2023 at 13:34):         <div class="notes__preview">\
-notesPage.html (hdehler on 04/23/2023 at 13:34):             <input class="notes__title" type="text" placeholder="Enter a title...">
-notesPage.html (hdehler on 04/23/2023 at 13:34):             <textarea class="notes__body">I am the notes body</textarea>
-notesPage.html (hdehler on 04/23/2023 at 13:34):         </div>
-notesPage.html (hdehler on 04/23/2023 at 13:34):     </div>
-notesPage.html (hdehler on 04/23/2023 at 13:34):     <script src="main.js" type="module"></script>
-notesPage.html (hdehler on 04/23/2023 at 13:34): </body>
-notesPage.html (hdehler on 04/23/2023 at 13:34): 
+package-lock.json (hdehler on 04/17/2023 at 17:53):         "chart.js": "^4.2.1",
+package-lock.json (hdehler on 04/17/2023 at 17:53):     "node_modules/@kurkle/color": {
+package-lock.json (hdehler on 04/17/2023 at 17:53):       "version": "0.3.2",
+package-lock.json (hdehler on 04/17/2023 at 17:53):       "resolved": "https://registry.npmjs.org/@kurkle/color/-/color-0.3.2.tgz",
+package-lock.json (hdehler on 04/17/2023 at 17:53):       "integrity": "sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw=="
+package-lock.json (hdehler on 04/17/2023 at 17:53):     },
+package-lock.json (hdehler on 04/17/2023 at 17:53):     "node_modules/chart.js": {
+package-lock.json (hdehler on 04/17/2023 at 17:53):       "version": "4.2.1",
+package-lock.json (hdehler on 04/17/2023 at 17:53):       "resolved": "https://registry.npmjs.org/chart.js/-/chart.js-4.2.1.tgz",
+package-lock.json (hdehler on 04/17/2023 at 17:53):       "integrity": "sha512-6YbpQ0nt3NovAgOzbkSSeeAQu/3za1319dPUQTXn9WcOpywM8rGKxJHrhS8V8xEkAlk8YhEfjbuAPfUyp6jIsw==",
+package-lock.json (hdehler on 04/17/2023 at 17:53):       "dependencies": {
+package-lock.json (hdehler on 04/17/2023 at 17:53):         "@kurkle/color": "^0.3.0"
+package-lock.json (hdehler on 04/17/2023 at 17:53):       },
+package-lock.json (hdehler on 04/17/2023 at 17:53):       "engines": {
+package-lock.json (hdehler on 04/17/2023 at 17:53):         "pnpm": "^7.0.0"
+package-lock.json (hdehler on 04/17/2023 at 17:53):       }
+package-lock.json (hdehler on 04/17/2023 at 17:53):     },
 ide.js       (hdehler on 04/16/2023 at 23:56):     if(language == 'c' || language == 'cpp') editor.session.setMode("ace/mode/c_cpp");
 ide.js       (hdehler on 04/16/2023 at 23:56):     else if(language == 'php') editor.session.setMode("ace/mode/php");
 ide.js       (hdehler on 04/16/2023 at 23:56):     else if(language == 'python') editor.session.setMode("ace/mode/python");
@@ -287,23 +244,13 @@ bigScreen.html (hdehler on 04/23/2023 at 14:52):     <script src="js/host.js"></
 bigScreen.html (hdehler on 04/17/2023 at 17:53): </body>
 bigScreen.html (hdehler on 04/23/2023 at 13:34): 
 bigScreen.html (hdehler on 04/23/2023 at 13:34): </html>
-package-lock.json (hdehler on 04/17/2023 at 17:53):         "chart.js": "^4.2.1",
-package-lock.json (hdehler on 04/17/2023 at 17:53):     "node_modules/@kurkle/color": {
-package-lock.json (hdehler on 04/17/2023 at 17:53):       "version": "0.3.2",
-package-lock.json (hdehler on 04/17/2023 at 17:53):       "resolved": "https://registry.npmjs.org/@kurkle/color/-/color-0.3.2.tgz",
-package-lock.json (hdehler on 04/17/2023 at 17:53):       "integrity": "sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw=="
-package-lock.json (hdehler on 04/17/2023 at 17:53):     },
-package-lock.json (hdehler on 04/17/2023 at 17:53):     "node_modules/chart.js": {
-package-lock.json (hdehler on 04/17/2023 at 17:53):       "version": "4.2.1",
-package-lock.json (hdehler on 04/17/2023 at 17:53):       "resolved": "https://registry.npmjs.org/chart.js/-/chart.js-4.2.1.tgz",
-package-lock.json (hdehler on 04/17/2023 at 17:53):       "integrity": "sha512-6YbpQ0nt3NovAgOzbkSSeeAQu/3za1319dPUQTXn9WcOpywM8rGKxJHrhS8V8xEkAlk8YhEfjbuAPfUyp6jIsw==",
-package-lock.json (hdehler on 04/17/2023 at 17:53):       "dependencies": {
-package-lock.json (hdehler on 04/17/2023 at 17:53):         "@kurkle/color": "^0.3.0"
-package-lock.json (hdehler on 04/17/2023 at 17:53):       },
-package-lock.json (hdehler on 04/17/2023 at 17:53):       "engines": {
-package-lock.json (hdehler on 04/17/2023 at 17:53):         "pnpm": "^7.0.0"
-package-lock.json (hdehler on 04/17/2023 at 17:53):       }
-package-lock.json (hdehler on 04/17/2023 at 17:53):     },
+homePage.css (hdehler on 04/17/2023 at 16:01): @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+homePage.css (hdehler on 04/17/2023 at 16:01): 
+homePage.css (hdehler on 04/17/2023 at 16:01):   background: #23a6d5;
+homePage.css (hdehler on 04/17/2023 at 16:01):   border: none; 
+homePage.css (hdehler on 04/17/2023 at 16:01): 
+homePage.css (hdehler on 04/17/2023 at 16:01): 
+homePage.css (hdehler on 04/17/2023 at 16:01): 
 teacherPage.css (hdehler on 04/23/2023 at 13:34): .display-btn {
 teacherPage.css (hdehler on 04/23/2023 at 13:34): 	position: absolute;
 teacherPage.css (hdehler on 04/23/2023 at 13:34): 	top: 9%;
@@ -376,7 +323,6 @@ teacherPage.css (hdehler on 04/17/2023 at 16:01):     align-items: center;
 teacherPage.css (hdehler on 04/17/2023 at 16:01):     width: 100%;
 teacherPage.css (hdehler on 04/17/2023 at 16:01):     margin-bottom: 10px;
 teacherPage.css (hdehler on 04/23/2023 at 13:34): .side-btn {
-teacherPage.css (hdehler on 04/23/2023 at 13:34):     background-color: #23a6d5;
 teacherPage.css (hdehler on 04/23/2023 at 13:34):     border: none;
 teacherPage.css (hdehler on 04/23/2023 at 13:34):     color: #ffffff;
 teacherPage.css (hdehler on 04/23/2023 at 13:34):     cursor: pointer;
@@ -483,25 +429,24 @@ teacherPage.css (hdehler on 04/23/2023 at 13:34):     border: 1px solid #ccc;
 teacherPage.css (hdehler on 04/23/2023 at 13:34):     border-radius: 8px;
 teacherPage.css (hdehler on 04/23/2023 at 13:34):     margin-bottom: 16px;
 teacherPage.css (hdehler on 04/23/2023 at 13:34): }
-quizPage.css (hdehler on 04/17/2023 at 13:18): 
-quizPage.css (hdehler on 04/17/2023 at 13:18): 
-quizPage.css (hdehler on 04/16/2023 at 23:56):     margin:auto;
-quizPage.css (hdehler on 04/16/2023 at 23:56):     width: 500px;
-quizPage.css (hdehler on 04/16/2023 at 23:56): 
-quizPage.css (hdehler on 04/16/2023 at 23:56): 
-quizPage.css (hdehler on 04/16/2023 at 23:56):     gap: 16px; 
-quizPage.css (hdehler on 04/16/2023 at 23:56): .languages, .themes {
-quizPage.css (hdehler on 04/16/2023 at 23:56):     margin-left: 4px;
-quizPage.css (hdehler on 04/16/2023 at 23:56): .dropdown-wrapper {
-quizPage.css (hdehler on 04/16/2023 at 23:56):     margin-left: -6px;
-quizPage.css (hdehler on 04/16/2023 at 23:56): }
-quizPage.css (hdehler on 04/16/2023 at 23:56): 
-quizPage.css (hdehler on 04/16/2023 at 23:56): 
-quizPage.css (hdehler on 04/16/2023 at 23:56): 
-quizPage.css (hdehler on 04/17/2023 at 13:18):     /*background-color: #23a6d5;*/
-quizPage.css (hdehler on 04/17/2023 at 13:18): 
-quizPage.css (hdehler on 04/17/2023 at 13:18):     color: black;
-quizPage.css (hdehler on 04/17/2023 at 16:01): 
+quizPage.html (hdehler on 04/16/2023 at 23:56):     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+quizPage.html (hdehler on 04/17/2023 at 16:01):     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+quizPage.html (hdehler on 04/23/2023 at 13:34):         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3S10sibVcOQVnN" crossorigin="anonymous">
+quizPage.html (hdehler on 04/17/2023 at 17:53):         <p class="questionbox" id="question">Waiting for host...</p>
+quizPage.html (hdehler on 04/16/2023 at 23:56):                 <!-- THEME SELECT -->
+quizPage.html (hdehler on 04/16/2023 at 23:56):                 <label for="themes">Select Theme:</label>
+quizPage.html (hdehler on 04/16/2023 at 23:56):                 <div class="dropdown-wrapper">
+quizPage.html (hdehler on 04/23/2023 at 13:34):                     <select id="themes" class="themes" onchange="changeTheme()">
+quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/one_dark">One Dark</option>
+quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/eclipse">Eclipse</option>
+quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/twilight">Twilight</option>
+quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/solarized_light">Solarized Light</option>
+quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/gob">Gob</option>
+quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/monokai">Monokai</option>
+quizPage.html (hdehler on 04/23/2023 at 13:34):                         <option value="ace/theme/github">GitHub</option>
+quizPage.html (hdehler on 04/23/2023 at 13:34):                     </select>
+quizPage.html (hdehler on 04/16/2023 at 23:56):                 </div>
+notesPage.css (hdehler on 04/17/2023 at 13:18): 
 bigScreen.js (hdehler on 04/17/2023 at 17:53): 
 bigScreen.js (hdehler on 04/17/2023 at 17:53): document.getElementById('surveyForm').addEventListener('submit', function (event) {
 bigScreen.js (hdehler on 04/17/2023 at 17:53):     event.preventDefault();
@@ -516,3 +461,54 @@ bigScreen.js (hdehler on 04/17/2023 at 17:53):         barElement.setAttribute('
 bigScreen.js (hdehler on 04/17/2023 at 17:53):         barElement.style.height = `${newValue * 20}px`;
 bigScreen.js (hdehler on 04/17/2023 at 17:53):     }
 bigScreen.js (hdehler on 04/17/2023 at 17:53): });
+package.json (hdehler on 04/17/2023 at 17:53):     "chart.js": "^4.2.1",
+chart_js_test.html (hdehler on 04/17/2023 at 18:29): <link rel="stylesheet" href="bigScreen.css">
+chart_js_test.html (hdehler on 04/17/2023 at 18:29): <meta name="viewport" content="width=device-width, initial-scale=1.0">
+chart_js_test.html (hdehler on 04/17/2023 at 18:29):     <div id="insert id" class="white-text">
+chart_js_test.html (hdehler on 04/17/2023 at 18:29):         <center><h1>
+chart_js_test.html (hdehler on 04/17/2023 at 18:29):             The Question Will Go Here..
+chart_js_test.html (hdehler on 04/17/2023 at 18:29):         </h1></center>
+chart_js_test.html (hdehler on 04/17/2023 at 18:29):     </div>
+chart_js_test.html (hdehler on 04/17/2023 at 18:29): 
+chart_js_test.html (hdehler on 04/17/2023 at 18:29):     <br>
+chart_js_test.html (hdehler on 04/17/2023 at 18:29):     <br>
+chart_js_test.html (hdehler on 04/17/2023 at 18:29):     <br>
+chart_js_test.html (hdehler on 04/17/2023 at 18:29):     <br>
+chart_js_test.html (hdehler on 04/17/2023 at 18:29):     <div class="modern-container">
+notesPage.html (hdehler on 04/23/2023 at 13:34): 
+notesPage.html (hdehler on 04/23/2023 at 13:34): <head>
+notesPage.html (hdehler on 04/23/2023 at 13:34):     <meta charset="UTF-8">
+notesPage.html (hdehler on 04/23/2023 at 13:34):     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+notesPage.html (hdehler on 04/23/2023 at 13:34):     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+notesPage.html (hdehler on 04/23/2023 at 13:34):     <title>Notes Page</title>
+notesPage.html (hdehler on 04/23/2023 at 13:34):     <link rel="stylesheet" href="notesPage.css">
+notesPage.html (hdehler on 04/23/2023 at 13:34): </head>
+notesPage.html (hdehler on 04/23/2023 at 13:34): 
+notesPage.html (hdehler on 04/23/2023 at 13:34): <body>
+notesPage.html (hdehler on 04/23/2023 at 13:34):     <div class="return_buttons">
+notesPage.html (hdehler on 04/23/2023 at 13:34):         <a href="../index.html">
+notesPage.html (hdehler on 04/23/2023 at 13:34):             <svg xmlns="http://www.w3.org/2000/svg" id="home" height="48" viewBox="0 96 960 960" width="48">
+notesPage.html (hdehler on 04/23/2023 at 13:34):                 <path
+notesPage.html (hdehler on 04/23/2023 at 13:34):                     d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z" />
+notesPage.html (hdehler on 04/23/2023 at 13:34):             </svg>
+notesPage.html (hdehler on 04/23/2023 at 13:34):         </a>
+notesPage.html (hdehler on 04/23/2023 at 13:34):         <a href="../quizPage.html">
+notesPage.html (hdehler on 04/23/2023 at 13:34):             <button class="back_to_quiz" type="button">Back to quiz</button>
+notesPage.html (hdehler on 04/23/2023 at 13:34):         </a>
+notesPage.html (hdehler on 04/23/2023 at 13:34):     </div>
+notesPage.html (hdehler on 04/23/2023 at 13:34):     <div class="notes" id="app">
+notesPage.html (hdehler on 04/23/2023 at 13:34):         <div class="notes__sidebar">
+notesPage.html (hdehler on 04/23/2023 at 13:34):             <button class="notes__add" type="button">Add Note</button>
+notesPage.html (hdehler on 04/23/2023 at 13:34):             <div class="notes__list">
+notesPage.html (hdehler on 04/23/2023 at 13:34):                 <div class="list__item notes__list-item--selected">
+notesPage.html (hdehler on 04/23/2023 at 13:34):                     <div class="notes__small-title">Lecutre Notes</div>
+notesPage.html (hdehler on 04/23/2023 at 13:34):                     <div class="notes__small-body">I learned nothing today</div>
+notesPage.html (hdehler on 04/23/2023 at 13:34):                     <div class="notes__small-updated">Thursday 3:00pm</div>
+notesPage.html (hdehler on 04/23/2023 at 13:34):         <div class="notes__preview">\
+notesPage.html (hdehler on 04/23/2023 at 13:34):             <input class="notes__title" type="text" placeholder="Enter a title...">
+notesPage.html (hdehler on 04/23/2023 at 13:34):             <textarea class="notes__body">I am the notes body</textarea>
+notesPage.html (hdehler on 04/23/2023 at 13:34):         </div>
+notesPage.html (hdehler on 04/23/2023 at 13:34):     </div>
+notesPage.html (hdehler on 04/23/2023 at 13:34):     <script src="main.js" type="module"></script>
+notesPage.html (hdehler on 04/23/2023 at 13:34): </body>
+notesPage.html (hdehler on 04/23/2023 at 13:34): 
