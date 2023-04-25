@@ -38,7 +38,7 @@ body {
 }
 
 /* create the stylign for the nav bar and placed at the top of the screen*/
-.top-nav {
+/*.top-nav {
   background-color: rgb(0, 0, 0);
   color: #fff;
   height: 40px;
@@ -46,6 +46,18 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+}*/
+
+.top-nav {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background-image: linear-gradient(to left, #000000, #303030, #000000);
+  background-size: 200% 100%;
+  background-position: 100% 50%;
+  background-repeat: no-repeat;
 }
 
 .top-nav ul {
