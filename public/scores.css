@@ -1,19 +1,18 @@
 h1{
-    position: relative;
+    position: absolute;
     text-align: center;
     margin-bottom: 70px;
 }
 
 table {
-    position: relative;
+    position: fixed;
     display: inline-block;
     left: 50%;
     top: 15%;
     transform: translate(-50%, -50%);
 }
 
-
-#num_correct, #num_incorrect{
+.user{
     text-align: center;
     font-weight: bold;
 }
