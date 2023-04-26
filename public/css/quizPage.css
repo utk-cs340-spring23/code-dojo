@@ -93,31 +93,41 @@ body {
     /* format the question textbox */
     font-family: 'Tilt Warp', cursive;
     font-size: medium;
-    /* position: fixed;
-    top: 25%;
-    left: 50%; */
-    /* scale the textbox based on window size */
-    /* transform: translate(-50%, -50%); */
-    width: 75%;
+    width: 55%; /* reduced width */
     height: 20%;
     min-height: 150px;
-    max-width: 1440px;
+    max-width: 900px; /* reduced max-width */
     background-color: rgb(241, 241, 241);
     padding: 1em;
     border-radius: 20px;
     border: 2px solid transparent;
-    padding-right: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* added box-shadow for a modern look */
     resize: none;
+}
+
+.question-feedback {
+    color: #fff;
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
 }
 
 #answer-input {
     min-height: 90px;
+    border-radius: 20px; /* added border-radius for a modern look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* added box-shadow for a modern look */
+    outline: none; /* remove the default outline */
+    transition: all 0.3s ease; /* added a smooth transition */
+}
+
+#answer-input:focus {
+    border: 2px solid #7e8cef; /* added a border when the input is focused */
 }
 
 .answer-submit {
     width: 100%;
     height: 100%;
 }
+
 
 #submit-answer-button {
     /* attributes for submit button */
@@ -317,4 +327,3 @@ body {
     white-space: pre-wrap;
     word-wrap: break-word;
 }
-
