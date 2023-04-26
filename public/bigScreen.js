@@ -1,14 +1,40 @@
+// Placeholder function to get data from the backend
+// Replace this function with your actual API call to fetch data
+async function fetchDataFromBackend() {
+    return {
+        question: 'Sample Question',
+        sessionId: 'ABC123',
+        timer: '00:00:00',  
+        barData: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        }
+    };
+}
 
-document.getElementById('surveyForm').addEventListener('submit', function (event) {
-    event.preventDefault();
+async function loadData() {
+    const data = await fetchDataFromBackend();
 
-    const language = document.querySelector('input[name="language"]:checked');
-    if (language) {
-        const barId = `bar${language.value}`;
-        const barElement = document.getElementById(barId);
-        const currentValue = parseInt(barElement.getAttribute('data-value'));
-        const newValue = currentValue + 1;
-        barElement.setAttribute('data-value', newValue);
-        barElement.style.height = `${newValue * 20}px`;
-    }
-});
+    document.getElementById('question-placeholder').innerText = data.question;
+    document.getElementById('session-id').innerText += ` ${data.sessionId}`;
+    document.getElementById('question-timer').innerText = data.timer;
+
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+        type: 'bar',
+        data: data.barData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+window.addEventListener('DOMContentLoaded', loadData);
