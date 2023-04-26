@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 
-<link rel="stylesheet" href="bigScreen.css">
-<link rel="shortcut icon" href="img/dojoFavicon.png">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <link rel="stylesheet" href="bigScreen.css">
+    <link rel="shortcut icon" href="img/dojoFavicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="bigscreen.js"></script>
+    <script src="js/chart.umd.js"></script>
+</head>
 
 <body>
     <!-- MAKE THIS GO BACK TO THE TEACHER PAGE -->
@@ -24,10 +28,10 @@
         </div>
     </div>
 
-    <div id="insert id" class="white-text">
+    <div class="white-text">
         <center>
-            <h1>
-                The Question Will Go Here..
+            <h1 id="question-placeholder">
+                The question will go here, centered right above the graph. Make sure you do this with the correct id.
             </h1>
         </center>
     </div>
@@ -37,30 +41,7 @@
         <canvas id="myChart"></canvas>
     </div>
 
-    <script src="js/chart.umd.js"></script>
 
-    <script>
-        const ctx = document.getElementById('myChart');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
-    <script src="js/host.js"></script>
 </body>
 
 </html>
