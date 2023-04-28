@@ -25,7 +25,8 @@ body {
 }
 
 .back_to_quiz{
-  background: #23a6d5;
+  /*background: #23a6d5;*/
+  background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
   border: none;
   border-radius: 7px;
   color: white;
@@ -46,7 +47,8 @@ body {
 }
 
 .notes__add {
-  background: #23a6d5;
+  /*background: #23a6d5;*/
+  background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
   border: none;
   border-radius: 7px;
   color: #ffffff;

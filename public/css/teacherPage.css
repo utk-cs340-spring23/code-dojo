@@ -132,7 +132,24 @@ label {
 } */
 
 .submit-btn {
-	background-color: #23a6d5;
+	/*background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+	border: none;*/
+	background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+	border: none;
+	color: #ffffff;
+	cursor: pointer;
+	font-family: 'Tilt Warp';
+	font-size: 18px;
+	font-weight: bold;
+	padding: 13.874px 20px;
+	position: relative;
+	transition: all 0.3s ease;
+	border-radius: 5px;
+}
+
+.close-btn {
+	/*background-color: #23a6d5;*/
+	background: linear-gradient(to left, #a50505, #ae5a1e, #d12010, #a50505);
 	border: none;
 	color: #ffffff;
 	cursor: pointer;
@@ -150,7 +167,7 @@ label {
 }
 
 .side-btn {
-	background: linear-gradient(to left, #23a6d5, #1e87ae, #176d88, #11586a);
+	background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
 	border: none;
     /*background-color: #23a6d5;*/
     border: none;
