@@ -47,6 +47,7 @@ body {
 
 .light-grey-border {
     background-color: #68686872;
+	justify-content: center;
     border: 1px solid #000000;
     border-radius: 5px;
     padding: 20px;
@@ -85,6 +86,7 @@ body {
     align-items: center;
 }
 
+
 /* Add the following CSS rules */
 
 .mcquestion-answer-checkbox {
@@ -106,6 +108,16 @@ body {
 .mcquestion-answer-input:focus {
     border-color: #66afe9;
     box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.5);
+}
+
+.sesh-input {
+    display: flex;
+    width: 100%;
+    height: 40px; /* Adjust this value as per your requirement */
+    max-width: 200px;
+    margin-bottom: 10px;
+	border: none;
+    border-radius: 5px; /* Adjust this value to control the roundness of the edges */
 }
 
 .text-input {
@@ -130,6 +142,7 @@ label {
 	margin-bottom: 20px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 } */
+
 
 .submit-btn {
 	background-color: #23a6d5;
@@ -375,7 +388,9 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 800px;
     margin: 0 auto;
-	width: 100%;
+    width: 100%;
+    position: relative;
+    left: -1.6%;
 }
 
 
@@ -409,3 +424,50 @@ body {
     margin-bottom: 16px;
 }
 
+.input-button-container {
+    display: flex;
+}
+
+.sesh-input {
+    display: flex;
+    width: 100%;
+    height: 40px; /* Adjust this value as per your requirement */
+    max-width: 200px;
+    margin-bottom: 10px;
+    margin-right: -5px; /* Add this to remove the gap between input and button */
+    border: none;
+    border-radius: 5px 0 0 5px; /* The top-left and bottom-left corners are rounded, while the top-right and bottom-right corners are flat */
+}
+
+.time-input {
+    display: flex;
+    width: 100%;
+    height: 35px; /* Adjust this value as per your requirement */
+    max-width: 200px;
+    margin-bottom: 10px;
+    margin-right: -5px; /* Add this to remove the gap between input and button */
+    border: none;
+    border-radius: 6px 6px; /* Adjust this value to control the roundness of the edges */
+}
+
+
+
+.sesh-btn {
+    background-color: #23a6d5;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: 'Tilt Warp';
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 15px;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 0 5px 5px 0;
+    height: 42.3px; /* Set the height to match the input height */
+    line-height: 30px; /* Adjust line-height to vertically center the text */
+    box-sizing: border-box; /* Add this to include padding and border within the height calculation */
+}
+.sesh-btn:hover {
+	color: #1b7494;
+}
