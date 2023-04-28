@@ -470,7 +470,8 @@ body {
 
 
 .sesh-btn {
-    background-color: #23a6d5;
+    /*background-color: #23a6d5;*/
+	background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
     border: none;
     color: #ffffff;
     cursor: pointer;
