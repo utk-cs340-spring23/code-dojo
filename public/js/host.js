@@ -267,37 +267,31 @@ socket.on("player join", function (socket_id, nickname) {
     player_table_body.appendChild(table_row);
 
     let table_entry = document.createElement("td");
-    table_entry.setAttribute("class", "socket-id grid-item");
-    table_entry.textContent = socket_id;
-    table_row.appendChild(table_entry);
-
-    table_entry = document.createElement("td");
-    table_entry.setAttribute("class", "nickname grid-item");
+    table_entry.setAttribute("class", "nickname table-data");
     table_entry.textContent = nickname;
     table_row.appendChild(table_entry);
 
     table_entry = document.createElement("td");
-    table_entry.setAttribute("class", "num-right grid-item");
+    table_entry.setAttribute("class", "num-right table-data");
     table_entry.textContent = "0";
     table_row.appendChild(table_entry);
 
     table_entry = document.createElement("td");
-    table_entry.setAttribute("class", "num-wrong grid-item");
+    table_entry.setAttribute("class", "num-wrong table-data");
     table_entry.textContent = "0";
     table_row.appendChild(table_entry);
 
     table_entry = document.createElement("td");
-    table_entry.setAttribute("class", "current-answer grid-item");
+    table_entry.setAttribute("class", "current-answer table-data");
     table_entry.textContent = "";
     table_row.appendChild(table_entry);
 
     player_correct_total[socket_id] = 0;
     player_incorrect_total[socket_id] = 0;
 
-    // player_table.style.position = "absolute";
-    // player_table.style.left = "25%";
-
 });
+
+
 
 socket.on("player submit answer", function (socket_id, player_answer) {
     let table_entry = document.getElementById(socket_id).getElementsByClassName("current-answer")[0];
