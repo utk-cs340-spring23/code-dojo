@@ -9,7 +9,7 @@ import { Server as SocketIOServer, Socket } from "socket.io";
 
 import { Host } from "./host.js";
 import { Player } from "./player.js";
-import { QuestionType, CodeLanguage, Question, FRQuestion, MCQuestion, CodeQuestion } from "./question.js";
+import { QuestionType, CodeLanguage, Question, FRQuestion, MCQuestion, CodeQuestion, string_to_codelanguage, codelanguage_to_string } from "./question.js";
 import { QuizRoom } from "./quizroom.js";
 import { RunResult, RunOutput, run_c } from "./runcode.js";
 
@@ -77,10 +77,10 @@ async function close_question(io: SocketIOServer, quizroom: QuizRoom): Promise<b
         }
 
         if (player.is_correct[quizroom.curr_question_index]) {
-            io.to(player.socket.id).emit("answer correct", player_answer, quizroom.curr_question.answer, player.num_right, player.num_wrong);
+            io.to(player.socket.id).emit("answer correct", answer_string, quizroom.curr_question.answer, player.num_right, player.num_wrong);
             io.to(quizroom.host.socket.id).emit("player answer correct", player.socket.id);
         } else {
-            io.to(player.socket.id).emit("answer incorrect", player_answer, quizroom.curr_question.answer, player.num_right, player.num_wrong);
+            io.to(player.socket.id).emit("answer incorrect", answer_string, quizroom.curr_question.answer, player.num_right, player.num_wrong);
             io.to(quizroom.host.socket.id).emit("player answer incorrect", player.socket.id);
         }
     }
@@ -111,26 +111,6 @@ function on_new_question_check(io: SocketIOServer, quizroom: QuizRoom, socket: S
     }
 
     return true;
-}
-
-function string_to_codelanguage(str: string): CodeLanguage | null {
-    switch (str) {
-        case "C":
-            return CodeLanguage.C;
-        default:
-            return null;
-    }
-}
-
-function codelanguage_to_string(language: CodeLanguage): string {
-    switch (language) {
-        case CodeLanguage.JavaScript:
-            return "JavaScript";
-        case CodeLanguage.C:
-            return "C";
-        default:
-            return "";
-    }
 }
 
 /*----------------------------------------------------------------------------*/
@@ -399,6 +379,7 @@ io.on("connection", function (socket: Socket) {
 
         if (this_quizroom.host.socket.id == socket.id) {
             console.log(`Should be deleting room  ${this_quizroom.id}`);
+            io.to(this_quizroom.id).emit("close session");
             delete quizrooms[this_quizroom.id];
         } else if (this_player != null) {
             console.log(`Should be deleting player ${this_player.nickname} (socket ID ${socket.id})`);

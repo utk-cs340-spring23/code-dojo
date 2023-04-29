@@ -13,6 +13,27 @@ enum CodeLanguage {
     C
 };
 
+function string_to_codelanguage(str: string): CodeLanguage | null {
+    switch (str) {
+        case "C":
+            return CodeLanguage.C;
+        default:
+            return null;
+    }
+}
+
+function codelanguage_to_string(language: CodeLanguage): string {
+    switch (language) {
+        case CodeLanguage.JavaScript:
+            return "JavaScript";
+        case CodeLanguage.C:
+            return "C";
+        default:
+            return "";
+    }
+}
+
+
 /**
  * Abstract Class Question
  *
@@ -202,7 +223,7 @@ class CodeQuestion extends Question {
     private _language: CodeLanguage;
 
     constructor(prompt: string, template: any, answer: string, language: CodeLanguage, time_limit: number) {
-        super(prompt, answer, time_limit);
+        super(`${prompt} (language: ${codelanguage_to_string(language)})`, answer, time_limit);
         this._template = template;
         this._type = QuestionType.code;
         // this._test_cases = test_cases;
@@ -254,3 +275,5 @@ export { Question };
 export { FRQuestion };
 export { MCQuestion };
 export { CodeQuestion };
+export { string_to_codelanguage };
+export { codelanguage_to_string };
