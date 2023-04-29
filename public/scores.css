@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+
+body{
+    font-family: 'Tilt Warp', cursive;
+}
+
 h1{
     position: absolute;
     text-align: center;
@@ -5,11 +11,9 @@ h1{
 }
 
 table {
-    position: fixed;
-    display: inline-block;
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, -50%);
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 3%;
 }
 
 .user{

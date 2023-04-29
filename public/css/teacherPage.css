@@ -3,7 +3,9 @@
 body {
 	margin: 0;
 	padding: 0;
-	font-family: 'Tilt Warp', 'Helvetica', 'Arial', sans-serif;
+	/* font-family: 'Tilt Warp', 'Helvetica', 'Arial', sans-serif; */
+	font-family: 'Tilt Warp', cursive;
+
 	background-color: rgb(55, 54, 54);
 }
 
@@ -220,27 +222,23 @@ label {
 	opacity: 0.2;
 }
 
-.grid-container {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	grid-gap: 10px;
-
-	margin-bottom: 20px;
-	margin-left: 50%;
-	transform: translate(-50%, -50%);
-	/* border-spacing: 20px; */
-	margin-top: 13%;
+.player-table {
+    width: 98%;
+    margin-bottom: 20px;
+    margin-top: 8%;
+    border-collapse: collapse;
 }
 
-.grid-item {
-	background-color: #ffffff;
-	color: #333333;
-	border-radius: 5px;
-	padding: 10px;
-	font-weight: bold;
-	font-size: 16px;
-	text-align: center;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+.table-header,
+.table-data {
+    background-color: #ffffff;
+    color: #333333;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e0e0e0;
 }
 
 .buttons-container {
@@ -259,11 +257,15 @@ label {
 }
 
 .timer-display {
+    border: 1px solid white;
     font-size: 2em;
     font-weight: bold;
     margin-bottom: 1px;
     top: 1%;
     color: #ffffff;
+    display: inline-block;
+    width: auto; 
+    padding: 5px 10px;
 }
 
 
@@ -315,13 +317,15 @@ label {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
+	font-family: 'Tilt Warp', cursive;
 }
 
 
 .white-text {
     color: rgb(255, 255, 255);
-	font-family: Georgia, 'Times New Roman', Times, serif;
+	/* font-family: Georgia, 'Times New Roman', Times, serif; */
+	font-family: 'Tilt Warp', cursive;
 	font-weight: bold;
 }
 
