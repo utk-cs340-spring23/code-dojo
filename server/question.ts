@@ -1,4 +1,5 @@
 import { RunResult, RunOutput, run_c } from "./runcode.js";
+import { Player } from "./player.js"
 
 enum QuestionType {
     unknown,
@@ -92,7 +93,7 @@ class Question {
         return this._is_active;
     }
 
-    public async check_answer(provided_answer: any): Promise<number> {
+    public async check_answer(provided_answer: any, player: Player): Promise<number> {
         throw new Error("Method 'check_answer()' must be implemented");
     }
 
@@ -125,7 +126,7 @@ class FRQuestion extends Question {
         this._answers = answers;
     }
 
-    public override async check_answer(provided_answer: string): Promise<number> {
+    public override async check_answer(provided_answer: string, player: Player): Promise<number> {
         for (const [i, answer] of this._answers.entries()) {
             if (provided_answer == answer) {
                 return 1;
@@ -177,7 +178,7 @@ class MCQuestion extends Question {
      * @param provided_answer_indices array of answer indices
      * @returns True if correct, false otherwise
      */
-    public override async check_answer(provided_answer_indices: number[]): Promise<number> {
+    public override async check_answer(provided_answer_indices: number[], player: Player): Promise<number> {
         if (provided_answer_indices == null) {
             return 0;
         }
@@ -197,24 +198,30 @@ class MCQuestion extends Question {
 class CodeQuestion extends Question {
     // private _test_cases: any[];
     // private _correct_outputs: string[];
+    private _template: string;
     private _language: CodeLanguage;
 
     constructor(prompt: string, template: any, answer: string, language: CodeLanguage, time_limit: number) {
         super(prompt, answer, time_limit);
+        this._template = template;
         this._type = QuestionType.code;
         // this._test_cases = test_cases;
         // this._correct_outputs = correct_outputs;
         this._language = language;
     }
 
+    public get template(): string {
+        return this._template;
+    }
 
-    public override async check_answer(provided_answer: string): Promise<number> {
+    public get language(): CodeLanguage {
+        return this._language;
+    }
+
+    public override async check_answer(provided_answer: string, player: Player): Promise<number> {
         if (provided_answer == null || provided_answer == "") {
             return 0;
         }
-
-        // TODO: fix temp change
-        // This should only test the outputs of the supplied user's answer, and see how many align with the correct test cases
 
         let output: RunOutput = new RunOutput();
 
@@ -226,6 +233,8 @@ class CodeQuestion extends Question {
 
         console.log("SUBMISSION RESULT:" + output.stdout);
         console.log("ANSWER: " + this._answer);
+
+        player.curr_output = output;
 
         if (output.result != RunResult.run_success) {
             return 0;

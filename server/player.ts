@@ -1,4 +1,5 @@
 import { Socket } from "socket.io";
+import { RunOutput } from "./runcode.js"
 
 class Player {
     private _nickname: string;
@@ -7,6 +8,7 @@ class Player {
     private _num_wrong: number;
     private _answers: any[];
     private _is_correct: boolean[];     // e.g. _is_correct[3] is whether the player got question #4 correct
+    public curr_output: RunOutput;
 
     constructor(nickname: string, socket: Socket) {
         this._nickname = nickname;
@@ -15,6 +17,7 @@ class Player {
         this._num_wrong = 0;
         this._answers = [];
         this._is_correct = [];
+        this.curr_output = new RunOutput;
     }
 
     public get nickname(): string {
@@ -60,6 +63,7 @@ class Player {
     public get most_recent_answer(): any | undefined {
         return this._answers.at(-1);
     }
+
 
     // public push_correct(): void {
     //     this._is_correct.push(true);

@@ -19,7 +19,6 @@ const output_tag = document.getElementById("output");
 
 const score_tag = document.getElementById("score-number");
 const ninja = document.getElementById("ninja-slash");
-const timer_update_frequency = 25;  // in milliseconds
 
 const form_display_style = "block";
 
@@ -34,24 +33,11 @@ codequestion_form.style.display = "none";
 /*----------------------------------------------------------------------------*/
 /* "Global Variables"                                                         */
 /*----------------------------------------------------------------------------*/
-let timer_interval_id = 0;
 let curr_question_type = "";
 
 /*----------------------------------------------------------------------------*/
 /* Functions                                                                  */
 /*----------------------------------------------------------------------------*/
-
-function start_timer(end_time) {
-    if (!Number.isNaN(end_time) && end_time != null) {
-        timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
-    } else {
-        question_timer_tag.innerText = "";
-    }
-}
-
-function update_timer(end_time) {
-    question_timer_tag.innerText = ms_to_formatted_string(end_time - Date.now());
-}
 
 function redirect_to_homepage(roomid, nickname) {
     let params = new URLSearchParams();
@@ -254,7 +240,7 @@ socket.on("answer correct", function (player_answer, correct_answer, num_right, 
 });
 
 socket.on("answer incorrect", function (player_answer, correct_answer, num_right, num_wrong) {
-    question_feedback_tag.innerText = `Incorrect. You answered "${player_answer}". Correct answer is "${correct_answer}"`;
+    question_feedback_tag.innerText = `Incorrect. Correct answer is "${correct_answer}"`;
     question_feedback_tag.style.color = 'red';
     score_tag.innerText = `${num_right}/${num_right + num_wrong}`;
 });

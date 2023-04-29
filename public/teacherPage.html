@@ -14,16 +14,20 @@
 <body>
     <div class="columns" id="col">
         <div class="main-container">
-            <a class="home-btn" href="index.html" onclick="return confirm('Are you sure you want to close the session?');"><button type="button" class="side-btn">Home</button></a>
+            <a class="home-btn" href="index.html"
+                onclick="return confirm('Are you sure you want to close the session?');"><button type="button"
+                    class="side-btn">Home</button></a>
             <!-- <a class="home-btn" href="index.html"><button type="button" class="side-btn">Home</button></a>-->
-            <a class="display-btn" href="bigScreen.html"><button type="button" class="side-btn">Display</button></a>
+            <a class="display-btn" href="#"><button type="button" id="display-button"
+                    class="side-btn">Display</button></a>
             <a class="download-scores-btn"><button id="download-pdf" type="button" class="side-btn">Results</button></a>
             <div class="light-grey-border" id="inputs">
                 <form id="room-form">
                     <div class="form-input">
                         <label class="white-text" for="session-id">Session ID:</label>
                         <div class="input-button-container">
-                            <input type="text" id="room-input" class="sesh-input" name="session-id" placeholder="Session ID">
+                            <input type="text" id="room-input" class="sesh-input" name="session-id"
+                                placeholder="Session ID">
                             <button type="submit" class="sesh-btn press-down" id="create-room-button">Create</button>
                         </div>
                     </div>
@@ -129,9 +133,10 @@
                         <button type="submit" class="submit-btn press-down" id="push-question-button">Submit</button>
                         <button type="button" class="close-btn red-btn press-down" id="close-question-button">Close
                             Question</button>
-                            <a href="index.html" onclick="return confirm('Are you sure you want to close the session?');">
-                                <button type="button" class="close-btn press-down" style="background-color: red;">Close Session</button>
-                            </a>
+                        <a href="index.html" onclick="return confirm('Are you sure you want to close the session?');">
+                            <button type="button" class="close-btn press-down" style="background-color: red;">Close
+                                Session</button>
+                        </a>
                     </div>
                 </form>
             </div>
@@ -155,20 +160,20 @@
             </table>
         </div>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="js/util.js"></script>
-    <script src="js/host.js"></script>
-    <script src="js/teacherPage.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/host.js"></script>
+        <script src="js/teacherPage.js"></script>
 
 
-    <!-- JS for code editor -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/ace-builds/src/ace.js"></script>
-    <script src="js/ace-builds/theme-monokai.js"></script>
-    <script src="js/ide.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+        <!-- JS for code editor -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/ace-builds/src/ace.js"></script>
+        <script src="js/ace-builds/theme-monokai.js"></script>
+        <script src="js/ide.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
 
-    <script>update_question_type();</script>
+        <script>update_question_type();</script>
 
 </body>
 

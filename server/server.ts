@@ -46,19 +46,51 @@ async function close_question(io: SocketIOServer, quizroom: QuizRoom): Promise<b
         return false;
     }
 
+
+    let results = new Object();
+
     for (const [key, player] of Object.entries(quizroom.players)) {
         assert(key == player.socket.id, "A player's socket id and their key don't match!");
 
-        if (player.is_correct[quizroom.num_questions - 1]) {
-            io.to(player.socket.id).emit("answer correct", quizroom.get_player_curr_answer(player), quizroom.curr_question.answer, player.num_right, player.num_wrong);
+        let player_answer: any = quizroom.get_player_curr_answer(player);
+
+        let answer_string: string;
+
+        switch (quizroom.curr_question.type) {
+            case QuestionType.free_response:
+                answer_string = player_answer;
+                break;
+            case QuestionType.multiple_choice:
+                answer_string = (quizroom.curr_question as MCQuestion).answer_choices[player_answer];
+                break;
+            case QuestionType.code:
+                answer_string = player.curr_output.stdout;
+                break;
+        }
+
+        console.log(answer_string);
+
+        if (results[answer_string] == null) {
+            results[answer_string] = 1;
+        } else {
+            ++results[answer_string];
+        }
+
+        if (player.is_correct[quizroom.curr_question_index]) {
+            io.to(player.socket.id).emit("answer correct", player_answer, quizroom.curr_question.answer, player.num_right, player.num_wrong);
             io.to(quizroom.host.socket.id).emit("player answer correct", player.socket.id);
         } else {
-            io.to(player.socket.id).emit("answer incorrect", quizroom.get_player_curr_answer(player), quizroom.curr_question.answer, player.num_right, player.num_wrong);
+            io.to(player.socket.id).emit("answer incorrect", player_answer, quizroom.curr_question.answer, player.num_right, player.num_wrong);
             io.to(quizroom.host.socket.id).emit("player answer incorrect", player.socket.id);
         }
     }
 
+    console.log(results);
+
     io.to(quizroom.id).emit("close question success", "Successfully closed and graded questions");
+    io.to(`${quizroom.id} spectators`).emit("correct answer", quizroom.curr_question.answer);
+    io.to(`${quizroom.id} spectators`).emit("question results", results);
+
     return true;
 }
 
@@ -90,6 +122,17 @@ function string_to_codelanguage(str: string): CodeLanguage | null {
     }
 }
 
+function codelanguage_to_string(language: CodeLanguage): string {
+    switch (language) {
+        case CodeLanguage.JavaScript:
+            return "JavaScript";
+        case CodeLanguage.C:
+            return "C";
+        default:
+            return "";
+    }
+}
+
 /*----------------------------------------------------------------------------*/
 /* Socket IO                                                                  */
 /* Handles all user connections                                               */
@@ -102,6 +145,7 @@ io.on("connection", function (socket: Socket) {
     /* The following variables are specific to each "socket" */
     let this_quizroom: QuizRoom = null;
     let this_player: Player = null;
+    let is_spectator: boolean = false;
 
     console.log(`connection ${socket.id} (total connections ${num_connections})`);
 
@@ -170,12 +214,30 @@ io.on("connection", function (socket: Socket) {
                 case QuestionType.multiple_choice:
                     io.to(this_quizroom.id).emit("push mcquestion", this_quizroom.curr_question.prompt, (this_quizroom.curr_question as MCQuestion).answer_choices, this_quizroom.curr_question.end_time);
                     break;
+                case QuestionType.code:
+                    io.to(this_quizroom.id).emit("push codequestion", this_quizroom.curr_question.prompt, (this_quizroom.curr_question as CodeQuestion).template, codelanguage_to_string((this_quizroom.curr_question as CodeQuestion).language), this_quizroom.curr_question.end_time);
+                    break;
             }
-
         }
 
         /* Inform the room that a new player joined; used by host to maintain the player list */
         io.to(this_quizroom.id).emit("player join", socket.id, nickname);
+    });
+
+    socket.on("spectate room", function (room_id: string) {
+        if (quizrooms[room_id] == null) {
+            io.to(socket.id).emit("spectate room fail", `room ${room_id} does not exist`);
+            return;
+        }
+
+        console.log(`${socket.id} is a spectator!`);
+        is_spectator = true;
+        this_quizroom = quizrooms[room_id];
+        socket.join(room_id);
+        socket.join(`${room_id} spectators`);
+
+        io.to(socket.id).emit("spectate room success", "successfully spectating room");
+
     });
 
     socket.on("new frquestion", function (prompt: string, answers: string[], time_limit_s: number) {
