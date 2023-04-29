@@ -91,6 +91,7 @@ class QuizRoom {
      */
     public delete_player(player: Player): boolean {
         return this.delete_player_by_socket_id(player.socket.id);
+        --this._num_players;
     }
 
     /**

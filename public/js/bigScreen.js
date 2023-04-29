@@ -5,6 +5,7 @@
 /*----------------------------------------------------------------------------*/
 const socket = io();
 const session_id_tag = document.getElementById("session-id");
+const num_players_tag = document.getElementById("num-players");
 const question_timer_tag = document.getElementById("question-timer");
 const question_tag = document.getElementById("question");
 const answer_tag = document.getElementById("answer");
@@ -27,13 +28,21 @@ if (roomid_param == null || roomid_param == "") {
 
 socket.emit("spectate room", roomid_param);
 
-socket.on("spectate room success", function (msg) {
+socket.on("spectate room success", function (msg, num_players) {
     session_id_tag.innerText = `Session ID: ${roomid_param}`;
+    num_players_tag.innerText = `${num_players} connected`;
 });
 
 socket.on("spectate room fail", function (msg) {
     error_message(msg);
     window.location.href = 'teacherPage.html';
+});
+
+/*----------------------------------------------------------------------------*/
+/* Update Player Count                                                        */
+/*----------------------------------------------------------------------------*/
+socket.on("num players", function (num_players) {
+    num_players_tag.innerText = `${num_players} connected`;
 });
 
 /*----------------------------------------------------------------------------*/

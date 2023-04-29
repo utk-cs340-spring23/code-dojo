@@ -202,6 +202,8 @@ io.on("connection", function (socket: Socket) {
 
         /* Inform the room that a new player joined; used by host to maintain the player list */
         io.to(this_quizroom.id).emit("player join", socket.id, nickname);
+
+        io.to(`${this_quizroom.id} spectators`).emit("num players", this_quizroom.num_players);
     });
 
     socket.on("spectate room", function (room_id: string) {
@@ -216,7 +218,7 @@ io.on("connection", function (socket: Socket) {
         socket.join(room_id);
         socket.join(`${room_id} spectators`);
 
-        io.to(socket.id).emit("spectate room success", "successfully spectating room");
+        io.to(socket.id).emit("spectate room success", "successfully spectating room", this_quizroom.num_players);
 
     });
 
@@ -386,6 +388,7 @@ io.on("connection", function (socket: Socket) {
             assert(this_player.socket.id == socket.id, `${socket.id} is disconnecting, but this_player.socket.id = ${this_player.socket.id}`)
             this_quizroom.delete_player(this_player);
             io.to(this_quizroom.id).emit("player leave", socket.id);
+            io.to(`${this_quizroom.id} spectators`).emit("num players", this_quizroom.num_players);
         }
     });
 });
