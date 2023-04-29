@@ -3,7 +3,9 @@
 body {
 	margin: 0;
 	padding: 0;
-	font-family: 'Tilt Warp', 'Helvetica', 'Arial', sans-serif;
+	/* font-family: 'Tilt Warp', 'Helvetica', 'Arial', sans-serif; */
+	font-family: 'Tilt Warp', cursive;
+
 	background-color: rgb(55, 54, 54);
 }
 
