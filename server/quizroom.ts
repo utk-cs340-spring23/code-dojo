@@ -91,6 +91,7 @@ class QuizRoom {
      */
     public delete_player(player: Player): boolean {
         return this.delete_player_by_socket_id(player.socket.id);
+        --this._num_players;
     }
 
     /**
@@ -123,7 +124,7 @@ class QuizRoom {
         return player.answers[this.num_questions - 1];
     }
 
-    public set_player_curr_answer(player: Player, answer: string): void {
+    public set_player_curr_answer(player: Player, answer: any): void {
         player.answers[this.num_questions - 1] = answer;
         console.log(`setting player.answers[${this.num_questions - 1}] = ${answer}`);
     }
@@ -142,7 +143,7 @@ class QuizRoom {
 
             console.log(`checking if ${this.curr_question.answer} = ${this.get_player_curr_answer(player)}`);
 
-            const grade: number = await this.curr_question.check_answer(this.get_player_curr_answer(player));
+            const grade: number = await this.curr_question.check_answer(this.get_player_curr_answer(player), player);
 
             if (grade > 0) {
                 player.set_correct(this.curr_question_index);

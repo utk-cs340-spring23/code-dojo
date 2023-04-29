@@ -37,21 +37,15 @@ function addTableRow(question, correctAnswer, studentAnswer) {
   }
 }
 
-// Hardcoded example data
-const question = 'What is the capital of France?';
-const correctAnswer = 'Paris';
-const studentAnswer = 'Paris';
-
-// Add the row to the table
-addTableRow(question, correctAnswer, studentAnswer);
-
 function toggle_visibility(showQuestions) {
-    // let showQuestions = true; // boolean variable to determine whether to show the question or result area
-    if (showQuestions) {
+  // let showQuestions = true; // boolean variable to determine whether to show the question or result area
+  if (showQuestions) {
     document.getElementById("question-area").style.display = "block";
     document.getElementById("results-area").style.display = "none";
-    } else {
+  } else {
     document.getElementById("question-area").style.display = "none";
     document.getElementById("results-area").style.display = "block";
-    }
+  }
 }
+
+toggle_visibility(true);

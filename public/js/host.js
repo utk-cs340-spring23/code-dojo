@@ -23,7 +23,6 @@ const player_table = document.getElementById("player-table");
 const player_table_body = document.getElementById("player-table-body");
 
 const form_display_style = "flex";
-const timer_update_frequency = 25;  // in milliseconds
 
 /* Ensure that the question and answer input is disabled to start */
 question_type_input.disabled = true;
@@ -38,8 +37,8 @@ mcquestion_form.style.display = "none";
 /*----------------------------------------------------------------------------*/
 /* "Global Variables"                                                         */
 /*----------------------------------------------------------------------------*/
-let timer_interval_id = 0;
 let question_type = "";
+let room_id = "";
 let mcquestion_input_tags;
 let mcquestion_checkbox_tags;
 
@@ -103,10 +102,6 @@ function update_question_type() {
     }
 }
 
-function update_timer(end_time) {
-    question_timer_tag.innerText = ms_to_formatted_string(end_time - Date.now());
-}
-
 /*----------------------------------------------------------------------------*/
 /* When Window Loads                                                          */
 /*----------------------------------------------------------------------------*/
@@ -125,8 +120,9 @@ document.getElementById("room-form").addEventListener("submit", function (e) {
         return;
     }
 
-    console.log("create room " + room_input.value);
-    socket.emit("create room", room_input.value);
+    room_id = room_input.value;
+    console.log("create room " + room_id);
+    socket.emit("create room", room_id);
 });
 
 socket.on("create room success", function (msg) {
@@ -218,11 +214,7 @@ socket.on("new question success", function (msg, end_time) {
 
     console.log(end_time);
 
-    if (!Number.isNaN(end_time) && end_time != null) {
-        timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
-    } else {
-        question_timer_tag.innerText = "";
-    }
+    start_timer(end_time);
 });
 
 socket.on("new question fail", function (msg) {
@@ -316,4 +308,22 @@ socket.on("player answer incorrect", function (socket_id) {
 socket.on("player leave", function (socket_id) {
     console.log("player leave " + socket_id);
     document.getElementById(socket_id).remove();
+});
+
+/*----------------------------------------------------------------------------*/
+/* Big Screen Page                                                            */
+/*----------------------------------------------------------------------------*/
+document.getElementById("display-button").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    if (room_id == null || room_id == "") {
+        error_message("Please create a room first.");
+        return;
+    }
+
+    let params = new URLSearchParams();
+    params.append('roomid', room_id);
+
+    const url = 'bigScreen.html?' + params.toString();
+    window.open(url, "_blank");
 });

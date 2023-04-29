@@ -9,7 +9,7 @@ import { Server as SocketIOServer, Socket } from "socket.io";
 
 import { Host } from "./host.js";
 import { Player } from "./player.js";
-import { QuestionType, CodeLanguage, Question, FRQuestion, MCQuestion, CodeQuestion } from "./question.js";
+import { QuestionType, CodeLanguage, Question, FRQuestion, MCQuestion, CodeQuestion, string_to_codelanguage, codelanguage_to_string } from "./question.js";
 import { QuizRoom } from "./quizroom.js";
 import { RunResult, RunOutput, run_c } from "./runcode.js";
 
@@ -46,19 +46,51 @@ async function close_question(io: SocketIOServer, quizroom: QuizRoom): Promise<b
         return false;
     }
 
+
+    let results = new Object();
+
     for (const [key, player] of Object.entries(quizroom.players)) {
         assert(key == player.socket.id, "A player's socket id and their key don't match!");
 
-        if (player.is_correct[quizroom.num_questions - 1]) {
-            io.to(player.socket.id).emit("answer correct", quizroom.get_player_curr_answer(player), quizroom.curr_question.answer, player.num_right, player.num_wrong);
+        let player_answer: any = quizroom.get_player_curr_answer(player);
+
+        let answer_string: string;
+
+        switch (quizroom.curr_question.type) {
+            case QuestionType.free_response:
+                answer_string = player_answer;
+                break;
+            case QuestionType.multiple_choice:
+                answer_string = (quizroom.curr_question as MCQuestion).answer_choices[player_answer];
+                break;
+            case QuestionType.code:
+                answer_string = player.curr_output.stdout;
+                break;
+        }
+
+        console.log(answer_string);
+
+        if (results[answer_string] == null) {
+            results[answer_string] = 1;
+        } else {
+            ++results[answer_string];
+        }
+
+        if (player.is_correct[quizroom.curr_question_index]) {
+            io.to(player.socket.id).emit("answer correct", answer_string, quizroom.curr_question.answer, player.num_right, player.num_wrong);
             io.to(quizroom.host.socket.id).emit("player answer correct", player.socket.id);
         } else {
-            io.to(player.socket.id).emit("answer incorrect", quizroom.get_player_curr_answer(player), quizroom.curr_question.answer, player.num_right, player.num_wrong);
+            io.to(player.socket.id).emit("answer incorrect", answer_string, quizroom.curr_question.answer, player.num_right, player.num_wrong);
             io.to(quizroom.host.socket.id).emit("player answer incorrect", player.socket.id);
         }
     }
 
+    console.log(results);
+
     io.to(quizroom.id).emit("close question success", "Successfully closed and graded questions");
+    io.to(`${quizroom.id} spectators`).emit("correct answer", quizroom.curr_question.answer);
+    io.to(`${quizroom.id} spectators`).emit("question results", results);
+
     return true;
 }
 
@@ -81,15 +113,6 @@ function on_new_question_check(io: SocketIOServer, quizroom: QuizRoom, socket: S
     return true;
 }
 
-function string_to_codelanguage(str: string): CodeLanguage | null {
-    switch (str) {
-        case "C":
-            return CodeLanguage.C;
-        default:
-            return null;
-    }
-}
-
 /*----------------------------------------------------------------------------*/
 /* Socket IO                                                                  */
 /* Handles all user connections                                               */
@@ -102,6 +125,7 @@ io.on("connection", function (socket: Socket) {
     /* The following variables are specific to each "socket" */
     let this_quizroom: QuizRoom = null;
     let this_player: Player = null;
+    let is_spectator: boolean = false;
 
     console.log(`connection ${socket.id} (total connections ${num_connections})`);
 
@@ -170,12 +194,32 @@ io.on("connection", function (socket: Socket) {
                 case QuestionType.multiple_choice:
                     io.to(this_quizroom.id).emit("push mcquestion", this_quizroom.curr_question.prompt, (this_quizroom.curr_question as MCQuestion).answer_choices, this_quizroom.curr_question.end_time);
                     break;
+                case QuestionType.code:
+                    io.to(this_quizroom.id).emit("push codequestion", this_quizroom.curr_question.prompt, (this_quizroom.curr_question as CodeQuestion).template, codelanguage_to_string((this_quizroom.curr_question as CodeQuestion).language), this_quizroom.curr_question.end_time);
+                    break;
             }
-
         }
 
         /* Inform the room that a new player joined; used by host to maintain the player list */
         io.to(this_quizroom.id).emit("player join", socket.id, nickname);
+
+        io.to(`${this_quizroom.id} spectators`).emit("num players", this_quizroom.num_players);
+    });
+
+    socket.on("spectate room", function (room_id: string) {
+        if (quizrooms[room_id] == null) {
+            io.to(socket.id).emit("spectate room fail", `room ${room_id} does not exist`);
+            return;
+        }
+
+        console.log(`${socket.id} is a spectator!`);
+        is_spectator = true;
+        this_quizroom = quizrooms[room_id];
+        socket.join(room_id);
+        socket.join(`${room_id} spectators`);
+
+        io.to(socket.id).emit("spectate room success", "successfully spectating room", this_quizroom.num_players);
+
     });
 
     socket.on("new frquestion", function (prompt: string, answers: string[], time_limit_s: number) {
@@ -272,6 +316,9 @@ io.on("connection", function (socket: Socket) {
             case RunResult.run_success:
                 io.to(socket.id).emit("run success", output.stdout);
                 break;
+            case RunResult.run_timeout:
+                io.to(socket.id).emit("run timeout");
+                break;
             default:
                 io.to(socket.id).emit("run fail", "Run never occured? (You should not be seeing this)");
                 break;
@@ -337,12 +384,14 @@ io.on("connection", function (socket: Socket) {
 
         if (this_quizroom.host.socket.id == socket.id) {
             console.log(`Should be deleting room  ${this_quizroom.id}`);
+            io.to(this_quizroom.id).emit("close session");
             delete quizrooms[this_quizroom.id];
         } else if (this_player != null) {
             console.log(`Should be deleting player ${this_player.nickname} (socket ID ${socket.id})`);
             assert(this_player.socket.id == socket.id, `${socket.id} is disconnecting, but this_player.socket.id = ${this_player.socket.id}`)
             this_quizroom.delete_player(this_player);
             io.to(this_quizroom.id).emit("player leave", socket.id);
+            io.to(`${this_quizroom.id} spectators`).emit("num players", this_quizroom.num_players);
         }
     });
 });

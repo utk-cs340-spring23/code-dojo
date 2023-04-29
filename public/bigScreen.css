@@ -30,13 +30,15 @@ body {
     /* make slightly smaller on click */
     transform: scale(0.9);
 }
-.seshID{
+
+.info-text {
     font-size: 2em;
     font-weight: bold;
     margin-bottom: 1px;
     top: 1%;
     color: #ffffff;
 }
+
 .question-set {
     display: flex;
     flex-direction: column;
@@ -51,14 +53,6 @@ body {
     right: 10px;
 }
 
-.timer-display {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 1px;
-    top: 1%;
-    color: #ffffff;
-}
-
 .border {
     border: 1px solid #ffffff;
     padding: 5px;
@@ -71,5 +65,3 @@ body {
     margin: 0 10px;
     height: 1.5em;
 }
-
-

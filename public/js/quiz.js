@@ -19,7 +19,6 @@ const output_tag = document.getElementById("output");
 
 const score_tag = document.getElementById("score-number");
 const ninja = document.getElementById("ninja-slash");
-const timer_update_frequency = 25;  // in milliseconds
 
 const form_display_style = "block";
 
@@ -34,24 +33,12 @@ codequestion_form.style.display = "none";
 /*----------------------------------------------------------------------------*/
 /* "Global Variables"                                                         */
 /*----------------------------------------------------------------------------*/
-let timer_interval_id = 0;
 let curr_question_type = "";
+let curr_prompt = "";
 
 /*----------------------------------------------------------------------------*/
 /* Functions                                                                  */
 /*----------------------------------------------------------------------------*/
-
-function start_timer(end_time) {
-    if (!Number.isNaN(end_time) && end_time != null) {
-        timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
-    } else {
-        question_timer_tag.innerText = "";
-    }
-}
-
-function update_timer(end_time) {
-    question_timer_tag.innerText = ms_to_formatted_string(end_time - Date.now());
-}
 
 function redirect_to_homepage(roomid, nickname) {
     let params = new URLSearchParams();
@@ -140,6 +127,7 @@ socket.on("join room success", function (msg) {
 /* Update Question and Question Timer                                         */
 /*----------------------------------------------------------------------------*/
 socket.on("push frquestion", function (prompt, end_time) {
+    curr_prompt = prompt;
     curr_question_type = "frquestion";
 
     frquestion_form.style.display = form_display_style;
@@ -159,6 +147,7 @@ socket.on("push frquestion", function (prompt, end_time) {
 });
 
 socket.on("push mcquestion", function (prompt, answer_choices, end_time) {
+    curr_prompt = prompt;
     curr_question_type = "mcquestion";
 
     frquestion_form.style.display = "none";
@@ -184,6 +173,7 @@ socket.on("push mcquestion", function (prompt, answer_choices, end_time) {
 });
 
 socket.on("push codequestion", function (prompt, template, provided_language, end_time) {
+    curr_prompt = prompt;
     curr_question_type = "codequestion";
 
     frquestion_form.style.display = "none";
@@ -251,12 +241,20 @@ socket.on("answer correct", function (player_answer, correct_answer, num_right, 
         ninja.style.display = 'none';
     }, 400);
     score_tag.innerText = `${num_right}/${num_right + num_wrong}`;
+
+    // Add row to the summary table
+    addTableRow(curr_prompt, correct_answer, player_answer);
+
 });
 
 socket.on("answer incorrect", function (player_answer, correct_answer, num_right, num_wrong) {
     question_feedback_tag.innerText = `Incorrect. You answered "${player_answer}". Correct answer is "${correct_answer}"`;
     question_feedback_tag.style.color = 'red';
     score_tag.innerText = `${num_right}/${num_right + num_wrong}`;
+
+    // Add row to the summary table
+    addTableRow(curr_prompt, correct_answer, player_answer);
+
 });
 
 /*----------------------------------------------------------------------------*/
@@ -279,7 +277,20 @@ socket.on("run fail", function (stderr) {
     output_tag.innerText = stderr;
 });
 
+socket.on("run timeout", function () {
+    output_tag.innerText = "Your code exceeded the standard time.";
+});
+
 socket.on("run success", function (stdout) {
     console.log(stdout);
     output_tag.innerText = stdout;
+});
+
+
+/*----------------------------------------------------------------------------*/
+/* Show Summary When Session Closes                                           */
+/*----------------------------------------------------------------------------*/
+
+socket.on("close session", function () {
+    toggle_visibility(false);
 });

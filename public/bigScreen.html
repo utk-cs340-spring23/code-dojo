@@ -2,10 +2,10 @@
 <html>
 
 <head>
+    <title>Big Screen</title>
     <link rel="stylesheet" href="bigScreen.css">
     <link rel="shortcut icon" href="img/dojoFavicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="bigscreen.js"></script>
     <script src="js/chart.umd.js"></script>
 </head>
 
@@ -20,9 +20,11 @@
         <div class="timer-box">
             <div class="white-text">
                 <div class="border">
-                    <div class="seshID" id="session-id">Session ID </div>
+                    <div class="info-text" id="session-id">Session ID </div>
                     <div class="separator"></div>
-                    <div class="timer-display" id="question-timer">00:00:00</div>
+                    <div class="info-text" id="num-players">0 connected</div>
+                    <div class="separator"></div>
+                    <div class="info-text" id="question-timer">00:00:00</div>
                 </div>
             </div>
         </div>
@@ -30,18 +32,20 @@
 
     <div class="white-text">
         <center>
-            <h1 id="question-placeholder">
-                The question will go here, centered right above the graph. Make sure you do this with the correct id.
-            </h1>
+            <h1 id="question">Waiting for host...</h1>
+            <h1 id="answer"></h1>
         </center>
     </div>
 
     <br>
-    <div class="modern-container">
+    <div id="chart-container" class="modern-container">
         <canvas id="myChart"></canvas>
     </div>
 
-
+    <!-- JavaScript to communicate with server -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/bigScreen.js"></script>
 </body>
 
 </html>
