@@ -1,11 +1,14 @@
 import fs from "fs";
 import { exec } from "child_process";
 
+const code_time_limit: number = 2500; // in milliseconds
+
 enum RunResult {
     unknown,
     compile_fail,
     run_fail,
-    run_success
+    run_success,
+    run_timeout
 };
 
 class RunOutput {
@@ -43,11 +46,15 @@ async function run_c(code, name, output): Promise<void> {
         });
 
         await new Promise((resolve, reject) => {
-            exec(`./${executable_name}`, (err, stdout, stderr) => {
+            exec(`./${executable_name}`, { timeout: code_time_limit }, (err, stdout, stderr) => {
                 if (err) {
-                    output.stdout = stdout;
-                    output.stderr = stderr;
-                    output.result = RunResult.run_fail;
+                    if (err.killed && err.signal === "SIGTERM") {
+                        output.result = RunResult.run_timeout;
+                    } else {
+                        output.stdout = stdout;
+                        output.stderr = stderr;
+                        output.result = RunResult.run_fail;
+                    }
                     reject(stderr);
                 } else {
                     output.stdout = stdout;
@@ -61,7 +68,7 @@ async function run_c(code, name, output): Promise<void> {
         });
 
     } catch (error) {
-        console.error('Error during compilation or execution:', error);
+        console.error("Error during compilation or execution:", error);
     }
 }
 

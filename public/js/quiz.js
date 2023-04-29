@@ -277,6 +277,10 @@ socket.on("run fail", function (stderr) {
     output_tag.innerText = stderr;
 });
 
+socket.on("run timeout", function () {
+    output_tag.innerText = "Your code exceeded the standard time.";
+});
+
 socket.on("run success", function (stdout) {
     console.log(stdout);
     output_tag.innerText = stdout;

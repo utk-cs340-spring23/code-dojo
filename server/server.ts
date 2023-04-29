@@ -316,6 +316,9 @@ io.on("connection", function (socket: Socket) {
             case RunResult.run_success:
                 io.to(socket.id).emit("run success", output.stdout);
                 break;
+            case RunResult.run_timeout:
+                io.to(socket.id).emit("run timeout");
+                break;
             default:
                 io.to(socket.id).emit("run fail", "Run never occured? (You should not be seeing this)");
                 break;
