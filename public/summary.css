@@ -1,24 +1,15 @@
-body {
-	background-color: #F7F7F7;
-}
-
-h1 {
-	color: #333333;
-}
-
 table {
-	background-color: #FFFFFF;
+	border-collapse: collapse;
+	width: 100%;
 }
-
+th, td {
+	text-align: left;
+	padding: 8px;
+	border: 1px solid black;
+}
 th {
-	background-color: #EEEEEE;
+	background-color: #ddd;
 }
-
-.chart-bar {
-	background-color: #4CAF50;
-	color: #FFFFFF;
-}
-
-.chart-bar.correct {
-	background-color: #008000;
+tr:nth-child(even) {
+	background-color: #f2f2f2;
 }

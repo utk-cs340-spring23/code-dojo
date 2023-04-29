@@ -39,7 +39,7 @@ body{
 
 .contact-button{
     /*background-color: #0061e1;*/
-    background: linear-gradient(to left, #a50505, #ae5a1e, #d12010, #a50505);
+    background: linear-gradient(to left, #a50505, #ae5a1e, #ae5a1e, #a50505);
 	border: none;
 	border-radius: 60px;
 	position: absolute;

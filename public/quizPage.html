@@ -12,6 +12,7 @@
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3S10sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/quizPage.css" />
     <link rel="shortcut icon" href="img/dojoFavicon.png">
+    <link rel="stylesheet" type="text/css" href="summary.css">
 
     <div class="background-container">
         <div class="background-image"></div>
@@ -19,134 +20,150 @@
 </head>
 
 <body>
-
-    <div class="question-set">
-        <div class="timer-box">
-            <div class="timer-display" id="question-timer">00:00:00</div>
-            <div class="score-box">
-                <div class="score-display">Score: <span id="score-number">0</span></div>
-            </div>
-        </div>
-    
-        <p id="question-feedback" class="question-feedback">Question feedback will be shown here</p>
-        <p class="questionbox" id="question">Waiting for host...</p>
-    </div>
-    
-    <form class="answer-submit" id="frquestion-form">
-        <!-- text boxes for question and icons -->
-        <center>
-            <input class="questionbox" id="answer-input" placeholder="Answer here"></input>
-        </center>
-
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" height="48" width="48" id="compile">
-                <path
-                    d="M705 928 447 668q-23 8-46 13t-47 5q-97.083 0-165.042-67.667Q121 550.667 121 454q0-31 8.158-60.388Q137.316 364.223 152 338l145 145 92-86-149-149q25.915-15.158 54.957-23.579Q324 216 354 216q99.167 0 168.583 69.417Q592 354.833 592 454q0 24-5 47t-13 46l259 258q11 10.957 11 26.478Q844 847 833 858l-76 70q-10.696 11-25.848 11T705 928Zm28-57 40-40-273-273q16-21 24-49.5t8-54.5q0-75-55.5-127T350 274l101 103q9 9 9 22t-9 22L319 545q-9 9-22 9t-22-9l-97-96q3 77 54.668 127T354 626q25 0 53-8t49-24l277 277ZM476 572Z" />
-            </svg> -->
-    </form>
-
-    <form id="mcquestion-form" disabled>
-        <fieldset id="mcquestion-fieldset">
-            <legend>Please choose an answer:</legend>
-            <input type="radio" class="mcquestion-answer-button" name="mcquestion-answer-button">
-            <label class="mcquestion-answer-label">Huey</label>
-            <br>
-
-            <input type="radio" class="mcquestion-answer-button" name="mcquestion-answer-button">
-            <label class="mcquestion-answer-label">Dewey</label>
-            <br>
-
-            <input type="radio" class="mcquestion-answer-button" name="mcquestion-answer-button">
-            <label class="mcquestion-answer-label">Louie</label>
-            <br>
-
-            <input type="radio" class="mcquestion-answer-button" name="mcquestion-answer-button">
-            <label class="mcquestion-answer-label">Louie</label>
-        </fieldset>
-    </form>
-
-
-    <!-- Code editor and compiler-->
-    <form id="codequestion-form">
-        <div id="code-input">
-            <div class="control-panel">
-                <!-- THEME SELECT -->
-                <label for="themes">Select Theme:</label>
-                <div class="dropdown-wrapper">
-                    <select id="themes" class="themes" onchange="changeTheme()">
-                        <option value="ace/theme/one_dark">One Dark</option>
-                        <option value="ace/theme/eclipse">Eclipse</option>
-                        <option value="ace/theme/twilight">Twilight</option>
-                        <option value="ace/theme/solarized_light">Solarized Light</option>
-                        <option value="ace/theme/gob">Gob</option>
-                        <option value="ace/theme/monokai">Monokai</option>
-                        <option value="ace/theme/github">GitHub</option>
-                    </select>
+    <div id="question-area">
+        <div class="question-set">
+            <div class="timer-box">
+                <div class="timer-display" id="question-timer">00:00:00</div>
+                <div class="score-box">
+                    <div class="score-display">Score: <span id="score-number">0</span></div>
                 </div>
             </div>
-            <div class="editor" id="editor"></div>
-            <div class="button-container">
-                <button class="btn" id="run-code-button">Run</button>
+        
+            <p id="question-feedback" class="question-feedback">Question feedback will be shown here</p>
+            <p class="questionbox" id="question">Waiting for host...</p>
+        </div>
+        
+        <form class="answer-submit" id="frquestion-form">
+            <!-- text boxes for question and icons -->
+            <center>
+                <input class="questionbox" id="answer-input" placeholder="Answer here"></input>
+            </center>
+
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" height="48" width="48" id="compile">
+                    <path
+                        d="M705 928 447 668q-23 8-46 13t-47 5q-97.083 0-165.042-67.667Q121 550.667 121 454q0-31 8.158-60.388Q137.316 364.223 152 338l145 145 92-86-149-149q25.915-15.158 54.957-23.579Q324 216 354 216q99.167 0 168.583 69.417Q592 354.833 592 454q0 24-5 47t-13 46l259 258q11 10.957 11 26.478Q844 847 833 858l-76 70q-10.696 11-25.848 11T705 928Zm28-57 40-40-273-273q16-21 24-49.5t8-54.5q0-75-55.5-127T350 274l101 103q9 9 9 22t-9 22L319 545q-9 9-22 9t-22-9l-97-96q3 77 54.668 127T354 626q25 0 53-8t49-24l277 277ZM476 572Z" />
+                </svg> -->
+        </form>
+
+        <form id="mcquestion-form" disabled>
+            <fieldset id="mcquestion-fieldset">
+                <legend>Please choose an answer:</legend>
+                <input type="radio" class="mcquestion-answer-button" name="mcquestion-answer-button">
+                <label class="mcquestion-answer-label">Huey</label>
+                <br>
+
+                <input type="radio" class="mcquestion-answer-button" name="mcquestion-answer-button">
+                <label class="mcquestion-answer-label">Dewey</label>
+                <br>
+
+                <input type="radio" class="mcquestion-answer-button" name="mcquestion-answer-button">
+                <label class="mcquestion-answer-label">Louie</label>
+                <br>
+
+                <input type="radio" class="mcquestion-answer-button" name="mcquestion-answer-button">
+                <label class="mcquestion-answer-label">Louie</label>
+            </fieldset>
+        </form>
+
+
+        <!-- Code editor and compiler-->
+        <form id="codequestion-form">
+            <div id="code-input">
+                <div class="control-panel">
+                    <!-- THEME SELECT -->
+                    <label for="themes">Select Theme:</label>
+                    <div class="dropdown-wrapper">
+                        <select id="themes" class="themes" onchange="changeTheme()">
+                            <option value="ace/theme/one_dark">One Dark</option>
+                            <option value="ace/theme/eclipse">Eclipse</option>
+                            <option value="ace/theme/twilight">Twilight</option>
+                            <option value="ace/theme/solarized_light">Solarized Light</option>
+                            <option value="ace/theme/gob">Gob</option>
+                            <option value="ace/theme/monokai">Monokai</option>
+                            <option value="ace/theme/github">GitHub</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="editor" id="editor"></div>
+                <div class="button-container">
+                    <button class="btn" id="run-code-button">Run</button>
+                </div>
             </div>
+
+            <div class="output-container">
+                <div class="output-header">Output</div>
+                <div class="output" id="output"></div>
+            </div>
+        </form>
+
+        <!-- Submit Button -->
+        <button id="submit-answer-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="submit">
+                <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+            </svg>
+        </button>
+
+
+        <!-- vectors for hamburger and makeNote icons -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"
+            id="hamburger">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+        <a href="NOTES_PAGE/notesPage.html">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" id="makeNote">
+                <path
+                    d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" />
+            </svg>
+        </a>
+
+        <div class="submitButton">
+        </div>
+        <div id="overlay">
         </div>
 
-        <div class="output-container">
-            <div class="output-header">Output</div>
-            <div class="output" id="output"></div>
+        <div id="sidebar">
+            <a href="index.html" class="sidebar-item">
+                <button class="btn">Home</button>
+            </a>
+            <a href="NOTES_PAGE/notesPage.html" class="sidebar-item">
+                <button class="btn">Notes</button>
+            </a>
+            <a href="HISTORY_PAGE/historyPage.html" class="sidebar-item">
+                <button class="btn">History</button>
+            </a>
+            <a href="PROFILE/profilePage.html" class="sidebar-item">
+                <button class="btn">Profile</button>
+            </a>
+            <a href="FAQ_PAGE/faqPage.html" class="sidebar-item">
+                <button class="btn">FAQ</button>
+            </a>
+            <a href="ABOUT_PAGE/aboutPage.html" class="sidebar-item">
+                <button class="btn">About</button>
+            </a>
         </div>
-    </form>
 
-    <!-- Submit Button -->
-    <button id="submit-answer-button">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="submit">
-            <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
-        </svg>
-    </button>
-
-
-    <!-- vectors for hamburger and makeNote icons -->
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"
-        id="hamburger">
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-    </svg>
-    <a href="NOTES_PAGE/notesPage.html">
-        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" id="makeNote">
-            <path
-                d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" />
-        </svg>
-    </a>
-
-    <div class="submitButton">
-    </div>
-    <div id="overlay">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
 
-    <div id="sidebar">
-        <a href="index.html" class="sidebar-item">
-            <button class="btn">Home</button>
-        </a>
-        <a href="NOTES_PAGE/notesPage.html" class="sidebar-item">
-            <button class="btn">Notes</button>
-        </a>
-        <a href="HISTORY_PAGE/historyPage.html" class="sidebar-item">
-            <button class="btn">History</button>
-        </a>
-        <a href="PROFILE/profilePage.html" class="sidebar-item">
-            <button class="btn">Profile</button>
-        </a>
-        <a href="FAQ_PAGE/faqPage.html" class="sidebar-item">
-            <button class="btn">FAQ</button>
-        </a>
-        <a href="ABOUT_PAGE/aboutPage.html" class="sidebar-item">
-            <button class="btn">About</button>
-        </a>
+    <div id="results-area">
+        <h1>Questions Summary</h1>
+        <table>
+            <tr>
+                <th>No.</th>
+                <th>Question</th>
+                <th>Correct Answer</th>
+                <th>Student Answer</th>
+            </tr>
+            <tbody>
+                <!-- This is where we will dynamically add rows using JavaScript -->
+            </tbody>
+        </table>
     </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
     <!-- Correct answer animation; only appears briefly upon correct answer, otherwise invisible -->
     <img src="img/ninjaslash.gif" id="ninja-slash">
@@ -164,6 +181,7 @@
     <script src="js/ace-builds/src/ace.js"></script>
     <script src="js/ace-builds/theme-monokai.js"></script>
     <script src="js/ide.js"></script>
+    <script src="summary.js"></script>
 
 </body>
 
