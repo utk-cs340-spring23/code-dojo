@@ -318,13 +318,15 @@ label {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
+	font-family: 'Tilt Warp', cursive;
 }
 
 
 .white-text {
     color: rgb(255, 255, 255);
-	font-family: Georgia, 'Times New Roman', Times, serif;
+	/* font-family: Georgia, 'Times New Roman', Times, serif; */
+	font-family: 'Tilt Warp', cursive;
 	font-weight: bold;
 }
 
