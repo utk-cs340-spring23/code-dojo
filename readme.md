@@ -1,3 +1,5 @@
+![Code Dojo](public/img/dojoFavicon.png "Title")
+
 # Code Dojo
 A gamified social learning web application for computer science—like a mix of Kahoot and LeetCode.
 
@@ -26,6 +28,9 @@ Then head to localhost:3000 to view the website.
 You can host a quiz room by heading to the "Teacher Page".
 Players can join a quiz room by entering the quiz room ID in the homepage.
 
+## License
+
+Code Dojo is licensed under the GNU General Public License v3.0 (read more [here](https://github.com/utk-cs340-spring23/code-dojo/blob/main/LICENSE)).
 <!-- ## Overview
 This product is an educational tool that resembles a combination of Kahoot and LeetCode.
 Teachers can host quiz rooms with real-time coding questions and student assessment.
