@@ -31,3 +31,20 @@ join_room_form.addEventListener("submit", function (e) {
     const url = 'quizPage.html?' + params.toString();
     window.location.href = url;
 });
+/*join_room_form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let params = new URLSearchParams();
+    params.append('roomid', roomid_input.value);
+    params.append('nickname', nickname_input.value);
+
+    // show the image for 3 seconds
+    const joinImage = document.getElementById("join-image");
+    joinImage.style.display = 'block';
+    setTimeout(function() {
+        joinImage.style.display = 'none';
+        const url = 'quizPage.html?' + params.toString();
+        window.location.href = url;
+    }, 3000);
+});*/
+
