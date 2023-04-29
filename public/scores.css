@@ -11,11 +11,9 @@ h1{
 }
 
 table {
-    position: fixed;
-    display: inline-block;
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, -50%);
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 3%;
 }
 
 .user{
