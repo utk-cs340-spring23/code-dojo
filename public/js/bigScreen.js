@@ -16,6 +16,25 @@ const chart_tag = document.getElementById("myChart");
 chart_container_tag.style.display = "none";
 
 /*----------------------------------------------------------------------------*/
+/* Functions                                                                  */
+/*----------------------------------------------------------------------------*/
+
+function append_player_list(nickname) {
+    const player_tag = document.createElement("div");
+    player_tag.innerText = nickname;
+    player_tag.setAttribute("id", nickname);
+    player_list_tag.prepend(player_tag);
+}
+
+function remove_player_list(nickname) {
+    const player_tag = document.getElementById(nickname);
+
+    if (player_tag != null) {
+        player_tag.remove();
+    }
+}
+
+/*----------------------------------------------------------------------------*/
 /* Room Joining                                                               */
 /*----------------------------------------------------------------------------*/
 const params = new URLSearchParams(window.location.search);
@@ -31,7 +50,7 @@ socket.emit("spectate room", roomid_param);
 
 socket.on("spectate room success", function (msg, num_players) {
     session_id_tag.innerText = `Session ID: ${roomid_param}`;
-    num_players_tag.innerText = `${num_players} connected`;
+    num_players_tag.innerText = `${num_players} players`;
 });
 
 socket.on("spectate room fail", function (msg) {
@@ -43,7 +62,7 @@ socket.on("spectate room fail", function (msg) {
 /* Update Player Count                                                        */
 /*----------------------------------------------------------------------------*/
 socket.on("num players", function (num_players) {
-    num_players_tag.innerText = `${num_players} connected`;
+    num_players_tag.innerText = `${num_players} players`;
 });
 
 /*----------------------------------------------------------------------------*/
@@ -51,10 +70,11 @@ socket.on("num players", function (num_players) {
 /*----------------------------------------------------------------------------*/
 // This player list is only visible before the host pushes any questions, similar to Kahoot
 socket.on("player join", function (socket_id, nickname) {
-    const player_tag = document.createElement("div");
-    player_tag.innerText = nickname;
+    append_player_list(nickname);
+});
 
-    player_list_tag.prepend(player_tag);
+socket.on("player leave", function (socket_id, nickname) {
+    remove_player_list(nickname);
 });
 
 /*----------------------------------------------------------------------------*/

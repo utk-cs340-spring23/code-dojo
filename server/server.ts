@@ -217,7 +217,7 @@ io.on("connection", function (socket: Socket) {
         socket.join(room_id);
         socket.join(`${room_id} spectators`);
 
-        io.to(socket.id).emit("spectate room success", "successfully spectating room", this_quizroom.num_players);
+        io.to(socket.id).emit("spectate room success", "successfully spectating room", this_quizroom.num_players, this_quizroom.players);
 
     });
 
@@ -389,7 +389,7 @@ io.on("connection", function (socket: Socket) {
             console.log(`Should be deleting player ${this_player.nickname} (socket ID ${socket.id})`);
             assert(this_player.socket.id == socket.id, `${socket.id} is disconnecting, but this_player.socket.id = ${this_player.socket.id}`)
             this_quizroom.delete_player(this_player);
-            io.to(this_quizroom.id).emit("player leave", socket.id);
+            io.to(this_quizroom.id).emit("player leave", socket.id, this_player.nickname);
             io.to(`${this_quizroom.id} spectators`).emit("num players", this_quizroom.num_players);
         }
     });
