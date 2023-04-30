@@ -217,7 +217,7 @@ io.on("connection", function (socket: Socket) {
         socket.join(room_id);
         socket.join(`${room_id} spectators`);
 
-        io.to(socket.id).emit("spectate room success", "successfully spectating room", this_quizroom.num_players, this_quizroom.players);
+        io.to(socket.id).emit("spectate room success", "successfully spectating room", this_quizroom.num_players, this_quizroom.nicknames);
 
     });
 

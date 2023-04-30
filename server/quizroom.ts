@@ -59,6 +59,16 @@ class QuizRoom {
         return this._questions.length - 1;
     }
 
+    public get nicknames(): string[] {
+        let nicknames: string[] = [];
+
+        for (const [key, player] of Object.entries(this._players)) {
+            nicknames.push(player.nickname);
+        }
+
+        return nicknames;
+    }
+
     /**
      * Adds specified Player object to the "players" table, keyed by their socket ID
      * @param player Player to add

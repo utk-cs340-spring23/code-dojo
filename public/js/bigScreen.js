@@ -48,9 +48,16 @@ if (roomid_param == null || roomid_param == "") {
 
 socket.emit("spectate room", roomid_param);
 
-socket.on("spectate room success", function (msg, num_players) {
+socket.on("spectate room success", function (msg, num_players, nicknames) {
     session_id_tag.innerText = `Session ID: ${roomid_param}`;
     num_players_tag.innerText = `${num_players} players`;
+
+    console.log(nicknames);
+
+    for (const nickname of nicknames) {
+        console.log(nickname);
+        append_player_list(nickname);
+    }
 });
 
 socket.on("spectate room fail", function (msg) {
