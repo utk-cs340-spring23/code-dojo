@@ -19,6 +19,22 @@ body {
     color: white;
 }
 
+#player-list {
+    color: #FFFFFF;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+#player-list div {
+    background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+    border-radius: 3px;
+    padding: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
 #back_button {
     position: relative;
     top: 1%;

@@ -8,6 +8,7 @@ const session_id_tag = document.getElementById("session-id");
 const num_players_tag = document.getElementById("num-players");
 const question_timer_tag = document.getElementById("question-timer");
 const question_tag = document.getElementById("question");
+const player_list_tag = document.getElementById("player-list");
 const answer_tag = document.getElementById("answer");
 const chart_container_tag = document.getElementById("chart-container");
 const chart_tag = document.getElementById("myChart");
@@ -46,18 +47,31 @@ socket.on("num players", function (num_players) {
 });
 
 /*----------------------------------------------------------------------------*/
+/* Initial Player List                                                        */
+/*----------------------------------------------------------------------------*/
+// This player list is only visible before the host pushes any questions, similar to Kahoot
+socket.on("player join", function (socket_id, nickname) {
+    const player_tag = document.createElement("div");
+    player_tag.innerText = nickname;
+
+    player_list_tag.prepend(player_tag);
+});
+
+/*----------------------------------------------------------------------------*/
 /* Handle Questions                                                           */
 /*----------------------------------------------------------------------------*/
 
 socket.on("push frquestion", function (prompt, end_time) {
-    question_tag.innerText = prompt;
+    player_list_tag.style.display = "none";
+    question_tag.innerText = `Question: ${prompt}`;
     answer_tag.innerText = "";
     chart_container_tag.style.display = "none";
     start_timer(end_time);
 });
 
 socket.on("push mcquestion", function (prompt, answer_choices, end_time) {
-    question_tag.innerText = prompt;
+    player_list_tag.style.display = "none";
+    question_tag.innerText = `Question: ${prompt}`;
     answer_tag.innerText = "";
     chart_container_tag.style.display = "none";
     start_timer(end_time);
@@ -65,7 +79,8 @@ socket.on("push mcquestion", function (prompt, answer_choices, end_time) {
 });
 
 socket.on("push codequestion", function (prompt, template, provided_language, end_time) {
-    question_tag.innerText = prompt;
+    player_list_tag.style.display = "none";
+    question_tag.innerText = `Question: ${prompt}`;
     answer_tag.innerText = "";
     chart_container_tag.style.display = "none";
     start_timer(end_time);
@@ -100,7 +115,10 @@ const config = {
     options: {
         scales: {
             y: {
-                beginAtZero: true
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1
+                }
             }
         }
     },
@@ -126,9 +144,11 @@ socket.on("question results", function (results) {
 
     data.labels = new_labels;
     data.datasets[0].data = new_values;
-    myBarChart.update();
 
     chart_container_tag.style.display = "block";
+
+    myBarChart.update();
+
 
     console.log("Got results!");
 });
