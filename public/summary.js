@@ -1,3 +1,4 @@
+
 let questionCount = 0; // Keep track of the number of questions
 
 function addTableRow(question, correctAnswer, studentAnswer) {
@@ -6,6 +7,7 @@ function addTableRow(question, correctAnswer, studentAnswer) {
 
   // Create a new table row
   const newRow = document.createElement('tr');
+  newRow.setAttribute("class", correctAnswer == studentAnswer ? "correct" : "incorrect");
 
   // Create table cells for the question number, question, correct answer, and student answer
   const questionNumberCell = document.createElement('td');

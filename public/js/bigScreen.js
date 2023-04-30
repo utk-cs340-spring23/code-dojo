@@ -109,10 +109,6 @@ const config = {
 const ctx = chart_tag.getContext('2d');
 const myBarChart = new Chart(ctx, config);
 
-function update_bar_chart(new_data) {
-    myBarChart.update();
-}
-
 socket.on("question results", function (results) {
     console.log(results);
 

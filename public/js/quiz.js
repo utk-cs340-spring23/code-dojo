@@ -16,6 +16,7 @@ const mcquestion_form = document.getElementById("mcquestion-form");
 const codequestion_form = document.getElementById("codequestion-form");
 const run_code_button = document.getElementById("run-code-button");
 const output_tag = document.getElementById("output");
+const results_score_tag = document.getElementById("results-score");
 
 const score_tag = document.getElementById("score-number");
 const ninja = document.getElementById("ninja-slash");
@@ -241,6 +242,7 @@ socket.on("answer correct", function (player_answer, correct_answer, num_right, 
         ninja.style.display = 'none';
     }, 400);
     score_tag.innerText = `${num_right}/${num_right + num_wrong}`;
+    results_score_tag.innerText = `Final score: ${score_tag.innerText}`;
 
     // Add row to the summary table
     addTableRow(curr_prompt, correct_answer, player_answer);
@@ -248,9 +250,10 @@ socket.on("answer correct", function (player_answer, correct_answer, num_right, 
 });
 
 socket.on("answer incorrect", function (player_answer, correct_answer, num_right, num_wrong) {
-    question_feedback_tag.innerText = `Incorrect. You answered "${player_answer}". Correct answer is "${correct_answer}"`;
+    question_feedback_tag.innerText = `Incorrect.You answered "${player_answer}". Correct answer is "${correct_answer}"`;
     question_feedback_tag.style.color = 'red';
-    score_tag.innerText = `${num_right}/${num_right + num_wrong}`;
+    score_tag.innerText = `${num_right} /${num_right + num_wrong}`;
+    results_score_tag.innerText = `Final score: ${score_tag.innerText}`;
 
     // Add row to the summary table
     addTableRow(curr_prompt, correct_answer, player_answer);

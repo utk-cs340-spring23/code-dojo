@@ -1,15 +1,28 @@
-table {
+#results-area h1,
+#results-area h3 {
+	color: #fff;
+}
+
+#results-area table {
 	border-collapse: collapse;
 	width: 100%;
 }
-th, td {
+
+#results-area th,
+#results-area td {
 	text-align: left;
 	padding: 8px;
 	border: 1px solid black;
 }
-th {
+
+#results-area th {
 	background-color: #ddd;
 }
-tr:nth-child(even) {
-	background-color: #f2f2f2;
+
+#results-area .correct {
+	background-color: green;
+}
+
+#results-area .incorrect {
+	background-color: red;
 }
