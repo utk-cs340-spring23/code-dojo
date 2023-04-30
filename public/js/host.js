@@ -234,8 +234,7 @@ socket.on("close question success", function (msg) {
     enable_input_fields(true);
     push_question_button.disabled = false;
     close_question_button.disabled = true;
-    clearInterval(timer_interval_id);
-
+    stop_timer();
 });
 
 socket.on("close question fail", function (msg) {

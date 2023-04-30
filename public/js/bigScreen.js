@@ -76,7 +76,7 @@ socket.on("correct answer", function (answer) {
 })
 
 socket.on("close question success", function () {
-    clearInterval(timer_interval_id);
+    stop_timer();
 });
 
 /*----------------------------------------------------------------------------*/

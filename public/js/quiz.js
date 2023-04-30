@@ -196,7 +196,7 @@ socket.on("push codequestion", function (prompt, template, provided_language, en
 socket.on("close question success", function () {
     answer_input.disabled = true;
     submit_answer_button.disabled = true;
-    clearInterval(timer_interval_id);
+    stop_timer();
 });
 
 /*----------------------------------------------------------------------------*/

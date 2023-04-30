@@ -46,7 +46,6 @@ async function close_question(io: SocketIOServer, quizroom: QuizRoom): Promise<b
         return false;
     }
 
-
     let results = new Object();
 
     for (const [key, player] of Object.entries(quizroom.players)) {
