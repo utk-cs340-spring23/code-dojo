@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
 
 body {
   margin: 0;
@@ -61,6 +61,7 @@ body {
 
 .top-nav ul li a {
   color: #fff;
+  font-family: 'Tilt Warp', cursive;
   font-size: 18px;
   font-weight: bold;
   padding: 10px;
@@ -76,7 +77,7 @@ body {
   background-color: #000000;
   color: #ffffff;
   padding: 10px 5px;
-  font-style: oblique;
+  font-family: 'Tilt Warp', cursive;
   font-size: 18px;
   font-weight: bold;
   transition: background-color 0.3s ease;

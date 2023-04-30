@@ -1,28 +1,46 @@
+#results-area {
+    width: 70%;
+    margin: 0 auto;
+}
+
 #results-area h1,
 #results-area h3 {
-	color: #fff;
+    color: white;
+}
+
+#results-area h3 {
+    display: inline-block;
+    border: 1px solid white;
+    padding: 4px;
 }
 
 #results-area table {
-	border-collapse: collapse;
-	width: 100%;
+    border-collapse: collapse;
+    width: 100%;
+	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #results-area th,
 #results-area td {
-	text-align: left;
-	padding: 8px;
-	border: 1px solid black;
+    width: 25%;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+#results-area td {
+	color:white;
 }
 
 #results-area th {
-	background-color: #ddd;
+    background-color: #ddd;
+	color: black;
 }
 
 #results-area .correct {
-	background-color: green;
+    background-color: rgba(0, 128, 0, 0.641);
 }
 
 #results-area .incorrect {
-	background-color: red;
+    background-color: rgba(255, 0, 0, 0.61);
 }

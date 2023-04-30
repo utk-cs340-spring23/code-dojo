@@ -223,6 +223,7 @@ label {
 }
 
 .player-table {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, cursive;
     width: 98%;
     margin-bottom: 20px;
     margin-top: 8%;
@@ -316,16 +317,12 @@ label {
 	cursor: pointer;
 }
 
-body {
-    /* font-family: Arial, sans-serif; */
-	font-family: 'Tilt Warp', cursive;
-}
 
 
 .white-text {
     color: rgb(255, 255, 255);
 	/* font-family: Georgia, 'Times New Roman', Times, serif; */
-	font-family: 'Tilt Warp', cursive;
+	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, cursive;
 	font-weight: bold;
 }
 
@@ -392,6 +389,7 @@ body {
 	}
 	
 	.grid-item {
+        font-family: sans-serif, cursive;
 		font-size: 14px;
 		padding: 8px;
 	}
