@@ -1,0 +1,262 @@
+teacherPage.html (nupadhy3 on 04/25/2023 at 00:54):             <!-- <a class="home-btn" href="index.html"><button type="button" class="side-btn">Home</button></a>-->
+teacherPage.html (nupadhy3 on 04/28/2023 at 16:39):                         <button type="button" class="close-btn red-btn press-down" id="close-question-button">Close
+aboutPage.css (nupadhy3 on 04/28/2023 at 16:39):     /*background-color: #0061e1;*/
+aboutPage.css (nupadhy3 on 04/29/2023 at 15:22):     background: linear-gradient(to left, #a50505, #ae5a1e, #ae5a1e, #a50505);
+aboutPage.css (nupadhy3 on 04/28/2023 at 16:39): 	border: none;
+homePage.css (nupadhy3 on 04/25/2023 at 00:00): /*.top-nav {
+homePage.css (nupadhy3 on 04/25/2023 at 00:00): }*/
+homePage.css (nupadhy3 on 04/25/2023 at 00:00): 
+homePage.css (nupadhy3 on 04/25/2023 at 00:00): .top-nav {
+homePage.css (nupadhy3 on 04/25/2023 at 00:00):   height: 40px;
+homePage.css (nupadhy3 on 04/25/2023 at 00:00):   display: flex;
+homePage.css (nupadhy3 on 04/25/2023 at 00:00):   justify-content: space-between;
+homePage.css (nupadhy3 on 04/25/2023 at 00:00):   align-items: center;
+homePage.css (nupadhy3 on 04/25/2023 at 00:00):   padding: 0 20px;
+homePage.css (nupadhy3 on 04/25/2023 at 00:00):   background-image: linear-gradient(to left, #000000, #303030, #000000);
+homePage.css (nupadhy3 on 04/25/2023 at 00:00):   background-size: 200% 100%;
+homePage.css (nupadhy3 on 04/25/2023 at 00:00):   background-position: 100% 50%;
+homePage.css (nupadhy3 on 04/25/2023 at 00:00):   background-repeat: no-repeat;
+homePage.css (nupadhy3 on 04/25/2023 at 00:54): /*****************/
+homePage.css (nupadhy3 on 04/25/2023 at 00:54): .btn-join {
+homePage.css (nupadhy3 on 04/25/2023 at 00:54):   background: linear-gradient(to right, #23a6d5, #1c7aa8, #0e4c70);
+homePage.css (nupadhy3 on 04/28/2023 at 16:39):   border: none;
+homePage.css (nupadhy3 on 04/28/2023 at 16:39):   /*background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+homePage.css (nupadhy3 on 04/28/2023 at 16:39): 	border: none;*/
+homePage.css (nupadhy3 on 04/25/2023 at 00:54):   color: #ffffff;
+homePage.css (nupadhy3 on 04/25/2023 at 00:54):   cursor: pointer;
+homePage.css (nupadhy3 on 04/25/2023 at 00:54):   font-family: 'Tilt Warp', cursive;
+homePage.css (nupadhy3 on 04/25/2023 at 00:54):   font-size: 18px;
+homePage.css (nupadhy3 on 04/25/2023 at 00:54):   font-weight: bold;
+homePage.css (nupadhy3 on 04/25/2023 at 00:54):   padding: 13.874px ;
+homePage.css (nupadhy3 on 04/25/2023 at 00:54):   position: relative;
+homePage.css (nupadhy3 on 04/25/2023 at 00:54):   text-align: center; /* add text-align property and set to center */
+homePage.css (nupadhy3 on 04/25/2023 at 00:54):   width: 100%; /* add width property and set to 100% */
+homePage.css (nupadhy3 on 04/25/2023 at 00:54):   transition: all 0.3s ease;
+homePage.css (nupadhy3 on 04/25/2023 at 00:54): }
+homePage.css (nupadhy3 on 04/25/2023 at 00:54): 
+homePage.css (nupadhy3 on 04/25/2023 at 00:54): /*button:hover {
+homePage.css (nupadhy3 on 04/25/2023 at 00:54): }*/
+homePage.css (nupadhy3 on 04/25/2023 at 00:54): button:hover {
+homePage.css (nupadhy3 on 04/25/2023 at 00:54):   color: #0ea6de;
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):     <link rel="stylesheet" type="text/css" href="summary.css">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):     <div id="question-area">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <div class="question-set">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <div class="timer-box">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <div class="timer-display" id="question-timer">00:00:00</div>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <div class="score-box">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                     <div class="score-display">Score: <span id="score-number">0</span></div>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 </div>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <p id="question-feedback" class="question-feedback">Question feedback will be shown here</p>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <p class="questionbox" id="question">Waiting for host...</p>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <form class="answer-submit" id="frquestion-form">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <!-- text boxes for question and icons -->
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <center>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <input class="questionbox" id="answer-input" placeholder="Answer here"></input>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </center>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22): 
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" height="48" width="48" id="compile">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                     <path
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                         d="M705 928 447 668q-23 8-46 13t-47 5q-97.083 0-165.042-67.667Q121 550.667 121 454q0-31 8.158-60.388Q137.316 364.223 152 338l145 145 92-86-149-149q25.915-15.158 54.957-23.579Q324 216 354 216q99.167 0 168.583 69.417Q592 354.833 592 454q0 24-5 47t-13 46l259 258q11 10.957 11 26.478Q844 847 833 858l-76 70q-10.696 11-25.848 11T705 928Zm28-57 40-40-273-273q16-21 24-49.5t8-54.5q0-75-55.5-127T350 274l101 103q9 9 9 22t-9 22L319 545q-9 9-22 9t-22-9l-97-96q3 77 54.668 127T354 626q25 0 53-8t49-24l277 277ZM476 572Z" />
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 </svg> -->
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         </form>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22): 
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <form id="mcquestion-form" disabled>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <fieldset id="mcquestion-fieldset">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <legend>Please choose an answer:</legend>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <input type="radio" class="mcquestion-answer-button" name="mcquestion-answer-button">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <label class="mcquestion-answer-label">Huey</label>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <br>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22): 
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <input type="radio" class="mcquestion-answer-button" name="mcquestion-answer-button">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <label class="mcquestion-answer-label">Dewey</label>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <br>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22): 
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <input type="radio" class="mcquestion-answer-button" name="mcquestion-answer-button">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <label class="mcquestion-answer-label">Louie</label>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <br>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22): 
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <input type="radio" class="mcquestion-answer-button" name="mcquestion-answer-button">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <label class="mcquestion-answer-label">Louie</label>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </fieldset>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         </form>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22): 
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22): 
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <!-- Code editor and compiler-->
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <form id="codequestion-form">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <div id="code-input">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <div class="control-panel">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                     <!-- THEME SELECT -->
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                     <label for="themes">Select Theme:</label>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                     <div class="dropdown-wrapper">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                         <select id="themes" class="themes" onchange="changeTheme()">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                             <option value="ace/theme/one_dark">One Dark</option>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                             <option value="ace/theme/eclipse">Eclipse</option>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                             <option value="ace/theme/twilight">Twilight</option>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                             <option value="ace/theme/solarized_light">Solarized Light</option>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                             <option value="ace/theme/gob">Gob</option>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                             <option value="ace/theme/monokai">Monokai</option>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                             <option value="ace/theme/github">GitHub</option>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                         </select>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                     </div>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 </div>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <div class="editor" id="editor"></div>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <div class="button-container">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                     <button class="btn" id="run-code-button">Run</button>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22): 
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <div class="output-container">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <div class="output-header">Output</div>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <div class="output" id="output"></div>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         </form>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <!-- Submit Button -->
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <button id="submit-answer-button">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="submit">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </svg>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         </button>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22): 
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <!-- vectors for hamburger and makeNote icons -->
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             id="hamburger">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <path d="M0 0h24v24H0z" fill="none" />
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <a href="NOTES_PAGE/notesPage.html">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" id="makeNote">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <path
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                     d="M180 1044q-24 0-42-18t-18-42V384q0-24 18-42t42-18h405l-60 60H180v600h600V636l60-60v408q0 24-18 42t-42 18H180Zm300-360Zm182-352 43 42-285 284v86h85l286-286 42 42-303 304H360V634l302-302Zm171 168L662 332l100-100q17-17 42.311-17T847 233l84 85q17 18 17 42.472T930 402l-97 98Z" />
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </svg>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         </a>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <div class="submitButton">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         </div>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <div id="overlay">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         </div>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <div id="sidebar">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <a href="index.html" class="sidebar-item">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <button class="btn">Home</button>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </a>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <a href="NOTES_PAGE/notesPage.html" class="sidebar-item">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <button class="btn">Notes</button>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </a>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <a href="HISTORY_PAGE/historyPage.html" class="sidebar-item">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <button class="btn">History</button>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </a>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <a href="PROFILE/profilePage.html" class="sidebar-item">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <button class="btn">Profile</button>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </a>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <a href="FAQ_PAGE/faqPage.html" class="sidebar-item">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <button class="btn">FAQ</button>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </a>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <a href="ABOUT_PAGE/aboutPage.html" class="sidebar-item">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <button class="btn">About</button>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </a>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         </div>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):     <div id="results-area">
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <h1>Questions Summary</h1>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <table>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <tr>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <th>No.</th>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <th>Question</th>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <th>Correct Answer</th>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <th>Student Answer</th>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </tr>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <tbody>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <!-- This is where we will dynamically add rows using JavaScript -->
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </tbody>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         </table>
+quizPage.html (nupadhy3 on 04/29/2023 at 15:22):     </div>
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	/*background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	border: none;*/
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	border: none;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	color: #ffffff;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	cursor: pointer;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	font-family: 'Tilt Warp';
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	font-size: 18px;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	font-weight: bold;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	padding: 13.874px 20px;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	position: relative;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	transition: all 0.3s ease;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	border-radius: 5px;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): }
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): .close-btn {
+teacherPage.css (nupadhy3 on 04/29/2023 at 15:22): 	background: linear-gradient(to left, #a50505, #ae5a1e, #ae5a1e, #a50505);
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+teacherPage.css (nupadhy3 on 04/25/2023 at 00:54): 	border: none;
+teacherPage.css (nupadhy3 on 04/25/2023 at 00:54):     /*background-color: #23a6d5;*/
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:55):     /*background-color: #23a6d5;*/
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:55): 	background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+index.html   (nupadhy3 on 04/25/2023 at 00:54):         <button class="btn-join">JOIN</button>
+index.html   (nupadhy3 on 04/29/2023 at 17:41):   
+index.html   (nupadhy3 on 04/29/2023 at 17:41):   <!-- <img id="join-image" src="ninjaS.jpeg" alt="Join Image" hidden> -->
+index.html   (nupadhy3 on 04/29/2023 at 17:41):   
+summary.css  (nupadhy3 on 04/29/2023 at 15:22): 	border-collapse: collapse;
+summary.css  (nupadhy3 on 04/29/2023 at 15:22): 	width: 100%;
+summary.css  (nupadhy3 on 04/29/2023 at 15:22): 	text-align: left;
+summary.css  (nupadhy3 on 04/29/2023 at 15:22): 	padding: 8px;
+summary.css  (nupadhy3 on 04/29/2023 at 15:22): 	border: 1px solid black;
+summary.css  (nupadhy3 on 04/29/2023 at 15:22): 	background-color: #ddd;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): let questionCount = 0; // Keep track of the number of questions
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): function addTableRow(question, correctAnswer, studentAnswer) {
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Get the table body
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const tableBody = document.querySelector('tbody');
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Create a new table row
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const newRow = document.createElement('tr');
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Create table cells for the question number, question, correct answer, and student answer
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const questionNumberCell = document.createElement('td');
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   questionNumberCell.textContent = ++questionCount;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   newRow.appendChild(questionNumberCell);
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const questionCell = document.createElement('td');
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   questionCell.textContent = question;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   newRow.appendChild(questionCell);
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const correctAnswerCell = document.createElement('td');
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   correctAnswerCell.textContent = correctAnswer;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   newRow.appendChild(correctAnswerCell);
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const studentAnswerCell = document.createElement('td');
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   studentAnswerCell.textContent = studentAnswer;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   newRow.appendChild(studentAnswerCell);
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Append the new row to the table body
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   tableBody.appendChild(newRow);
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Resize the table to fit all rows
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const tableHeight = tableBody.getBoundingClientRect().height;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const windowHeight = window.innerHeight;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   if (tableHeight > windowHeight) {
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     // If the table is taller than the window, set the table height to the window height minus 100 pixels for padding
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     tableBody.style.height = windowHeight - 100 + 'px';
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     tableBody.style.overflowY = 'scroll';
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   }
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): }
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): function toggle_visibility(showQuestions) {
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     document.getElementById("question-area").style.display = "block";
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     document.getElementById("results-area").style.display = "none";
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     document.getElementById("question-area").style.display = "none";
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     document.getElementById("results-area").style.display = "block";
+notesPage.css (nupadhy3 on 04/28/2023 at 16:39):   /*background: #23a6d5;*/
+notesPage.css (nupadhy3 on 04/28/2023 at 16:39):   background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+notesPage.css (nupadhy3 on 04/28/2023 at 16:39):   /*background: #23a6d5;*/
+notesPage.css (nupadhy3 on 04/28/2023 at 16:39):   background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+index.js     (nupadhy3 on 04/29/2023 at 17:41): /*join_room_form.addEventListener("submit", function (e) {
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     e.preventDefault();
+index.js     (nupadhy3 on 04/29/2023 at 17:41): 
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     let params = new URLSearchParams();
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     params.append('roomid', roomid_input.value);
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     params.append('nickname', nickname_input.value);
+index.js     (nupadhy3 on 04/29/2023 at 17:41): 
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     // show the image for 3 seconds
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     const joinImage = document.getElementById("join-image");
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     joinImage.style.display = 'block';
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     setTimeout(function() {
+index.js     (nupadhy3 on 04/29/2023 at 17:41):         joinImage.style.display = 'none';
+index.js     (nupadhy3 on 04/29/2023 at 17:41):         const url = 'quizPage.html?' + params.toString();
+index.js     (nupadhy3 on 04/29/2023 at 17:41):         window.location.href = url;
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     }, 3000);
+index.js     (nupadhy3 on 04/29/2023 at 17:41): });*/
+index.js     (nupadhy3 on 04/29/2023 at 17:41): 
