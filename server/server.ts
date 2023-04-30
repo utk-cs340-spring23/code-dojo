@@ -364,6 +364,13 @@ io.on("connection", function (socket: Socket) {
 
         console.log(`${socket.id} submitted answer ${provided_answer}`);
 
+        console.log(this_quizroom.get_player_curr_answer(this_player));
+
+        if (this_quizroom.get_player_curr_answer(this_player) == undefined) {
+            this_quizroom.curr_question.increment_num_answered();
+            io.to(`${this_quizroom.id} spectators`).emit("new answer", this_quizroom.curr_question.num_answered);
+        }
+
         /* We do not simply "push" the answer onto the answers array. We need to account for the possibilty that the player may submit more than one answer and/or the player may join midway through quiz. */
         this_quizroom.set_player_curr_answer(this_player, provided_answer);
 

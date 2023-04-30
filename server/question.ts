@@ -47,6 +47,7 @@ class Question {
     protected _is_timed: boolean;         // Is the question timed?
     protected _time_limit: number;        // Amount of time (ms) to complete the question
     protected _end_time: number;          // Unix time (ms) when question closes
+    protected _num_answered: number;      // How many players answered the question
     protected _num_right: number;         // How many players got the question right
     protected _num_wrong: number;         // How many players got the question wrong
     protected _is_active: boolean;        // Is the question currently active in the QuizRoom?
@@ -69,6 +70,7 @@ class Question {
         this._is_timed = time_limit > 0;
         this._time_limit = time_limit;
         this._end_time = this.start_time + time_limit;
+        this._num_answered = 0;
         this._num_right = 0;
         this._num_wrong = 0;
         this._is_active = true;
@@ -102,6 +104,10 @@ class Question {
         return this._end_time;
     }
 
+    public get num_answered(): number {
+        return this._num_answered;
+    }
+
     public get num_right(): number {
         return this._num_right;
     }
@@ -116,6 +122,10 @@ class Question {
 
     public async check_answer(provided_answer: any, player: Player): Promise<number> {
         throw new Error("Method 'check_answer()' must be implemented");
+    }
+
+    public increment_num_answered(): void {
+        ++this._num_answered;
     }
 
     public increment_num_right(): void {

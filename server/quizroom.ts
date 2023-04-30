@@ -130,13 +130,13 @@ class QuizRoom {
      * @param player Player to get answer from
      * @returns Player's answer to the current question
      */
-    public get_player_curr_answer(player: Player): string {
-        return player.answers[this.num_questions - 1];
+    public get_player_curr_answer(player: Player): string | undefined {
+        return player.answers[this.curr_question_index];
     }
 
     public set_player_curr_answer(player: Player, answer: any): void {
-        player.answers[this.num_questions - 1] = answer;
-        console.log(`setting player.answers[${this.num_questions - 1}] = ${answer}`);
+        player.answers[this.curr_question_index] = answer;
+        console.log(`setting player.answers[${this.curr_question_index}] = ${answer}`);
     }
 
     /**

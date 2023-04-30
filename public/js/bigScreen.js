@@ -6,6 +6,7 @@
 const socket = io();
 const session_id_tag = document.getElementById("session-id");
 const num_players_tag = document.getElementById("num-players");
+const answer_count_tag = document.getElementById("answer-count");
 const question_timer_tag = document.getElementById("question-timer");
 const question_tag = document.getElementById("question");
 const player_list_tag = document.getElementById("player-list");
@@ -14,10 +15,21 @@ const chart_container_tag = document.getElementById("chart-container");
 const chart_tag = document.getElementById("myChart");
 
 chart_container_tag.style.display = "none";
+answer_count_tag.style.display = "none";
+
+/*----------------------------------------------------------------------------*/
+/* Global Variables                                                           */
+/*----------------------------------------------------------------------------*/
+let num_players = 0;
+let num_players_answered = 0;
 
 /*----------------------------------------------------------------------------*/
 /* Functions                                                                  */
 /*----------------------------------------------------------------------------*/
+
+function update_answer_count_tag() {
+    answer_count_tag.innerText = `${num_players_answered} / ${num_players}`;
+}
 
 function append_player_list(nickname) {
     const player_tag = document.createElement("div");
@@ -48,7 +60,9 @@ if (roomid_param == null || roomid_param == "") {
 
 socket.emit("spectate room", roomid_param);
 
-socket.on("spectate room success", function (msg, num_players, nicknames) {
+socket.on("spectate room success", function (msg, _num_players, nicknames) {
+    num_players = _num_players
+
     session_id_tag.innerText = `Session ID: ${roomid_param}`;
     num_players_tag.innerText = `${num_players} players`;
 
@@ -68,7 +82,8 @@ socket.on("spectate room fail", function (msg) {
 /*----------------------------------------------------------------------------*/
 /* Update Player Count                                                        */
 /*----------------------------------------------------------------------------*/
-socket.on("num players", function (num_players) {
+socket.on("num players", function (_num_players) {
+    num_players = _num_players;
     num_players_tag.innerText = `${num_players} players`;
 });
 
@@ -77,11 +92,15 @@ socket.on("num players", function (num_players) {
 /*----------------------------------------------------------------------------*/
 // This player list is only visible before the host pushes any questions, similar to Kahoot
 socket.on("player join", function (socket_id, nickname) {
+    ++num_players;
     append_player_list(nickname);
+    update_answer_count_tag();
 });
 
 socket.on("player leave", function (socket_id, nickname) {
+    --num_players;
     remove_player_list(nickname);
+    update_answer_count_tag();
 });
 
 /*----------------------------------------------------------------------------*/
@@ -89,6 +108,9 @@ socket.on("player leave", function (socket_id, nickname) {
 /*----------------------------------------------------------------------------*/
 
 socket.on("push frquestion", function (prompt, end_time) {
+    num_players_answered = 0;
+    update_answer_count_tag();
+    answer_count_tag.style.display = "block";
     player_list_tag.style.display = "none";
     question_tag.innerText = `Question: ${prompt}`;
     answer_tag.innerText = "";
@@ -97,6 +119,9 @@ socket.on("push frquestion", function (prompt, end_time) {
 });
 
 socket.on("push mcquestion", function (prompt, answer_choices, end_time) {
+    num_players_answered = 0;
+    update_answer_count_tag();
+    answer_count_tag.style.display = "block";
     player_list_tag.style.display = "none";
     question_tag.innerText = `Question: ${prompt}`;
     answer_tag.innerText = "";
@@ -106,6 +131,9 @@ socket.on("push mcquestion", function (prompt, answer_choices, end_time) {
 });
 
 socket.on("push codequestion", function (prompt, template, provided_language, end_time) {
+    num_players_answered = 0;
+    update_answer_count_tag();
+    answer_count_tag.style.display = "block";
     player_list_tag.style.display = "none";
     question_tag.innerText = `Question: ${prompt}`;
     answer_tag.innerText = "";
@@ -119,6 +147,13 @@ socket.on("correct answer", function (answer) {
 
 socket.on("close question success", function () {
     stop_timer();
+});
+
+//
+
+socket.on("new answer", function (_num_players_answered) {
+    num_players_answered = _num_players_answered;
+    update_answer_count_tag();
 });
 
 /*----------------------------------------------------------------------------*/
