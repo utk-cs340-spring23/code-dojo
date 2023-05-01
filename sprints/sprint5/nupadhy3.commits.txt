@@ -1,8 +1,44 @@
+index.js     (nupadhy3 on 04/29/2023 at 17:41): /*join_room_form.addEventListener("submit", function (e) {
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     e.preventDefault();
+index.js     (nupadhy3 on 04/29/2023 at 17:41): 
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     let params = new URLSearchParams();
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     params.append('roomid', roomid_input.value);
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     params.append('nickname', nickname_input.value);
+index.js     (nupadhy3 on 04/29/2023 at 17:41): 
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     // show the image for 3 seconds
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     const joinImage = document.getElementById("join-image");
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     joinImage.style.display = 'block';
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     setTimeout(function() {
+index.js     (nupadhy3 on 04/29/2023 at 17:41):         joinImage.style.display = 'none';
+index.js     (nupadhy3 on 04/29/2023 at 17:41):         const url = 'quizPage.html?' + params.toString();
+index.js     (nupadhy3 on 04/29/2023 at 17:41):         window.location.href = url;
+index.js     (nupadhy3 on 04/29/2023 at 17:41):     }, 3000);
+index.js     (nupadhy3 on 04/29/2023 at 17:41): });*/
+index.js     (nupadhy3 on 04/29/2023 at 17:41): 
 teacherPage.html (nupadhy3 on 04/25/2023 at 00:54):             <!-- <a class="home-btn" href="index.html"><button type="button" class="side-btn">Home</button></a>-->
 teacherPage.html (nupadhy3 on 04/28/2023 at 16:39):                         <button type="button" class="close-btn red-btn press-down" id="close-question-button">Close
-aboutPage.css (nupadhy3 on 04/28/2023 at 16:39):     /*background-color: #0061e1;*/
-aboutPage.css (nupadhy3 on 04/29/2023 at 15:22):     background: linear-gradient(to left, #a50505, #ae5a1e, #ae5a1e, #a50505);
-aboutPage.css (nupadhy3 on 04/28/2023 at 16:39): 	border: none;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	/*background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	border: none;*/
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	border: none;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	color: #ffffff;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	cursor: pointer;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	font-family: 'Tilt Warp';
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	font-size: 18px;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	font-weight: bold;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	padding: 13.874px 20px;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	position: relative;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	transition: all 0.3s ease;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	border-radius: 5px;
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): }
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): .close-btn {
+teacherPage.css (nupadhy3 on 04/29/2023 at 15:22): 	background: linear-gradient(to left, #a50505, #ae5a1e, #ae5a1e, #a50505);
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+teacherPage.css (nupadhy3 on 04/25/2023 at 00:54): 	border: none;
+teacherPage.css (nupadhy3 on 04/25/2023 at 00:54):     /*background-color: #23a6d5;*/
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:55):     /*background-color: #23a6d5;*/
+teacherPage.css (nupadhy3 on 04/28/2023 at 16:55): 	background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
 homePage.css (nupadhy3 on 04/25/2023 at 00:00): /*.top-nav {
 homePage.css (nupadhy3 on 04/25/2023 at 00:00): }*/
 homePage.css (nupadhy3 on 04/25/2023 at 00:00): 
@@ -38,6 +74,61 @@ homePage.css (nupadhy3 on 04/25/2023 at 00:54): /*button:hover {
 homePage.css (nupadhy3 on 04/25/2023 at 00:54): }*/
 homePage.css (nupadhy3 on 04/25/2023 at 00:54): button:hover {
 homePage.css (nupadhy3 on 04/25/2023 at 00:54):   color: #0ea6de;
+aboutPage.css (nupadhy3 on 04/28/2023 at 16:39):     /*background-color: #0061e1;*/
+aboutPage.css (nupadhy3 on 04/29/2023 at 15:22):     background: linear-gradient(to left, #a50505, #ae5a1e, #ae5a1e, #a50505);
+aboutPage.css (nupadhy3 on 04/28/2023 at 16:39): 	border: none;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): let questionCount = 0; // Keep track of the number of questions
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): function addTableRow(question, correctAnswer, studentAnswer) {
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Get the table body
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const tableBody = document.querySelector('tbody');
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Create a new table row
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const newRow = document.createElement('tr');
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Create table cells for the question number, question, correct answer, and student answer
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const questionNumberCell = document.createElement('td');
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   questionNumberCell.textContent = ++questionCount;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   newRow.appendChild(questionNumberCell);
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const questionCell = document.createElement('td');
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   questionCell.textContent = question;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   newRow.appendChild(questionCell);
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const correctAnswerCell = document.createElement('td');
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   correctAnswerCell.textContent = correctAnswer;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   newRow.appendChild(correctAnswerCell);
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const studentAnswerCell = document.createElement('td');
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   studentAnswerCell.textContent = studentAnswer;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   newRow.appendChild(studentAnswerCell);
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Append the new row to the table body
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   tableBody.appendChild(newRow);
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Resize the table to fit all rows
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const tableHeight = tableBody.getBoundingClientRect().height;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const windowHeight = window.innerHeight;
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   if (tableHeight > windowHeight) {
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     // If the table is taller than the window, set the table height to the window height minus 100 pixels for padding
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     tableBody.style.height = windowHeight - 100 + 'px';
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     tableBody.style.overflowY = 'scroll';
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):   }
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): }
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
+summary.js   (nupadhy3 on 04/29/2023 at 15:22): function toggle_visibility(showQuestions) {
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     document.getElementById("question-area").style.display = "block";
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     document.getElementById("results-area").style.display = "none";
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     document.getElementById("question-area").style.display = "none";
+summary.js   (nupadhy3 on 04/29/2023 at 15:22):     document.getElementById("results-area").style.display = "block";
+index.html   (nupadhy3 on 04/25/2023 at 00:54):         <button class="btn-join">JOIN</button>
+index.html   (nupadhy3 on 04/29/2023 at 17:41):   
+index.html   (nupadhy3 on 04/29/2023 at 17:41):   <!-- <img id="join-image" src="ninjaS.jpeg" alt="Join Image" hidden> -->
+index.html   (nupadhy3 on 04/29/2023 at 17:41):   
+notesPage.css (nupadhy3 on 04/28/2023 at 16:39):   /*background: #23a6d5;*/
+notesPage.css (nupadhy3 on 04/28/2023 at 16:39):   background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+notesPage.css (nupadhy3 on 04/28/2023 at 16:39):   /*background: #23a6d5;*/
+notesPage.css (nupadhy3 on 04/28/2023 at 16:39):   background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
 quizPage.html (nupadhy3 on 04/29/2023 at 15:22):     <link rel="stylesheet" type="text/css" href="summary.css">
 quizPage.html (nupadhy3 on 04/29/2023 at 15:22):     <div id="question-area">
 quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         <div class="question-set">
@@ -136,12 +227,6 @@ quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </a>
 quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <a href="NOTES_PAGE/notesPage.html" class="sidebar-item">
 quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <button class="btn">Notes</button>
 quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </a>
-quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <a href="HISTORY_PAGE/historyPage.html" class="sidebar-item">
-quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <button class="btn">History</button>
-quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </a>
-quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <a href="PROFILE/profilePage.html" class="sidebar-item">
-quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <button class="btn">Profile</button>
-quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </a>
 quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             <a href="FAQ_PAGE/faqPage.html" class="sidebar-item">
 quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <button class="btn">FAQ</button>
 quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </a>
@@ -163,100 +248,3 @@ quizPage.html (nupadhy3 on 04/29/2023 at 15:22):                 <!-- This is wh
 quizPage.html (nupadhy3 on 04/29/2023 at 15:22):             </tbody>
 quizPage.html (nupadhy3 on 04/29/2023 at 15:22):         </table>
 quizPage.html (nupadhy3 on 04/29/2023 at 15:22):     </div>
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	/*background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	border: none;*/
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	border: none;
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	color: #ffffff;
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	cursor: pointer;
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	font-family: 'Tilt Warp';
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	font-size: 18px;
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	font-weight: bold;
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	padding: 13.874px 20px;
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	position: relative;
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	transition: all 0.3s ease;
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	border-radius: 5px;
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): }
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): .close-btn {
-teacherPage.css (nupadhy3 on 04/29/2023 at 15:22): 	background: linear-gradient(to left, #a50505, #ae5a1e, #ae5a1e, #a50505);
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:39): 	background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
-teacherPage.css (nupadhy3 on 04/25/2023 at 00:54): 	border: none;
-teacherPage.css (nupadhy3 on 04/25/2023 at 00:54):     /*background-color: #23a6d5;*/
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:55):     /*background-color: #23a6d5;*/
-teacherPage.css (nupadhy3 on 04/28/2023 at 16:55): 	background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
-index.html   (nupadhy3 on 04/25/2023 at 00:54):         <button class="btn-join">JOIN</button>
-index.html   (nupadhy3 on 04/29/2023 at 17:41):   
-index.html   (nupadhy3 on 04/29/2023 at 17:41):   <!-- <img id="join-image" src="ninjaS.jpeg" alt="Join Image" hidden> -->
-index.html   (nupadhy3 on 04/29/2023 at 17:41):   
-summary.css  (nupadhy3 on 04/29/2023 at 15:22): 	border-collapse: collapse;
-summary.css  (nupadhy3 on 04/29/2023 at 15:22): 	width: 100%;
-summary.css  (nupadhy3 on 04/29/2023 at 15:22): 	text-align: left;
-summary.css  (nupadhy3 on 04/29/2023 at 15:22): 	padding: 8px;
-summary.css  (nupadhy3 on 04/29/2023 at 15:22): 	border: 1px solid black;
-summary.css  (nupadhy3 on 04/29/2023 at 15:22): 	background-color: #ddd;
-summary.js   (nupadhy3 on 04/29/2023 at 15:22): let questionCount = 0; // Keep track of the number of questions
-summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
-summary.js   (nupadhy3 on 04/29/2023 at 15:22): function addTableRow(question, correctAnswer, studentAnswer) {
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Get the table body
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const tableBody = document.querySelector('tbody');
-summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Create a new table row
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const newRow = document.createElement('tr');
-summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Create table cells for the question number, question, correct answer, and student answer
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const questionNumberCell = document.createElement('td');
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   questionNumberCell.textContent = ++questionCount;
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   newRow.appendChild(questionNumberCell);
-summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const questionCell = document.createElement('td');
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   questionCell.textContent = question;
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   newRow.appendChild(questionCell);
-summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const correctAnswerCell = document.createElement('td');
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   correctAnswerCell.textContent = correctAnswer;
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   newRow.appendChild(correctAnswerCell);
-summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const studentAnswerCell = document.createElement('td');
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   studentAnswerCell.textContent = studentAnswer;
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   newRow.appendChild(studentAnswerCell);
-summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Append the new row to the table body
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   tableBody.appendChild(newRow);
-summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   // Resize the table to fit all rows
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const tableHeight = tableBody.getBoundingClientRect().height;
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   const windowHeight = window.innerHeight;
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   if (tableHeight > windowHeight) {
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):     // If the table is taller than the window, set the table height to the window height minus 100 pixels for padding
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):     tableBody.style.height = windowHeight - 100 + 'px';
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):     tableBody.style.overflowY = 'scroll';
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):   }
-summary.js   (nupadhy3 on 04/29/2023 at 15:22): }
-summary.js   (nupadhy3 on 04/29/2023 at 15:22): 
-summary.js   (nupadhy3 on 04/29/2023 at 15:22): function toggle_visibility(showQuestions) {
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):     document.getElementById("question-area").style.display = "block";
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):     document.getElementById("results-area").style.display = "none";
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):     document.getElementById("question-area").style.display = "none";
-summary.js   (nupadhy3 on 04/29/2023 at 15:22):     document.getElementById("results-area").style.display = "block";
-notesPage.css (nupadhy3 on 04/28/2023 at 16:39):   /*background: #23a6d5;*/
-notesPage.css (nupadhy3 on 04/28/2023 at 16:39):   background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
-notesPage.css (nupadhy3 on 04/28/2023 at 16:39):   /*background: #23a6d5;*/
-notesPage.css (nupadhy3 on 04/28/2023 at 16:39):   background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
-index.js     (nupadhy3 on 04/29/2023 at 17:41): /*join_room_form.addEventListener("submit", function (e) {
-index.js     (nupadhy3 on 04/29/2023 at 17:41):     e.preventDefault();
-index.js     (nupadhy3 on 04/29/2023 at 17:41): 
-index.js     (nupadhy3 on 04/29/2023 at 17:41):     let params = new URLSearchParams();
-index.js     (nupadhy3 on 04/29/2023 at 17:41):     params.append('roomid', roomid_input.value);
-index.js     (nupadhy3 on 04/29/2023 at 17:41):     params.append('nickname', nickname_input.value);
-index.js     (nupadhy3 on 04/29/2023 at 17:41): 
-index.js     (nupadhy3 on 04/29/2023 at 17:41):     // show the image for 3 seconds
-index.js     (nupadhy3 on 04/29/2023 at 17:41):     const joinImage = document.getElementById("join-image");
-index.js     (nupadhy3 on 04/29/2023 at 17:41):     joinImage.style.display = 'block';
-index.js     (nupadhy3 on 04/29/2023 at 17:41):     setTimeout(function() {
-index.js     (nupadhy3 on 04/29/2023 at 17:41):         joinImage.style.display = 'none';
-index.js     (nupadhy3 on 04/29/2023 at 17:41):         const url = 'quizPage.html?' + params.toString();
-index.js     (nupadhy3 on 04/29/2023 at 17:41):         window.location.href = url;
-index.js     (nupadhy3 on 04/29/2023 at 17:41):     }, 3000);
-index.js     (nupadhy3 on 04/29/2023 at 17:41): });*/
-index.js     (nupadhy3 on 04/29/2023 at 17:41): 
