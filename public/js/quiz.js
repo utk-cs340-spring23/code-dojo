@@ -245,8 +245,7 @@ socket.on("answer correct", function (player_answer, correct_answer, num_right, 
     results_score_tag.innerText = `Final score: ${score_tag.innerText}`;
 
     // Add row to the summary table
-    addTableRow(curr_prompt, correct_answer, player_answer);
-
+    addTableRow(curr_prompt, correct_answer, player_answer, true);
 });
 
 socket.on("answer incorrect", function (player_answer, correct_answer, num_right, num_wrong) {
@@ -256,8 +255,7 @@ socket.on("answer incorrect", function (player_answer, correct_answer, num_right
     results_score_tag.innerText = `Final score: ${score_tag.innerText}`;
 
     // Add row to the summary table
-    addTableRow(curr_prompt, correct_answer, player_answer);
-
+    addTableRow(curr_prompt, correct_answer, player_answer, false);
 });
 
 /*----------------------------------------------------------------------------*/
