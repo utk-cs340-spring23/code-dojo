@@ -3,7 +3,7 @@ function error_message(msg) {
 }
 
 function ms_to_formatted_string(ms) {
-    return new Date(ms).toISOString().slice(14, 23);
+    return new Date(ms).toISOString().slice(14, 19);
 }
 
 let timer_interval_id = 0;
