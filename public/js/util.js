@@ -1,3 +1,6 @@
+let timer_interval_id = 0;
+const timer_update_frequency = 25;  // in milliseconds
+
 function error_message(msg) {
     alert("Error: " + msg);
 }
@@ -5,9 +8,6 @@ function error_message(msg) {
 function ms_to_formatted_string(ms) {
     return new Date(ms).toISOString().slice(14, 19);
 }
-
-let timer_interval_id = 0;
-const timer_update_frequency = 25;  // in milliseconds
 
 function start_timer(end_time) {
     if (!Number.isNaN(end_time) && end_time != null) {
@@ -18,13 +18,13 @@ function start_timer(end_time) {
 }
 
 function update_timer(end_time) {
-    question_timer_tag.innerText = end_time - Date.now() > 0 ? ms_to_formatted_string(end_time - Date.now()) : "00:00.000";
+    question_timer_tag.innerText = end_time - Date.now() > 0 ? ms_to_formatted_string(end_time - Date.now()) : "00:00";
 }
 
 function stop_timer() {
     clearInterval(timer_interval_id);
 
     if (question_timer_tag.innerText != "Untimed") {
-        question_timer_tag.innerText = "00:00.000";
+        question_timer_tag.innerText = "00:00";
     }
 }
