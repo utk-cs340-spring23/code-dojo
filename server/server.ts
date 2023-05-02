@@ -88,7 +88,7 @@ async function close_question(io: SocketIOServer, quizroom: QuizRoom): Promise<b
 
     io.to(quizroom.id).emit("close question success", "Successfully closed and graded questions");
     io.to(`${quizroom.id} spectators`).emit("correct answer", quizroom.curr_question.answer);
-    io.to(`${quizroom.id} spectators`).emit("question results", results);
+    io.to(`${quizroom.id} spectators`).emit("question results", results, quizroom.curr_question.num_right);
 
     return true;
 }
@@ -379,7 +379,6 @@ io.on("connection", function (socket: Socket) {
         } else {
             io.to(socket.id).emit("submit answer success", `successfully submitted answer "${provided_answer}"`);
         }
-
 
         io.to(this_quizroom.host.socket.id).emit("player submit answer", socket.id, provided_answer);
     });

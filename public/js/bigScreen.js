@@ -28,7 +28,7 @@ let num_players_answered = 0;
 /*----------------------------------------------------------------------------*/
 
 function update_answer_count_tag() {
-    answer_count_tag.innerText = `${num_players_answered} / ${num_players}`;
+    answer_count_tag.innerText = `${num_players_answered} / ${num_players} answered`;
 }
 
 function append_player_list(nickname) {
@@ -189,8 +189,8 @@ const config = {
 const ctx = chart_tag.getContext('2d');
 const myBarChart = new Chart(ctx, config);
 
-socket.on("question results", function (results) {
-    console.log(results);
+socket.on("question results", function (results, num_right) {
+    answer_count_tag.innerText = `${num_players_answered} / ${num_players} answered, ${num_right} correct`;
 
     let new_labels = [];
     let new_values = [];
@@ -208,9 +208,5 @@ socket.on("question results", function (results) {
     data.datasets[0].data = new_values;
 
     chart_container_tag.style.display = "block";
-
     myBarChart.update();
-
-
-    console.log("Got results!");
 });

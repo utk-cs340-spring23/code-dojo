@@ -265,7 +265,6 @@ socket.on("answer incorrect", function (player_answer, correct_answer, num_right
 run_code_button.addEventListener("click", function (e) {
     e.preventDefault();
     socket.emit("compile and run", editor.getValue(), "C");
-
 });
 
 socket.on("compile fail", function (stderr) {
@@ -286,7 +285,6 @@ socket.on("run success", function (stdout) {
     console.log(stdout);
     output_tag.innerText = stdout;
 });
-
 
 /*----------------------------------------------------------------------------*/
 /* Show Summary When Session Closes                                           */
