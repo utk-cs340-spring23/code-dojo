@@ -374,7 +374,13 @@ io.on("connection", function (socket: Socket) {
         /* We do not simply "push" the answer onto the answers array. We need to account for the possibilty that the player may submit more than one answer and/or the player may join midway through quiz. */
         this_quizroom.set_player_curr_answer(this_player, provided_answer);
 
-        io.to(socket.id).emit("submit answer success", `successfully submitted answer "${provided_answer}"`);
+        if (this_quizroom.curr_question.type == QuestionType.multiple_choice) {
+            io.to(socket.id).emit("submit answer success", `successfully submitted answer "${(this_quizroom.curr_question as MCQuestion).answer_choices[provided_answer]}"`);
+        } else {
+            io.to(socket.id).emit("submit answer success", `successfully submitted answer "${provided_answer}"`);
+        }
+
+
         io.to(this_quizroom.host.socket.id).emit("player submit answer", socket.id, provided_answer);
     });
 
