@@ -1,4 +1,4 @@
-quizPage.html (hdehler on 04/25/2023 at 11:12):     <link rel="shortcut icon" href="img/dojoFavicon.png">
+aboutPage.css (hdehler on 04/30/2023 at 18:35):     background-color: rgb(199, 199, 199);
 contactUs.html (hdehler on 04/25/2023 at 11:12):         <link rel="shortcut icon" href="../img/dojoFavicon.png">
 bigScreen.html (hdehler on 04/26/2023 at 15:44): <head>
 bigScreen.html (hdehler on 04/26/2023 at 15:44):     <link rel="stylesheet" href="bigScreen.css">
@@ -8,7 +8,49 @@ bigScreen.html (hdehler on 04/26/2023 at 15:44):     <script src="js/chart.umd.j
 bigScreen.html (hdehler on 04/26/2023 at 15:44): </head>
 bigScreen.html (hdehler on 04/26/2023 at 15:44):     <div class="white-text">
 bigScreen.html (hdehler on 04/26/2023 at 15:44): </html>
-notesPage.html (hdehler on 04/25/2023 at 11:12):     <link rel="shortcut icon" href="../img/dojoFavicon.png">
+host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "nickname table-data");
+host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "num-right table-data");
+host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "num-wrong table-data");
+host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "current-answer table-data");
+host.js      (hdehler on 04/28/2023 at 17:03): 
+host.js      (hdehler on 04/28/2023 at 17:03): 
+notesPage.css (hdehler on 04/30/2023 at 18:35):   font-family: sans-serif, cursive;
+quizPage.css (hdehler on 04/30/2023 at 18:35):     background-color: rgb(199, 199, 199);
+quizPage.css (hdehler on 04/30/2023 at 18:35):  
+quizPage.css (hdehler on 04/30/2023 at 18:35): .btn {
+quizPage.css (hdehler on 04/30/2023 at 18:35):     /* sidebar button attributes */
+quizPage.css (hdehler on 04/30/2023 at 18:35):     background-color: #21416800;
+quizPage.css (hdehler on 04/30/2023 at 18:35):     color: black;
+quizPage.css (hdehler on 04/30/2023 at 18:35):     padding: 0px 0px;
+quizPage.css (hdehler on 04/30/2023 at 18:35):     font-family: 'Tilt Warp', cursive;
+quizPage.css (hdehler on 04/30/2023 at 18:35):     font-size: 18px;
+quizPage.css (hdehler on 04/30/2023 at 18:35):     font-weight: bold;
+quizPage.css (hdehler on 04/30/2023 at 18:35):     transition: background-color 0.3s ease;
+quizPage.css (hdehler on 04/30/2023 at 18:35):     width: 100%;
+quizPage.css (hdehler on 04/30/2023 at 18:35):     border: none;
+quizPage.css (hdehler on 04/30/2023 at 18:35):     text-align: left;
+quizPage.css (hdehler on 04/30/2023 at 18:35):   }
+quizPage.css (hdehler on 04/30/2023 at 18:35): 
+quizPage.css (hdehler on 04/30/2023 at 18:35):     font-family: sans-serif, cursive;
+quizPage.css (hdehler on 04/26/2023 at 16:54):     width: 55%; /* reduced width */
+quizPage.css (hdehler on 04/26/2023 at 16:54):     max-width: 900px; /* reduced max-width */
+quizPage.css (hdehler on 04/26/2023 at 16:54):     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* added box-shadow for a modern look */
+quizPage.css (hdehler on 04/26/2023 at 16:54): .question-feedback {
+quizPage.css (hdehler on 04/26/2023 at 16:54):     color: #fff;
+quizPage.css (hdehler on 04/26/2023 at 16:54):     font-size: 1.1em;
+quizPage.css (hdehler on 04/26/2023 at 16:54):     margin-bottom: 0.5em;
+quizPage.css (hdehler on 04/26/2023 at 16:54): }
+quizPage.css (hdehler on 04/26/2023 at 16:54): 
+quizPage.css (hdehler on 04/26/2023 at 16:54):     border-radius: 20px; /* added border-radius for a modern look */
+quizPage.css (hdehler on 04/26/2023 at 16:54):     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* added box-shadow for a modern look */
+quizPage.css (hdehler on 04/26/2023 at 16:54):     outline: none; /* remove the default outline */
+quizPage.css (hdehler on 04/26/2023 at 16:54):     transition: all 0.3s ease; /* added a smooth transition */
+quizPage.css (hdehler on 04/26/2023 at 16:54): }
+quizPage.css (hdehler on 04/26/2023 at 16:54): 
+quizPage.css (hdehler on 04/26/2023 at 16:54): #answer-input:focus {
+quizPage.css (hdehler on 04/26/2023 at 16:54):     border: 2px solid #7e8cef; /* added a border when the input is focused */
+quizPage.css (hdehler on 04/26/2023 at 16:54): 
+quizPage.css (hdehler on 04/30/2023 at 18:35):     border: 1px solid black;
 testSum.html (hdehler on 04/30/2023 at 18:35): <!DOCTYPE html>
 testSum.html (hdehler on 04/30/2023 at 18:35): <html>
 testSum.html (hdehler on 04/30/2023 at 18:35):     <head>
@@ -33,6 +75,41 @@ testSum.html (hdehler on 04/30/2023 at 18:35):             </table>
 testSum.html (hdehler on 04/30/2023 at 18:35):         </div>
 testSum.html (hdehler on 04/30/2023 at 18:35):     </body>
 testSum.html (hdehler on 04/30/2023 at 18:35): </html>
+quizPage.html (hdehler on 04/25/2023 at 11:12):     <link rel="shortcut icon" href="img/dojoFavicon.png">
+faqPage.html (hdehler on 04/25/2023 at 11:12):         <link rel="shortcut icon" href="../img/dojoFavicon.png">
+faqPage.html (hdehler on 04/25/2023 at 11:12):         
+summary.css  (hdehler on 04/30/2023 at 18:35): #results-area {
+summary.css  (hdehler on 04/30/2023 at 18:35):     width: 70%;
+summary.css  (hdehler on 04/30/2023 at 18:35):     margin: 0 auto;
+summary.css  (hdehler on 04/30/2023 at 18:35): }
+summary.css  (hdehler on 04/30/2023 at 18:35): 
+summary.css  (hdehler on 04/30/2023 at 18:35):     color: white;
+summary.css  (hdehler on 04/30/2023 at 18:35): }
+summary.css  (hdehler on 04/30/2023 at 18:35): 
+summary.css  (hdehler on 04/30/2023 at 18:35): #results-area h3 {
+summary.css  (hdehler on 04/30/2023 at 18:35):     display: inline-block;
+summary.css  (hdehler on 04/30/2023 at 18:35):     border: 1px solid white;
+summary.css  (hdehler on 04/30/2023 at 18:35):     padding: 4px;
+summary.css  (hdehler on 04/30/2023 at 18:35):     border-collapse: collapse;
+summary.css  (hdehler on 04/30/2023 at 18:35):     width: 100%;
+summary.css  (hdehler on 04/30/2023 at 18:35): 	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+summary.css  (hdehler on 04/30/2023 at 18:35):     width: 25%;
+summary.css  (hdehler on 04/30/2023 at 18:35):     text-align: left;
+summary.css  (hdehler on 04/30/2023 at 18:35):     padding: 8px;
+summary.css  (hdehler on 04/30/2023 at 18:35):     border: 1px solid black;
+summary.css  (hdehler on 04/30/2023 at 18:35): }
+summary.css  (hdehler on 04/30/2023 at 18:35): 
+summary.css  (hdehler on 04/30/2023 at 18:35): #results-area td {
+summary.css  (hdehler on 04/30/2023 at 18:35): 	color:white;
+summary.css  (hdehler on 04/30/2023 at 18:35):     background-color: #ddd;
+summary.css  (hdehler on 04/30/2023 at 18:35): 	color: black;
+summary.css  (hdehler on 04/30/2023 at 18:35):     background-color: rgba(0, 128, 0, 0.641);
+summary.css  (hdehler on 04/30/2023 at 18:35):     background-color: rgba(255, 0, 0, 0.61);
+aboutPage.html (hdehler on 04/25/2023 at 11:12):         <link rel="shortcut icon" href="../img/dojoFavicon.png">
+aboutPage.html (hdehler on 04/26/2023 at 16:54):                     <p>We are a small group of 3 students from the University of Tennessee. After going through numerous
+notesPage.html (hdehler on 04/25/2023 at 11:12):     <link rel="shortcut icon" href="../img/dojoFavicon.png">
+index.html   (hdehler on 04/25/2023 at 11:02):   <!--<link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+index.html   (hdehler on 04/25/2023 at 11:02):   <link rel="shortcut icon" href="img/dojoFavicon.png">
 teacherPage.css (hdehler on 04/28/2023 at 16:21): 	justify-content: center;
 teacherPage.css (hdehler on 04/28/2023 at 16:21): 
 teacherPage.css (hdehler on 04/28/2023 at 16:21): .sesh-input {
@@ -119,19 +196,6 @@ teacherPage.css (hdehler on 04/28/2023 at 16:21): }
 teacherPage.css (hdehler on 04/28/2023 at 16:21): .sesh-btn:hover {
 teacherPage.css (hdehler on 04/28/2023 at 16:21): 	color: #1b7494;
 teacherPage.css (hdehler on 04/28/2023 at 16:21): }
-index.css    (hdehler on 04/30/2023 at 18:35): @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
-index.css    (hdehler on 04/30/2023 at 18:35):   font-family: 'Tilt Warp', cursive;
-index.css    (hdehler on 04/30/2023 at 18:35):   font-family: 'Tilt Warp', cursive;
-host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "nickname table-data");
-host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "num-right table-data");
-host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "num-wrong table-data");
-host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "current-answer table-data");
-host.js      (hdehler on 04/28/2023 at 17:03): 
-host.js      (hdehler on 04/28/2023 at 17:03): 
-index.html   (hdehler on 04/25/2023 at 11:02):   <!--<link rel="icon" type="image/x-icon" href="favicon.ico"> -->
-index.html   (hdehler on 04/25/2023 at 11:02):   <link rel="shortcut icon" href="img/dojoFavicon.png">
-faqPage.html (hdehler on 04/25/2023 at 11:12):         <link rel="shortcut icon" href="../img/dojoFavicon.png">
-faqPage.html (hdehler on 04/25/2023 at 11:12):         
 bigScreen_old.js (hdehler on 04/26/2023 at 15:44): // Placeholder function to get data from the backend
 bigScreen_old.js (hdehler on 04/26/2023 at 15:44): // Replace this function with your actual API call to fetch data
 bigScreen_old.js (hdehler on 04/26/2023 at 15:44): async function fetchDataFromBackend() {
@@ -168,42 +232,6 @@ bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     });
 bigScreen_old.js (hdehler on 04/26/2023 at 15:44): }
 bigScreen_old.js (hdehler on 04/26/2023 at 15:44): 
 bigScreen_old.js (hdehler on 04/26/2023 at 15:44): window.addEventListener('DOMContentLoaded', loadData);
-quizPage.css (hdehler on 04/30/2023 at 18:35):     background-color: rgb(199, 199, 199);
-quizPage.css (hdehler on 04/30/2023 at 18:35):  
-quizPage.css (hdehler on 04/30/2023 at 18:35): .btn {
-quizPage.css (hdehler on 04/30/2023 at 18:35):     /* sidebar button attributes */
-quizPage.css (hdehler on 04/30/2023 at 18:35):     background-color: #21416800;
-quizPage.css (hdehler on 04/30/2023 at 18:35):     color: black;
-quizPage.css (hdehler on 04/30/2023 at 18:35):     padding: 0px 0px;
-quizPage.css (hdehler on 04/30/2023 at 18:35):     font-family: 'Tilt Warp', cursive;
-quizPage.css (hdehler on 04/30/2023 at 18:35):     font-size: 18px;
-quizPage.css (hdehler on 04/30/2023 at 18:35):     font-weight: bold;
-quizPage.css (hdehler on 04/30/2023 at 18:35):     transition: background-color 0.3s ease;
-quizPage.css (hdehler on 04/30/2023 at 18:35):     width: 100%;
-quizPage.css (hdehler on 04/30/2023 at 18:35):     border: none;
-quizPage.css (hdehler on 04/30/2023 at 18:35):     text-align: left;
-quizPage.css (hdehler on 04/30/2023 at 18:35):   }
-quizPage.css (hdehler on 04/30/2023 at 18:35): 
-quizPage.css (hdehler on 04/30/2023 at 18:35):     font-family: sans-serif, cursive;
-quizPage.css (hdehler on 04/26/2023 at 16:54):     width: 55%; /* reduced width */
-quizPage.css (hdehler on 04/26/2023 at 16:54):     max-width: 900px; /* reduced max-width */
-quizPage.css (hdehler on 04/26/2023 at 16:54):     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* added box-shadow for a modern look */
-quizPage.css (hdehler on 04/26/2023 at 16:54): .question-feedback {
-quizPage.css (hdehler on 04/26/2023 at 16:54):     color: #fff;
-quizPage.css (hdehler on 04/26/2023 at 16:54):     font-size: 1.1em;
-quizPage.css (hdehler on 04/26/2023 at 16:54):     margin-bottom: 0.5em;
-quizPage.css (hdehler on 04/26/2023 at 16:54): }
-quizPage.css (hdehler on 04/26/2023 at 16:54): 
-quizPage.css (hdehler on 04/26/2023 at 16:54):     border-radius: 20px; /* added border-radius for a modern look */
-quizPage.css (hdehler on 04/26/2023 at 16:54):     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* added box-shadow for a modern look */
-quizPage.css (hdehler on 04/26/2023 at 16:54):     outline: none; /* remove the default outline */
-quizPage.css (hdehler on 04/26/2023 at 16:54):     transition: all 0.3s ease; /* added a smooth transition */
-quizPage.css (hdehler on 04/26/2023 at 16:54): }
-quizPage.css (hdehler on 04/26/2023 at 16:54): 
-quizPage.css (hdehler on 04/26/2023 at 16:54): #answer-input:focus {
-quizPage.css (hdehler on 04/26/2023 at 16:54):     border: 2px solid #7e8cef; /* added a border when the input is focused */
-quizPage.css (hdehler on 04/26/2023 at 16:54): 
-quizPage.css (hdehler on 04/30/2023 at 18:35):     border: 1px solid black;
 teacherPage.html (hdehler on 04/25/2023 at 11:12):     <link rel="shortcut icon" href="img/dojoFavicon.png">
 teacherPage.html (hdehler on 04/28/2023 at 16:21):                         <div class="input-button-container">
 teacherPage.html (hdehler on 04/28/2023 at 16:21):                             <button type="submit" class="sesh-btn press-down" id="create-room-button">Create</button>
@@ -213,34 +241,6 @@ teacherPage.html (hdehler on 04/28/2023 at 17:03):                         <th c
 teacherPage.html (hdehler on 04/28/2023 at 17:03):                         <th class="table-header"># Right</th>
 teacherPage.html (hdehler on 04/28/2023 at 17:03):                         <th class="table-header"># Wrong</th>
 teacherPage.html (hdehler on 04/28/2023 at 17:03):                         <th class="table-header">Current Answer</th>
-aboutPage.css (hdehler on 04/30/2023 at 18:35):     background-color: rgb(199, 199, 199);
-notesPage.css (hdehler on 04/30/2023 at 18:35):   font-family: sans-serif, cursive;
-summary.css  (hdehler on 04/30/2023 at 18:35): #results-area {
-summary.css  (hdehler on 04/30/2023 at 18:35):     width: 70%;
-summary.css  (hdehler on 04/30/2023 at 18:35):     margin: 0 auto;
-summary.css  (hdehler on 04/30/2023 at 18:35): }
-summary.css  (hdehler on 04/30/2023 at 18:35): 
-summary.css  (hdehler on 04/30/2023 at 18:35):     color: white;
-summary.css  (hdehler on 04/30/2023 at 18:35): }
-summary.css  (hdehler on 04/30/2023 at 18:35): 
-summary.css  (hdehler on 04/30/2023 at 18:35): #results-area h3 {
-summary.css  (hdehler on 04/30/2023 at 18:35):     display: inline-block;
-summary.css  (hdehler on 04/30/2023 at 18:35):     border: 1px solid white;
-summary.css  (hdehler on 04/30/2023 at 18:35):     padding: 4px;
-summary.css  (hdehler on 04/30/2023 at 18:35):     border-collapse: collapse;
-summary.css  (hdehler on 04/30/2023 at 18:35):     width: 100%;
-summary.css  (hdehler on 04/30/2023 at 18:35): 	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-summary.css  (hdehler on 04/30/2023 at 18:35):     width: 25%;
-summary.css  (hdehler on 04/30/2023 at 18:35):     text-align: left;
-summary.css  (hdehler on 04/30/2023 at 18:35):     padding: 8px;
-summary.css  (hdehler on 04/30/2023 at 18:35):     border: 1px solid black;
-summary.css  (hdehler on 04/30/2023 at 18:35): }
-summary.css  (hdehler on 04/30/2023 at 18:35): 
-summary.css  (hdehler on 04/30/2023 at 18:35): #results-area td {
-summary.css  (hdehler on 04/30/2023 at 18:35): 	color:white;
-summary.css  (hdehler on 04/30/2023 at 18:35):     background-color: #ddd;
-summary.css  (hdehler on 04/30/2023 at 18:35): 	color: black;
-summary.css  (hdehler on 04/30/2023 at 18:35):     background-color: rgba(0, 128, 0, 0.641);
-summary.css  (hdehler on 04/30/2023 at 18:35):     background-color: rgba(255, 0, 0, 0.61);
-aboutPage.html (hdehler on 04/25/2023 at 11:12):         <link rel="shortcut icon" href="../img/dojoFavicon.png">
-aboutPage.html (hdehler on 04/26/2023 at 16:54):                     <p>We are a small group of 3 students from the University of Tennessee. After going through numerous
+index.css    (hdehler on 04/30/2023 at 18:35): @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+index.css    (hdehler on 04/30/2023 at 18:35):   font-family: 'Tilt Warp', cursive;
+index.css    (hdehler on 04/30/2023 at 18:35):   font-family: 'Tilt Warp', cursive;

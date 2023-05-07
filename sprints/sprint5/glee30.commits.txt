@@ -1,17 +1,7 @@
-bigScreen.css (griff2325 on 04/29/2023 at 13:54): @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
-bigScreen.css (griff2325 on 04/29/2023 at 13:54): 
-notesPage.css (griff2325 on 04/29/2023 at 13:54): @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
-notesPage.css (griff2325 on 04/29/2023 at 13:54): 
-notesPage.css (griff2325 on 04/29/2023 at 13:54): 
-notesPage.css (griff2325 on 04/29/2023 at 13:54):   font-family: 'Tilt Warp', cursive;
-notesPage.css (griff2325 on 04/29/2023 at 13:54): 
-notesPage.css (griff2325 on 04/29/2023 at 13:54):   /* font-family: sans-serif; */
-notesPage.css (griff2325 on 04/29/2023 at 13:54): 
-scores.html  (griff2325 on 04/26/2023 at 16:03):         <table id="scoreTable">
-scores.html  (griff2325 on 04/26/2023 at 16:03):                 <script src="./js/scores.js"></script>
-scores.html  (griff2325 on 04/26/2023 at 16:03):                 <tr id="213lj2" class="user">
-scores.html  (griff2325 on 04/26/2023 at 16:03):                 <tr id="fq99dd" class="user">
-scores.html  (griff2325 on 04/26/2023 at 16:03):                 <tr id="dj86rm" class="user">
+contactUs.css (griff2325 on 04/29/2023 at 13:54): @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+contactUs.css (griff2325 on 04/29/2023 at 13:54): 
+contactUs.css (griff2325 on 04/29/2023 at 13:54):     font-family: 'Tilt Warp', cursive;
+contactUs.css (griff2325 on 04/29/2023 at 13:54):     /* font-family: Arial, Helvetica, sans-serif; */
 teacherPage.css (griff2325 on 04/30/2023 at 20:26): @import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
 teacherPage.css (griff2325 on 04/29/2023 at 13:54): 	/* font-family: 'Tilt Warp', 'Helvetica', 'Arial', sans-serif; */
 teacherPage.css (griff2325 on 04/29/2023 at 13:54): 	font-family: 'Tilt Warp', cursive;
@@ -32,6 +22,32 @@ bigScreen_old.js (griff2325 on 04/26/2023 at 16:22): var w = 1;
 bigScreen_old.js (griff2325 on 04/26/2023 at 16:22): 
 bigScreen_old.js (griff2325 on 04/26/2023 at 16:22): 
 bigScreen_old.js (griff2325 on 04/26/2023 at 16:22):     // this is a testing call, replace with call using actual data
+scores.html  (griff2325 on 04/26/2023 at 16:03):         <table id="scoreTable">
+scores.html  (griff2325 on 04/26/2023 at 16:03):                 <script src="./js/scores.js"></script>
+scores.html  (griff2325 on 04/26/2023 at 16:03):                 <tr id="213lj2" class="user">
+scores.html  (griff2325 on 04/26/2023 at 16:03):                 <tr id="fq99dd" class="user">
+scores.html  (griff2325 on 04/26/2023 at 16:03):                 <tr id="dj86rm" class="user">
+scores.css   (griff2325 on 04/29/2023 at 13:54): @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+scores.css   (griff2325 on 04/29/2023 at 13:54): 
+scores.css   (griff2325 on 04/29/2023 at 13:54): body{
+scores.css   (griff2325 on 04/29/2023 at 13:54):     font-family: 'Tilt Warp', cursive;
+scores.css   (griff2325 on 04/29/2023 at 13:54): }
+scores.css   (griff2325 on 04/29/2023 at 13:54): 
+scores.css   (griff2325 on 04/26/2023 at 16:03):     position: absolute;
+scores.css   (griff2325 on 04/29/2023 at 14:00):     width: 50%;
+scores.css   (griff2325 on 04/29/2023 at 14:00):     margin: 0 auto;
+scores.css   (griff2325 on 04/29/2023 at 14:00):     margin-top: 3%;
+scores.css   (griff2325 on 04/26/2023 at 16:03): .user{
+scores.css   (griff2325 on 04/26/2023 at 16:03): }
+bigScreen.css (griff2325 on 04/29/2023 at 13:54): @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+bigScreen.css (griff2325 on 04/29/2023 at 13:54): 
+notesPage.css (griff2325 on 04/29/2023 at 13:54): @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+notesPage.css (griff2325 on 04/29/2023 at 13:54): 
+notesPage.css (griff2325 on 04/29/2023 at 13:54): 
+notesPage.css (griff2325 on 04/29/2023 at 13:54):   font-family: 'Tilt Warp', cursive;
+notesPage.css (griff2325 on 04/29/2023 at 13:54): 
+notesPage.css (griff2325 on 04/29/2023 at 13:54):   /* font-family: sans-serif; */
+notesPage.css (griff2325 on 04/29/2023 at 13:54): 
 scores.js    (griff2325 on 04/26/2023 at 16:03): var table = document.getElementById("scoreTable");
 scores.js    (griff2325 on 04/26/2023 at 16:03): function addUser(user_id, name, num_correct, num_incorrect) {
 scores.js    (griff2325 on 04/26/2023 at 16:03):     // Create an empty new row for this user
@@ -58,19 +74,3 @@ scores.js    (griff2325 on 04/26/2023 at 16:03): //   window.onload = addUser("f
 scores.js    (griff2325 on 04/26/2023 at 16:03): //   window.onload = addUser("yyyddd", "Jacob", 4, 3);
 scores.js    (griff2325 on 04/26/2023 at 16:03): //   window.onload = addUser("yyyddd", "Jeff", 4, 3);
 scores.js    (griff2325 on 04/26/2023 at 16:03): //   window.onload = addUser("fdssxc", "Diet Coke", 10, 0);
-scores.css   (griff2325 on 04/29/2023 at 13:54): @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
-scores.css   (griff2325 on 04/29/2023 at 13:54): 
-scores.css   (griff2325 on 04/29/2023 at 13:54): body{
-scores.css   (griff2325 on 04/29/2023 at 13:54):     font-family: 'Tilt Warp', cursive;
-scores.css   (griff2325 on 04/29/2023 at 13:54): }
-scores.css   (griff2325 on 04/29/2023 at 13:54): 
-scores.css   (griff2325 on 04/26/2023 at 16:03):     position: absolute;
-scores.css   (griff2325 on 04/29/2023 at 14:00):     width: 50%;
-scores.css   (griff2325 on 04/29/2023 at 14:00):     margin: 0 auto;
-scores.css   (griff2325 on 04/29/2023 at 14:00):     margin-top: 3%;
-scores.css   (griff2325 on 04/26/2023 at 16:03): .user{
-scores.css   (griff2325 on 04/26/2023 at 16:03): }
-contactUs.css (griff2325 on 04/29/2023 at 13:54): @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
-contactUs.css (griff2325 on 04/29/2023 at 13:54): 
-contactUs.css (griff2325 on 04/29/2023 at 13:54):     font-family: 'Tilt Warp', cursive;
-contactUs.css (griff2325 on 04/29/2023 at 13:54):     /* font-family: Arial, Helvetica, sans-serif; */
