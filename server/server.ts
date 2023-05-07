@@ -18,13 +18,13 @@ import { RunResult, RunOutput, run_c } from "./runcode.js";
 /*----------------------------------------------------------------------------*/
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
-const port: number = parseInt(process.env.PORT) || 56946;
+const port: number = parseInt(process.env.PORT) || 3000;
 const public_path: string = new URL("../public/", import.meta.url).pathname;
 
 app.use(express.static(public_path));
 
 server.listen(port, function () {
-    console.log(`Socket.IO server running at http://localhost:${port}/`);
+    console.log(`Code Dojo is live! Visit http://localhost:${port}/`);
 });
 
 let num_connections: number = 0;
