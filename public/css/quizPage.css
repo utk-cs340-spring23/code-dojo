@@ -188,7 +188,10 @@ body {
     margin-bottom: 1px;
     top: 1%;
     color: #ffffff;
+    width: 75px; 
+    text-align: center; 
 }
+
 
 #ninja-slash {
     z-index: 10;

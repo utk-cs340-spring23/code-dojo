@@ -268,7 +268,8 @@ label {
     top: 1%;
     color: #ffffff;
     display: inline-block;
-    width: auto; 
+    width: 90px;
+    text-align: center;
     padding: 5px 10px;
 }
 

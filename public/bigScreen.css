@@ -5,16 +5,6 @@ body {
     background-color: rgb(55, 54, 54);
 }
 
-.modern-container {
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 16px auto 0;
-}
-
 .white-text {
     color: white;
 }
@@ -73,6 +63,7 @@ body {
     border: 1px solid #ffffff;
     padding: 5px;
     display: flex;
+    width: 484px;
     align-items: center;
 }
 
@@ -80,4 +71,13 @@ body {
     border-left: 1px solid #ffffff;
     margin: 0 10px;
     height: 1.5em;
+}
+.modern-container {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 16px auto 0;
 }
