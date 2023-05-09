@@ -1,55 +1,27 @@
-summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area h1,
-summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area h3 {
-summary.css  (alex zhang on 04/29/2023 at 21:50): }
-summary.css  (alex zhang on 04/29/2023 at 21:50): 
-summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area table {
-summary.css  (alex zhang on 04/29/2023 at 21:50): 
-summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area th,
-summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area td {
-summary.css  (alex zhang on 04/29/2023 at 21:50): 
-summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area th {
-summary.css  (alex zhang on 04/29/2023 at 21:50): 
-summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area .correct {
-summary.css  (alex zhang on 04/29/2023 at 21:50): }
-summary.css  (alex zhang on 04/29/2023 at 21:50): 
-summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area .incorrect {
-summary.css  (alex zhang on 04/29/2023 at 21:50): }
-runcode.ts   (alex zhang on 04/29/2023 at 17:22): const code_time_limit: number = 2500; // in milliseconds
-runcode.ts   (alex zhang on 04/29/2023 at 17:22): 
-runcode.ts   (alex zhang on 04/29/2023 at 17:22):     run_success,
-runcode.ts   (alex zhang on 04/29/2023 at 17:22):     run_timeout
-runcode.ts   (alex zhang on 04/29/2023 at 17:22):             exec(`./${executable_name}`, { timeout: code_time_limit }, (err, stdout, stderr) => {
-runcode.ts   (alex zhang on 04/29/2023 at 17:22):                     if (err.killed && err.signal === "SIGTERM") {
-runcode.ts   (alex zhang on 04/29/2023 at 17:22):                         output.result = RunResult.run_timeout;
-runcode.ts   (alex zhang on 04/29/2023 at 17:22):                     } else {
-runcode.ts   (alex zhang on 04/29/2023 at 17:22):                         output.stdout = stdout;
-runcode.ts   (alex zhang on 04/29/2023 at 17:22):                         output.stderr = stderr;
-runcode.ts   (alex zhang on 04/29/2023 at 17:22):                         output.result = RunResult.run_fail;
-runcode.ts   (alex zhang on 04/29/2023 at 17:22):                     }
-runcode.ts   (alex zhang on 04/29/2023 at 17:22):         console.error("Error during compilation or execution:", error);
-index.html   (alex zhang on 05/02/2023 at 13:54): 
-index.html   (alex zhang on 05/02/2023 at 13:54): 
-index.html   (alex zhang on 05/02/2023 at 13:54): 
-bigScreen.html (alex zhang on 04/29/2023 at 16:33):     <title>Big Screen</title>
-bigScreen.html (alex zhang on 04/29/2023 at 17:15):                     <div class="info-text" id="session-id">Session ID </div>
-bigScreen.html (alex zhang on 04/29/2023 at 17:15):                     <div class="info-text" id="num-players">0 connected</div>
-bigScreen.html (alex zhang on 04/29/2023 at 17:15):                     <div class="separator"></div>
-bigScreen.html (alex zhang on 04/29/2023 at 17:15):                     <div class="info-text" id="question-timer">00:00:00</div>
-bigScreen.html (alex zhang on 04/29/2023 at 16:33):             <h1 id="question">Waiting for host...</h1>
-bigScreen.html (alex zhang on 04/29/2023 at 23:52):             <h1 id="answer-count"></h1>
-bigScreen.html (alex zhang on 04/29/2023 at 16:33):             <h1 id="answer"></h1>
-bigScreen.html (alex zhang on 04/29/2023 at 22:29):     <div id="player-list">
-bigScreen.html (alex zhang on 04/29/2023 at 22:29):     </div>
-bigScreen.html (alex zhang on 04/29/2023 at 22:29): 
-bigScreen.html (alex zhang on 04/29/2023 at 16:33):     <div id="chart-container" class="modern-container">
-bigScreen.html (alex zhang on 04/29/2023 at 16:33):     <!-- JavaScript to communicate with server -->
-bigScreen.html (alex zhang on 04/29/2023 at 16:33):     <script src="/socket.io/socket.io.js"></script>
-bigScreen.html (alex zhang on 04/29/2023 at 16:33):     <script src="js/util.js"></script>
-bigScreen.html (alex zhang on 04/29/2023 at 16:33):     <script src="js/bigScreen.js"></script>
-player.ts    (alex zhang on 04/29/2023 at 16:33): import { RunOutput } from "./runcode.js"
-player.ts    (alex zhang on 04/29/2023 at 16:33):     public curr_output: RunOutput;
-player.ts    (alex zhang on 04/29/2023 at 16:33):         this.curr_output = new RunOutput;
-player.ts    (alex zhang on 04/29/2023 at 16:33): 
+util.js      (alex zhang on 05/02/2023 at 16:22): let timer_interval_id = 0;
+util.js      (alex zhang on 05/02/2023 at 16:22): const timer_update_frequency = 25;  // in milliseconds
+util.js      (alex zhang on 05/02/2023 at 16:22): 
+util.js      (alex zhang on 05/02/2023 at 15:37):     return new Date(ms).toISOString().slice(14, 19);
+util.js      (alex zhang on 04/29/2023 at 16:33): 
+util.js      (alex zhang on 04/29/2023 at 16:33): function start_timer(end_time) {
+util.js      (alex zhang on 04/29/2023 at 16:33):     if (!Number.isNaN(end_time) && end_time != null) {
+util.js      (alex zhang on 04/29/2023 at 16:33):         timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
+util.js      (alex zhang on 04/29/2023 at 16:33):     } else {
+util.js      (alex zhang on 04/29/2023 at 21:23):         question_timer_tag.innerText = "Untimed";
+util.js      (alex zhang on 04/29/2023 at 16:33):     }
+util.js      (alex zhang on 04/29/2023 at 16:33): }
+util.js      (alex zhang on 04/29/2023 at 16:33): 
+util.js      (alex zhang on 04/29/2023 at 16:33): function update_timer(end_time) {
+util.js      (alex zhang on 05/02/2023 at 16:22):     question_timer_tag.innerText = end_time - Date.now() > 0 ? ms_to_formatted_string(end_time - Date.now()) : "00:00";
+util.js      (alex zhang on 04/29/2023 at 21:23): }
+util.js      (alex zhang on 04/29/2023 at 21:23): 
+util.js      (alex zhang on 04/29/2023 at 21:23): function stop_timer() {
+util.js      (alex zhang on 04/29/2023 at 21:23):     clearInterval(timer_interval_id);
+util.js      (alex zhang on 04/29/2023 at 21:23): 
+util.js      (alex zhang on 04/29/2023 at 21:23):     if (question_timer_tag.innerText != "Untimed") {
+util.js      (alex zhang on 05/02/2023 at 16:22):         question_timer_tag.innerText = "00:00";
+util.js      (alex zhang on 04/29/2023 at 21:23):     }
+util.js      (alex zhang on 04/29/2023 at 16:33): }
 bigScreen.js (alex zhang on 04/29/2023 at 16:33): // NOTE: util.js is loaded before this file. This file uses functions defined in util.js
 bigScreen.js (alex zhang on 04/29/2023 at 16:33): 
 bigScreen.js (alex zhang on 04/29/2023 at 16:33): /*----------------------------------------------------------------------------*/
@@ -262,6 +234,10 @@ bigScreen.js (alex zhang on 04/29/2023 at 16:33):
 bigScreen.js (alex zhang on 04/29/2023 at 16:33):     chart_container_tag.style.display = "block";
 bigScreen.js (alex zhang on 04/29/2023 at 22:29):     myBarChart.update();
 bigScreen.js (alex zhang on 04/29/2023 at 16:33): });
+package-lock.json (alex zhang on 05/07/2023 at 19:03):       "name": "code-dojo",
+package-lock.json (alex zhang on 05/07/2023 at 19:03):       "version": "6.4.2",
+package-lock.json (alex zhang on 05/07/2023 at 19:03):       "resolved": "https://registry.npmjs.org/engine.io/-/engine.io-6.4.2.tgz",
+package-lock.json (alex zhang on 05/07/2023 at 19:03):       "integrity": "sha512-FKn/3oMiJjrOEOeUub2WCox6JhxBXq/Zn3fZOMCBxKnNYtsdKjxhl7yR3fZhM9PV+rdE75SU5SYMc+2PGzo+Tg==",
 quizroom.ts  (alex zhang on 04/29/2023 at 22:58):     public get nicknames(): string[] {
 quizroom.ts  (alex zhang on 04/29/2023 at 22:58):         let nicknames: string[] = [];
 quizroom.ts  (alex zhang on 04/29/2023 at 22:58): 
@@ -279,6 +255,9 @@ quizroom.ts  (alex zhang on 04/29/2023 at 16:33):     public set_player_curr_ans
 quizroom.ts  (alex zhang on 04/29/2023 at 23:52):         player.answers[this.curr_question_index] = answer;
 quizroom.ts  (alex zhang on 04/29/2023 at 23:52):         console.log(`setting player.answers[${this.curr_question_index}] = ${answer}`);
 quizroom.ts  (alex zhang on 04/29/2023 at 16:33):             const grade: number = await this.curr_question.check_answer(this.get_player_curr_answer(player), player);
+index.html   (alex zhang on 05/02/2023 at 13:54): 
+index.html   (alex zhang on 05/02/2023 at 13:54): 
+index.html   (alex zhang on 05/02/2023 at 13:54): 
 bigScreen_old.js (alex zhang on 04/29/2023 at 16:33):         timer: '00:00:00',
 bigScreen_old.js (alex zhang on 04/29/2023 at 16:33):                 label: 'Number of students',
 bigScreen_old.js (alex zhang on 04/29/2023 at 16:33): // async function makeChart(given_question, session_id, time, labels, main_label, data, width) {
@@ -299,78 +278,45 @@ bigScreen_old.js (alex zhang on 04/29/2023 at 16:33): // }
 bigScreen_old.js (alex zhang on 04/29/2023 at 16:33): var d = [25, 10, 15];
 bigScreen_old.js (alex zhang on 04/29/2023 at 16:33):     const data = await fetchDataFromBackend();
 bigScreen_old.js (alex zhang on 04/29/2023 at 16:33):     // const data = await makeChart(q, s, t, l, m, d, w);
-teacherPage.html (alex zhang on 04/29/2023 at 17:38):     <title>Teacher Page</title>
-teacherPage.html (alex zhang on 04/29/2023 at 16:33):             <a class="home-btn" href="index.html"
-teacherPage.html (alex zhang on 04/29/2023 at 16:33):                 onclick="return confirm('Are you sure you want to close the session?');"><button type="button"
-teacherPage.html (alex zhang on 04/29/2023 at 16:33):                     class="side-btn">Home</button></a>
-teacherPage.html (alex zhang on 04/29/2023 at 16:33):             <a class="display-btn" href="#"><button type="button" id="display-button"
-teacherPage.html (alex zhang on 04/29/2023 at 16:33):                     class="side-btn">Display</button></a>
-teacherPage.html (alex zhang on 04/29/2023 at 16:33):                             <input type="text" id="room-input" class="sesh-input" name="session-id"
-teacherPage.html (alex zhang on 04/29/2023 at 16:33):                                 placeholder="Session ID">
-teacherPage.html (alex zhang on 04/29/2023 at 21:23):                         <input type="number" id="timer-input" class="time-input" name="time"
-teacherPage.html (alex zhang on 04/29/2023 at 21:23):                             placeholder="Time in seconds">
-teacherPage.html (alex zhang on 04/29/2023 at 16:33):                         <a href="index.html" onclick="return confirm('Are you sure you want to close the session?');">
-teacherPage.html (alex zhang on 04/29/2023 at 16:33):                             <button type="button" class="close-btn press-down" style="background-color: red;">Close
-teacherPage.html (alex zhang on 04/29/2023 at 16:33):                                 Session</button>
-teacherPage.html (alex zhang on 04/29/2023 at 16:33):                         </a>
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     </div>
-teacherPage.html (alex zhang on 05/07/2023 at 18:24): 
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <!-- JS for PDF exports -->
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="https://unpkg.com/jspdf"></script>
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="https://unpkg.com/jspdf-autotable@3.5.22/dist/jspdf.plugin.autotable.js"></script>
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <!-- JS for communicating with server -->
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="/socket.io/socket.io.js"></script>
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="js/util.js"></script>
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="js/host.js"></script>
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="js/teacherPage.js"></script>
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <!-- JS for code editor -->
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="js/ace-builds/src/ace.js"></script>
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="js/ace-builds/theme-monokai.js"></script>
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="js/ide.js"></script>
-teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script>update_question_type();</script>
-quizPage.html (alex zhang on 04/29/2023 at 16:46): 
-quizPage.html (alex zhang on 04/29/2023 at 16:46): 
-quizPage.html (alex zhang on 04/29/2023 at 21:50):         <h3 id="results-score">Score:</h3>
-quizPage.html (alex zhang on 04/29/2023 at 16:46):     <!-- JavaScript for quiz summary -->
-quizPage.html (alex zhang on 04/29/2023 at 16:46):     <script src="summary.js"></script>
-quizPage.html (alex zhang on 04/29/2023 at 16:46): 
-bigScreen.css (alex zhang on 04/29/2023 at 22:29): #player-list {
-bigScreen.css (alex zhang on 04/29/2023 at 22:29):     color: #FFFFFF;
-bigScreen.css (alex zhang on 04/29/2023 at 22:29):     display: grid;
-bigScreen.css (alex zhang on 04/29/2023 at 22:29):     grid-template-columns: repeat(3, 1fr);
-bigScreen.css (alex zhang on 04/29/2023 at 22:29):     grid-gap: 10px;
-bigScreen.css (alex zhang on 04/29/2023 at 22:29):     padding: 10px;
-bigScreen.css (alex zhang on 04/29/2023 at 22:29): }
-bigScreen.css (alex zhang on 04/29/2023 at 22:29): 
-bigScreen.css (alex zhang on 04/29/2023 at 22:29): #player-list div {
-bigScreen.css (alex zhang on 04/29/2023 at 22:29):     background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
-bigScreen.css (alex zhang on 04/29/2023 at 22:29):     border-radius: 3px;
-bigScreen.css (alex zhang on 04/29/2023 at 22:29):     padding: 20px;
-bigScreen.css (alex zhang on 04/29/2023 at 22:29):     font-size: 16px;
-bigScreen.css (alex zhang on 04/29/2023 at 22:29):     text-align: center;
-bigScreen.css (alex zhang on 04/29/2023 at 22:29): }
-bigScreen.css (alex zhang on 04/29/2023 at 22:29): 
-bigScreen.css (alex zhang on 04/29/2023 at 17:15): 
-bigScreen.css (alex zhang on 04/29/2023 at 17:15): .info-text {
-bigScreen.css (alex zhang on 04/29/2023 at 17:15): 
-teacherPage.js (alex zhang on 05/07/2023 at 18:24): var export_button = document.getElementById("download-pdf");
-teacherPage.js (alex zhang on 05/07/2023 at 18:24): export_button.addEventListener("click", function () {
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):   const doc = new jsPDF();
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):   doc.autoTable({ html: "#player-table" });
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):   doc.save(`${room_id}_scores.pdf`);
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):   if ((window.innerWidth - 100) < window.innerHeight) {
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):     column.style.flexDirection = "column";
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):     container.style.width = "50vw";
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):     container.style.left = "0%";
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):     container.style.marginLeft = "0px";
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):   } else {
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):     column.style.flexDirection = "row";
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):     container.style.width = "40vw";
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):     container.style.left = "50%";
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):     container.style.marginLeft = "100px";
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):   }
-teacherPage.js (alex zhang on 05/07/2023 at 18:24):   putGridBelow();
+summary.js   (alex zhang on 04/29/2023 at 21:50): 
+summary.js   (alex zhang on 05/02/2023 at 13:54): function addTableRow(question, correctAnswer, studentAnswer, is_correct) {
+summary.js   (alex zhang on 05/02/2023 at 13:54): 
+summary.js   (alex zhang on 05/02/2023 at 13:54):   newRow.setAttribute("class", is_correct ? "correct" : "incorrect");
+summary.js   (alex zhang on 04/29/2023 at 16:46):   // let showQuestions = true; // boolean variable to determine whether to show the question or result area
+summary.js   (alex zhang on 04/29/2023 at 16:46):   if (showQuestions) {
+summary.js   (alex zhang on 04/29/2023 at 16:46):   } else {
+summary.js   (alex zhang on 04/29/2023 at 16:46):   }
+summary.js   (alex zhang on 04/29/2023 at 16:46): }
+summary.js   (alex zhang on 04/29/2023 at 16:46): 
+summary.js   (alex zhang on 04/29/2023 at 16:46): toggle_visibility(true);
+quiz.js      (alex zhang on 04/29/2023 at 21:50): const results_score_tag = document.getElementById("results-score");
+quiz.js      (alex zhang on 04/29/2023 at 16:46): let curr_prompt = "";
+quiz.js      (alex zhang on 04/29/2023 at 16:46):     curr_prompt = prompt;
+quiz.js      (alex zhang on 04/29/2023 at 16:46):     curr_prompt = prompt;
+quiz.js      (alex zhang on 04/29/2023 at 16:46):     curr_prompt = prompt;
+quiz.js      (alex zhang on 04/29/2023 at 21:23):     stop_timer();
+quiz.js      (alex zhang on 04/29/2023 at 21:50):     results_score_tag.innerText = `Final score: ${score_tag.innerText}`;
+quiz.js      (alex zhang on 04/29/2023 at 16:46): 
+quiz.js      (alex zhang on 04/29/2023 at 16:46):     // Add row to the summary table
+quiz.js      (alex zhang on 05/02/2023 at 13:54):     addTableRow(curr_prompt, correct_answer, player_answer, true);
+quiz.js      (alex zhang on 04/29/2023 at 21:50):     question_feedback_tag.innerText = `Incorrect.You answered "${player_answer}". Correct answer is "${correct_answer}"`;
+quiz.js      (alex zhang on 04/29/2023 at 21:50):     score_tag.innerText = `${num_right} /${num_right + num_wrong}`;
+quiz.js      (alex zhang on 04/29/2023 at 21:50):     results_score_tag.innerText = `Final score: ${score_tag.innerText}`;
+quiz.js      (alex zhang on 04/29/2023 at 16:46): 
+quiz.js      (alex zhang on 04/29/2023 at 16:46):     // Add row to the summary table
+quiz.js      (alex zhang on 05/02/2023 at 13:54):     addTableRow(curr_prompt, correct_answer, player_answer, false);
+quiz.js      (alex zhang on 04/29/2023 at 17:22): socket.on("run timeout", function () {
+quiz.js      (alex zhang on 04/29/2023 at 17:22):     output_tag.innerText = "Your code exceeded the standard time.";
+quiz.js      (alex zhang on 04/29/2023 at 17:22): });
+quiz.js      (alex zhang on 04/29/2023 at 17:22): 
+quiz.js      (alex zhang on 04/29/2023 at 16:46): 
+quiz.js      (alex zhang on 04/29/2023 at 16:46): /*----------------------------------------------------------------------------*/
+quiz.js      (alex zhang on 04/29/2023 at 16:46): /* Show Summary When Session Closes                                           */
+quiz.js      (alex zhang on 04/29/2023 at 16:46): /*----------------------------------------------------------------------------*/
+quiz.js      (alex zhang on 04/29/2023 at 16:46): 
+quiz.js      (alex zhang on 04/29/2023 at 16:46): socket.on("close session", function () {
+quiz.js      (alex zhang on 04/29/2023 at 16:46):     toggle_visibility(false);
+quiz.js      (alex zhang on 04/29/2023 at 16:46): });
 question.ts  (alex zhang on 04/29/2023 at 16:33): import { Player } from "./player.js"
 question.ts  (alex zhang on 04/29/2023 at 16:46): function string_to_codelanguage(str: string): CodeLanguage | null {
 question.ts  (alex zhang on 04/29/2023 at 16:46):     switch (str) {
@@ -421,93 +367,6 @@ question.ts  (alex zhang on 04/29/2023 at 16:33):         player.curr_output = o
 question.ts  (alex zhang on 04/29/2023 at 16:33): 
 question.ts  (alex zhang on 04/29/2023 at 16:46): export { string_to_codelanguage };
 question.ts  (alex zhang on 04/29/2023 at 16:46): export { codelanguage_to_string };
-summary.js   (alex zhang on 04/29/2023 at 21:50): 
-summary.js   (alex zhang on 05/02/2023 at 13:54): function addTableRow(question, correctAnswer, studentAnswer, is_correct) {
-summary.js   (alex zhang on 05/02/2023 at 13:54): 
-summary.js   (alex zhang on 05/02/2023 at 13:54):   newRow.setAttribute("class", is_correct ? "correct" : "incorrect");
-summary.js   (alex zhang on 04/29/2023 at 16:46):   // let showQuestions = true; // boolean variable to determine whether to show the question or result area
-summary.js   (alex zhang on 04/29/2023 at 16:46):   if (showQuestions) {
-summary.js   (alex zhang on 04/29/2023 at 16:46):   } else {
-summary.js   (alex zhang on 04/29/2023 at 16:46):   }
-summary.js   (alex zhang on 04/29/2023 at 16:46): }
-summary.js   (alex zhang on 04/29/2023 at 16:46): 
-summary.js   (alex zhang on 04/29/2023 at 16:46): toggle_visibility(true);
-host.js      (alex zhang on 04/29/2023 at 16:33): let room_id = "";
-host.js      (alex zhang on 04/29/2023 at 16:33):     room_id = room_input.value;
-host.js      (alex zhang on 04/29/2023 at 16:33):     console.log("create room " + room_id);
-host.js      (alex zhang on 04/29/2023 at 16:33):     socket.emit("create room", room_id);
-host.js      (alex zhang on 04/29/2023 at 16:33):     start_timer(end_time);
-host.js      (alex zhang on 04/29/2023 at 21:23):     stop_timer();
-host.js      (alex zhang on 04/29/2023 at 16:33): 
-host.js      (alex zhang on 04/29/2023 at 16:33): /*----------------------------------------------------------------------------*/
-host.js      (alex zhang on 04/29/2023 at 16:33): /* Big Screen Page                                                            */
-host.js      (alex zhang on 04/29/2023 at 16:33): /*----------------------------------------------------------------------------*/
-host.js      (alex zhang on 04/29/2023 at 16:33): document.getElementById("display-button").addEventListener("click", function (e) {
-host.js      (alex zhang on 04/29/2023 at 16:33):     e.preventDefault();
-host.js      (alex zhang on 04/29/2023 at 16:33): 
-host.js      (alex zhang on 04/29/2023 at 16:33):     if (room_id == null || room_id == "") {
-host.js      (alex zhang on 04/29/2023 at 16:33):         error_message("Please create a room first.");
-host.js      (alex zhang on 04/29/2023 at 16:33):         return;
-host.js      (alex zhang on 04/29/2023 at 16:33):     }
-host.js      (alex zhang on 04/29/2023 at 16:33): 
-host.js      (alex zhang on 04/29/2023 at 16:33):     let params = new URLSearchParams();
-host.js      (alex zhang on 04/29/2023 at 16:33):     params.append('roomid', room_id);
-host.js      (alex zhang on 04/29/2023 at 16:33): 
-host.js      (alex zhang on 04/29/2023 at 16:33):     const url = 'bigScreen.html?' + params.toString();
-host.js      (alex zhang on 04/29/2023 at 16:33):     window.open(url, "_blank");
-host.js      (alex zhang on 04/29/2023 at 16:33): });
-util.js      (alex zhang on 05/02/2023 at 16:22): let timer_interval_id = 0;
-util.js      (alex zhang on 05/02/2023 at 16:22): const timer_update_frequency = 25;  // in milliseconds
-util.js      (alex zhang on 05/02/2023 at 16:22): 
-util.js      (alex zhang on 05/02/2023 at 15:37):     return new Date(ms).toISOString().slice(14, 19);
-util.js      (alex zhang on 04/29/2023 at 16:33): 
-util.js      (alex zhang on 04/29/2023 at 16:33): function start_timer(end_time) {
-util.js      (alex zhang on 04/29/2023 at 16:33):     if (!Number.isNaN(end_time) && end_time != null) {
-util.js      (alex zhang on 04/29/2023 at 16:33):         timer_interval_id = setInterval(update_timer, timer_update_frequency, end_time);
-util.js      (alex zhang on 04/29/2023 at 16:33):     } else {
-util.js      (alex zhang on 04/29/2023 at 21:23):         question_timer_tag.innerText = "Untimed";
-util.js      (alex zhang on 04/29/2023 at 16:33):     }
-util.js      (alex zhang on 04/29/2023 at 16:33): }
-util.js      (alex zhang on 04/29/2023 at 16:33): 
-util.js      (alex zhang on 04/29/2023 at 16:33): function update_timer(end_time) {
-util.js      (alex zhang on 05/02/2023 at 16:22):     question_timer_tag.innerText = end_time - Date.now() > 0 ? ms_to_formatted_string(end_time - Date.now()) : "00:00";
-util.js      (alex zhang on 04/29/2023 at 21:23): }
-util.js      (alex zhang on 04/29/2023 at 21:23): 
-util.js      (alex zhang on 04/29/2023 at 21:23): function stop_timer() {
-util.js      (alex zhang on 04/29/2023 at 21:23):     clearInterval(timer_interval_id);
-util.js      (alex zhang on 04/29/2023 at 21:23): 
-util.js      (alex zhang on 04/29/2023 at 21:23):     if (question_timer_tag.innerText != "Untimed") {
-util.js      (alex zhang on 05/02/2023 at 16:22):         question_timer_tag.innerText = "00:00";
-util.js      (alex zhang on 04/29/2023 at 21:23):     }
-util.js      (alex zhang on 04/29/2023 at 16:33): }
-quiz.js      (alex zhang on 04/29/2023 at 21:50): const results_score_tag = document.getElementById("results-score");
-quiz.js      (alex zhang on 04/29/2023 at 16:46): let curr_prompt = "";
-quiz.js      (alex zhang on 04/29/2023 at 16:46):     curr_prompt = prompt;
-quiz.js      (alex zhang on 04/29/2023 at 16:46):     curr_prompt = prompt;
-quiz.js      (alex zhang on 04/29/2023 at 16:46):     curr_prompt = prompt;
-quiz.js      (alex zhang on 04/29/2023 at 21:23):     stop_timer();
-quiz.js      (alex zhang on 04/29/2023 at 21:50):     results_score_tag.innerText = `Final score: ${score_tag.innerText}`;
-quiz.js      (alex zhang on 04/29/2023 at 16:46): 
-quiz.js      (alex zhang on 04/29/2023 at 16:46):     // Add row to the summary table
-quiz.js      (alex zhang on 05/02/2023 at 13:54):     addTableRow(curr_prompt, correct_answer, player_answer, true);
-quiz.js      (alex zhang on 04/29/2023 at 21:50):     question_feedback_tag.innerText = `Incorrect.You answered "${player_answer}". Correct answer is "${correct_answer}"`;
-quiz.js      (alex zhang on 04/29/2023 at 21:50):     score_tag.innerText = `${num_right} /${num_right + num_wrong}`;
-quiz.js      (alex zhang on 04/29/2023 at 21:50):     results_score_tag.innerText = `Final score: ${score_tag.innerText}`;
-quiz.js      (alex zhang on 04/29/2023 at 16:46): 
-quiz.js      (alex zhang on 04/29/2023 at 16:46):     // Add row to the summary table
-quiz.js      (alex zhang on 05/02/2023 at 13:54):     addTableRow(curr_prompt, correct_answer, player_answer, false);
-quiz.js      (alex zhang on 04/29/2023 at 17:22): socket.on("run timeout", function () {
-quiz.js      (alex zhang on 04/29/2023 at 17:22):     output_tag.innerText = "Your code exceeded the standard time.";
-quiz.js      (alex zhang on 04/29/2023 at 17:22): });
-quiz.js      (alex zhang on 04/29/2023 at 17:22): 
-quiz.js      (alex zhang on 04/29/2023 at 16:46): 
-quiz.js      (alex zhang on 04/29/2023 at 16:46): /*----------------------------------------------------------------------------*/
-quiz.js      (alex zhang on 04/29/2023 at 16:46): /* Show Summary When Session Closes                                           */
-quiz.js      (alex zhang on 04/29/2023 at 16:46): /*----------------------------------------------------------------------------*/
-quiz.js      (alex zhang on 04/29/2023 at 16:46): 
-quiz.js      (alex zhang on 04/29/2023 at 16:46): socket.on("close session", function () {
-quiz.js      (alex zhang on 04/29/2023 at 16:46):     toggle_visibility(false);
-quiz.js      (alex zhang on 04/29/2023 at 16:46): });
 server.ts    (alex zhang on 04/29/2023 at 16:46): import { QuestionType, CodeLanguage, Question, FRQuestion, MCQuestion, CodeQuestion, string_to_codelanguage, codelanguage_to_string } from "./question.js";
 server.ts    (alex zhang on 05/07/2023 at 18:24): const port: number = parseInt(process.env.PORT) || 3000;
 server.ts    (alex zhang on 05/07/2023 at 18:24):     console.log(`Code Dojo is live! Visit http://localhost:${port}/`);
@@ -586,3 +445,149 @@ server.ts    (alex zhang on 05/02/2023 at 16:46):
 server.ts    (alex zhang on 04/29/2023 at 16:46):             io.to(this_quizroom.id).emit("close session");
 server.ts    (alex zhang on 04/29/2023 at 22:44):             io.to(this_quizroom.id).emit("player leave", socket.id, this_player.nickname);
 server.ts    (alex zhang on 04/29/2023 at 17:15):             io.to(`${this_quizroom.id} spectators`).emit("num players", this_quizroom.num_players);
+runcode.ts   (alex zhang on 04/29/2023 at 17:22): const code_time_limit: number = 2500; // in milliseconds
+runcode.ts   (alex zhang on 04/29/2023 at 17:22): 
+runcode.ts   (alex zhang on 04/29/2023 at 17:22):     run_success,
+runcode.ts   (alex zhang on 04/29/2023 at 17:22):     run_timeout
+runcode.ts   (alex zhang on 04/29/2023 at 17:22):             exec(`./${executable_name}`, { timeout: code_time_limit }, (err, stdout, stderr) => {
+runcode.ts   (alex zhang on 04/29/2023 at 17:22):                     if (err.killed && err.signal === "SIGTERM") {
+runcode.ts   (alex zhang on 04/29/2023 at 17:22):                         output.result = RunResult.run_timeout;
+runcode.ts   (alex zhang on 04/29/2023 at 17:22):                     } else {
+runcode.ts   (alex zhang on 04/29/2023 at 17:22):                         output.stdout = stdout;
+runcode.ts   (alex zhang on 04/29/2023 at 17:22):                         output.stderr = stderr;
+runcode.ts   (alex zhang on 04/29/2023 at 17:22):                         output.result = RunResult.run_fail;
+runcode.ts   (alex zhang on 04/29/2023 at 17:22):                     }
+runcode.ts   (alex zhang on 04/29/2023 at 17:22):         console.error("Error during compilation or execution:", error);
+package.json (alex zhang on 05/07/2023 at 19:02):     "compile": "npx tsc --project ./tsconfig.json",
+package.json (alex zhang on 05/07/2023 at 19:02):     "start": "node server/server.js"
+host.js      (alex zhang on 04/29/2023 at 16:33): let room_id = "";
+host.js      (alex zhang on 04/29/2023 at 16:33):     room_id = room_input.value;
+host.js      (alex zhang on 04/29/2023 at 16:33):     console.log("create room " + room_id);
+host.js      (alex zhang on 04/29/2023 at 16:33):     socket.emit("create room", room_id);
+host.js      (alex zhang on 04/29/2023 at 16:33):     start_timer(end_time);
+host.js      (alex zhang on 04/29/2023 at 21:23):     stop_timer();
+host.js      (alex zhang on 04/29/2023 at 16:33): 
+host.js      (alex zhang on 04/29/2023 at 16:33): /*----------------------------------------------------------------------------*/
+host.js      (alex zhang on 04/29/2023 at 16:33): /* Big Screen Page                                                            */
+host.js      (alex zhang on 04/29/2023 at 16:33): /*----------------------------------------------------------------------------*/
+host.js      (alex zhang on 04/29/2023 at 16:33): document.getElementById("display-button").addEventListener("click", function (e) {
+host.js      (alex zhang on 04/29/2023 at 16:33):     e.preventDefault();
+host.js      (alex zhang on 04/29/2023 at 16:33): 
+host.js      (alex zhang on 04/29/2023 at 16:33):     if (room_id == null || room_id == "") {
+host.js      (alex zhang on 04/29/2023 at 16:33):         error_message("Please create a room first.");
+host.js      (alex zhang on 04/29/2023 at 16:33):         return;
+host.js      (alex zhang on 04/29/2023 at 16:33):     }
+host.js      (alex zhang on 04/29/2023 at 16:33): 
+host.js      (alex zhang on 04/29/2023 at 16:33):     let params = new URLSearchParams();
+host.js      (alex zhang on 04/29/2023 at 16:33):     params.append('roomid', room_id);
+host.js      (alex zhang on 04/29/2023 at 16:33): 
+host.js      (alex zhang on 04/29/2023 at 16:33):     const url = 'bigScreen.html?' + params.toString();
+host.js      (alex zhang on 04/29/2023 at 16:33):     window.open(url, "_blank");
+host.js      (alex zhang on 04/29/2023 at 16:33): });
+bigScreen.css (alex zhang on 04/29/2023 at 22:29): #player-list {
+bigScreen.css (alex zhang on 04/29/2023 at 22:29):     color: #FFFFFF;
+bigScreen.css (alex zhang on 04/29/2023 at 22:29):     display: grid;
+bigScreen.css (alex zhang on 04/29/2023 at 22:29):     grid-template-columns: repeat(3, 1fr);
+bigScreen.css (alex zhang on 04/29/2023 at 22:29):     grid-gap: 10px;
+bigScreen.css (alex zhang on 04/29/2023 at 22:29):     padding: 10px;
+bigScreen.css (alex zhang on 04/29/2023 at 22:29): }
+bigScreen.css (alex zhang on 04/29/2023 at 22:29): 
+bigScreen.css (alex zhang on 04/29/2023 at 22:29): #player-list div {
+bigScreen.css (alex zhang on 04/29/2023 at 22:29):     background: linear-gradient(to left, #23a6d5, #1e87ae, #1e89a9, #16738a);
+bigScreen.css (alex zhang on 04/29/2023 at 22:29):     border-radius: 3px;
+bigScreen.css (alex zhang on 04/29/2023 at 22:29):     padding: 20px;
+bigScreen.css (alex zhang on 04/29/2023 at 22:29):     font-size: 16px;
+bigScreen.css (alex zhang on 04/29/2023 at 22:29):     text-align: center;
+bigScreen.css (alex zhang on 04/29/2023 at 22:29): }
+bigScreen.css (alex zhang on 04/29/2023 at 22:29): 
+bigScreen.css (alex zhang on 04/29/2023 at 17:15): 
+bigScreen.css (alex zhang on 04/29/2023 at 17:15): .info-text {
+bigScreen.css (alex zhang on 04/29/2023 at 17:15): 
+teacherPage.js (alex zhang on 05/07/2023 at 18:24): var export_button = document.getElementById("download-pdf");
+teacherPage.js (alex zhang on 05/07/2023 at 18:24): export_button.addEventListener("click", function () {
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):   const doc = new jsPDF();
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):   doc.autoTable({ html: "#player-table" });
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):   doc.save(`${room_id}_scores.pdf`);
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):   if ((window.innerWidth - 100) < window.innerHeight) {
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):     column.style.flexDirection = "column";
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):     container.style.width = "50vw";
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):     container.style.left = "0%";
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):     container.style.marginLeft = "0px";
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):   } else {
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):     column.style.flexDirection = "row";
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):     container.style.width = "40vw";
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):     container.style.left = "50%";
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):     container.style.marginLeft = "100px";
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):   }
+teacherPage.js (alex zhang on 05/07/2023 at 18:24):   putGridBelow();
+summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area h1,
+summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area h3 {
+summary.css  (alex zhang on 04/29/2023 at 21:50): }
+summary.css  (alex zhang on 04/29/2023 at 21:50): 
+summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area table {
+summary.css  (alex zhang on 04/29/2023 at 21:50): 
+summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area th,
+summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area td {
+summary.css  (alex zhang on 04/29/2023 at 21:50): 
+summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area th {
+summary.css  (alex zhang on 04/29/2023 at 21:50): 
+summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area .correct {
+summary.css  (alex zhang on 04/29/2023 at 21:50): }
+summary.css  (alex zhang on 04/29/2023 at 21:50): 
+summary.css  (alex zhang on 04/29/2023 at 21:50): #results-area .incorrect {
+summary.css  (alex zhang on 04/29/2023 at 21:50): }
+player.ts    (alex zhang on 04/29/2023 at 16:33): import { RunOutput } from "./runcode.js"
+player.ts    (alex zhang on 04/29/2023 at 16:33):     public curr_output: RunOutput;
+player.ts    (alex zhang on 04/29/2023 at 16:33):         this.curr_output = new RunOutput;
+player.ts    (alex zhang on 04/29/2023 at 16:33): 
+teacherPage.html (alex zhang on 04/29/2023 at 17:38):     <title>Teacher Page</title>
+teacherPage.html (alex zhang on 04/29/2023 at 16:33):             <a class="home-btn" href="index.html"
+teacherPage.html (alex zhang on 04/29/2023 at 16:33):                 onclick="return confirm('Are you sure you want to close the session?');"><button type="button"
+teacherPage.html (alex zhang on 04/29/2023 at 16:33):                     class="side-btn">Home</button></a>
+teacherPage.html (alex zhang on 04/29/2023 at 16:33):             <a class="display-btn" href="#"><button type="button" id="display-button"
+teacherPage.html (alex zhang on 04/29/2023 at 16:33):                     class="side-btn">Display</button></a>
+teacherPage.html (alex zhang on 04/29/2023 at 16:33):                             <input type="text" id="room-input" class="sesh-input" name="session-id"
+teacherPage.html (alex zhang on 04/29/2023 at 16:33):                                 placeholder="Session ID">
+teacherPage.html (alex zhang on 04/29/2023 at 21:23):                         <input type="number" id="timer-input" class="time-input" name="time"
+teacherPage.html (alex zhang on 04/29/2023 at 21:23):                             placeholder="Time in seconds">
+teacherPage.html (alex zhang on 04/29/2023 at 16:33):                         <a href="index.html" onclick="return confirm('Are you sure you want to close the session?');">
+teacherPage.html (alex zhang on 04/29/2023 at 16:33):                             <button type="button" class="close-btn press-down" style="background-color: red;">Close
+teacherPage.html (alex zhang on 04/29/2023 at 16:33):                                 Session</button>
+teacherPage.html (alex zhang on 04/29/2023 at 16:33):                         </a>
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     </div>
+teacherPage.html (alex zhang on 05/07/2023 at 18:24): 
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <!-- JS for PDF exports -->
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="https://unpkg.com/jspdf"></script>
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="https://unpkg.com/jspdf-autotable@3.5.22/dist/jspdf.plugin.autotable.js"></script>
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <!-- JS for communicating with server -->
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="/socket.io/socket.io.js"></script>
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="js/util.js"></script>
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="js/host.js"></script>
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="js/teacherPage.js"></script>
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <!-- JS for code editor -->
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="js/ace-builds/src/ace.js"></script>
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="js/ace-builds/theme-monokai.js"></script>
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script src="js/ide.js"></script>
+teacherPage.html (alex zhang on 05/07/2023 at 18:24):     <script>update_question_type();</script>
+quizPage.html (alex zhang on 04/29/2023 at 16:46): 
+quizPage.html (alex zhang on 04/29/2023 at 16:46): 
+quizPage.html (alex zhang on 04/29/2023 at 21:50):         <h3 id="results-score">Score:</h3>
+quizPage.html (alex zhang on 04/29/2023 at 16:46):     <!-- JavaScript for quiz summary -->
+quizPage.html (alex zhang on 04/29/2023 at 16:46):     <script src="summary.js"></script>
+quizPage.html (alex zhang on 04/29/2023 at 16:46): 
+bigScreen.html (alex zhang on 04/29/2023 at 16:33):     <title>Big Screen</title>
+bigScreen.html (alex zhang on 04/29/2023 at 17:15):                     <div class="info-text" id="session-id">Session ID </div>
+bigScreen.html (alex zhang on 04/29/2023 at 17:15):                     <div class="info-text" id="num-players">0 connected</div>
+bigScreen.html (alex zhang on 04/29/2023 at 17:15):                     <div class="separator"></div>
+bigScreen.html (alex zhang on 04/29/2023 at 16:33):             <h1 id="question">Waiting for host...</h1>
+bigScreen.html (alex zhang on 04/29/2023 at 23:52):             <h1 id="answer-count"></h1>
+bigScreen.html (alex zhang on 04/29/2023 at 16:33):             <h1 id="answer"></h1>
+bigScreen.html (alex zhang on 04/29/2023 at 22:29):     <div id="player-list">
+bigScreen.html (alex zhang on 04/29/2023 at 22:29):     </div>
+bigScreen.html (alex zhang on 04/29/2023 at 22:29): 
+bigScreen.html (alex zhang on 04/29/2023 at 16:33):     <div id="chart-container" class="modern-container">
+bigScreen.html (alex zhang on 04/29/2023 at 16:33):     <!-- JavaScript to communicate with server -->
+bigScreen.html (alex zhang on 04/29/2023 at 16:33):     <script src="/socket.io/socket.io.js"></script>
+bigScreen.html (alex zhang on 04/29/2023 at 16:33):     <script src="js/util.js"></script>
+bigScreen.html (alex zhang on 04/29/2023 at 16:33):     <script src="js/bigScreen.js"></script>

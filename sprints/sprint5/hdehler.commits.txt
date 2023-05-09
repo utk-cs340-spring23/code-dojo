@@ -1,20 +1,66 @@
-aboutPage.css (hdehler on 04/30/2023 at 18:35):     background-color: rgb(199, 199, 199);
 contactUs.html (hdehler on 04/25/2023 at 11:12):         <link rel="shortcut icon" href="../img/dojoFavicon.png">
-bigScreen.html (hdehler on 04/26/2023 at 15:44): <head>
-bigScreen.html (hdehler on 04/26/2023 at 15:44):     <link rel="stylesheet" href="bigScreen.css">
-bigScreen.html (hdehler on 04/26/2023 at 15:44):     <link rel="shortcut icon" href="img/dojoFavicon.png">
-bigScreen.html (hdehler on 04/26/2023 at 15:44):     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-bigScreen.html (hdehler on 04/26/2023 at 15:44):     <script src="js/chart.umd.js"></script>
-bigScreen.html (hdehler on 04/26/2023 at 15:44): </head>
-bigScreen.html (hdehler on 04/26/2023 at 15:44):     <div class="white-text">
-bigScreen.html (hdehler on 04/26/2023 at 15:44): </html>
-host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "nickname table-data");
-host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "num-right table-data");
-host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "num-wrong table-data");
-host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "current-answer table-data");
-host.js      (hdehler on 04/28/2023 at 17:03): 
-host.js      (hdehler on 04/28/2023 at 17:03): 
-notesPage.css (hdehler on 04/30/2023 at 18:35):   font-family: sans-serif, cursive;
+notesPage.html (hdehler on 04/25/2023 at 11:12):     <link rel="shortcut icon" href="../img/dojoFavicon.png">
+index.html   (hdehler on 04/25/2023 at 11:02):   <!--<link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+index.html   (hdehler on 04/25/2023 at 11:02):   <link rel="shortcut icon" href="img/dojoFavicon.png">
+teacherPage.html (hdehler on 04/25/2023 at 11:12):     <link rel="shortcut icon" href="img/dojoFavicon.png">
+teacherPage.html (hdehler on 04/28/2023 at 16:21):                         <div class="input-button-container">
+teacherPage.html (hdehler on 04/28/2023 at 16:21):                             <button type="submit" class="sesh-btn press-down" id="create-room-button">Create</button>
+teacherPage.html (hdehler on 04/28/2023 at 16:21):                         </div>
+teacherPage.html (hdehler on 05/07/2023 at 20:35):                     <div class="timer-display" id="question-timer">00:00</div>
+teacherPage.html (hdehler on 04/28/2023 at 17:03):             <table class="player-table" id="player-table">
+teacherPage.html (hdehler on 04/28/2023 at 17:03):                         <th class="table-header">Nickname</th>
+teacherPage.html (hdehler on 04/28/2023 at 17:03):                         <th class="table-header"># Right</th>
+teacherPage.html (hdehler on 04/28/2023 at 17:03):                         <th class="table-header"># Wrong</th>
+teacherPage.html (hdehler on 04/28/2023 at 17:03):                         <th class="table-header">Current Answer</th>
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44): // Placeholder function to get data from the backend
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44): // Replace this function with your actual API call to fetch data
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44): async function fetchDataFromBackend() {
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     return {
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         question: 'Sample Question',
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         sessionId: 'ABC123',
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         barData: {
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):             datasets: [{
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):                 data: [12, 19, 3, 5, 2, 3],
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):                 borderWidth: 1
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):             }]
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         }
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     };
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44): }
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44): async function loadData() {
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44): 
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     document.getElementById('question-placeholder').innerText = data.question;
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     document.getElementById('session-id').innerText += ` ${data.sessionId}`;
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     document.getElementById('question-timer').innerText = data.timer;
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44): 
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     const ctx = document.getElementById('myChart');
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     new Chart(ctx, {
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         type: 'bar',
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         data: data.barData,
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         options: {
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):             scales: {
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):                 y: {
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):                     beginAtZero: true
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):                 }
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):             }
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         }
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     });
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44): }
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44): 
+bigScreen_old.js (hdehler on 04/26/2023 at 15:44): window.addEventListener('DOMContentLoaded', loadData);
+aboutPage.html (hdehler on 04/25/2023 at 11:12):         <link rel="shortcut icon" href="../img/dojoFavicon.png">
+aboutPage.html (hdehler on 04/26/2023 at 16:54):                     <p>We are a small group of 3 students from the University of Tennessee. After going through numerous
+aboutPage.css (hdehler on 04/30/2023 at 18:35):     background-color: rgb(199, 199, 199);
+bigScreen.css (hdehler on 05/09/2023 at 11:19):     width: 490px;
+bigScreen.css (hdehler on 05/07/2023 at 20:35): .modern-container {
+bigScreen.css (hdehler on 05/07/2023 at 20:35):     background-color: #ffffff;
+bigScreen.css (hdehler on 05/07/2023 at 20:35):     border: 1px solid #ccc;
+bigScreen.css (hdehler on 05/07/2023 at 20:35):     border-radius: 8px;
+bigScreen.css (hdehler on 05/07/2023 at 20:35):     padding: 16px;
+bigScreen.css (hdehler on 05/07/2023 at 20:35):     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+bigScreen.css (hdehler on 05/07/2023 at 20:35):     max-width: 800px;
+bigScreen.css (hdehler on 05/07/2023 at 20:35):     margin: 16px auto 0;
+bigScreen.css (hdehler on 05/07/2023 at 20:35): }
 quizPage.css (hdehler on 04/30/2023 at 18:35):     background-color: rgb(199, 199, 199);
 quizPage.css (hdehler on 04/30/2023 at 18:35):  
 quizPage.css (hdehler on 04/30/2023 at 18:35): .btn {
@@ -50,6 +96,9 @@ quizPage.css (hdehler on 04/26/2023 at 16:54):
 quizPage.css (hdehler on 04/26/2023 at 16:54): #answer-input:focus {
 quizPage.css (hdehler on 04/26/2023 at 16:54):     border: 2px solid #7e8cef; /* added a border when the input is focused */
 quizPage.css (hdehler on 04/26/2023 at 16:54): 
+quizPage.css (hdehler on 05/07/2023 at 20:35):     width: 75px; 
+quizPage.css (hdehler on 05/07/2023 at 20:35):     text-align: center; 
+quizPage.css (hdehler on 05/07/2023 at 20:35): 
 quizPage.css (hdehler on 04/30/2023 at 18:35):     border: 1px solid black;
 testSum.html (hdehler on 04/30/2023 at 18:35): <!DOCTYPE html>
 testSum.html (hdehler on 04/30/2023 at 18:35): <html>
@@ -75,41 +124,6 @@ testSum.html (hdehler on 04/30/2023 at 18:35):             </table>
 testSum.html (hdehler on 04/30/2023 at 18:35):         </div>
 testSum.html (hdehler on 04/30/2023 at 18:35):     </body>
 testSum.html (hdehler on 04/30/2023 at 18:35): </html>
-quizPage.html (hdehler on 04/25/2023 at 11:12):     <link rel="shortcut icon" href="img/dojoFavicon.png">
-faqPage.html (hdehler on 04/25/2023 at 11:12):         <link rel="shortcut icon" href="../img/dojoFavicon.png">
-faqPage.html (hdehler on 04/25/2023 at 11:12):         
-summary.css  (hdehler on 04/30/2023 at 18:35): #results-area {
-summary.css  (hdehler on 04/30/2023 at 18:35):     width: 70%;
-summary.css  (hdehler on 04/30/2023 at 18:35):     margin: 0 auto;
-summary.css  (hdehler on 04/30/2023 at 18:35): }
-summary.css  (hdehler on 04/30/2023 at 18:35): 
-summary.css  (hdehler on 04/30/2023 at 18:35):     color: white;
-summary.css  (hdehler on 04/30/2023 at 18:35): }
-summary.css  (hdehler on 04/30/2023 at 18:35): 
-summary.css  (hdehler on 04/30/2023 at 18:35): #results-area h3 {
-summary.css  (hdehler on 04/30/2023 at 18:35):     display: inline-block;
-summary.css  (hdehler on 04/30/2023 at 18:35):     border: 1px solid white;
-summary.css  (hdehler on 04/30/2023 at 18:35):     padding: 4px;
-summary.css  (hdehler on 04/30/2023 at 18:35):     border-collapse: collapse;
-summary.css  (hdehler on 04/30/2023 at 18:35):     width: 100%;
-summary.css  (hdehler on 04/30/2023 at 18:35): 	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-summary.css  (hdehler on 04/30/2023 at 18:35):     width: 25%;
-summary.css  (hdehler on 04/30/2023 at 18:35):     text-align: left;
-summary.css  (hdehler on 04/30/2023 at 18:35):     padding: 8px;
-summary.css  (hdehler on 04/30/2023 at 18:35):     border: 1px solid black;
-summary.css  (hdehler on 04/30/2023 at 18:35): }
-summary.css  (hdehler on 04/30/2023 at 18:35): 
-summary.css  (hdehler on 04/30/2023 at 18:35): #results-area td {
-summary.css  (hdehler on 04/30/2023 at 18:35): 	color:white;
-summary.css  (hdehler on 04/30/2023 at 18:35):     background-color: #ddd;
-summary.css  (hdehler on 04/30/2023 at 18:35): 	color: black;
-summary.css  (hdehler on 04/30/2023 at 18:35):     background-color: rgba(0, 128, 0, 0.641);
-summary.css  (hdehler on 04/30/2023 at 18:35):     background-color: rgba(255, 0, 0, 0.61);
-aboutPage.html (hdehler on 04/25/2023 at 11:12):         <link rel="shortcut icon" href="../img/dojoFavicon.png">
-aboutPage.html (hdehler on 04/26/2023 at 16:54):                     <p>We are a small group of 3 students from the University of Tennessee. After going through numerous
-notesPage.html (hdehler on 04/25/2023 at 11:12):     <link rel="shortcut icon" href="../img/dojoFavicon.png">
-index.html   (hdehler on 04/25/2023 at 11:02):   <!--<link rel="icon" type="image/x-icon" href="favicon.ico"> -->
-index.html   (hdehler on 04/25/2023 at 11:02):   <link rel="shortcut icon" href="img/dojoFavicon.png">
 teacherPage.css (hdehler on 04/28/2023 at 16:21): 	justify-content: center;
 teacherPage.css (hdehler on 04/28/2023 at 16:21): 
 teacherPage.css (hdehler on 04/28/2023 at 16:21): .sesh-input {
@@ -142,7 +156,8 @@ teacherPage.css (hdehler on 04/28/2023 at 17:03):     box-shadow: 0 0 5px rgba(0
 teacherPage.css (hdehler on 04/28/2023 at 17:03):     border: 1px solid #e0e0e0;
 teacherPage.css (hdehler on 04/28/2023 at 17:03):     border: 1px solid white;
 teacherPage.css (hdehler on 04/28/2023 at 17:03):     display: inline-block;
-teacherPage.css (hdehler on 04/28/2023 at 17:03):     width: auto; 
+teacherPage.css (hdehler on 05/07/2023 at 20:35):     width: 90px;
+teacherPage.css (hdehler on 05/07/2023 at 20:35):     text-align: center;
 teacherPage.css (hdehler on 04/28/2023 at 17:03):     padding: 5px 10px;
 teacherPage.css (hdehler on 05/01/2023 at 12:01): 	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, cursive;
 teacherPage.css (hdehler on 05/01/2023 at 12:01): 		font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, cursive;
@@ -196,51 +211,53 @@ teacherPage.css (hdehler on 04/28/2023 at 16:21): }
 teacherPage.css (hdehler on 04/28/2023 at 16:21): .sesh-btn:hover {
 teacherPage.css (hdehler on 04/28/2023 at 16:21): 	color: #1b7494;
 teacherPage.css (hdehler on 04/28/2023 at 16:21): }
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44): // Placeholder function to get data from the backend
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44): // Replace this function with your actual API call to fetch data
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44): async function fetchDataFromBackend() {
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     return {
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         question: 'Sample Question',
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         sessionId: 'ABC123',
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         barData: {
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):             datasets: [{
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):                 data: [12, 19, 3, 5, 2, 3],
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):                 borderWidth: 1
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):             }]
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         }
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     };
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44): }
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44): async function loadData() {
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44): 
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     document.getElementById('question-placeholder').innerText = data.question;
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     document.getElementById('session-id').innerText += ` ${data.sessionId}`;
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     document.getElementById('question-timer').innerText = data.timer;
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44): 
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     const ctx = document.getElementById('myChart');
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     new Chart(ctx, {
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         type: 'bar',
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         data: data.barData,
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         options: {
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):             scales: {
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):                 y: {
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):                     beginAtZero: true
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):                 }
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):             }
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):         }
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44):     });
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44): }
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44): 
-bigScreen_old.js (hdehler on 04/26/2023 at 15:44): window.addEventListener('DOMContentLoaded', loadData);
-teacherPage.html (hdehler on 04/25/2023 at 11:12):     <link rel="shortcut icon" href="img/dojoFavicon.png">
-teacherPage.html (hdehler on 04/28/2023 at 16:21):                         <div class="input-button-container">
-teacherPage.html (hdehler on 04/28/2023 at 16:21):                             <button type="submit" class="sesh-btn press-down" id="create-room-button">Create</button>
-teacherPage.html (hdehler on 04/28/2023 at 16:21):                         </div>
-teacherPage.html (hdehler on 04/28/2023 at 17:03):             <table class="player-table" id="player-table">
-teacherPage.html (hdehler on 04/28/2023 at 17:03):                         <th class="table-header">Nickname</th>
-teacherPage.html (hdehler on 04/28/2023 at 17:03):                         <th class="table-header"># Right</th>
-teacherPage.html (hdehler on 04/28/2023 at 17:03):                         <th class="table-header"># Wrong</th>
-teacherPage.html (hdehler on 04/28/2023 at 17:03):                         <th class="table-header">Current Answer</th>
+notesPage.css (hdehler on 04/30/2023 at 18:35):   font-family: sans-serif, cursive;
+faqPage.html (hdehler on 04/25/2023 at 11:12):         <link rel="shortcut icon" href="../img/dojoFavicon.png">
+faqPage.html (hdehler on 04/25/2023 at 11:12):         
+quizPage.html (hdehler on 04/25/2023 at 11:12):     <link rel="shortcut icon" href="img/dojoFavicon.png">
+quizPage.html (hdehler on 05/07/2023 at 20:35):                 <div class="timer-display" id="question-timer">00:00</div>
+bigScreen.html (hdehler on 04/26/2023 at 15:44): <head>
+bigScreen.html (hdehler on 04/26/2023 at 15:44):     <link rel="stylesheet" href="bigScreen.css">
+bigScreen.html (hdehler on 04/26/2023 at 15:44):     <link rel="shortcut icon" href="img/dojoFavicon.png">
+bigScreen.html (hdehler on 04/26/2023 at 15:44):     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+bigScreen.html (hdehler on 04/26/2023 at 15:44):     <script src="js/chart.umd.js"></script>
+bigScreen.html (hdehler on 04/26/2023 at 15:44): </head>
+bigScreen.html (hdehler on 05/07/2023 at 20:35):                     <div class="info-text" id="question-timer">00:00</div>
+bigScreen.html (hdehler on 04/26/2023 at 15:44):     <div class="white-text">
+bigScreen.html (hdehler on 04/26/2023 at 15:44): </html>
 index.css    (hdehler on 04/30/2023 at 18:35): @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
 index.css    (hdehler on 04/30/2023 at 18:35):   font-family: 'Tilt Warp', cursive;
 index.css    (hdehler on 04/30/2023 at 18:35):   font-family: 'Tilt Warp', cursive;
+summary.css  (hdehler on 04/30/2023 at 18:35): #results-area {
+summary.css  (hdehler on 04/30/2023 at 18:35):     width: 70%;
+summary.css  (hdehler on 04/30/2023 at 18:35):     margin: 0 auto;
+summary.css  (hdehler on 04/30/2023 at 18:35): }
+summary.css  (hdehler on 04/30/2023 at 18:35): 
+summary.css  (hdehler on 04/30/2023 at 18:35):     color: white;
+summary.css  (hdehler on 04/30/2023 at 18:35): }
+summary.css  (hdehler on 04/30/2023 at 18:35): 
+summary.css  (hdehler on 04/30/2023 at 18:35): #results-area h3 {
+summary.css  (hdehler on 04/30/2023 at 18:35):     display: inline-block;
+summary.css  (hdehler on 04/30/2023 at 18:35):     border: 1px solid white;
+summary.css  (hdehler on 04/30/2023 at 18:35):     padding: 4px;
+summary.css  (hdehler on 04/30/2023 at 18:35):     border-collapse: collapse;
+summary.css  (hdehler on 04/30/2023 at 18:35):     width: 100%;
+summary.css  (hdehler on 04/30/2023 at 18:35): 	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+summary.css  (hdehler on 04/30/2023 at 18:35):     width: 25%;
+summary.css  (hdehler on 04/30/2023 at 18:35):     text-align: left;
+summary.css  (hdehler on 04/30/2023 at 18:35):     padding: 8px;
+summary.css  (hdehler on 04/30/2023 at 18:35):     border: 1px solid black;
+summary.css  (hdehler on 04/30/2023 at 18:35): }
+summary.css  (hdehler on 04/30/2023 at 18:35): 
+summary.css  (hdehler on 04/30/2023 at 18:35): #results-area td {
+summary.css  (hdehler on 04/30/2023 at 18:35): 	color:white;
+summary.css  (hdehler on 04/30/2023 at 18:35):     background-color: #ddd;
+summary.css  (hdehler on 04/30/2023 at 18:35): 	color: black;
+summary.css  (hdehler on 04/30/2023 at 18:35):     background-color: rgba(0, 128, 0, 0.641);
+summary.css  (hdehler on 04/30/2023 at 18:35):     background-color: rgba(255, 0, 0, 0.61);
+host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "nickname table-data");
+host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "num-right table-data");
+host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "num-wrong table-data");
+host.js      (hdehler on 04/28/2023 at 17:03):     table_entry.setAttribute("class", "current-answer table-data");
+host.js      (hdehler on 04/28/2023 at 17:03): 
+host.js      (hdehler on 04/28/2023 at 17:03): 
